@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazakhstan Travel Guide | TGS Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Season Tabs */
+        .season-tab.active {
+            background-color: #16697A;
+            color: #EDE7E3;
+            border-color: #16697A;
+        }
+        .season-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .season-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Kazakhstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Russia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558588942-930faae5a389?q=80&w=2070&auto=format&fit=crop" alt="Kazakhstan Landscape" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+                Destination Guide
+            </div>
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                Kazakhstan
+            </h1>
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+                The Land of Great Steppes & Modern Marvels
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Discover the 9th Largest Country</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">Heart of Eurasia</h2>
+                <div class="w-16 h-1 bg-gold mb-8"></div>
+                
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">
+                    Kazakhstan is a country of breathtaking contrasts. From the endless, sweeping steppes where nomadic traditions were born, to the hyper-modern, futuristic skyline of Astana, it offers an adventure unlike any other in Central Asia.
+                </p>
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">
+                    Here, you can hike through alpine meadows, explore dramatic canyons that rival the Grand Canyon, ski down Olympic-grade mountain slopes, and experience the warm hospitality of the Kazakh people in traditional yurts.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-6 mt-10">
+                    <div>
+                        <div class="font-bold text-2xl text-gold mb-1">Capital</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Astana</div>
+                    </div>
+                    <div>
+                        <div class="font-bold text-2xl text-gold mb-1">Currency</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Tenge (KZT)</div>
+                    </div>
+                    <div>
+                        <div class="font-bold text-2xl text-gold mb-1">Language</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Kazakh, Russian</div>
+                    </div>
+                    <div>
+                        <div class="font-bold text-2xl text-gold mb-1">Best For</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Nature, Trekking, Culture</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative" data-aos="fade-left">
+                <div class="overflow-hidden rounded-tl-[100px] rounded-br-[100px] shadow-2xl h-[500px] image-zoom">
+                    <img src="https://images.unsplash.com/photo-1627495085117-640109403b9e?q=80&w=2070&auto=format&fit=crop" alt="Charyn Canyon" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-white p-6 shadow-xl max-w-xs border-t-4 border-gold hidden md:block">
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2">Charyn Canyon</div>
+                    <p class="text-sm text-teal-900/60 font-light">Nature's ancient masterpiece carved over 12 million years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Almaty & Surroundings</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">The cultural and financial hub of Kazakhstan, beautifully nestled at the foothills of the Trans-Ili Alatau mountains. It is the perfect blend of a vibrant modern city and accessible alpine nature.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Medeu & Shymbulak:</strong> The world's highest skating rink and a premium ski resort located just 30 minutes from the city center.</li>
+                                <li><strong>Big Almaty Lake:</strong> A stunning, turquoise-colored alpine lake situated at 2,511 meters above sea level.</li>
+                                <li><strong>Zenkov Cathedral:</strong> A gorgeous wooden orthodox cathedral built entirely without nails, located in Panfilov Park.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Astana (Nur-Sultan)</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">The futuristic capital rising from the northern steppes. Astana is an architectural playground featuring designs by world-renowned architects.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Baiterek Tower:</strong> The symbol of the city, representing a mythical tree of life with a golden egg.</li>
+                                <li><strong>Khan Shatyr:</strong> A massive, transparent tent-like structure that houses a shopping mall and an indoor beach resort.</li>
+                                <li><strong>Hazrat Sultan Mosque:</strong> One of the largest and most magnificent mosques in Central Asia.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Turkestan & The South</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">The spiritual and historical heart of Kazakhstan, connected deeply to the ancient Silk Road and Sufi traditions.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Mausoleum of Khoja Ahmed Yasawi:</strong> A UNESCO World Heritage site built by Amir Timur, showcasing incredible Timurid architecture.</li>
+                                <li><strong>Arystan Bab Mausoleum:</strong> An important pilgrimage site dedicated to the legendary mentor of Yasawi.</li>
+                                <li><strong>Otrar:</strong> The ancient ruins of a once-great Silk Road city destroyed by Genghis Khan.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="400">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">National Parks & Canyons</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">Kazakhstan's untouched nature is its greatest treasure, offering landscapes that look like they belong on another planet.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Charyn Canyon:</strong> Often compared to the Grand Canyon, featuring the dramatic "Valley of Castles" rock formations.</li>
+                                <li><strong>Kolsai & Kaindy Lakes:</strong> Stunning mountain lakes. Kaindy is famous for its submerged forest with spruce tree trunks piercing the water surface.</li>
+                                <li><strong>Altyn-Emel:</strong> Famous for the "Singing Dune" and the multi-colored Aktau mountains.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-teal-900 text-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate & Seasons</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold">Best Time to Visit</h2>
+                <p class="mt-4 text-cream/70 max-w-2xl mx-auto font-light">Kazakhstan has a sharp continental climate. Depending on what you want to experience—from skiing to desert trekking—every season offers something unique.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+                <button class="season-tab active px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="spring">Spring</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="summer">Summer</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="autumn">Autumn</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="winter">Winter</button>
+            </div>
+
+            <div class="bg-white text-teal-900 p-8 md:p-12 shadow-2xl relative" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="season-content active" data-season="spring">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Spring (April - May)</h3>
+                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Ideal Time</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                                Spring is a magical time when the endless steppes burst into color. It is the perfect season for visiting the southern regions (Almaty, Turkestan) before the intense summer heat arrives.
+                            </p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
+                                <li>Wild tulips bloom across the steppes (Kazakhstan is the ancestral home of the tulip).</li>
+                                <li>Comfortable weather for exploring cities and canyons.</li>
+                                <li>Celebrate "Nauryz" (Persian New Year) in late March with traditional games and food.</li>
+                            </ul>
+                        </div>
+                        <div class="h-64 overflow-hidden rounded-lg image-zoom">
+                            <img src="https://images.unsplash.com/photo-1598394468641-7d1a580a6b30?q=80&w=2070&auto=format&fit=crop" alt="Spring in Kazakhstan" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="season-content" data-season="summer">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Summer (June - August)</h3>
+                            <div class="inline-block bg-teal-500/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Mountain Trekking</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                                Summer can be quite hot in the cities and steppes (often above 30°C/86°F), making it the perfect time to head into the high mountains of the Tien Shan.
+                            </p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
+                                <li>Best season for hiking, camping, and horseback riding in the mountains.</li>
+                                <li>Visit Kolsai Lakes and the singing dunes of Altyn-Emel.</li>
+                                <li>Enjoy the modern air-conditioned marvels of Astana.</li>
+                            </ul>
+                        </div>
+                        <div class="h-64 overflow-hidden rounded-lg image-zoom">
+                            <img src="https://images.unsplash.com/photo-1582239611391-7661005a766c?q=80&w=2070&auto=format&fit=crop" alt="Summer Mountains" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="season-content" data-season="autumn">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Autumn (September - October)</h3>
+                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Harvest & Colors</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                                September is arguably the most comfortable month. The heat subsides, and the mountains around Almaty turn into a stunning canvas of gold, red, and orange.
+                            </p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
+                                <li>Perfect temperatures for sightseeing and outdoor activities.</li>
+                                <li>Almaty's famous apple harvest (Almaty literally translates to "Father of Apples").</li>
+                                <li>Great time for photography at Charyn Canyon and Big Almaty Lake.</li>
+                            </ul>
+                        </div>
+                        <div class="h-64 overflow-hidden rounded-lg image-zoom">
+                            <img src="https://images.unsplash.com/photo-1634816301387-a06f23f85172?q=80&w=2070&auto=format&fit=crop" alt="Autumn in Almaty" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="season-content" data-season="winter">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Winter (Dec - February)</h3>
+                            <div class="inline-block bg-teal-300/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Winter Sports</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                                Kazakhstan turns into a winter wonderland. While Astana gets freezing cold, the regions around Almaty offer world-class winter sports facilities.
+                            </p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
+                                <li>Skiing and snowboarding at Shymbulak Ski Resort.</li>
+                                <li>Ice skating at the legendary high-altitude Medeu rink.</li>
+                                <li>Experience the true frozen beauty of the steppes (bring very warm clothes!).</li>
+                            </ul>
+                        </div>
+                        <div class="h-64 overflow-hidden rounded-lg image-zoom">
+                            <img src="https://images.unsplash.com/photo-1643191197779-115f77891784?q=80&w=2070&auto=format&fit=crop" alt="Winter Skiing" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white text-center">
+        <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">Ready to Explore Kazakhstan?</h2>
+            <p class="text-teal-900/70 font-light mb-10 text-lg">Let our experts craft the perfect itinerary for your journey across the Great Steppe.</p>
+            <a href="index.html#contact" class="inline-block bg-gold text-cream px-10 py-4 font-bold tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg">Start Planning</a>
+        </div>
+    </section>
+
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+               <div class="flex items-center space-x-4 text-cream/60">
+    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="instagram" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="send" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="facebook" class="w-5 h-5"></i>
+    </a>
+</div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition">Majestic Minarets Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li>Monday - Friday: 10 AM - 6 PM</li>
+                    <li>Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
+            &copy; 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Инициализация анимаций
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+
+        // Логика аккордеона (Destinations)
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                
+                // Закрываем все остальные открытые вкладки
+                const group = item.parentElement;
+                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                
+                // Если кликнутая вкладка не была активна, открываем её
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Логика табов (Времена года)
+        document.querySelectorAll('.season-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const season = tab.dataset.season;
+
+                // Убираем активный класс со всех кнопок
+                document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+                // Добавляем активный класс нажатой кнопке
+                tab.classList.add('active');
+
+                // Переключаем контент
+                document.querySelectorAll('.season-content').forEach(c => {
+                    if (c.dataset.season === season) {
+                        c.classList.add('active');
+                    } else {
+                        c.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

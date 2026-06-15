@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGS Travel | Total Guest Satisfaction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .bento-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        input, textarea { outline: none; }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- ИСПРАВЛЕННАЯ НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Russia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://uzbekistan.org/wp-content/uploads/2023/08/154544-scaled.jpg" alt="Registan, Uzbekistan" class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 bg-teal-900/40"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
+            <h1 class="font-serif text-5xl md:text-7xl text-cream font-bold leading-tight mb-6" data-aos="fade-up" data-aos-duration="1200">Experience the World <br>with TGS Travel</h1>
+            <p class="text-cream/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">Bestseller: Sacred Uzbekistan Journey. Custom tours in Uzbekistan, Kazakhstan, Kyrgyzstan, and beyond. Your comfort is our priority.</p>
+            <a href="#contact" class="inline-block bg-gold text-cream font-medium px-8 py-4 tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg" data-aos="zoom-in" data-aos-delay="600">Request Custom Tour</a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="mb-16 md:flex justify-between items-end" data-aos="fade-up">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Our Services</h2>
+            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0">We provide comprehensive travel solutions to ensure Total Guest Satisfaction at every step of your journey.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bento-card bg-teal-500 text-cream p-10 md:col-span-2 flex flex-col justify-between h-80" data-aos="fade-right" data-aos-delay="200">
+                <i data-lucide="compass" class="w-10 h-10 mb-6 text-gold"></i>
+                <div>
+                    <h3 class="font-serif text-3xl mb-3">Custom Tours</h3>
+                    <p class="font-light text-cream/80 max-w-sm">We offer both group and individual inbound & outbound tours tailored entirely to your wishes.</p>
+                </div>
+            </div>
+            <div class="bento-card bg-white p-10 border border-teal-900/10 h-80 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="300">
+                <i data-lucide="plane" class="w-10 h-10 mb-6 text-teal-500"></i>
+                <div>
+                    <h3 class="font-serif text-2xl mb-3 text-teal-900">Flights & Transfers</h3>
+                    <p class="font-light text-teal-900/70 text-sm">Seamless logistics from the moment you arrive.</p>
+                </div>
+            </div>
+            <div class="bento-card bg-white p-10 border border-teal-900/10 h-80 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="400">
+                <i data-lucide="building-2" class="w-10 h-10 mb-6 text-teal-500"></i>
+                <div>
+                    <h3 class="font-serif text-2xl mb-3 text-teal-900">Hotel Booking</h3>
+                    <p class="font-light text-teal-900/70 text-sm">Exclusive access to premium 4 and 5-star accommodations.</p>
+                </div>
+            </div>
+            <div class="bento-card bg-teal-300 text-teal-900 p-10 md:col-span-2 flex flex-col justify-between h-80" data-aos="fade-left" data-aos-delay="500">
+                <i data-lucide="file-check-2" class="w-10 h-10 mb-6 text-teal-900"></i>
+                <div>
+                    <h3 class="font-serif text-3xl mb-3">Visa Support</h3>
+                    <p class="font-light text-teal-900/80 max-w-sm">Skip the paperwork. We provide full visa assistance for a stress-free experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="bg-teal-900 text-cream py-24 text-center px-6 overflow-hidden">
+        <div data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="font-serif text-3xl md:text-5xl font-light italic mb-8 max-w-4xl mx-auto leading-relaxed">"Total Guest Satisfaction isn't a goal.<br> <span class="text-gold font-bold not-italic">It's our standard.</span>"</h2>
+            <a href="#contact" class="inline-block border-b-2 border-gold text-gold pb-1 font-medium tracking-widest hover:text-cream hover:border-cream transition">PLAN YOUR JOURNEY</a>
+        </div>
+    </section>
+
+    <!-- TOURS -->
+    <section id="tours" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="mb-16 md:flex justify-between items-end" data-aos="fade-up">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Popular Tours</h2>
+            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0">Check out our best group tours starting shortly. If you haven't found the itinerary you like, don't hesitate to get in touch with us — we'll offer an individual tour.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <a href="tour-orient-journey.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="100">
+                <div class="overflow-hidden h-80 mb-6">
+                    <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Khiva" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Tashkent, Samarkand, Bukhara</div>
+                <h3 class="font-serif text-2xl text-teal-900 mb-2">Orient Journey</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Walk through centuries of history across Uzbekistan's legendary cities.</p>
+                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$899</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+            </a>
+            <a href="tour-echoes-silk-road.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="200">
+                <div class="overflow-hidden h-80 mb-6">
+                    <img src="https://images.unsplash.com/photo-1596710104473-35af7585f1c9?q=80&w=1935&auto=format&fit=crop" alt="Bukhara" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Samarkand, Bukhara, Tashkent</div>
+                <h3 class="font-serif text-2xl text-teal-900 mb-2">Echoes of the Silk Road</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Step into a world of blue domes and ancient legends.</p>
+                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$1,200</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+            </a>
+            <a href="tour-3stan.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="300">
+                <div class="overflow-hidden h-80 mb-6">
+                    <img src="https://images.unsplash.com/photo-1579222473432-84196d4791ea?q=80&w=2070&auto=format&fit=crop" alt="Mountains" class="w-full h-full object-cover">
+                </div>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Uzbekistan, Turkmenistan, Tajikistan</div>
+                <h3 class="font-serif text-2xl text-teal-900 mb-2">3Stan</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Discover the soul of Central Asia across three Stans.</p>
+                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$1,400</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+            </a>
+        </div>
+        <div class="text-center" data-aos="fade-up">
+            <a href="uzbekistan-tours.html" class="inline-block border border-teal-900 text-teal-900 px-10 py-4 font-medium tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300">View All Uzbekistan Tours</a>
+        </div>
+    </section>
+
+    <!-- NEW TESTIMONIALS SECTION -->
+    <section class="py-24 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">What They Say</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Guest Testimonials</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"An absolute dream! The Orient Journey tour exceeded all our expectations. The guides were incredibly knowledgeable, and the hotels were top-notch. Samarkand at night is something I will never forget."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">S</div>
+                        <div>
+                            <div class="font-bold text-teal-900 text-sm">Sarah Jenkins</div>
+                            <div class="text-xs text-teal-900/50">UK • Visited Uzbekistan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"TGS Travel handled everything perfectly. From our private transfers to the visa support, we didn't have to worry about a single detail. The 3Stan tour is highly recommended for true adventurers."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">M</div>
+                        <div>
+                            <div class="font-bold text-teal-900 text-sm">Mark & Elena</div>
+                            <div class="text-xs text-teal-900/50">Germany • Visited Central Asia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"The guides genuinely care about sharing their culture. Every meal was a feast, and every city felt magical. If you are thinking about visiting Kazakhstan or Uzbekistan, book with TGS."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">D</div>
+                        <div>
+                            <div class="font-bold text-teal-900 text-sm">David Chen</div>
+                            <div class="text-xs text-teal-900/50">USA • Visited Kazakhstan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 px-6 bg-white border-t border-teal-900/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div data-aos="fade-right">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">Let's plan your journey.</h2>
+                <p class="text-teal-900/70 font-light mb-12 max-w-sm">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center text-teal-900">
+                        <i data-lucide="phone" class="w-5 h-5 mr-4 text-gold"></i>
+                        <span class="font-medium">+998 93 1849144</span>
+                    </div>
+                    <div class="flex items-center text-teal-900">
+                        <i data-lucide="mail" class="w-5 h-5 mr-4 text-gold"></i>
+                        <span class="font-medium">info@tgstraveluz.com</span>
+                    </div>
+                    <div class="flex items-center text-teal-900">
+                        <i data-lucide="instagram" class="w-5 h-5 mr-4 text-gold"></i>
+                        <span class="font-medium">@tgs.travel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" data-aos-delay="200">
+                <form class="space-y-8">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="relative">
+                            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                        </div>
+                        <div class="relative">
+                            <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <input type="tel" placeholder="Phone Number" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                    </div>
+                    <div class="relative">
+                        <textarea placeholder="Tell us about your dream trip..." rows="3" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition resize-none"></textarea>
+                    </div>
+                    <button type="button" class="bg-teal-900 text-cream px-10 py-4 font-medium tracking-wide hover:bg-gold transition duration-300 w-full sm:w-auto">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+               <div class="flex items-center space-x-4 text-cream/60">
+    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="instagram" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="send" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="facebook" class="w-5 h-5"></i>
+    </a>
+</div>
+            </div>
+            
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="#contact" class="hover:text-gold transition">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition">Majestic Minarets Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li>Monday - Friday: 10 AM - 6 PM</li>
+                    <li>Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
+            &copy; 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+    </script>
+</body>
+</html>

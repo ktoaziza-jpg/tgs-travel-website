@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan Travel Guide | TGS Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        input, textarea { outline: none; }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Season tabs */
+        .season-tab.active {
+            background-color: #16697A;
+            color: #EDE7E3;
+            border-color: #16697A;
+        }
+        .season-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .season-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 600px;
+            opacity: 1;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- УНИВЕРСАЛЬНАЯ НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Russia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- EPIC HERO SECTION -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=2070&auto=format&fit=crop" alt="Registan Samarkand" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+                Destination Guide
+            </div>
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                Uzbekistan
+            </h1>
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+                The Heart of the Silk Road
+            </p>
+        </div>
+    </section>
+
+    <!-- INTRO & QUICK FACTS -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+                Experience the magic of turquoise domes, ancient cities, and warm hospitality at the crossroads of East and West. Uzbekistan is a treasure trove of architectural marvels and rich cultural heritage that will leave you breathless.
+            </p>
+        </div>
+
+        <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm">Uzbek Som (UZS). Cards are widely accepted in cities; carry some cash for bazaars and rural areas.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
+                <p class="text-teal-900/70 font-light text-sm">Uzbek (official) and Russian widely spoken. All our guides also speak English.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm">UZT (UTC+5), no daylight saving time observed throughout the year.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Type C and F sockets (European two-pin plugs). Bring an adapter if needed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP DESTINATIONS -->
+    <section class="py-24 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Samarkand - The Pearl of the East</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">Once the capital of Tamerlane's magnificent empire, Samarkand is synonymous with the Silk Road. Its monumental architecture and shimmering blue domes are world-famous.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Registan Square:</strong> The heart of the ancient city, flanked by three stunning, mosaic-covered madrasahs.</li>
+                                <li><strong>Gur-e-Amir:</strong> The spectacular mausoleum of Tamerlane, featuring a ribbed azure dome.</li>
+                                <li><strong>Shah-i-Zinda:</strong> A breathtaking avenue of intricately tiled mausoleums.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Bukhara - The Living Museum</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">With a history spanning over two millennia, Bukhara's Old City is a UNESCO World Heritage site that feels completely untouched by time.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Poi Kalyan Ensemble:</strong> Featuring the towering Kalon Minaret, which even Genghis Khan spared from destruction.</li>
+                                <li><strong>Ark Fortress:</strong> The massive, ancient citadel that served as the residence of the Emirs of Bukhara.</li>
+                                <li><strong>Trading Domes:</strong> Ancient bazaars where you can still buy exquisite carpets, ceramics, and silk.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Khiva - The Desert Fortress</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">Stepping into Khiva’s Itchan Kala (inner city) is like stepping directly into an Arabian Nights tale. It is incredibly preserved and compact.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Kalta Minor:</strong> The iconic, beautifully tiled but unfinished turquoise minaret.</li>
+                                <li><strong>Juma Mosque:</strong> An incredible 10th-century mosque supported by 212 intricately carved wooden columns.</li>
+                                <li><strong>Kuhna Ark:</strong> The ruler's fortress offering stunning panoramic views of the entire old city.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="400">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Tashkent - The Modern Metropolis</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">The vibrant capital beautifully blends Islamic architecture, Soviet-era monuments, and modern developments, surrounded by wide green avenues.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Chorsu Bazaar:</strong> A massive, incredibly photogenic domed market offering spices, fruits, and local street food.</li>
+                                <li><strong>Tashkent Metro:</strong> One of the most beautiful subway systems in the world, with each station featuring unique art and architecture.</li>
+                                <li><strong>Khast Imam Complex:</strong> Home to one of the world's oldest existing Qurans.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISA & ENTRY -->
+    <section class="py-24 px-6 bg-teal-900 text-cream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">Getting In Is Easier Than You Think</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed">Citizens of the United States, Canada, most European Union countries, the United Kingdom, Australia, Japan, and South Korea can enter Uzbekistan visa-free for stays of up to 30 days with just a valid passport — no advance application needed.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed">If your country isn't on the visa-free list, Uzbekistan's e-visa system lets you apply online and typically receive approval within two business days — no embassy visit required.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed">Whatever your nationality, just send us a copy of your passport — we'll tell you exactly what (if anything) you need to do before you fly, and help with any paperwork.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Ask About Your Visa</a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">Visa-Free (up to 30-90 days)</div>
+                        <p class="text-cream/70 font-light text-sm">EU, UK, USA, Canada, Australia, Japan, South Korea, GCC countries, and most CIS nations.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="monitor-check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">E-Visa (online, ~2 business days)</div>
+                        <p class="text-cream/70 font-light text-sm">Apply via the official e-visa.gov.uz portal — passport, digital photo, and hotel booking required.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="building-2" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">Hotel Registration</div>
+                        <p class="text-cream/70 font-light text-sm">Foreign visitors must be registered at each place they stay — hotels handle this automatically.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">Safety</div>
+                        <p class="text-cream/70 font-light text-sm">Uzbekistan is considered one of the safest countries in Central Asia for travelers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEST TIME TO VISIT -->
+    <section class="py-24 px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto">Tashkent has a warm climate with hot summers and mild winters, with rain rare during peak season. Here's what to expect throughout the year.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
+            </div>
+
+            <!-- Content Blocks -->
+            <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Spring -->
+                <div class="season-content active" data-season="spring">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Best Time of Year ☀️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring is the most popular season to visit. Mild days, blooming almond and apricot trees, and green landscapes make this the ideal time for walking tours of Samarkand, Bukhara, and Khiva.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">15–28°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Rainfall</span><span class="font-bold text-teal-900">Moderate</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Pack</span><span class="font-bold text-teal-900">Layers</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1596710104473-35af7585f1c9?q=80&w=1935&auto=format&fit=crop" alt="Spring in Samarkand" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summer -->
+                <div class="season-content" data-season="summer">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Hot & Dry 🔥</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">July is the warmest month, with average highs around 36°C and low humidity. Great for clear skies and long sightseeing days, but plan indoor breaks during the midday heat and stay hydrated.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">28–40°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Rainfall</span><span class="font-bold text-teal-900">Almost none</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Pack</span><span class="font-bold text-teal-900">Light, sun hat</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1974&auto=format&fit=crop" alt="Summer in Tashkent" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autumn -->
+                <div class="season-content" data-season="autumn">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Golden Season 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September and October bring mild, comfortable temperatures between 22–30°C, fresh harvests at local bazaars, and fewer crowds — many consider this the best season alongside spring.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">12–28°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Rainfall</span><span class="font-bold text-teal-900">Low</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Pack</span><span class="font-bold text-teal-900">Light layers</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1592385101137-1ee0560cbf26?q=80&w=2070&auto=format&fit=crop" alt="Autumn in Bukhara" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winter -->
+                <div class="season-content" data-season="winter">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Quiet & Cozy ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">January is the coldest month, with highs around 7°C and occasional snow. Tourist sites are nearly empty and hotel prices drop — a great option for budget-conscious, culture-focused travelers who don't mind the chill.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">-2–7°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Rainfall</span><span class="font-bold text-teal-900">Moderate, some snow</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Pack</span><span class="font-bold text-teal-900">Warm coat</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Winter in Khiva" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GETTING AROUND / TRANSPORT -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Uzbekistan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Flights & Arrival</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Most international flights land at Tashkent International Airport (TAS). We arrange a private airport pickup for every guest — just send us your flight details and your driver will be waiting with a name sign.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="train-front" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">High-Speed Trains</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Uzbekistan operates the region's first high-speed rail network, connecting Tashkent, Samarkand, and Bukhara in just a few comfortable hours. Most of our multi-city tours use these trains between destinations.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="car" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Private Transfers</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">All transfers within cities — to hotels, sites, and between excursions — are included in your tour package with an air-conditioned vehicle and driver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVELER TIPS ACCORDION -->
+    <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+            </div>
+
+            <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-item active border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">What should I wear when visiting mosques and madrasas?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Modest, comfortable clothing covering shoulders and knees is recommended. Comfortable walking shoes are a must — most historic sites involve a fair amount of walking on uneven stone surfaces.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">Is tap water safe to drink?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            We recommend bottled or filtered water, which is cheap and widely available. Most hotels also provide complimentary bottled water in rooms.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">Can I use my phone / get a local SIM card?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Local SIM cards (Beeline, Ucell, Mobiuz) are inexpensive and easy to get at the airport with your passport. 4G coverage is good in all major cities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">Should I tip guides and drivers?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Tipping is appreciated but not obligatory. As a guideline, $5-10 per day for guides and $3-5 per day for drivers is common among international travelers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">What food should I try?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Don't miss plov (rice pilaf), shashlik (grilled skewers), samsa (baked pastries), and fresh non bread straight from a tandoor oven. Each region has its own specialties worth seeking out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gold py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
+            <div>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready to See It for Yourself?</h3>
+                <p class="text-teal-900/80 text-lg font-medium">Browse our Uzbekistan tours, or get in touch and we'll design a custom itinerary just for you.</p>
+            </div>
+            <div class="flex gap-4 flex-wrap justify-center">
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">View Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+               <div class="flex items-center space-x-4 text-cream/60">
+    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="instagram" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="send" class="w-5 h-5"></i>
+    </a>
+    
+    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+        <i data-lucide="facebook" class="w-5 h-5"></i>
+    </a>
+</div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition">Majestic Minarets Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li>Monday - Friday: 10 AM - 6 PM</li>
+                    <li>Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
+            &copy; 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Инициализация анимаций
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+
+        // Логика аккордеонов (обрабатывает и Destinations, и FAQ независимо)
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                
+                // Закрываем только соседние вкладки в той же группе
+                const group = item.parentElement;
+                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Логика табов (Сезоны)
+        document.querySelectorAll('.season-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const season = tab.dataset.season;
+
+                document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.season-content').forEach(c => {
+                    c.classList.toggle('active', c.dataset.season === season);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
