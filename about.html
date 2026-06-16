@@ -99,15 +99,24 @@
             50%  { left: 50%;  transform: translate(-50%, calc(-50% - 14px)) rotate(8deg); }
             100% { left: 108%; transform: translate(-100%, -50%) rotate(0deg); }
         }
+
+        /* Мобильное меню */
+        #mobile-menu {
+            transition: transform 0.4s ease-in-out;
+        }
+        .mobile-menu-open {
+            transform: translateX(0) !important;
+        }
     </style>
 </head>
 <body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
 
+    <!-- НАВИГАЦИЯ -->
     <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
@@ -119,16 +128,16 @@
                         Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
@@ -143,11 +152,11 @@
                 </div>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
                         About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">About Us</a>
                         <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
                     </div>
                 </div>
@@ -155,12 +164,65 @@
                 <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
+            <div class="hidden lg:flex items-center space-x-6">
                 <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium">Get a Quote</a>
+            </div>
+
+            <!-- Кнопка Бургер-меню -->
+            <div class="lg:hidden flex items-center gap-4">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4">Home</a>
+        
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg">Get a Quote</a>
+    </div>
+
     <!-- HERO -->
     <section class="relative pt-40 pb-24 flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
@@ -171,15 +233,15 @@
             <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-up">
                 <a href="index.html" class="hover:text-cream transition">Home</a> &gt; About Us
             </div>
-            <h1 class="font-serif text-5xl md:text-6xl text-cream font-bold leading-tight" data-aos="fade-up" data-aos-delay="100">About Us</h1>
+            <h1 class="font-serif text-4xl md:text-6xl text-cream font-bold leading-tight" data-aos="fade-up" data-aos-delay="100">About Us</h1>
         </div>
     </section>
 
     <!-- ABOUT TGS TRAVEL -->
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <div class="relative" data-aos="fade-right">
-                <div class="overflow-hidden h-80 md:h-[30rem] image-zoom rounded-lg shadow-md">
+                <div class="overflow-hidden h-64 md:h-[30rem] image-zoom rounded-lg shadow-md">
                     <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070&auto=format&fit=crop" alt="Aesthetic Travel Layout" class="w-full h-full object-cover">
                 </div>
                 <div class="hidden md:block absolute -bottom-8 -right-8 bg-white p-6 shadow-xl max-w-xs" data-aos="fade-up" data-aos-delay="300">
@@ -197,73 +259,73 @@
 
             <div data-aos="fade-left" data-aos-delay="100">
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Uzbekistan and Central Asia Touroperator</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">About TGS Travel</h2>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-6">About TGS Travel</h2>
                 <div class="w-16 h-1 bg-gold mb-8"></div>
 
-                <p class="text-teal-900 font-medium mb-6 leading-relaxed">TGS Travel agency has passed a long way since its early beginnings in 2010. The company was founded by people passionate about tourism and lifetime adventures.</p>
+                <p class="text-teal-900 font-medium mb-6 leading-relaxed text-sm md:text-base">TGS Travel agency has passed a long way since its early beginnings in 2010. The company was founded by people passionate about tourism and lifetime adventures.</p>
 
-                <p class="text-teal-900/70 font-light mb-6 leading-relaxed">At the moment, the company serves more than 6,000 travelers across Europe and Asia each year. We serve clients worldwide.</p>
+                <p class="text-teal-900/70 font-light mb-6 leading-relaxed text-sm md:text-base">At the moment, the company serves more than 6,000 travelers across Europe and Asia each year. We serve clients worldwide.</p>
 
-                <p class="text-teal-900/70 font-light leading-relaxed">Our professional team has been lucky to travel to a number of amazing countries across all continents and can proudly boast many years of practical expertise in the travel industry. They are committed to excellence in providing clients with high-quality travel and the best possible traveling experience at reasonable prices. Due to the time spent abroad, they clearly understand all the demands of a modern traveler. Our specialists are always friendly and pay individual attention to each client. Expert guides will happily share with you all of their favourite spots.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm md:text-base">Our professional team has been lucky to travel to a number of amazing countries across all continents and can proudly boast many years of practical expertise in the travel industry. They are committed to excellence in providing clients with high-quality travel and the best possible traveling experience at reasonable prices. Due to the time spent abroad, they clearly understand all the demands of a modern traveler. Our specialists are always friendly and pay individual attention to each client. Expert guides will happily share with you all of their favourite spots.</p>
             </div>
         </div>
     </section>
 
     <!-- FACTS / STATS -->
-    <section class="py-24 px-6 bg-white">
+    <section class="py-16 md:py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-16 md:flex justify-between items-end" data-aos="fade-up">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Some Facts About Us...</h2>
-                <p class="max-w-md text-teal-900/70 font-light italic mt-4 md:mt-0">Why should you choose us? We have an answer! TGS Travel is one of the best travel agencies in Uzbekistan and Central Asia.</p>
+            <div class="mb-12 md:mb-16 md:flex justify-between items-end" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900">Some Facts About Us...</h2>
+                <p class="max-w-md text-teal-900/70 font-light italic mt-4 md:mt-0 text-sm md:text-base">Why should you choose us? We have an answer! TGS Travel is one of the best travel agencies in Uzbekistan and Central Asia.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                 <!-- Collage -->
                 <div class="grid grid-cols-2 gap-4" data-aos="fade-right">
-                    <div class="overflow-hidden h-44 md:h-56 image-zoom rounded-lg shadow-sm">
+                    <div class="overflow-hidden h-32 md:h-56 image-zoom rounded-lg shadow-sm">
                         <img src="https://images.unsplash.com/photo-1616038242814-a6eac7845d88?q=80&w=2070&auto=format&fit=crop" alt="Registan Dusk" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden h-44 md:h-56 image-zoom mt-8 rounded-lg shadow-sm">
+                    <div class="overflow-hidden h-32 md:h-56 image-zoom md:mt-8 rounded-lg shadow-sm">
                         <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Khiva Minaret" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden h-44 md:h-56 image-zoom -mt-8 rounded-lg shadow-sm">
+                    <div class="overflow-hidden h-32 md:h-56 image-zoom md:-mt-8 rounded-lg shadow-sm">
                         <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Bukhara Architecture" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden h-44 md:h-56 image-zoom rounded-lg shadow-sm">
+                    <div class="overflow-hidden h-32 md:h-56 image-zoom rounded-lg shadow-sm">
                         <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop" alt="Tien Shan Mountains" class="w-full h-full object-cover">
                     </div>
                 </div>
 
                 <!-- Stat cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="stat-card bg-cream p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card bg-cream p-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
                         <i data-lucide="medal" class="w-8 h-8 text-gold mb-4"></i>
-                        <div class="font-serif text-3xl font-bold text-teal-900 mb-2">
+                        <div class="font-serif text-2xl md:text-3xl font-bold text-teal-900 mb-2">
                             <span class="counter text-gold" data-target="13" data-suffix="">0</span> Years
                         </div>
-                        <p class="text-teal-900/70 font-light text-sm">of Experience. Over the years, we have experienced lockdowns, tsunamis, volcanic eruptions etc. One thing remains unchanged: our clients are satisfied with their vacation.</p>
+                        <p class="text-teal-900/70 font-light text-xs md:text-sm">of Experience. Over the years, we have experienced lockdowns, tsunamis, volcanic eruptions etc. One thing remains unchanged: our clients are satisfied with their vacation.</p>
                     </div>
-                    <div class="stat-card bg-cream p-8 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card bg-cream p-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-delay="200">
                         <i data-lucide="globe" class="w-8 h-8 text-gold mb-4"></i>
-                        <div class="font-serif text-3xl font-bold text-teal-900 mb-2">
+                        <div class="font-serif text-2xl md:text-3xl font-bold text-teal-900 mb-2">
                             <span class="counter text-gold" data-target="200" data-suffix="+">0</span> Destinations
                         </div>
-                        <p class="text-teal-900/70 font-light text-sm">We organize group and individual tours to many countries in Europe and Asia. Think of the most exotic destination — and we certainly offer a tour there!</p>
+                        <p class="text-teal-900/70 font-light text-xs md:text-sm">We organize group and individual tours to many countries in Europe and Asia. Think of the most exotic destination — and we certainly offer a tour there!</p>
                     </div>
-                    <div class="stat-card bg-cream p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card bg-cream p-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
                         <i data-lucide="thumbs-up" class="w-8 h-8 text-gold mb-4"></i>
-                        <div class="font-serif text-3xl font-bold text-teal-900 mb-2">
+                        <div class="font-serif text-2xl md:text-3xl font-bold text-teal-900 mb-2">
                             <span class="counter text-gold" data-target="8" data-suffix="k">0</span> Satisfied Clients
                         </div>
-                        <p class="text-teal-900/70 font-light text-sm">We find an individual approach to each of our clients. In our group tours, people get to know each other and continue to be friends even after the tour.</p>
+                        <p class="text-teal-900/70 font-light text-xs md:text-sm">We find an individual approach to each of our clients. In our group tours, people get to know each other and continue to be friends even after the tour.</p>
                     </div>
-                    <div class="stat-card bg-cream p-8 rounded-xl" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card bg-cream p-6 md:p-8 rounded-xl" data-aos="fade-up" data-aos-delay="400">
                         <i data-lucide="luggage" class="w-8 h-8 text-gold mb-4"></i>
-                        <div class="font-serif text-3xl font-bold text-teal-900 mb-2">
+                        <div class="font-serif text-2xl md:text-3xl font-bold text-teal-900 mb-2">
                             <span class="counter text-gold" data-target="100" data-suffix=",000+">0</span> km Traveled
                         </div>
-                        <p class="text-teal-900/70 font-light text-sm">What is a travel agent who doesn't travel? We drive thousands of kilometers every year to see the best hotels and destinations with our own eyes to recommend to you.</p>
+                        <p class="text-teal-900/70 font-light text-xs md:text-sm">What is a travel agent who doesn't travel? We drive thousands of kilometers every year to see the best hotels and destinations with our own eyes to recommend to you.</p>
                     </div>
                 </div>
             </div>
@@ -271,124 +333,124 @@
     </section>
 
     <!-- FEATURES -->
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-cream rounded-full p-4 inline-flex mb-6">
-                    <i data-lucide="user-check" class="w-7 h-7 text-gold"></i>
+                <div class="bg-cream rounded-full p-4 inline-flex mb-4 md:mb-6">
+                    <i data-lucide="user-check" class="w-6 h-6 md:w-7 md:h-7 text-gold"></i>
                 </div>
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-3">Expert Guides</h3>
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-teal-900 mb-2 md:mb-3">Expert Guides</h3>
                 <p class="text-teal-900/70 font-light text-sm leading-relaxed">Our guides are happy to share a lot of interesting information on every city.</p>
             </div>
             <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-cream rounded-full p-4 inline-flex mb-6">
-                    <i data-lucide="shield-check" class="w-7 h-7 text-gold"></i>
+                <div class="bg-cream rounded-full p-4 inline-flex mb-4 md:mb-6">
+                    <i data-lucide="shield-check" class="w-6 h-6 md:w-7 md:h-7 text-gold"></i>
                 </div>
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-3">Reliable Agency</h3>
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-teal-900 mb-2 md:mb-3">Reliable Agency</h3>
                 <p class="text-teal-900/70 font-light text-sm leading-relaxed">We have been in business for over 13 years and have a great reputation.</p>
             </div>
             <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="300">
-                <div class="bg-cream rounded-full p-4 inline-flex mb-6">
-                    <i data-lucide="badge-percent" class="w-7 h-7 text-gold"></i>
+                <div class="bg-cream rounded-full p-4 inline-flex mb-4 md:mb-6">
+                    <i data-lucide="badge-percent" class="w-6 h-6 md:w-7 md:h-7 text-gold"></i>
                 </div>
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-3">Affordable Price</h3>
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-teal-900 mb-2 md:mb-3">Affordable Price</h3>
                 <p class="text-teal-900/70 font-light text-sm leading-relaxed">We offer a selection of tours with different prices and conditions.</p>
             </div>
         </div>
     </section>
 
     <!-- OUR JOURNEY TIMELINE -->
-    <section class="py-24 px-6 bg-white">
+    <section class="py-16 md:py-24 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-4" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">How We Got Here</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Our Journey</h2>
+            <div class="text-center mb-8 md:mb-4" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2 md:mb-4">How We Got Here</div>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900">Our Journey</h2>
             </div>
 
             <!-- Decorative flying plane divider -->
             <div class="flight-divider" aria-hidden="true">
                 <div class="flying-plane">
-                    <i data-lucide="send" class="w-6 h-6 text-gold"></i>
+                    <i data-lucide="send" class="w-5 h-5 md:w-6 md:h-6 text-gold"></i>
                 </div>
             </div>
 
-            <div class="relative">
+            <div class="relative mt-8 md:mt-0">
                 <div class="timeline-line"></div>
 
-                <div class="relative pl-16 md:pl-24 pb-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="timeline-dot w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
-                        <i data-lucide="flag" class="w-5 h-5 text-cream"></i>
+                <div class="relative pl-14 md:pl-24 pb-10 md:pb-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
+                        <i data-lucide="flag" class="w-4 h-4 md:w-5 md:h-5 text-cream"></i>
                     </div>
-                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">2010</div>
-                    <h3 class="font-serif text-xl font-bold text-teal-900 mb-2">Where It All Began</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed max-w-lg">TGS Travel was founded by a small team of people passionate about tourism and lifetime adventures — with a simple goal: to share Central Asia with the world.</p>
+                    <div class="text-[10px] md:text-xs font-bold tracking-widest text-gold uppercase mb-1 md:mb-2 mt-1">2010</div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-teal-900 mb-2">Where It All Began</h3>
+                    <p class="text-teal-900/70 font-light text-xs md:text-sm leading-relaxed max-w-lg">TGS Travel was founded by a small team of people passionate about tourism and lifetime adventures — with a simple goal: to share Central Asia with the world.</p>
                 </div>
 
-                <div class="relative pl-16 md:pl-24 pb-12" data-aos="fade-up" data-aos-delay="150">
-                    <div class="timeline-dot w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
-                        <i data-lucide="globe" class="w-5 h-5 text-cream"></i>
+                <div class="relative pl-14 md:pl-24 pb-10 md:pb-12" data-aos="fade-up" data-aos-delay="150">
+                    <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
+                        <i data-lucide="globe" class="w-4 h-4 md:w-5 md:h-5 text-cream"></i>
                     </div>
-                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Expanding Horizons</div>
-                    <h3 class="font-serif text-xl font-bold text-teal-900 mb-2">200+ Destinations</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed max-w-lg">Our route map grew far beyond Uzbekistan, covering tours across Europe and Asia — while Central Asia stayed close to our heart.</p>
+                    <div class="text-[10px] md:text-xs font-bold tracking-widest text-gold uppercase mb-1 md:mb-2 mt-1">Expanding Horizons</div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-teal-900 mb-2">200+ Destinations</h3>
+                    <p class="text-teal-900/70 font-light text-xs md:text-sm leading-relaxed max-w-lg">Our route map grew far beyond Uzbekistan, covering tours across Europe and Asia — while Central Asia stayed close to our heart.</p>
                 </div>
 
-                <div class="relative pl-16 md:pl-24 pb-12" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-dot w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
-                        <i data-lucide="users" class="w-5 h-5 text-cream"></i>
+                <div class="relative pl-14 md:pl-24 pb-10 md:pb-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
+                        <i data-lucide="users" class="w-4 h-4 md:w-5 md:h-5 text-cream"></i>
                     </div>
-                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">8,000+ Travelers</div>
-                    <h3 class="font-serif text-xl font-bold text-teal-900 mb-2">A Growing Family</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed max-w-lg">Thousands of guests have joined our group tours — many leaving as friends, and quite a few coming back for their next adventure with us.</p>
+                    <div class="text-[10px] md:text-xs font-bold tracking-widest text-gold uppercase mb-1 md:mb-2 mt-1">8,000+ Travelers</div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-teal-900 mb-2">A Growing Family</h3>
+                    <p class="text-teal-900/70 font-light text-xs md:text-sm leading-relaxed max-w-lg">Thousands of guests have joined our group tours — many leaving as friends, and quite a few coming back for their next adventure with us.</p>
                 </div>
 
-                <div class="relative pl-16 md:pl-24 pb-12" data-aos="fade-up" data-aos-delay="250">
-                    <div class="timeline-dot w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
-                        <i data-lucide="route" class="w-5 h-5 text-cream"></i>
+                <div class="relative pl-14 md:pl-24 pb-10 md:pb-12" data-aos="fade-up" data-aos-delay="250">
+                    <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
+                        <i data-lucide="route" class="w-4 h-4 md:w-5 md:h-5 text-cream"></i>
                     </div>
-                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">100,000+ km on the Road</div>
-                    <h3 class="font-serif text-xl font-bold text-teal-900 mb-2">Scouted, Not Guessed</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed max-w-lg">Every hotel, route, and hidden gem we recommend has been checked in person by our team — so your trip is built on experience, not guesswork.</p>
+                    <div class="text-[10px] md:text-xs font-bold tracking-widest text-gold uppercase mb-1 md:mb-2 mt-1">100,000+ km on the Road</div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-teal-900 mb-2">Scouted, Not Guessed</h3>
+                    <p class="text-teal-900/70 font-light text-xs md:text-sm leading-relaxed max-w-lg">Every hotel, route, and hidden gem we recommend has been checked in person by our team — so your trip is built on experience, not guesswork.</p>
                 </div>
 
-                <div class="relative pl-16 md:pl-24" data-aos="fade-up" data-aos-delay="300">
-                    <div class="timeline-dot w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
-                        <i data-lucide="sparkles" class="w-5 h-5 text-cream"></i>
+                <div class="relative pl-14 md:pl-24" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 -translate-x-1/2 left-5 md:left-10">
+                        <i data-lucide="sparkles" class="w-4 h-4 md:w-5 md:h-5 text-cream"></i>
                     </div>
-                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Today</div>
-                    <h3 class="font-serif text-xl font-bold text-teal-900 mb-2">13 Years and Counting</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed max-w-lg">The same passion that started TGS Travel still drives us — and we'd love for your trip to be the next chapter in our story.</p>
+                    <div class="text-[10px] md:text-xs font-bold tracking-widest text-gold uppercase mb-1 md:mb-2 mt-1">Today</div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold text-teal-900 mb-2">13 Years and Counting</h3>
+                    <p class="text-teal-900/70 font-light text-xs md:text-sm leading-relaxed max-w-lg">The same passion that started TGS Travel still drives us — and we'd love for your trip to be the next chapter in our story.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PULL QUOTE -->
-    <section class="bg-teal-900 text-cream py-20 text-center px-6 overflow-hidden">
+    <section class="bg-teal-900 text-cream py-16 md:py-20 text-center px-6 overflow-hidden">
         <div data-aos="zoom-in" data-aos-duration="1000">
-            <h2 class="font-serif text-2xl md:text-4xl font-light italic mb-4 max-w-3xl mx-auto leading-relaxed">"Every journey begins with someone who cares about the details.<br><span class="text-gold font-bold not-italic">That's where we come in."</span></h2>
-            <p class="text-cream/60 text-sm font-light tracking-widest uppercase">— The TGS Travel Team</p>
+            <h2 class="font-serif text-xl md:text-4xl font-light italic mb-4 max-w-3xl mx-auto leading-relaxed">"Every journey begins with someone who cares about the details.<br><span class="text-gold font-bold not-italic">That's where we come in."</span></h2>
+            <p class="text-cream/60 text-xs md:text-sm font-light tracking-widest uppercase">— The TGS Travel Team</p>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24 px-6 bg-teal-900 text-cream border-t border-cream/5">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section id="contact" class="py-16 md:py-24 px-6 bg-teal-900 text-cream border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div data-aos="fade-right">
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Contacts</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Contact Us Now</h2>
-                <p class="text-cream/70 font-light mb-6 max-w-md">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers. We offer both group and individual tours. If you have a special request, we'll be happy to discuss it with you. Feel free to contact us to book your next adventure to the city of your dreams!</p>
-                <a href="mailto:info@tgstraveluz.com" class="inline-block bg-gold text-cream px-8 py-4 font-medium tracking-wide hover:bg-cream hover:text-teal-900 transition duration-300">Get Free Consultation</a>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Contact Us Now</h2>
+                <p class="text-cream/70 font-light mb-8 md:mb-6 max-w-md text-sm md:text-base">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers. We offer both group and individual tours. If you have a special request, we'll be happy to discuss it with you. Feel free to contact us to book your next adventure to the city of your dreams!</p>
+                <a href="mailto:info@tgstraveluz.com" class="inline-block bg-gold text-teal-900 px-6 py-3 md:px-8 md:py-4 font-bold tracking-wide hover:bg-cream hover:text-teal-900 transition duration-300 text-sm md:text-base">Get Free Consultation</a>
             </div>
-            <div data-aos="fade-left" data-aos-delay="200" class="bg-teal-900/40 p-10 border border-cream/10 rounded-xl">
-                <h4 class="font-serif text-xl font-bold mb-6 text-gold">Hours</h4>
+            <div data-aos="fade-left" data-aos-delay="200" class="bg-teal-900/40 p-8 md:p-10 border border-cream/10 rounded-xl">
+                <h4 class="font-serif text-lg md:text-xl font-bold mb-4 md:mb-6 text-gold">Hours</h4>
                 <p class="text-cream/70 text-sm mb-1">Monday - Saturday: 11 AM - 9 PM</p>
                 <p class="text-cream/70 text-sm mb-6">Sunday: 11 AM - 7 PM</p>
 
-                <h4 class="font-serif text-xl font-bold mb-6 text-gold">Instagram</h4>
+                <h4 class="font-serif text-lg md:text-xl font-bold mb-4 md:mb-6 text-gold">Instagram</h4>
                 <p class="text-cream/70 text-sm mb-6">@tgs.travel</p>
 
-                <h4 class="font-serif text-xl font-bold mb-6 text-gold">Contacts</h4>
+                <h4 class="font-serif text-lg md:text-xl font-bold mb-4 md:mb-6 text-gold">Contacts</h4>
                 <p class="text-cream/70 text-sm">+998 93 1849144</p>
                 <p class="text-cream/70 text-sm">info@tgstraveluz.com</p>
             </div>
@@ -396,10 +458,10 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+    <footer class="bg-teal-900 text-cream pt-16 md:pt-20 pb-8 md:pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 border-b border-cream/10 pb-10 md:pb-12">
             <div class="md:col-span-1">
-                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <div class="font-serif text-2xl md:text-3xl font-bold tracking-tight mb-4 md:mb-6 text-gold">TGS</div>
                 <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
                <div class="flex items-center space-x-4 text-cream/60">
                     <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
@@ -415,7 +477,7 @@
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
                     <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
                     <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
@@ -425,7 +487,7 @@
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
                     <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
                     <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
@@ -434,7 +496,7 @@
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
                     <li>Monday - Friday: 10 AM - 6 PM</li>
                     <li>Saturday: 10 AM - 3 PM</li>
@@ -446,6 +508,7 @@
         </div>
     </footer>
 
+    <!-- СКРИПТЫ -->
     <script>
         lucide.createIcons();
     </script>
@@ -491,6 +554,23 @@
         } else {
             counters.forEach(c => { c.textContent = c.dataset.target + (c.dataset.suffix || ''); });
         }
+
+        // Логика мобильного меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if(mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+
+        if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if(mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
     </script>
 </body>
 </html>
