@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgia Travel Guide | TGS Travel</title>
+    <title>Georgia | TGS Travel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -34,9 +34,6 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
-        input, textarea { outline: none; }
-
         .dropdown-menu {
             opacity: 0;
             visibility: hidden;
@@ -48,38 +45,14 @@
             visibility: visible;
             transform: translateY(0);
         }
-
-        /* Season tabs */
-        .season-tab.active {
-            background-color: #16697A;
-            color: #EDE7E3;
-            border-color: #16697A;
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        
+        /* Мобильное меню */
+        #mobile-menu {
+            transition: transform 0.4s ease-in-out;
         }
-        .season-content {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .season-content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Accordion */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            opacity: 0;
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 600px;
-            opacity: 1;
-        }
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
+        .mobile-menu-open {
+            transform: translateX(0) !important;
         }
     </style>
 </head>
@@ -90,7 +63,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
@@ -98,7 +71,7 @@
                 <a href="index.html" class="hover:text-gold transition">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
                         Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
@@ -110,7 +83,7 @@
                         <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
                         <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
                         <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Georgia</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
                     </div>
                 </div>
 
@@ -138,409 +111,137 @@
                 <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
+            <!-- Правый блок: Язык + Get a Quote (Только ПК) -->
+            <div class="hidden lg:flex items-center space-x-6">
                 <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium">Get a Quote</a>
+            </div>
+
+            <!-- Кнопка Бургер-меню (Только Мобилки) -->
+            <div class="lg:hidden flex items-center gap-4">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- EPIC HERO SECTION (КАЗБЕГ ВАЙБ) -->
-    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4">Home</a>
+        
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg">Azerbaijan</a>
+                <a href="georgia.html" class="text-gold font-bold text-lg">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg">Get a Quote</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative pt-40 pb-24 flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1568212132711-6beeb8bb1dbf?q=80&w=2070&auto=format&fit=crop" alt="Gergeti Trinity Church, Kazbegi, Georgia" class="w-full h-full object-cover opacity-65">
-            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
+            <img src="https://images.unsplash.com/photo-1565018991206-89d7b425dcbd?q=80&w=2070&auto=format&fit=crop" alt="Gergeti Trinity Church, Kazbegi, Georgia" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-teal-900/60"></div>
         </div>
-        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
-                Destination Guide
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-up">
+                <a href="index.html" class="hover:text-cream transition">Home</a> &gt; Destinations &gt; Georgia
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                Georgia
-            </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
-                The Crown Jewel of the Caucasus
-            </p>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-cream font-bold leading-tight mb-6" data-aos="fade-up" data-aos-delay="100">Georgia</h1>
+            <p class="text-cream/90 text-base md:text-xl font-light mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Where Majestic Peaks Meet the Birthplace of Wine.</p>
         </div>
     </section>
 
-    <!-- INTRO & QUICK FACTS -->
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
-                Welcome to Georgia, a breathtakingly beautiful land of dramatic alpine ridges, ancient watchtowers, and legendary hospitality. From the lively terrace cafes of historic Tbilisi to the high-altitude cloud sanctuary of Kazbegi and the 8,000-year-old traditional winemaking heritage of Kakheti, Georgia delivers an unforgettable sensory journey.
-            </p>
-        </div>
-
-        <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
-                <p class="text-teal-900/70 font-light text-sm">Georgian Lari (GEL). Contactless credit cards are widely accepted everywhere in major cities and boutique hotels.</p>
-            </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
-                <p class="text-teal-900/70 font-light text-sm">Georgian (official language). English and Russian are universally spoken across premier hospitality nodes.</p>
-            </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
-                <p class="text-teal-900/70 font-light text-sm">GET (UTC+4). Ideal positioning for seamless flight connectivity from both Europe and Asia hubs.</p>
-            </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
-                <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
-                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Standard European C and F sockets are fully universal in all guest rooms.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TOP DESTINATIONS -->
-    <section class="py-24 px-6 bg-white border-t border-teal-900/10">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
-                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Tbilisi - The Old World Fusion</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The vibrant capital tucked neatly into the Mtkvari River valley. Tbilisi showcases a unique charm of carved wooden balconies, ancient brick domes, and a thriving modern art scene.</p>
-                            <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Old Tbilisi & Narikala:</strong> Stroll through winding alleys toward the ancient fortress commanding panoramic city views.</li>
-                                <li><strong>Abanotubani Sulphur Baths:</strong> Historic brick-domed underground thermal bathhouses praised for centuries.</li>
-                                <li><strong>The Bridge of Peace:</strong> A striking, futuristic glass-and-steel canopy connecting traditional and modern quarters.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
-                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Kazbegi (Stepantsminda) - Mountain Sanctuary</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">A high-altitude alpine dream along the majestic Military Georgian Highway, framed by the sheer vertical rock wall of Mount Kazbek rising above 5,000 meters.</p>
-                            <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Gergeti Trinity Church:</strong> The iconic 14th-century stone church standing completely isolated against massive glaciers.</li>
-                                <li><strong>Gveleti Waterfalls:</strong> Crisp, thunderous mountain streams hidden inside dramatic rocky canyons.</li>
-                                <li><strong>Luxury Mountain Lodges:</strong> Unwind on panoramic sundecks overlooking snowbound peaks with premium local hospitality.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
-                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Kakheti - The Cradle of Wine</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Acclaimed by UNESCO as the birthplace of traditional winemaking, the sprawling Alazani Valley is lined with premium estates and historic Italianate towns.</p>
-                            <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Sighnaghi (Town of Love):</strong> A deeply romantic walled town featuring cobblestone streets and stunning views of the Caucasus.</li>
-                                <li><strong>Qvevri Winemaking:</strong> Tour ancient royal cellars utilizing traditional buried clay vessels for organic aging.</li>
-                                <li><strong>Tsinandali Estate:</strong> A magnificent 19th-century aristocratic palace set within beautiful botanical gardens.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VISA & ENTRY -->
-    <section class="py-24 px-6 bg-teal-900 text-cream">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <!-- ABOUT DESTINATION -->
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">The Ultimate One-Year Visa Freedom</h2>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Georgia operates one of the most open, progressive entry frameworks globally. Citizens of over 95 countries — including the European Union, USA, GCC, UK, and Uzbekistan — can enter completely visa-free for a full 365-day stay.</p>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">No advance registration portals or paper submittals are required. Simply arrive with a valid international passport at any land or air border checkpoint smoothly.</p>
-                <p class="text-cream/80 font-light mb-8 leading-relaxed">Our logistics desk gracefully handles all high-end hotel allocations, mountain transport permits, and custom regional transit seamlessly.</p>
-                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Request Custom Caucasus Itinerary</a>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-6">A Tapestry of Culture and Nature</h2>
+                <div class="w-16 h-1 bg-gold mb-8"></div>
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">Georgia is a country of staggering beauty and profound contrasts. Nestled between the soaring peaks of the Caucasus Mountains and the shores of the Black Sea, it offers an adventure for every type of traveler.</p>
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">Wander through the cobbled streets and pastel-colored balconies of Old Tbilisi, hike up to the iconic Gergeti Trinity Church standing sentinel above the clouds, or explore the ancient cave cities carved deep into rock.</p>
+                <p class="text-teal-900/80 font-light leading-relaxed">Known as the cradle of wine, Georgia invites you to partake in a traditional <em>Supra</em> feast, where polyphonic singing and endless toasts celebrate the joy of life. Discover true Georgian hospitality with TGS Travel.</p>
             </div>
-
-            <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
-                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
-                        <i data-lucide="calendar" class="w-5 h-5 text-teal-900"></i>
-                    </div>
-                    <div>
-                        <div class="font-bold text-white mb-1">365-Day Visa-Free Hub</div>
-                        <p class="text-cream/70 font-light text-sm">EU, US, UK, and CIS citizens can live and travel freely passport-only for an entire year.</p>
-                    </div>
+            <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                <div class="overflow-hidden h-48 md:h-64 image-zoom rounded-lg shadow-md mt-8">
+                    <img src="https://images.unsplash.com/photo-1582200192305-6477c07e0569?q=80&w=1964&auto=format&fit=crop" alt="Tbilisi Architecture" class="w-full h-full object-cover">
                 </div>
-                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
-                        <i data-lucide="plane" class="w-5 h-5 text-teal-900"></i>
-                    </div>
-                    <div>
-                        <div class="font-bold text-white mb-1">Fluid Land & Air Entry</div>
-                        <p class="text-cream/70 font-light text-sm">Highly optimized cross-border transits operating seamlessly from neighbor stations like Baku or Tashkent.</p>
-                    </div>
-                </div>
-                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
-                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
-                        <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
-                    </div>
-                    <div>
-                        <div class="font-bold text-white mb-1">World-Class Safety</div>
-                        <p class="text-cream/70 font-light text-sm">Georgia consistently positions inside global indices as one of the safest destinations for foreign travelers.</p>
-                    </div>
+                <div class="overflow-hidden h-48 md:h-64 image-zoom rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1601099684179-7a544f80e9ab?q=80&w=1974&auto=format&fit=crop" alt="Georgian Mountains" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BEST TIME TO VISIT -->
-    <section class="py-24 px-6 bg-cream">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
-                <p class="text-teal-900/70 font-light max-w-xl mx-auto">From pleasant sub-tropical shorelines to snowy alpine peaks, Georgia transitions beautifully across the calendar.</p>
-            </div>
-
-            <!-- Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
-                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
-            </div>
-
-            <!-- Content Blocks -->
-            <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                
-                <!-- Spring -->
-                <div class="season-content active" data-season="spring">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Blooming Valleys & Easter Magic 🌸</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring wakes up the lowlands brilliantly. Tbilisi’s courtyard cafes overflow with fresh energy, wildflowers cover the foothills, and Orthodox Easter fills historic stone cathedrals with grand choral chants.</p>
-                            
-                            <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Lowlands Temp</span><span class="font-bold text-teal-900">15–23°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Mountain Passes</span><span class="font-bold text-teal-900">Clearing smoothly</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Tbilisi Exploration & Mtskheta Heritage Walks</span></div>
-                            </div>
-                        </div>
-                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop" alt="Spring Old Tbilisi Balconies View" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Summer -->
-                <div class="season-content" data-season="summer">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">High-Altitude Alpine Treks ☀️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">The premier absolute window for accessing deep mountain trails in Svaneti and Kazbegi. High passes are completely clear of snow, valleys are deep emerald green, and mountain air feels incredibly refreshing.</p>
-                            
-                            <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Mountain Temp</span><span class="font-bold text-teal-900">18–26°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Lowland Cities</span><span class="font-bold text-teal-900">Hot & sunny</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">High Caucasus Trekking & Kazbegi Views</span></div>
-                            </div>
-                        </div>
-                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1568212132711-6beeb8bb1dbf?q=80&w=2070&auto=format&fit=crop" alt="Summer High Mountain Peaks Georgia" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Autumn -->
-                <div class="season-content" data-season="autumn">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">The Rtveli Wine Harvest 🍂</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Many consider autumn the ultimate peak window. September and October activate Rtveli — the celebratory national grape harvest in Kakheti. Forests turn golden, and weather is perfectly temperate.</p>
-                            
-                            <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">16–25°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Harvest Energy</span><span class="font-bold text-teal-900">At annual high</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Kakheti Grape Harvesting & Culinary Banquets</span></div>
-                            </div>
-                        </div>
-                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop" alt="Golden Autumn Vineyard Sunset" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Winter -->
-                <div class="season-content" data-season="winter">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Powder Slopes & Thermal Luxury ❄️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Winter carpets the Caucasus range in dense powder snow, turning Gudauri and Bakuriani into top-tier ski sanctuaries. Cities get cold, creating the perfect backdrop to escape into steaming sulphur baths.</p>
-                            
-                            <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Tbilisi Temp</span><span class="font-bold text-teal-900">3–8°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Ski Conditions</span><span class="font-bold text-teal-900">Excellent Powder Snow</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Gudauri Ski Resorts & Sulphur Thermal Spa Nights</span></div>
-                            </div>
-                        </div>
-                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1548594050903-8e8ee7b071a8?q=80&w=2070&auto=format&fit=crop" alt="Winter Ski Snowy Slopes Alps" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GETTING AROUND / TRANSPORT -->
-    <section class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Georgia</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Tbilisi Entry Hub</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">International flights arrive at Shota Rustaveli Tbilisi Airport (TBS). Our fleet chauffeurs coordinate private terminal pickups smoothly with personalized meet signs.</p>
-                </div>
-                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i data-lucide="truck" class="w-8 h-8 text-gold"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Premium 4x4 Fleet</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Scaling intense high-altitude mountain turns like the Kazbegi loops requires robust transport. We deploy exclusively heavy-duty, meticulously kept 4x4 SUVs or Mercedes vans.</p>
-                </div>
-                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i data-lucide="route" class="w-8 h-8 text-gold"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Cross-Border Integration</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">We provide absolute seamless land border handovers for clients executing comprehensive Caucasus tours coming directly from Yerevan or Baku junctions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRAVELER TIPS ACCORDION -->
-    <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
-            </div>
-
-            <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
-                <div class="accordion-item active border border-teal-900/20 bg-white">
-                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What dress code applies inside Georgian Orthodox Churches?</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
-                            Strict traditional code applies. Men must wear long trousers (no shorts). Women must cover their shoulders, wear longer skirts extending past the knees, and wrap a traditional headscarf around their hair before stepping inside.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item border border-teal-900/20 bg-white">
-                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What specific national dishes are absolute staples?</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
-                            Georgian gastronomy is legendary. Do not miss Khinkali (spiced, broth-filled giant handmade dumplings), Adjaruli Khachapuri (an iconic boat-shaped baked bread loaded with molten cheese, butter, and a raw egg yolk), and tender Shkmeruli garlic chicken.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item border border-teal-900/20 bg-white">
-                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Is natural tap water safe to drink across Georgia?</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
-                            Yes. Georgia is highly praised for its pristine mountain water quality. Tap water inside Tbilisi and all major mountain regions like Kazbegi is completely safe and filtered straight from natural mineral springs.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="bg-gold py-16 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
-            <div>
-                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready to Taste the Spirit of the Caucasus?</h3>
-                <p class="text-teal-900/80 text-lg font-medium">Explore our premium multi-country routes or consult our design desk to forge a custom itinerary.</p>
-            </div>
-            <div class="flex gap-4 flex-wrap justify-center">
-                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">Explore All Tours</a>
-                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
-            </div>
+    <!-- CALL TO ACTION -->
+    <section class="bg-teal-900 text-cream py-16 md:py-20 text-center px-6">
+        <div data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="font-serif text-2xl md:text-4xl font-light italic mb-6 max-w-3xl mx-auto leading-relaxed">"A guest is a gift from God."<br><span class="text-gold font-bold not-italic">— Georgian Proverb</span></h2>
+            <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-3 font-medium tracking-wide hover:bg-cream transition duration-300 shadow-lg text-sm md:text-base">Experience Georgia With Us</a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
-            <div class="md:col-span-1">
-                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-                <div class="flex items-center space-x-4 text-cream/60">
-                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-
+    <footer class="bg-teal-900 text-cream pt-16 pb-8 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 border-b border-cream/10 pb-10">
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <div class="font-serif text-2xl md:text-3xl font-bold tracking-tight mb-4 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia.</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg mb-4 text-cream">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
                     <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
+                    <li><a href="uzbekistan.html" class="hover:text-gold transition">Destinations</a></li>
                     <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
                 </ul>
             </div>
-
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-4 text-cream">Contacts</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li>+998 93 1849144</li>
+                    <li>info@tgstraveluz.com</li>
                 </ul>
             </div>
-
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
-                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                <h4 class="font-serif text-lg mb-4 text-cream">Socials</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="https://instagram.com/tgs.travel" class="hover:text-gold transition">Instagram</a></li>
+                    <li><a href="https://t.me/tgs_travel" class="hover:text-gold transition">Telegram</a></li>
                 </ul>
             </div>
         </div>
@@ -549,45 +250,27 @@
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out-quad',
-            once: true,
-        });
+        AOS.init({ duration: 1000, easing: 'ease-in-out-quad', once: true });
+        
+        // Логика мобильного меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
 
-        // Accordion logic
-        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const item = trigger.closest('.accordion-item');
-                const wasActive = item.classList.contains('active');
-                
-                const group = item.parentElement;
-                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
+        function toggleMobileMenu() {
+            if(mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
 
-        // Tabs logic
-        document.querySelectorAll('.season-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                const season = tab.dataset.season;
-
-                document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                document.querySelectorAll('.season-content').forEach(c => {
-                    c.classList.toggle('active', c.dataset.season === season);
-                });
-            });
-        });
+        if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if(mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
     </script>
 </body>
 </html>
