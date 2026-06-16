@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyrgyzstan Travel Guide | TGS Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        input, textarea { outline: none; }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Season tabs */
+        .season-tab.active {
+            background-color: #16697A;
+            color: #EDE7E3;
+            border-color: #16697A;
+        }
+        .season-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .season-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 600px;
+            opacity: 1;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- УНИВЕРСАЛЬНАЯ НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Kyrgyzstan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Russia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- EPIC HERO SECTION -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop" alt="Kyrgyzstan Mountains" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+                Destination Guide
+            </div>
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                Kyrgyzstan
+            </h1>
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+                The Land of Celestial Mountains & Nomadic Soul
+            </p>
+        </div>
+    </section>
+
+    <!-- INTRO & QUICK FACTS -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+                Discover a world of untouched alpine lakes, dramatic mountain ridges, and timeless nomadic customs. Kyrgyzstan is a dream destination for adventurers, nature lovers, and those seeking an authentic encounter with the ancient traditions of Central Asia.
+            </p>
+        </div>
+
+        <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm">Kyrgyzstani Som (KGS). Cash is highly preferred in mountain regions, yurts, and local bazaars.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
+                <p class="text-teal-900/70 font-light text-sm">Kyrgyz (state) and Russian (official) are spoken everywhere. Our guides speak fluent English.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm">KGT (UTC+6). It is one hour ahead of Tashkent and Uzbekistan.</p>
+            </div>
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Uses standard European Type C and F two-pin round plugs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP DESTINATIONS -->
+    <section class="py-24 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Issyk-Kul -->
+                <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Issyk-Kul Lake - Pearl of the Tien Shan</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">One of the world's largest alpine lakes, Issyk-Kul translates to "Hot Lake" because it never freezes, despite being surrounded by snow-capped mountain peaks.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Northern Shore:</strong> Famous for beach resorts, historical petroglyphs, and vibrant summer activities in Cholpon-Ata.</li>
+                                <li><strong>Southern Shore:</strong> Wild, pristine nature featuring the surreal red rock formations of Fairytale (Skazka) Canyon.</li>
+                                <li><strong>Karakol:</strong> A historic town on the eastern tip, basecamp for epic trekking and home to a unique wooden Dungan Mosque.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Son-Kul -->
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Son-Kul Lake - The Nomad's Sanctuary</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">An alpine lake sitting at an altitude of 3,016 meters, accessible only during the summer months. It is the ultimate spot to experience traditional Kyrgyz nomadic culture.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Yurt Stays:</strong> Spend nights in authentic felt yurts under a brilliant, unpolluted starry sky.</li>
+                                <li><strong>Horse Riding:</strong> Ride through rolling green jailoo pastures alongside local shepherds and herds of horses.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ala Archa -->
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Ala Archa National Park - Alpine Wilderness</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">A spectacular alpine sanctuary located just 45 minutes from Bishkek. It is renowned for its towering granite peaks, pine forests, and rushing glacial rivers.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Hiking Routes:</strong> Trails ranging from leisurely walks along the river to challenging treks up to the Ak-Sai waterfall.</li>
+                                <li><strong>Wildlife Tracking:</strong> Home to diverse alpine species, eagles, and the elusive, protected snow leopard.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bishkek -->
+                <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="400">
+                    <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
+                        <span class="font-serif text-2xl font-bold text-teal-900">Bishkek - The Green Capital</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
+                            <p class="mb-4">The relaxed, tree-lined capital city featuring wide marble boulevards, public parks, and a lively culinary scene showcasing both local and international flavors.</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Ala-Too Square:</strong> The central city square hosting the national museum and the formal changing of the guard.</li>
+                                <li><strong>Osh Bazaar:</strong> A sensory adventure filled with traditional felt crafts, spices, dried fruits, and national snacks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISA & ENTRY -->
+    <section class="py-24 px-6 bg-teal-900 text-cream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">One of the Most Open Countries</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed">Kyrgyzstan boasts one of the most liberal visa regimes in all of Central Asia. Citizens of over 60 countries, including the EU, UK, USA, Canada, Australia, Japan, and South Korea, can enter visa-free for stays ranging from 30 to 60 days.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed">For nationalities not covered by the visa-free policy, Kyrgyzstan offers an efficient, straightforward electronic visa (e-visa) portal, which processes tourist entry documents in around 3-5 business days without requiring physical passport submissions.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed">Simply send our team a clear copy of your passport pages, and we will verify your status, process any necessary electronic applications, and ensure smooth entry handling.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Check Your Visa Status</a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">Visa-Free Travel</div>
+                        <p class="text-cream/70 font-light text-sm">EU, UK, US, Canada, Australia, Japan, and CIS citizens enjoy easy, paperwork-free border access.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="monitor-check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">E-Visa Portal</div>
+                        <p class="text-cream/70 font-light text-sm">Quick, fully online registration via the official portal for all eligible non-exempt nationalities.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                    <div class="bg-gold rounded-full p-3 mr-4 flex-shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white mb-1">Safe Adventure Destination</div>
+                        <p class="text-cream/70 font-light text-sm">Consistently rated as a highly welcoming, safe environment for independent trekkers and groups alike.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEST TIME TO VISIT -->
+    <section class="py-24 px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto">Mountain weather can vary dramatically depending on your altitude. Here is what to expect across different travel seasons.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Apr–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Oct)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Nov–Mar)</button>
+            </div>
+
+            <!-- Content Blocks -->
+            <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Spring -->
+                <div class="season-content active" data-season="spring">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Green Valleys & Wildflowers 🌸</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring is stunning in the lower valleys. Foothills bloom with wild flowers, fields turn vibrant green, and the mountain snow layers begin melting into raging rivers. Great for city breaks and lower-altitude exploration.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">15–25°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">High Passes</span><span class="font-bold text-teal-900">Snow-covered</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Chuy Valley, Bishkek</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?q=80&w=2070&auto=format&fit=crop" alt="Spring Valleys" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summer -->
+                <div class="season-content" data-season="summer">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Peak Trekking Season ☀️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">The ultimate time for high-altitude exploration. Mountain passes clear, alpine pastures (jailoo) open up for yurt camps, and water temperatures at Issyk-Kul become warm enough for pleasant lakeside relaxation.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">25–35°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Mountain Nights</span><span class="font-bold text-teal-900">Chilly (5–15°C)</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Son-Kul, High Trekking</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop" alt="Summer Mountains" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autumn -->
+                <div class="season-content" data-season="autumn">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Golden Pastures & Clear Skies 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September offers golden autumn colors, cool, refreshing mountain air, and perfectly clear hiking weather. Summer crowds diminish, making it an excellent period for peaceful scenic photography and cultural routes.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">10–22°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">High Passes</span><span class="font-bold text-teal-900">Early snow possible</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Issyk-Kul Southern Shore</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" alt="Autumn scenery" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winter -->
+                <div class="season-content" data-season="winter">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Winter Sports Wonderland ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Kyrgyzstan transforms into an incredible budget-friendly winter playground. Karakol Ski Base offers fantastic powdery slopes, backcountry skiing options, and scenic hot springs amidst frozen canyons.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">-5–5°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Snow Layer</span><span class="font-bold text-teal-900">Heavy in mountains</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Karakol Ski Resort</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=2070&auto=format&fit=crop" alt="Winter Karakol" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GETTING AROUND / TRANSPORT -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Kyrgyzstan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Flights & Arrival</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Most guests land at Manas International Airport (FRU) near Bishkek. Our team handles your private airport pickup and coordinates all immediate hotel connections smoothly.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="car" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">4x4 Mountain Vehicles</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Mountain dirt roads and deep gorges require robust transport. We provide modern, rugged 4x4 vehicles driven by experienced local drivers who know the technical mountain terrain perfectly.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="compass" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Nomadic Base Camps</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">For remote lake locations like Son-Kul, we establish secure, clean yurt base camps featuring traditional insulation, cozy heating, and hot meals prepared on site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVELER TIPS ACCORDION -->
+    <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+            </div>
+
+            <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-item active border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">What should I pack for a yurt stay at high altitudes?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Temperatures drop heavily at night above 3,000 meters. Even in summer, you must pack thermal layers, a warm fleece or down jacket, a beanie, and thick socks. A headlamp is also very useful for night navigation around yurt camps.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">Is there mobile network coverage in the mountains?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Major operators (Megacom, Beeline, O!) offer excellent 4G coverage in Bishkek and along the shores of Issyk-Kul. However, in deep mountain valleys and remote sites like Son-Kul, connection can be weak or entirely unavailable. Enjoy the digital detox!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900">What is the local food culture like?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                            Kyrgyz cuisine relies heavily on meat (mutton, beef, beef pastries) and dairy products. Traditional dishes to try include Beshbarmak (national noodle dish), Kuurdak (fried meat and potatoes), and fresh boorsok breads. Vegetarian options can be arranged at hotels and yurt camps upon advance request.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gold py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
+            <div>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready for a Mountain Adventure?</h3>
+                <p class="text-teal-900/80 text-lg font-medium">Get in touch with our travel team to design a perfectly structured custom itinerary across Kyrgyzstan.</p>
+            </div>
+            <div class="flex gap-4 flex-wrap justify-center">
+                <a href="index.html#contact" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">Plan Your Trip</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://www.instagram.com/tgs.travel/" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li>Monday - Friday: 10 AM - 6 PM</li>
+                    <li>Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
+            &copy; 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+
+        // Логика аккордеонов
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                
+                const group = item.parentElement;
+                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Логика табов (Сезоны)
+        document.querySelectorAll('.season-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const season = tab.dataset.season;
+
+                document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.season-content').forEach(c => {
+                    c.classList.toggle('active', c.dataset.season === season);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
