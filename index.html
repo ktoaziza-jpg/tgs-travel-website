@@ -50,11 +50,53 @@
             transform: translateY(0);
         }
 
-        /* Map styling */
-        .map-pin:hover .pin-popup {
+        /* Улучшенный слайдер */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            z-index: 0;
+            background-color: #16697A; /* Заглушка пока грузится фото */
+        }
+        .hero-slide.active {
             opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-10px);
+            z-index: 1;
+        }
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-dots span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slide-dots span.active {
+            background: #FFA62B;
+            transform: scale(1.3);
+            box-shadow: 0 0 8px rgba(255, 166, 43, 0.6);
+        }
+        
+        /* Стили для кастомных тултипов карты */
+        .tgs-tooltip {
+            background: #16697A !important;
+            color: #EDE7E3 !important;
+            border: none !important;
+            border-radius: 6px !important;
+            padding: 8px 12px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 13px !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25) !important;
+        }
+        .leaflet-tooltip-top.tgs-tooltip::before {
+            border-top-color: #16697A !important;
         }
     </style>
 </head>
@@ -120,72 +162,40 @@
         </div>
     </nav>
 
-    <!-- HERO SLIDESHOW -->
-    <style>
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            z-index: 0;
-        }
-        .hero-slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .slide-dots span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            margin: 0 4px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .slide-dots span.active {
-            background: #FFA62B;
-            transform: scale(1.3);
-        }
-    </style>
-
+    <!-- ИСПРАВЛЕННЫЙ HERO SLIDESHOW -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Slides -->
+        
         <div class="absolute inset-0 z-0" id="heroSlider">
+            <!-- Слайд 1 (Загружается сразу) -->
             <div class="hero-slide active">
                 <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=2070&auto=format&fit=crop" alt="Регистан, Самарканд">
-                <div class="absolute inset-0 bg-teal-900/45"></div>
+                <div class="absolute inset-0 bg-teal-900/50"></div>
+            </div>
+            <!-- Остальные слайды (Ленивая загрузка для оптимизации) -->
+            <div class="hero-slide">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=2072&auto=format&fit=crop" alt="Хива, Узбекистан">
+                <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=2072&auto=format&fit=crop" alt="Хива, Узбекистан">
-                <div class="absolute inset-0 bg-teal-900/45"></div>
+                <img loading="lazy" src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Бухара, мозаика">
+                <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Бухара, мозаика">
-                <div class="absolute inset-0 bg-teal-900/45"></div>
+                <img loading="lazy" src="https://images.unsplash.com/photo-1596510914960-b2b0b9fbdbb3?q=80&w=2070&auto=format&fit=crop" alt="Голубые купола Самарканда">
+                <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1596510914960-b2b0b9fbdbb3?q=80&w=2070&auto=format&fit=crop" alt="Голубые купола Самарканда">
-                <div class="absolute inset-0 bg-teal-900/45"></div>
-            </div>
-            <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1598890777032-bde835ba27c2?q=80&w=2070&auto=format&fit=crop" alt="Узбекистан пейзаж">
-                <div class="absolute inset-0 bg-teal-900/45"></div>
+                <img loading="lazy" src="https://images.unsplash.com/photo-1598890777032-bde835ba27c2?q=80&w=2070&auto=format&fit=crop" alt="Узбекистан пейзаж">
+                <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
         </div>
 
-        <!-- Content -->
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
             <h1 class="font-serif text-5xl md:text-7xl text-cream font-bold leading-tight mb-6" data-aos="fade-up" data-aos-duration="1200">Experience the World <br>with TGS Travel</h1>
             <p class="text-cream/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">Bestseller: Sacred Uzbekistan Journey. Custom tours in Uzbekistan, Kazakhstan, Kyrgyzstan, and beyond. Your comfort is our priority.</p>
             <a href="#contact" class="inline-block bg-gold text-cream font-medium px-8 py-4 tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg" data-aos="zoom-in" data-aos-delay="600">Request Custom Tour</a>
-            <!-- Dots -->
-            <div class="slide-dots mt-10" id="slideDots">
+            
+            <div class="slide-dots mt-12" id="slideDots" data-aos="fade-up" data-aos-delay="800">
                 <span class="active" onclick="goToSlide(0)"></span>
                 <span onclick="goToSlide(1)"></span>
                 <span onclick="goToSlide(2)"></span>
@@ -208,11 +218,13 @@
                 current = (n + slides.length) % slides.length;
                 slides[current].classList.add('active');
                 dots[current].classList.add('active');
+                
+                // Перезапускаем таймер при ручном клике
                 clearInterval(timer);
-                timer = setInterval(() => goToSlide(current + 1), 5000);
+                timer = setInterval(() => goToSlide(current + 1), 6000);
             }
             window.goToSlide = goToSlide;
-            timer = setInterval(() => goToSlide(current + 1), 5000);
+            timer = setInterval(() => goToSlide(current + 1), 6000); // 6 секунд на слайд
         })();
     </script>
 
@@ -255,7 +267,7 @@
         </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНАЯ КАРТА МИРА (LEAFLET) -->
+    <!-- ИСПРАВЛЕННАЯ ИНТЕРАКТИВНАЯ КАРТА (С ПИНАМИ) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -264,75 +276,82 @@
             <div class="text-center mb-12" data-aos="fade-up">
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Interactive Map</div>
                 <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">Our Destinations</h2>
-                <p class="text-teal-900/70 font-light max-w-md mx-auto text-sm">Click on a highlighted country to explore our tours. Zoom in and out freely.</p>
+                <p class="text-teal-900/70 font-light max-w-md mx-auto text-sm">Click on a glowing pin to explore our tours. Zoom in and out freely using the buttons.</p>
             </div>
 
-            <div class="relative w-full max-w-5xl mx-auto rounded-2xl border border-teal-900/10 shadow-xl overflow-hidden" data-aos="zoom-in" style="height:520px;">
-                <div id="worldMap" style="width:100%;height:100%;"></div>
+            <div class="relative w-full max-w-5xl mx-auto rounded-2xl border border-teal-900/10 shadow-xl overflow-hidden z-0" data-aos="zoom-in" style="height:520px;">
+                <div id="worldMap" style="width:100%;height:100%; background: #f8f9fa;"></div>
             </div>
 
             <script>
             (function() {
                 window.addEventListener('load', function() {
+                    // Инициализация карты без скролла колесиком (чтобы не мешать листать сайт)
                     var map = L.map('worldMap', {
-                        center: [42, 55],
-                        zoom: 3,
-                        minZoom: 2,
+                        center: [41, 57], // Центр на Центральной Азии
+                        zoom: 4,
+                        minZoom: 3,
                         maxZoom: 8,
+                        scrollWheelZoom: false 
                     });
 
+                    // Базовый слой реальной карты
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                         attribution: '&copy; OpenStreetMap &copy; CARTO',
                         subdomains: 'abcd',
                         maxZoom: 19
                     }).addTo(map);
 
-                    var destinations = {
-                        'Uzbekistan':   { url: 'uzbekistan.html',   color: '#FFA62B' },
-                        'Kazakhstan':   { url: 'kazakhstan.html',   color: '#16697A' },
-                        'Kyrgyzstan':   { url: 'kyrgyzstan.html',   color: '#16697A' },
-                        'Tajikistan':   { url: 'tajikistan.html',   color: '#16697A' },
-                        'Turkmenistan': { url: 'turkmenistan.html', color: '#16697A' },
-                        'Turkey':       { url: 'turkey.html',       color: '#489FB5' },
-                        'Azerbaijan':   { url: 'azerbaijan.html',   color: '#489FB5' },
-                        'Georgia':      { url: 'georgia.html',      color: '#489FB5' },
-                        'Armenia':      { url: 'armenia.html',      color: '#489FB5' },
-                    };
+                    // Наши дестинации (координаты стран)
+                    var destinations = [
+                        { name: 'Uzbekistan', coords: [41.3775, 64.5853], url: 'uzbekistan.html', color: 'bg-gold', border: 'border-white' },
+                        { name: 'Kazakhstan', coords: [48.0196, 66.9237], url: 'kazakhstan.html', color: 'bg-teal-500', border: 'border-white' },
+                        { name: 'Kyrgyzstan', coords: [41.2044, 74.7661], url: 'kyrgyzstan.html', color: 'bg-teal-500', border: 'border-white' },
+                        { name: 'Tajikistan', coords: [38.8610, 71.2761], url: 'tajikistan.html', color: 'bg-teal-500', border: 'border-white' },
+                        { name: 'Turkmenistan', coords: [38.9697, 59.5563], url: 'turkmenistan.html', color: 'bg-teal-500', border: 'border-white' },
+                        { name: 'Turkey', coords: [38.9637, 35.2433], url: 'turkey.html', color: 'bg-teal-900', border: 'border-gold' },
+                        { name: 'Azerbaijan', coords: [40.1431, 47.5769], url: 'azerbaijan.html', color: 'bg-teal-900', border: 'border-gold' },
+                        { name: 'Georgia', coords: [42.3154, 43.3569], url: 'georgia.html', color: 'bg-teal-900', border: 'border-gold' },
+                        { name: 'Armenia', coords: [40.0691, 45.0382], url: 'armenia.html', color: 'bg-teal-900', border: 'border-gold' },
+                    ];
 
-                    fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
-                        .then(function(r){ return r.json(); })
-                        .then(function(data) {
-                            L.geoJSON(data, {
-                                style: function(feature) {
-                                    var name = feature.properties.ADMIN;
-                                    if (destinations[name]) {
-                                        return { color: '#16697A', weight: 2, opacity: 0.9, fillColor: destinations[name].color, fillOpacity: 0.55 };
-                                    }
-                                    return { color: '#16697A', weight: 0.8, opacity: 0.3, fillColor: '#EDE7E3', fillOpacity: 0.1 };
-                                },
-                                onEachFeature: function(feature, layer) {
-                                    var name = feature.properties.ADMIN;
-                                    if (destinations[name]) {
-                                        layer.bindTooltip('<b>' + name + '</b><br><span style="color:#FFA62B;font-size:11px;">Click to explore &rarr;</span>', { sticky: true, className: 'tgs-tooltip' });
-                                        layer.on('click', function() { window.location.href = destinations[name].url; });
-                                        layer.on('mouseover', function() { layer.setStyle({ fillOpacity: 0.85, weight: 3 }); });
-                                        layer.on('mouseout', function() { layer.setStyle({ fillOpacity: 0.55, weight: 2 }); });
-                                    }
-                                }
-                            }).addTo(map);
+                    // Добавляем пульсирующие пины (маркеры) на карту
+                    destinations.forEach(function(loc) {
+                        var isUzbekistan = loc.name === 'Uzbekistan';
+                        var sizeClass = isUzbekistan ? 'h-6 w-6' : 'h-4 w-4';
+                        var innerSizeClass = isUzbekistan ? 'h-4 w-4' : 'h-3 w-3';
+                        
+                        // HTML для пульсирующей точки
+                        var iconHtml = '<div class="relative flex ' + sizeClass + ' items-center justify-center">' +
+                                       '<span class="animate-ping absolute inline-flex h-full w-full rounded-full ' + loc.color + ' opacity-75"></span>' +
+                                       '<span class="relative inline-flex rounded-full ' + innerSizeClass + ' ' + loc.color + ' border-2 ' + loc.border + ' shadow-lg z-10"></span>' +
+                                       '</div>';
+
+                        var customIcon = L.divIcon({
+                            html: iconHtml,
+                            className: '', // Убираем стандартный фон Leaflet
+                            iconSize: isUzbekistan ? [24, 24] : [16, 16],
+                            iconAnchor: isUzbekistan ? [12, 12] : [8, 8]
                         });
 
-                    var s = document.createElement('style');
-                    s.innerHTML = '.tgs-tooltip{background:#16697A;color:#EDE7E3;border:none;border-radius:6px;padding:8px 12px;font-family:Inter,sans-serif;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,0.25);}.leaflet-tooltip-left.tgs-tooltip::before,.leaflet-tooltip-right.tgs-tooltip::before{display:none;}';
-                    document.head.appendChild(s);
+                        var marker = L.marker(loc.coords, {icon: customIcon}).addTo(map);
+                        
+                        marker.bindTooltip('<b>' + loc.name + '</b><br><span style="color:#FFA62B;font-size:11px;">Click to explore &rarr;</span>', { 
+                            className: 'tgs-tooltip', 
+                            direction: 'top', 
+                            offset: [0, -10] 
+                        });
+                        
+                        marker.on('click', function() { window.location.href = loc.url; });
+                    });
                 });
             })();
             </script>
 
             <div class="flex flex-wrap justify-center gap-6 mt-8" data-aos="fade-up">
-                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded" style="background:#FFA62B;"></span> Uzbekistan (featured)</div>
-                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded" style="background:#489FB5;"></span> Caucasus destinations</div>
-                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded" style="background:#16697A;"></span> Central Asia</div>
+                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded-full bg-gold border border-white shadow"></span> Uzbekistan (Featured)</div>
+                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded-full bg-teal-500 border border-white shadow"></span> Central Asia</div>
+                <div class="flex items-center gap-2 text-sm text-teal-900/70"><span class="inline-block w-4 h-4 rounded-full bg-teal-900 border border-gold shadow"></span> Caucasus & Turkey</div>
             </div>
 
         </div>
