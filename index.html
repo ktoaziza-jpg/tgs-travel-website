@@ -49,6 +49,13 @@
             visibility: visible;
             transform: translateY(0);
         }
+
+        /* Map styling */
+        .map-pin:hover .pin-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
     </style>
 </head>
 <body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
@@ -70,16 +77,16 @@
                         Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
@@ -113,10 +120,10 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- АУТЕНТИЧНЫЙ HERO (САМАРКАНД) -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1616038242814-a6eac7845d88?q=80&w=2070&auto=format&fit=crop" alt="Registan Dusk, Uzbekistan" class="w-full h-full object-cover opacity-90">
+            <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=2070&auto=format&fit=crop" alt="Registan Ancient Square at Dusk, Samarkand, Uzbekistan" class="w-full h-full object-cover opacity-95">
             <div class="absolute inset-0 bg-teal-900/40"></div>
         </div>
         
@@ -166,6 +173,134 @@
         </div>
     </section>
 
+    <!-- ИНТЕРАКТИВНАЯ КАРТА МИРА С ПИНАМИ НАШИХ СТРАН -->
+    <section class="py-24 bg-white border-t border-b border-teal-900/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Interactive Map</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">Our Destinations</h2>
+                <p class="text-teal-900/70 font-light max-w-md mx-auto text-sm">Hover over the glowing pins to discover our boutique operational spots and click to explore guides immediately.</p>
+            </div>
+
+            <!-- Контейнер с картой-подложкой -->
+            <div class="relative w-full aspect-[21/9] bg-cream/40 rounded-2xl border border-teal-900/5 shadow-inner overflow-hidden" data-aos="zoom-in">
+                
+                <!-- SVG Векторная минималистичная подложка карты мира -->
+                <svg class="w-full h-full object-cover opacity-[0.25] text-teal-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" fill="currentColor">
+                    <path d="M150,150 Q180,120 220,130 T300,160 T400,120 T500,100 T600,80 T700,90 T800,110 T900,140 L950,450 L50,450 Z" opacity="0.1"/>
+                    <!-- Стилизованные точки материков Евразии/Ближнего Востока для ориентира -->
+                    <circle cx="530" cy="190" r="40" /> <circle cx="580" cy="170" r="50" />
+                    <circle cx="640" cy="160" r="45" /> <circle cx="610" cy="210" r="35" />
+                    <circle cx="480" cy="180" r="30" /> <circle cx="450" cy="220" r="25" />
+                </svg>
+
+                <!-- СЕТКА ИНТЕРАКТИВНЫХ ПИНОВ (Абсолютное позиционирование поверх Евразии) -->
+                <div class="absolute inset-0">
+
+                    <!-- 1. Узбекистан (Центр композиции) -->
+                    <div class="absolute left-[60%] top-[38%] map-pin group">
+                        <a href="uzbekistan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-900 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Uzbekistan 🇺🇿
+                        </div>
+                    </div>
+
+                    <!-- 2. Казахстан -->
+                    <div class="absolute left-[59%] top-[31%] map-pin group">
+                        <a href="kazakhstan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Kazakhstan 🇰🇿
+                        </div>
+                    </div>
+
+                    <!-- 3. Кыргызстан -->
+                    <div class="absolute left-[64%] top-[37%] map-pin group">
+                        <a href="kyrgyzstan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Kyrgyzstan 🇰🇬
+                        </div>
+                    </div>
+
+                    <!-- 4. Таджикистан -->
+                    <div class="absolute left-[62%] top-[42%] map-pin group">
+                        <a href="tajikistan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Tajikistan 🇹🇯
+                        </div>
+                    </div>
+
+                    <!-- 5. Туркменистан -->
+                    <div class="absolute left-[56%] top-[41%] map-pin group">
+                        <a href="turkmenistan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Turkmenistan 🇹🇲
+                        </div>
+                    </div>
+
+                    <!-- 6. Турция -->
+                    <div class="absolute left-[44%] top-[43%] map-pin group">
+                        <a href="turkey.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Turkey 🇹🇷
+                        </div>
+                    </div>
+
+                    <!-- 7. Азербайджан -->
+                    <div class="absolute left-[51%] top-[42%] map-pin group">
+                        <a href="azerbaijan.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Azerbaijan 🇦🇿
+                        </div>
+                    </div>
+
+                    <!-- 8. Грузия -->
+                    <div class="absolute left-[49%] top-[39%] map-pin group">
+                        <a href="georgia.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Georgia 🇬🇪
+                        </div>
+                    </div>
+
+                    <!-- 9. Армения -->
+                    <div class="absolute left-[49%] top-[43%] map-pin group">
+                        <a href="armenia.html" class="relative flex h-4 w-4 items-center justify-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500 border border-white"></span>
+                        </a>
+                        <div class="pin-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-teal-900 text-cream text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 visibility-hidden transition-all duration-300 whitespace-nowrap z-30">
+                            Armenia 🇦🇲
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- QUOTE -->
     <section class="bg-teal-900 text-cream py-24 text-center px-6 overflow-hidden">
         <div data-aos="zoom-in" data-aos-duration="1000">
@@ -183,7 +318,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             <a href="tour-orient-journey.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="100">
                 <div class="overflow-hidden h-80 mb-6 rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Khiva Street" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=2072&auto=format&fit=crop" alt="Ancient Khiva Oriental Walls" class="w-full h-full object-cover">
                 </div>
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Tashkent, Samarkand, Bukhara</div>
                 <h3 class="font-serif text-2xl text-teal-900 mb-2">Orient Journey</h3>
@@ -193,7 +328,7 @@
             </a>
             <a href="tour-echoes-silk-road.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="200">
                 <div class="overflow-hidden h-80 mb-6 rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Samarkand Majolica" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Samarkand Turquoise Majolica Details" class="w-full h-full object-cover">
                 </div>
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Samarkand, Bukhara, Tashkent</div>
                 <h3 class="font-serif text-2xl text-teal-900 mb-2">Echoes of the Silk Road</h3>
@@ -203,7 +338,7 @@
             </a>
             <a href="tour-3stan.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="300">
                 <div class="overflow-hidden h-80 mb-6 rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop" alt="Central Asia Mountains" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop" alt="Central Asia Pamir Mountains Ridge" class="w-full h-full object-cover">
                 </div>
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Uzbekistan, Turkmenistan, Tajikistan</div>
                 <h3 class="font-serif text-2xl text-teal-900 mb-2">3Stan</h3>
@@ -217,7 +352,7 @@
         </div>
     </section>
 
-    <!-- NEW TESTIMONIALS SECTION -->
+    <!-- TESTIMONIALS -->
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -226,7 +361,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
                 <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex text-gold mb-4">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -245,7 +379,6 @@
                     </div>
                 </div>
 
-                <!-- Review 2 -->
                 <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex text-gold mb-4">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -264,7 +397,6 @@
                     </div>
                 </div>
 
-                <!-- Review 3 -->
                 <div class="bg-cream p-8 border-t-4 border-gold shadow-lg hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex text-gold mb-4">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -337,7 +469,7 @@
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
                 <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-               <div class="flex items-center space-x-4 text-cream/60">
+                <div class="flex items-center space-x-4 text-cream/60">
                     <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
