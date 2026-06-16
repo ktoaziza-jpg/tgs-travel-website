@@ -59,9 +59,7 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        .season-content.active {
-            display: block;
-        }
+        .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -74,12 +72,130 @@
             transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
             opacity: 0;
         }
-        .accordion-item.active .accordion-content {
-            max-height: 600px;
-            opacity: 1;
+        .accordion-item.active .accordion-content { max-height: 600px; opacity: 1; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        /* ====== PARALLAX HERO ====== */
+        #hero-bg {
+            will-change: transform;
+            transform-origin: center center;
         }
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
+
+        /* ====== ANIMATED MARQUEE ====== */
+        .marquee-track {
+            display: flex;
+            gap: 3rem;
+            animation: marquee 22s linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ====== HORIZONTAL PHOTO RAIL ====== */
+        .photo-rail {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 1rem;
+            cursor: grab;
+        }
+        .photo-rail:active { cursor: grabbing; }
+        .photo-rail::-webkit-scrollbar { height: 4px; }
+        .photo-rail::-webkit-scrollbar-track { background: #EDE7E3; }
+        .photo-rail::-webkit-scrollbar-thumb { background: #FFA62B; border-radius: 2px; }
+        .photo-card {
+            flex: 0 0 340px;
+            height: 460px;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .photo-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .photo-card:hover img { transform: scale(1.07); }
+        .photo-card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(22,105,122,0.85) 0%, transparent 55%);
+            display: flex; align-items: flex-end; padding: 1.5rem;
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .photo-card:hover .photo-card-overlay { opacity: 1; }
+
+        /* ====== COUNTER NUMBERS ====== */
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #FFA62B;
+            line-height: 1;
+        }
+
+        /* ====== FLOATING TILE MOSAIC ====== */
+        @keyframes floatA {
+            0%,100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+        @keyframes floatB {
+            0%,100% { transform: translateY(0px) rotate(1.5deg); }
+            50% { transform: translateY(-8px) rotate(-1deg); }
+        }
+        .float-a { animation: floatA 6s ease-in-out infinite; }
+        .float-b { animation: floatB 8s ease-in-out infinite; }
+
+        /* ====== CURSOR GLOW ====== */
+        #cursor-glow {
+            position: fixed;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,166,43,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: left 0.15s ease, top 0.15s ease;
+            z-index: 9999;
+        }
+
+        /* ====== QUOTE SECTION ====== */
+        .quote-char {
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            line-height: 0.8;
+            color: rgba(255,166,43,0.15);
+            position: absolute;
+            top: -1rem; left: -1rem;
+            pointer-events: none;
+        }
+
+        /* ====== STICKY CITY NAV ====== */
+        #city-nav {
+            position: sticky;
+            top: 88px;
+            z-index: 40;
+            background: rgba(237,231,227,0.97);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(22,105,122,0.12);
+        }
+        .city-nav-link {
+            padding: 0.85rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #16697A;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .city-nav-link:hover, .city-nav-link.active {
+            color: #FFA62B;
+            border-color: #FFA62B;
         }
     </style>
 </head>
@@ -145,31 +261,85 @@
         </div>
     </nav>
 
-    <!-- EPIC HERO SECTION (ГЛУБОКИЙ АУТЕНТИЧНЫЙ КАДР РЕГИСТАНА) -->
+    <!-- CURSOR GLOW -->
+    <div id="cursor-glow"></div>
+
+    <!-- EPIC PARALLAX HERO -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1618235451642-1e96a40efcfd?q=80&w=2070&auto=format&fit=crop" alt="Breathtaking Blue Mosaic Tiles of Samarkand, Uzbekistan" class="w-full h-full object-cover opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
+        <div class="absolute inset-0 z-0 scale-110" id="hero-bg">
+            <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=2070&auto=format&fit=crop" alt="Registan Square, Samarkand, Uzbekistan" class="w-full h-full object-cover opacity-70">
+            <div class="absolute inset-0 bg-gradient-to-b from-teal-900/50 via-teal-900/10 to-cream"></div>
         </div>
-        <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+
+        <!-- floating mosaic tiles -->
+        <div class="absolute top-32 right-16 w-28 h-28 rounded-xl overflow-hidden shadow-2xl float-a opacity-80 hidden lg:block z-10">
+            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute bottom-36 right-32 w-20 h-20 rounded-lg overflow-hidden shadow-xl float-b opacity-70 hidden lg:block z-10">
+            <img src="https://images.unsplash.com/photo-1618235451642-1e96a40efcfd?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute top-48 left-12 w-24 h-24 rounded-xl overflow-hidden shadow-xl float-b opacity-75 hidden lg:block z-10">
+            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mt-20">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-6" data-aos="fade-down">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-7xl md:text-[9rem] text-white font-bold leading-none mb-4 drop-shadow-2xl" data-aos="zoom-in" data-aos-delay="100" style="letter-spacing:-0.02em;">
                 Uzbekistan
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/85 text-xl md:text-2xl font-light tracking-widest drop-shadow-md mb-10" data-aos="fade-up" data-aos-delay="250">
                 The Heart of the Silk Road
             </p>
+            <div class="flex justify-center gap-4 flex-wrap" data-aos="fade-up" data-aos-delay="400">
+                <a href="uzbekistan-tours.html" class="inline-block bg-gold text-cream font-medium px-8 py-4 tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg">Explore Tours</a>
+                <a href="#cities" class="inline-block border border-white/60 text-white font-medium px-8 py-4 tracking-wide hover:bg-white/10 transition duration-300">Discover Cities ↓</a>
+            </div>
+        </div>
+
+        <!-- scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60 text-xs tracking-widest">
+            <span>SCROLL</span>
+            <div class="w-px h-10 bg-white/30 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-gold animate-bounce"></div>
+            </div>
         </div>
     </section>
 
-    <!-- INTRO & QUICK FACTS -->
+    <!-- MARQUEE STRIP -->
+    <div class="bg-gold py-4 overflow-hidden border-y border-gold/30">
+        <div class="marquee-track text-teal-900 font-bold text-sm tracking-widest uppercase">
+            <span>✦ Samarkand</span><span>✦ Bukhara</span><span>✦ Khiva</span><span>✦ Tashkent</span><span>✦ Silk Road</span><span>✦ Registan</span><span>✦ Plov & Chai</span><span>✦ Blue Domes</span><span>✦ Ancient Bazaars</span><span>✦ Samarkand</span><span>✦ Bukhara</span><span>✦ Khiva</span><span>✦ Tashkent</span><span>✦ Silk Road</span><span>✦ Registan</span><span>✦ Plov & Chai</span><span>✦ Blue Domes</span><span>✦ Ancient Bazaars</span>
+        </div>
+    </div>
+
+    <!-- INTRO & ANIMATED STATS -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
             <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
                 Experience the magic of turquoise domes, ancient cities, and warm hospitality at the crossroads of East and West. Uzbekistan is a treasure trove of architectural marvels and rich cultural heritage that will leave you breathless.
             </p>
+        </div>
+
+        <!-- ANIMATED COUNTER STATS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 border-y border-teal-900/10 py-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-center">
+                <div class="stat-num" data-target="2700">0</div>
+                <div class="text-xs font-bold tracking-widest text-teal-900/50 uppercase mt-2">Years of History</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-num" data-target="7">0</div>
+                <div class="text-xs font-bold tracking-widest text-teal-900/50 uppercase mt-2">UNESCO Sites</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-num" data-target="4">0</div>
+                <div class="text-xs font-bold tracking-widest text-teal-900/50 uppercase mt-2">Legendary Cities</div>
+            </div>
+            <div class="text-center">
+                <div class="stat-num" data-target="36">0</div>
+                <div class="text-xs font-bold tracking-widest text-teal-900/50 uppercase mt-2">Million Travelers / yr</div>
+            </div>
         </div>
 
         <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
@@ -178,22 +348,22 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                 <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
                 <p class="text-teal-900/70 font-light text-sm">Uzbek Som (UZS). Cards are widely accepted in cities; carry some cash for bazaars and rural areas.</p>
             </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                 <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
                 <p class="text-teal-900/70 font-light text-sm">Uzbek (official) and Russian widely spoken. All our guides also speak English.</p>
             </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                 <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
                 <p class="text-teal-900/70 font-light text-sm">UZT (UTC+5), no daylight saving time observed throughout the year.</p>
             </div>
-            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
                 <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
                 <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Type C and F sockets (European two-pin plugs). Bring an adapter if needed.</p>
@@ -201,74 +371,95 @@
         </div>
     </section>
 
-    <!-- NEW ВЫСОКОКЛАССНЫЙ БЛОК: ГАЛЕРЕЯ ВИЗУАЛЬНОГО ПУТЕШЕСТВИЯ -->
-    <section class="py-24 bg-white border-t border-b border-teal-900/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visual Journey</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Authentic Uzbekistan</h2>
-            </div>
+    <!-- STICKY CITY NAV -->
+    <div id="city-nav" id="cities">
+        <div class="max-w-7xl mx-auto px-6 flex overflow-x-auto gap-1 hide-scrollbar">
+            <a href="#samarkand" class="city-nav-link">Samarkand</a>
+            <a href="#bukhara" class="city-nav-link">Bukhara</a>
+            <a href="#khiva" class="city-nav-link">Khiva</a>
+            <a href="#tashkent" class="city-nav-link">Tashkent</a>
+        </div>
+    </div>
 
-            <!-- Сетка Masonry/Bento для картинок городов -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                
-                <!-- Ташкент (Чорсу / Метро) -->
-                <div class="md:col-span-4 overflow-hidden h-[24rem] rounded-2xl relative group shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1536431311719-398b6704d4cc?q=80&w=2070&auto=format&fit=crop" alt="Bazaar Dome in Tashkent" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <span class="text-gold font-bold text-xs uppercase tracking-wider">Capital city</span>
-                            <h3 class="font-serif text-2xl text-white font-bold mt-1">Tashkent Hub</h3>
-                        </div>
-                    </div>
+    <!-- HORIZONTAL PHOTO RAIL -->
+    <section class="py-24 bg-white border-t border-b border-teal-900/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-10">
+            <div class="flex justify-between items-end" data-aos="fade-up">
+                <div>
+                    <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visual Journey</div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Authentic Uzbekistan</h2>
                 </div>
-
-                <!-- Самарканд (Регистан в деталях) -->
-                <div class="md:col-span-8 overflow-hidden h-[24rem] rounded-2xl relative group shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=2070&auto=format&fit=crop" alt="Registan Square Majestic Evening, Samarkand" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <span class="text-gold font-bold text-xs uppercase tracking-wider">Grand Architecture</span>
-                            <h3 class="font-serif text-2xl text-white font-bold mt-1">Samarkand Majestic</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Бухара (Пои-Калян старый город) -->
-                <div class="md:col-span-7 overflow-hidden h-[24rem] rounded-2xl relative group shadow-sm" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1625126040336-f082e6669c5e?q=80&w=2070&auto=format&fit=crop" alt="Poi Kalyan Ensemble, Bukhara" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <span class="text-gold font-bold text-xs uppercase tracking-wider">UNESCO Living Museum</span>
-                            <h3 class="font-serif text-2xl text-white font-bold mt-1">Bukhara Lanes</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Хива (Глиняные крепости пустыни) -->
-                <div class="md:col-span-5 overflow-hidden h-[24rem] rounded-2xl relative group shadow-sm" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Itchan Kala Desert Fortress, Khiva" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <span class="text-gold font-bold text-xs uppercase tracking-wider">Arabian Nights Vibe</span>
-                            <h3 class="font-serif text-2xl text-white font-bold mt-1">Khiva Citadel</h3>
-                        </div>
-                    </div>
-                </div>
-
+                <p class="text-teal-900/50 text-sm hidden md:block">← drag to explore →</p>
             </div>
         </div>
+
+        <div class="px-6 max-w-7xl mx-auto">
+            <div class="photo-rail" id="photoRail">
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=800&auto=format&fit=crop" alt="Registan Square Samarkand">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Samarkand</p><h3 class="font-serif text-xl text-white font-bold">Registan Square</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1618235451642-1e96a40efcfd?q=80&w=800&auto=format&fit=crop" alt="Blue Mosaic Tiles Uzbekistan">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Samarkand</p><h3 class="font-serif text-xl text-white font-bold">Blue Mosaic Domes</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop" alt="Bukhara ceramic tiles">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Bukhara</p><h3 class="font-serif text-xl text-white font-bold">Ancient Tilework</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=800&auto=format&fit=crop" alt="Khiva fortress">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Khiva</p><h3 class="font-serif text-xl text-white font-bold">Itchan Kala Citadel</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=800&auto=format&fit=crop" alt="Khiva walls at sunset">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Khiva</p><h3 class="font-serif text-xl text-white font-bold">Desert Fortress Walls</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1625126040336-f082e6669c5e?q=80&w=800&auto=format&fit=crop" alt="Bukhara old city">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Bukhara</p><h3 class="font-serif text-xl text-white font-bold">Poi Kalyan Ensemble</h3></div>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1536431311719-398b6704d4cc?q=80&w=800&auto=format&fit=crop" alt="Tashkent bazaar dome">
+                    <div class="photo-card-overlay">
+                        <div><p class="text-gold text-xs font-bold uppercase tracking-wider">Tashkent</p><h3 class="font-serif text-xl text-white font-bold">Chorsu Bazaar</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OLD BENTO GRID (hidden, replaced by rail) -->
     </section>
 
-    <!-- TOP DESTINATIONS -->
-    <section class="py-24 px-6 bg-cream">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
-            </div>
+    <!-- FULL-BLEED QUOTE SECTION -->
+    <section class="relative py-32 px-6 bg-teal-900 overflow-hidden">
+        <div class="quote-char">"</div>
+        <div class="relative max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <p class="font-serif text-3xl md:text-5xl text-cream font-light italic leading-relaxed mb-8">
+                "To travel the Silk Road is to walk through <span class="text-gold font-bold not-italic">ten thousand years</span> of human civilisation."
+            </p>
+            <p class="text-cream/50 text-sm tracking-widest uppercase">— Every traveller who has seen Uzbekistan</p>
+        </div>
+        <!-- decorative circles -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full border border-gold/10"></div>
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-gold/15"></div>
+    </section>
 
-            <div class="space-y-4">
+    <!-- IMMERSIVE CITY SECTIONS -->
+    <section class="bg-cream" id="cities-detail">
+        <div style="display:none"><!-- destinations replaced by split-screen below -->
                 <div class="accordion-item border border-teal-900/20 bg-white active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
                         <span class="font-serif text-2xl font-bold text-teal-900">Samarkand - The Pearl of the East</span>
@@ -336,8 +527,83 @@
                         </div>
                     </div>
                 </div>
+</div>
+    </section>
+
+    <!-- IMMERSIVE CITY SECTIONS -->
+    <section>
+
+        <div id="samarkand" class="grid grid-cols-1 lg:grid-cols-2" style="min-height:560px;">
+            <div class="relative overflow-hidden" style="min-height:380px;">
+                <img src="https://images.unsplash.com/photo-1580130281320-13b4c4e38c57?q=80&w=1200&auto=format&fit=crop" alt="Registan Samarkand" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <div class="absolute inset-0 bg-teal-900/20"></div>
+                <div class="absolute bottom-6 left-6 bg-gold text-teal-900 text-xs font-bold px-4 py-2 tracking-widest uppercase">UNESCO Heritage</div>
+            </div>
+            <div class="flex flex-col justify-center px-12 py-16 bg-cream" data-aos="fade-left">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">01 / Samarkand</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">The Pearl<br>of the East</h2>
+                <p class="text-teal-900/70 font-light leading-relaxed mb-8">Once the dazzling capital of Tamerlane's empire, Samarkand's monumental squares and shimmering blue domes have inspired poets and conquerors alike for over two millennia.</p>
+                <ul class="space-y-3 text-sm text-teal-900/80">
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Registan Square</strong> &mdash; three mosaic-covered madrasahs around the ancient city heart</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Gur-e-Amir</strong> &mdash; spectacular mausoleum of Tamerlane with ribbed azure dome</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Shah-i-Zinda</strong> &mdash; breathtaking avenue of intricately tiled royal mausoleums</span></li>
+                </ul>
             </div>
         </div>
+
+        <div id="bukhara" class="grid grid-cols-1 lg:grid-cols-2" style="min-height:560px;">
+            <div class="flex flex-col justify-center px-12 py-16 bg-white order-2 lg:order-1" data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">02 / Bukhara</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">The Living<br>Museum</h2>
+                <p class="text-teal-900/70 font-light leading-relaxed mb-8">With history spanning over two millennia, Bukhara's Old City is a UNESCO World Heritage site that feels completely untouched by time.</p>
+                <ul class="space-y-3 text-sm text-teal-900/80">
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Poi Kalyan Ensemble</strong> &mdash; the towering Kalon Minaret even Genghis Khan spared</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Ark Fortress</strong> &mdash; the massive citadel residence of the Emirs of Bukhara</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Trading Domes</strong> &mdash; ancient bazaars with exquisite carpets, ceramics, and silk</span></li>
+                </ul>
+            </div>
+            <div class="relative overflow-hidden order-1 lg:order-2" style="min-height:380px;">
+                <img src="https://images.unsplash.com/photo-1625126040336-f082e6669c5e?q=80&w=1200&auto=format&fit=crop" alt="Bukhara" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <div class="absolute inset-0 bg-teal-900/20"></div>
+                <div class="absolute bottom-6 right-6 bg-gold text-teal-900 text-xs font-bold px-4 py-2 tracking-widest uppercase">UNESCO Heritage</div>
+            </div>
+        </div>
+
+        <div id="khiva" class="grid grid-cols-1 lg:grid-cols-2" style="min-height:560px;">
+            <div class="relative overflow-hidden" style="min-height:380px;">
+                <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=1200&auto=format&fit=crop" alt="Khiva" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <div class="absolute inset-0 bg-teal-900/20"></div>
+                <div class="absolute top-6 left-6 bg-teal-900 text-gold text-xs font-bold px-4 py-2 tracking-widest uppercase">Arabian Nights</div>
+            </div>
+            <div class="flex flex-col justify-center px-12 py-16 bg-cream" data-aos="fade-left">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">03 / Khiva</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">The Desert<br>Fortress</h2>
+                <p class="text-teal-900/70 font-light leading-relaxed mb-8">Stepping into Khiva's Itchan Kala is like walking directly into an Arabian Nights tale. Remarkably preserved mud-brick walls, mosques, and mausoleums await.</p>
+                <ul class="space-y-3 text-sm text-teal-900/80">
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Kalta Minor</strong> &mdash; iconic unfinished turquoise minaret</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Juma Mosque</strong> &mdash; 10th-century mosque with 212 carved wooden columns</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Kuhna Ark</strong> &mdash; the ruler's fortress with stunning panoramic views</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tashkent" class="grid grid-cols-1 lg:grid-cols-2" style="min-height:560px;">
+            <div class="flex flex-col justify-center px-12 py-16 bg-white order-2 lg:order-1" data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">04 / Tashkent</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">The Modern<br>Metropolis</h2>
+                <p class="text-teal-900/70 font-light leading-relaxed mb-8">The vibrant capital blends Islamic architecture, Soviet-era monuments, and modern developments. Your Uzbekistan journey likely starts here.</p>
+                <ul class="space-y-3 text-sm text-teal-900/80">
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Chorsu Bazaar</strong> &mdash; a massive photogenic domed market with spices and street food</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Tashkent Metro</strong> &mdash; one of the world's most beautiful subways</span></li>
+                    <li class="flex items-start gap-3"><span class="text-gold font-bold mt-0.5">&rarr;</span><span><strong>Khast Imam Complex</strong> &mdash; home to one of the world's oldest existing Qurans</span></li>
+                </ul>
+            </div>
+            <div class="relative overflow-hidden order-1 lg:order-2" style="min-height:380px;">
+                <img src="https://images.unsplash.com/photo-1536431311719-398b6704d4cc?q=80&w=1200&auto=format&fit=crop" alt="Tashkent" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <div class="absolute inset-0 bg-teal-900/20"></div>
+            </div>
+        </div>
+
     </section>
 
     <!-- VISA & ENTRY -->
@@ -664,40 +930,97 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out-quad',
-            once: true,
-        });
+        AOS.init({ duration: 1000, easing: 'ease-in-out-quad', once: true });
 
-        // Accordion logic
+        // ── Accordion ──
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
-                const group = item.parentElement;
-                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Tabs logic
+        // ── Season tabs ──
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
                 document.querySelectorAll('.season-content').forEach(c => {
                     c.classList.toggle('active', c.dataset.season === season);
                 });
             });
         });
+
+        // ── Parallax hero ──
+        const heroBg = document.getElementById('hero-bg');
+        window.addEventListener('scroll', () => {
+            if (heroBg) {
+                const scrollY = window.scrollY;
+                heroBg.style.transform = `translateY(${scrollY * 0.35}px) scale(1.1)`;
+            }
+        }, { passive: true });
+
+        // ── Cursor glow ──
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', e => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // ── Animated counters ──
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current = Math.min(current + step, target);
+                el.textContent = Math.floor(current).toLocaleString();
+                if (current >= target) clearInterval(timer);
+            }, 16);
+        }
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+
+        // ── Draggable photo rail ──
+        const rail = document.getElementById('photoRail');
+        if (rail) {
+            let isDown = false, startX, scrollLeft;
+            rail.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - rail.offsetLeft; scrollLeft = rail.scrollLeft; });
+            rail.addEventListener('mouseleave', () => isDown = false);
+            rail.addEventListener('mouseup', () => isDown = false);
+            rail.addEventListener('mousemove', e => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - rail.offsetLeft;
+                rail.scrollLeft = scrollLeft - (x - startX) * 1.5;
+            });
+        }
+
+        // ── City nav active on scroll ──
+        const cityLinks = document.querySelectorAll('.city-nav-link');
+        const cityIds = ['samarkand','bukhara','khiva','tashkent'];
+        window.addEventListener('scroll', () => {
+            let active = null;
+            cityIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.getBoundingClientRect().top <= 200) active = id;
+            });
+            cityLinks.forEach(link => {
+                const href = link.getAttribute('href').replace('#','');
+                link.classList.toggle('active', href === active);
+            });
+        }, { passive: true });
     </script>
 </body>
 </html>
