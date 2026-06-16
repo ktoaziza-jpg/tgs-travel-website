@@ -146,7 +146,7 @@
     <!-- EPIC HERO SECTION -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=2070&auto=format&fit=crop" alt="Registan Samarkand" class="w-full h-full object-cover opacity-60">
+            <img src="https://images.unsplash.com/photo-1616038242814-a6eac7845d88?q=80&w=2070&auto=format&fit=crop" alt="Registan Samarkand Premium" class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
@@ -325,7 +325,7 @@
                     </div>
                     <div>
                         <div class="font-bold text-white mb-1">Safety</div>
-                        <p class="text-cream/70 font-light text-sm">Uzbekistan is considered one of the safest countries in Central Asia for travelers.</p>
+                        <p class="text-cream/70 font-light text-sm">Identity-certified networks make Uzbekistan one of the safest countries in Central Asia for travelers.</p>
                     </div>
                 </div>
             </div>
@@ -366,7 +366,7 @@
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1596710104473-35af7585f1c9?q=80&w=1935&auto=format&fit=crop" alt="Spring in Samarkand" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070&auto=format&fit=crop" alt="Spring in Samarkand" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -385,7 +385,7 @@
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1974&auto=format&fit=crop" alt="Summer in Tashkent" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Summer in Khiva" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -423,7 +423,7 @@
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://images.unsplash.com/photo-1541359927273-d8cb845211d0?q=80&w=1969&auto=format&fit=crop" alt="Winter in Khiva" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?q=80&w=2070&auto=format&fit=crop" alt="Winter Silk Road Contrast" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -553,19 +553,17 @@
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
                 <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-               <div class="flex items-center space-x-4 text-cream/60">
-    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="instagram" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="send" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="facebook" class="w-5 h-5"></i>
-    </a>
-</div>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                </div>
             </div>
 
             <div>
@@ -606,20 +604,17 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Инициализация анимаций
         AOS.init({
             duration: 1000,
             easing: 'ease-in-out-quad',
             once: true,
         });
 
-        // Логика аккордеонов (обрабатывает и Destinations, и FAQ независимо)
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
                 
-                // Закрываем только соседние вкладки в той же группе
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
                 
@@ -629,7 +624,6 @@
             });
         });
 
-        // Логика табов (Сезоны)
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
