@@ -102,6 +102,11 @@
             border-top-color: #16697A !important;
         }
 
+        /* Делаем OSM тайлы светлыми и нейтральными — в тон сайта */
+        .leaflet-tile-pane {
+            filter: saturate(0.25) brightness(1.08) contrast(0.9) sepia(0.12);
+        }
+
         /* Мобильное меню */
         #mobile-menu {
             transition: transform 0.4s ease-in-out;
@@ -333,9 +338,10 @@
                         scrollWheelZoom: false 
                     });
 
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; OpenStreetMap &copy; CARTO',
-                        subdomains: 'abcd',
+                    // OpenStreetMap — полностью бесплатный, без API ключа
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        subdomains: ['a','b','c'],
                         maxZoom: 19
                     }).addTo(map);
 
@@ -407,7 +413,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-12">
             <a href="tour-orient-journey.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="100">
                 <div class="overflow-hidden h-64 md:h-80 mb-4 md:mb-6 rounded-lg shadow-sm">
-                    <img src="https://shootplanet.com/wp-content/uploads/2023/11/uzbekistan-khiva-kalta-sunset-red.jpg" alt="Ancient Khiva Oriental Walls" class="w-full h-full object-cover">
+                    <img src="https://christintheilig.com/wp-content/uploads/2022/10/Bukhara-Kaylan-Mosque-1-of-1-4-819x1024.jpg" alt="Ancient Khiva Oriental Walls" class="w-full h-full object-cover">
                 </div>
                 <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Tashkent, Samarkand, Bukhara</div>
                 <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2">Orient Journey</h3>
