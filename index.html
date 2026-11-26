@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,59 +127,85 @@
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition text-gold font-bold">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition text-gold font-bold" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
             <!-- Правый блок: Язык + Get a Quote (Только ПК) -->
-            <div class="hidden lg:flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium">Get a Quote</a>
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
             </div>
 
-            <!-- Кнопка Бургер-меню (Только Мобилки) -->
-            <div class="lg:hidden flex items-center gap-4">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
+            <!-- Кнопка Язык + Бургер-меню (Только Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
                 <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
                     <i data-lucide="menu" class="w-8 h-8"></i>
                 </button>
@@ -193,42 +219,42 @@
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
 
-        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4">Home</a>
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
         
         <div class="mb-6 border-b border-teal-900/10 pb-4">
-            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Destinations</span>
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
             <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
-                <a href="uzbekistan.html" class="text-teal-900 text-lg">Uzbekistan</a>
-                <a href="kazakhstan.html" class="text-teal-900 text-lg">Kazakhstan</a>
-                <a href="kyrgyzstan.html" class="text-teal-900 text-lg">Kyrgyzstan</a>
-                <a href="tajikistan.html" class="text-teal-900 text-lg">Tajikistan</a>
-                <a href="turkmenistan.html" class="text-teal-900 text-lg">Turkmenistan</a>
-                <a href="turkey.html" class="text-teal-900 text-lg">Turkey</a>
-                <a href="azerbaijan.html" class="text-teal-900 text-lg">Azerbaijan</a>
-                <a href="georgia.html" class="text-teal-900 text-lg">Georgia</a>
-                <a href="armenia.html" class="text-teal-900 text-lg">Armenia</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
             </div>
         </div>
 
         <div class="mb-6 border-b border-teal-900/10 pb-4">
-            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">Tours</span>
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
             <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
-                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg">Uzbekistan tours</a>
-                <a href="#" class="text-teal-900 text-lg">Central Asia tours</a>
-                <a href="#" class="text-teal-900 text-lg">Worldwide tours</a>
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
             </div>
         </div>
 
         <div class="mb-6 border-b border-teal-900/10 pb-4">
-            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4">About</span>
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
             <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
-                <a href="about.html" class="text-teal-900 text-lg">About Us</a>
-                <a href="uzbekistan.html" class="text-teal-900 text-lg">About Uzbekistan</a>
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
             </div>
         </div>
 
-        <a href="#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link">Contacts</a>
-        <a href="#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg">Get a Quote</a>
+        <a href="#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
     </div>
 
     <!-- HERO SLIDESHOW -->
@@ -236,31 +262,31 @@
         
         <div class="absolute inset-0 z-0" id="heroSlider">
             <div class="hero-slide active">
-                <img src="https://dolorestravel.com/uploads/Guide/319/69130c7cd85cb.jpg" alt="Регистан, Самарканд">
+                <img src="https://dolorestravel.com/uploads/Guide/319/69130c7cd85cb.jpg" alt="Registan, Samarkand">
                 <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img loading="lazy" src="https://uzbekistan.travel/storage/app/media/Otabek/asosiydagi%20rasmlar/cropped-images/2079897013-0-0-0-0-1728537570.jpg" alt="Хива, Узбекистан">
+                <img loading="lazy" src="https://uzbekistan.travel/storage/app/media/Otabek/asosiydagi%20rasmlar/cropped-images/2079897013-0-0-0-0-1728537570.jpg" alt="Khiva, Uzbekistan">
                 <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img loading="lazy" src="https://ayan-turkmenistan.travel/wp-content/uploads/2023/09/432098385_10218607267652092_8173208032210325323_n.jpg" alt="Бухара, мозаика">
+                <img loading="lazy" src="https://ayan-turkmenistan.travel/wp-content/uploads/2023/09/432098385_10218607267652092_8173208032210325323_n.jpg" alt="Bukhara Mosaic">
                 <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img loading="lazy" src="https://extraguide.ru/images/t/44a892bb724f2049a47923bbf62b73fc9fd328a8.jpg" alt="Голубые купола Самарканда">
+                <img loading="lazy" src="https://extraguide.ru/images/t/44a892bb724f2049a47923bbf62b73fc9fd328a8.jpg" alt="Blue Domes of Samarkand">
                 <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
             <div class="hero-slide">
-                <img loading="lazy" src="https://artof.ru/wp-content/uploads/fly-images/1564/bukhara_doors-1920x800-cc.jpeg" alt="Узбекистан пейзаж">
+                <img loading="lazy" src="https://artof.ru/wp-content/uploads/fly-images/1564/bukhara_doors-1920x800-cc.jpeg" alt="Uzbekistan Architecture">
                 <div class="absolute inset-0 bg-teal-900/50"></div>
             </div>
         </div>
 
         <div class="relative z-10 text-center px-6 max-w-4xl mt-16 md:mt-20">
-            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-cream font-bold leading-tight mb-4 md:mb-6" data-aos="fade-up" data-aos-duration="1200">Experience the World <br>with TGS Travel</h1>
-            <p class="text-cream/90 text-base md:text-xl font-light mb-8 md:mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">Bestseller: Sacred Uzbekistan Journey. Custom tours in Uzbekistan, Kazakhstan, Kyrgyzstan, and beyond.</p>
-            <a href="#contact" class="inline-block bg-gold text-cream font-medium px-6 py-3 md:px-8 md:py-4 tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg text-sm md:text-base" data-aos="zoom-in" data-aos-delay="600">Request Custom Tour</a>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-cream font-bold leading-tight mb-4 md:mb-6" data-aos="fade-up" data-aos-duration="1200" data-i18n-html="hero_title">Experience the World <br>with TGS Travel</h1>
+            <p class="text-cream/90 text-base md:text-xl font-light mb-8 md:mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200" data-i18n="hero_subtitle">Bestseller: Sacred Uzbekistan Journey. Custom tours in Uzbekistan, Kazakhstan, Kyrgyzstan, and beyond.</p>
+            <a href="#contact" class="inline-block bg-gold text-cream font-medium px-6 py-3 md:px-8 md:py-4 tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg text-sm md:text-base" data-aos="zoom-in" data-aos-delay="600" data-i18n="hero_cta">Request Custom Tour</a>
             
             <div class="slide-dots mt-8 md:mt-12" id="slideDots" data-aos="fade-up" data-aos-delay="800">
                 <span class="active" onclick="goToSlide(0)"></span>
@@ -275,37 +301,37 @@
     <!-- SERVICES -->
     <section id="services" class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div class="mb-12 md:mb-16 md:flex justify-between items-end" data-aos="fade-up">
-            <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900">Our Services</h2>
-            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0 text-sm md:text-base">We provide comprehensive travel solutions to ensure Total Guest Satisfaction at every step of your journey.</p>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900" data-i18n="services_title">Our Services</h2>
+            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0 text-sm md:text-base" data-i18n="services_subtitle">We provide comprehensive travel solutions to ensure Total Guest Satisfaction at every step of your journey.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bento-card bg-teal-500 text-cream p-8 md:p-10 md:col-span-2 flex flex-col justify-between h-64 md:h-80" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="compass" class="w-8 h-8 md:w-10 md:h-10 mb-4 md:mb-6 text-gold"></i>
                 <div>
-                    <h3 class="font-serif text-2xl md:text-3xl mb-2 md:mb-3">Custom Tours</h3>
-                    <p class="font-light text-cream/80 max-w-sm text-sm md:text-base">We offer both group and individual inbound & outbound tours tailored entirely to your wishes.</p>
+                    <h3 class="font-serif text-2xl md:text-3xl mb-2 md:mb-3" data-i18n="service_1_title">Custom Tours</h3>
+                    <p class="font-light text-cream/80 max-w-sm text-sm md:text-base" data-i18n="service_1_desc">We offer both group and individual inbound & outbound tours tailored entirely to your wishes.</p>
                 </div>
             </div>
             <div class="bento-card bg-white p-8 md:p-10 border border-teal-900/10 h-64 md:h-80 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="plane" class="w-8 h-8 md:w-10 md:h-10 mb-4 md:mb-6 text-teal-500"></i>
                 <div>
-                    <h3 class="font-serif text-xl md:text-2xl mb-2 md:mb-3 text-teal-900">Flights & Transfers</h3>
-                    <p class="font-light text-teal-900/70 text-sm">Seamless logistics from the moment you arrive.</p>
+                    <h3 class="font-serif text-xl md:text-2xl mb-2 md:mb-3 text-teal-900" data-i18n="service_2_title">Flights & Transfers</h3>
+                    <p class="font-light text-teal-900/70 text-sm" data-i18n="service_2_desc">Seamless logistics from the moment you arrive.</p>
                 </div>
             </div>
             <div class="bento-card bg-white p-8 md:p-10 border border-teal-900/10 h-64 md:h-80 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="building-2" class="w-8 h-8 md:w-10 md:h-10 mb-4 md:mb-6 text-teal-500"></i>
                 <div>
-                    <h3 class="font-serif text-xl md:text-2xl mb-2 md:mb-3 text-teal-900">Hotel Booking</h3>
-                    <p class="font-light text-teal-900/70 text-sm">Exclusive access to premium 4 and 5-star accommodations.</p>
+                    <h3 class="font-serif text-xl md:text-2xl mb-2 md:mb-3 text-teal-900" data-i18n="service_3_title">Hotel Booking</h3>
+                    <p class="font-light text-teal-900/70 text-sm" data-i18n="service_3_desc">Exclusive access to premium 4 and 5-star accommodations.</p>
                 </div>
             </div>
             <div class="bento-card bg-teal-300 text-teal-900 p-8 md:p-10 md:col-span-2 flex flex-col justify-between h-64 md:h-80" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="file-check-2" class="w-8 h-8 md:w-10 md:h-10 mb-4 md:mb-6 text-teal-900"></i>
                 <div>
-                    <h3 class="font-serif text-2xl md:text-3xl mb-2 md:mb-3">Visa Support</h3>
-                    <p class="font-light text-teal-900/80 max-w-sm text-sm md:text-base">Skip the paperwork. We provide full visa assistance for a stress-free experience.</p>
+                    <h3 class="font-serif text-2xl md:text-3xl mb-2 md:mb-3" data-i18n="service_4_title">Visa Support</h3>
+                    <p class="font-light text-teal-900/80 max-w-sm text-sm md:text-base" data-i18n="service_4_desc">Skip the paperwork. We provide full visa assistance for a stress-free experience.</p>
                 </div>
             </div>
         </div>
@@ -318,80 +344,19 @@
     <section class="py-16 md:py-24 bg-white border-t border-b border-teal-900/10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2 md:mb-4">Interactive Map</div>
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-4">Our Destinations</h2>
-                <p class="text-teal-900/70 font-light max-w-md mx-auto text-sm">Tap on a glowing pin to explore our tours. Zoom in and out freely using the buttons.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2 md:mb-4" data-i18n="map_badge">Interactive Map</div>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-4" data-i18n="map_title">Our Destinations</h2>
+                <p class="text-teal-900/70 font-light max-w-md mx-auto text-sm" data-i18n="map_subtitle">Tap on a glowing pin to explore our tours. Zoom in and out freely using the buttons.</p>
             </div>
 
             <div class="relative w-full max-w-5xl mx-auto rounded-2xl border border-teal-900/10 shadow-xl overflow-hidden z-0 h-[400px] md:h-[520px]" data-aos="zoom-in">
                 <div id="worldMap" style="width:100%;height:100%; background: #f8f9fa;"></div>
             </div>
 
-            <script>
-            (function() {
-                window.addEventListener('load', function() {
-                    var map = L.map('worldMap', {
-                        center: [41, 57],
-                        zoom: window.innerWidth < 768 ? 3 : 4,
-                        minZoom: 2,
-                        maxZoom: 8,
-                        scrollWheelZoom: false 
-                    });
-
-                    // OpenStreetMap — полностью бесплатный, без API ключа
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                        subdomains: ['a','b','c'],
-                        maxZoom: 19
-                    }).addTo(map);
-
-                    var destinations = [
-                        { name: 'Uzbekistan', coords: [41.3775, 64.5853], url: 'uzbekistan.html', color: 'bg-gold', border: 'border-white' },
-                        { name: 'Kazakhstan', coords: [48.0196, 66.9237], url: 'kazakhstan.html', color: 'bg-teal-500', border: 'border-white' },
-                        { name: 'Kyrgyzstan', coords: [41.2044, 74.7661], url: 'kyrgyzstan.html', color: 'bg-teal-500', border: 'border-white' },
-                        { name: 'Tajikistan', coords: [38.8610, 71.2761], url: 'tajikistan.html', color: 'bg-teal-500', border: 'border-white' },
-                        { name: 'Turkmenistan', coords: [38.9697, 59.5563], url: 'turkmenistan.html', color: 'bg-teal-500', border: 'border-white' },
-                        { name: 'Turkey', coords: [38.9637, 35.2433], url: 'turkey.html', color: 'bg-teal-900', border: 'border-gold' },
-                        { name: 'Azerbaijan', coords: [40.1431, 47.5769], url: 'azerbaijan.html', color: 'bg-teal-900', border: 'border-gold' },
-                        { name: 'Georgia', coords: [42.3154, 43.3569], url: 'georgia.html', color: 'bg-teal-900', border: 'border-gold' },
-                        { name: 'Armenia', coords: [40.0691, 45.0382], url: 'armenia.html', color: 'bg-teal-900', border: 'border-gold' },
-                    ];
-
-                    destinations.forEach(function(loc) {
-                        var isUzbekistan = loc.name === 'Uzbekistan';
-                        var sizeClass = isUzbekistan ? 'h-6 w-6' : 'h-4 w-4';
-                        var innerSizeClass = isUzbekistan ? 'h-4 w-4' : 'h-3 w-3';
-                        
-                        var iconHtml = '<div class="relative flex ' + sizeClass + ' items-center justify-center">' +
-                                       '<span class="animate-ping absolute inline-flex h-full w-full rounded-full ' + loc.color + ' opacity-75"></span>' +
-                                       '<span class="relative inline-flex rounded-full ' + innerSizeClass + ' ' + loc.color + ' border-2 ' + loc.border + ' shadow-lg z-10"></span>' +
-                                       '</div>';
-
-                        var customIcon = L.divIcon({
-                            html: iconHtml,
-                            className: '',
-                            iconSize: isUzbekistan ? [24, 24] : [16, 16],
-                            iconAnchor: isUzbekistan ? [12, 12] : [8, 8]
-                        });
-
-                        var marker = L.marker(loc.coords, {icon: customIcon}).addTo(map);
-                        
-                        marker.bindTooltip('<b>' + loc.name + '</b><br><span style="color:#FFA62B;font-size:11px;">Tap to explore &rarr;</span>', { 
-                            className: 'tgs-tooltip', 
-                            direction: 'top', 
-                            offset: [0, -10] 
-                        });
-                        
-                        marker.on('click', function() { window.location.href = loc.url; });
-                    });
-                });
-            })();
-            </script>
-
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 md:mt-8" data-aos="fade-up">
-                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-gold border border-white shadow"></span> Uzbekistan (Featured)</div>
-                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-teal-500 border border-white shadow"></span> Central Asia</div>
-                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-teal-900 border border-gold shadow"></span> Caucasus & Turkey</div>
+                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-gold border border-white shadow"></span> <span data-i18n="map_legend_uz">Uzbekistan (Featured)</span></div>
+                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-teal-500 border border-white shadow"></span> <span data-i18n="map_legend_ca">Central Asia</span></div>
+                <div class="flex items-center gap-2 text-xs md:text-sm text-teal-900/70"><span class="inline-block w-3 h-3 md:w-4 md:h-4 rounded-full bg-teal-900 border border-gold shadow"></span> <span data-i18n="map_legend_caucasus">Caucasus & Turkey</span></div>
             </div>
         </div>
     </section>
@@ -399,51 +364,51 @@
     <!-- QUOTE -->
     <section class="bg-teal-900 text-cream py-16 md:py-24 text-center px-6 overflow-hidden">
         <div data-aos="zoom-in" data-aos-duration="1000">
-            <h2 class="font-serif text-2xl md:text-4xl lg:text-5xl font-light italic mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed">"Total Guest Satisfaction isn't a goal.<br> <span class="text-gold font-bold not-italic">It's our standard.</span>"</h2>
-            <a href="#contact" class="inline-block border-b-2 border-gold text-gold pb-1 font-medium tracking-widest hover:text-cream hover:border-cream transition text-sm md:text-base">PLAN YOUR JOURNEY</a>
+            <h2 class="font-serif text-2xl md:text-4xl lg:text-5xl font-light italic mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed" data-i18n-html="quote_text">"Total Guest Satisfaction isn't a goal.<br> <span class="text-gold font-bold not-italic">It's our standard.</span>"</h2>
+            <a href="#contact" class="inline-block border-b-2 border-gold text-gold pb-1 font-medium tracking-widest hover:text-cream hover:border-cream transition text-sm md:text-base" data-i18n="quote_cta">PLAN YOUR JOURNEY</a>
         </div>
     </section>
 
     <!-- TOURS -->
     <section id="tours" class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div class="mb-12 md:mb-16 md:flex justify-between items-end" data-aos="fade-up">
-            <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900">Popular Tours</h2>
-            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0 text-sm md:text-base">Check out our best group tours starting shortly. If you haven't found the itinerary you like, don't hesitate to get in touch with us — we'll offer an individual tour.</p>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900" data-i18n="tours_title">Popular Tours</h2>
+            <p class="max-w-md text-teal-900/70 mt-4 md:mt-0 text-sm md:text-base" data-i18n="tours_subtitle">Check out our best group tours starting shortly. If you haven't found the itinerary you like, don't hesitate to get in touch with us — we'll offer an individual tour.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-12">
             <a href="tour-orient-journey.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="100">
                 <div class="overflow-hidden h-64 md:h-80 mb-4 md:mb-6 rounded-lg shadow-sm">
-                    <img src="https://christintheilig.com/wp-content/uploads/2022/10/Bukhara-Kaylan-Mosque-1-of-1-4-819x1024.jpg" alt="Ancient Khiva Oriental Walls" class="w-full h-full object-cover">
+                    <img src="https://christintheilig.com/wp-content/uploads/2022/10/Bukhara-Kaylan-Mosque-1-of-1-4-819x1024.jpg" alt="Ancient Bukhara" class="w-full h-full object-cover">
                 </div>
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Tashkent, Samarkand, Bukhara</div>
-                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2">Orient Journey</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Walk through centuries of history across Uzbekistan's legendary cities.</p>
-                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$899</span></div>
-                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2" data-i18n="tour1_cities">Tashkent, Samarkand, Bukhara</div>
+                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2" data-i18n="tour1_title">Orient Journey</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2" data-i18n="tour1_desc">Walk through centuries of history across Uzbekistan's legendary cities.</p>
+                <div class="text-teal-900 font-medium mb-4" data-i18n-html="tour1_price">from <span class="text-gold font-bold">$899</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300" data-i18n="btn_learn_more">Learn More</span>
             </a>
             <a href="tour-echoes-silk-road.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="200">
                 <div class="overflow-hidden h-64 md:h-80 mb-4 md:mb-6 rounded-lg shadow-sm">
                     <img src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=400,height=265,dpr=2/tour_img/c6d20983e0d26146450dc84282585af853442e295c98674bcd64151f7dff9aa1.jpg" alt="Samarkand Turquoise Majolica Details" class="w-full h-full object-cover">
                 </div>
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Samarkand, Bukhara, Tashkent</div>
-                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2">Echoes of the Silk Road</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Step into a world of blue domes and ancient legends.</p>
-                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$1,200</span></div>
-                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2" data-i18n="tour2_cities">Samarkand, Bukhara, Tashkent</div>
+                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2" data-i18n="tour2_title">Echoes of the Silk Road</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2" data-i18n="tour2_desc">Step into a world of blue domes and ancient legends.</p>
+                <div class="text-teal-900 font-medium mb-4" data-i18n-html="tour2_price">from <span class="text-gold font-bold">$1,200</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300" data-i18n="btn_learn_more">Learn More</span>
             </a>
             <a href="tour-3stan.html" class="group cursor-pointer image-zoom block" data-aos="fade-up" data-aos-delay="300">
                 <div class="overflow-hidden h-64 md:h-80 mb-4 md:mb-6 rounded-lg shadow-sm">
-                    <img src="https://iucn.org/sites/default/files/content/images/2019/lake_kolsai_in_kazakhstan_tien_shan_mountains_c_by_milosz_maslanka_shutterstock_small.jpg" alt="Central Asia Pamir Mountains Ridge" class="w-full h-full object-cover">
+                    <img src="https://iucn.org/sites/default/files/content/images/2019/lake_kolsai_in_kazakhstan_tien_shan_mountains_c_by_milosz_maslanka_shutterstock_small.jpg" alt="Central Asia Mountains" class="w-full h-full object-cover">
                 </div>
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2">Uzbekistan, Turkmenistan, Tajikistan</div>
-                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2">3Stan</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2">Discover the soul of Central Asia across three Stans.</p>
-                <div class="text-teal-900 font-medium mb-4">from <span class="text-gold font-bold">$1,400</span></div>
-                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300">Learn More</span>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2" data-i18n="tour3_cities">Uzbekistan, Turkmenistan, Tajikistan</div>
+                <h3 class="font-serif text-xl md:text-2xl text-teal-900 mb-2" data-i18n="tour3_title">3Stan</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-4 line-clamp-2" data-i18n="tour3_desc">Discover the soul of Central Asia across three Stans.</p>
+                <div class="text-teal-900 font-medium mb-4" data-i18n-html="tour3_price">from <span class="text-gold font-bold">$1,400</span></div>
+                <span class="inline-block bg-teal-900 text-cream px-6 py-3 text-sm font-medium tracking-wide group-hover:bg-gold transition duration-300" data-i18n="btn_learn_more">Learn More</span>
             </a>
         </div>
         <div class="text-center" data-aos="fade-up">
-            <a href="uzbekistan-tours.html" class="inline-block border border-teal-900 text-teal-900 px-8 py-3 md:px-10 md:py-4 font-medium tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 text-sm md:text-base">View All Uzbekistan Tours</a>
+            <a href="uzbekistan-tours.html" class="inline-block border border-teal-900 text-teal-900 px-8 py-3 md:px-10 md:py-4 font-medium tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 text-sm md:text-base" data-i18n="btn_view_all_tours">View All Uzbekistan Tours</a>
         </div>
     </section>
 
@@ -451,8 +416,8 @@
     <section class="py-16 md:py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2 md:mb-4">What They Say</div>
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900">Guest Testimonials</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-2 md:mb-4" data-i18n="test_badge">What They Say</div>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900" data-i18n="test_title">Guest Testimonials</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -464,12 +429,12 @@
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"An absolute dream! The Orient Journey tour exceeded all our expectations. The guides were incredibly knowledgeable, and the hotels were top-notch. Samarkand at night is something I will never forget."</p>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed" data-i18n="test1_quote">"An absolute dream! The Orient Journey tour exceeded all our expectations. The guides were incredibly knowledgeable, and the hotels were top-notch. Samarkand at night is something I will never forget."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">S</div>
                         <div>
                             <div class="font-bold text-teal-900 text-sm">Sarah Jenkins</div>
-                            <div class="text-xs text-teal-900/50">UK • Visited Uzbekistan</div>
+                            <div class="text-xs text-teal-900/50" data-i18n="test1_meta">UK • Visited Uzbekistan</div>
                         </div>
                     </div>
                 </div>
@@ -482,12 +447,12 @@
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"TGS Travel handled everything perfectly. From our private transfers to the visa support, we didn't have to worry about a single detail. The 3Stan tour is highly recommended for true adventurers."</p>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed" data-i18n="test2_quote">"TGS Travel handled everything perfectly. From our private transfers to the visa support, we didn't have to worry about a single detail. The 3Stan tour is highly recommended for true adventurers."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">M</div>
                         <div>
                             <div class="font-bold text-teal-900 text-sm">Mark & Elena</div>
-                            <div class="text-xs text-teal-900/50">Germany • Visited Central Asia</div>
+                            <div class="text-xs text-teal-900/50" data-i18n="test2_meta">Germany • Visited Central Asia</div>
                         </div>
                     </div>
                 </div>
@@ -500,12 +465,12 @@
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed">"The guides genuinely care about sharing their culture. Every meal was a feast, and every city felt magical. If you are thinking about visiting Kazakhstan or Uzbekistan, book with TGS."</p>
+                    <p class="text-teal-900/80 font-light text-sm italic mb-6 leading-relaxed" data-i18n="test3_quote">"The guides genuinely care about sharing their culture. Every meal was a feast, and every city felt magical. If you are thinking about visiting Kazakhstan or Uzbekistan, book with TGS."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-teal-900 rounded-full flex items-center justify-center text-cream font-serif font-bold mr-3">D</div>
                         <div>
                             <div class="font-bold text-teal-900 text-sm">David Chen</div>
-                            <div class="text-xs text-teal-900/50">USA • Visited Kazakhstan</div>
+                            <div class="text-xs text-teal-900/50" data-i18n="test3_meta">USA • Visited Kazakhstan</div>
                         </div>
                     </div>
                 </div>
@@ -517,8 +482,8 @@
     <section id="contact" class="py-16 md:py-24 px-6 bg-white border-t border-teal-900/10 overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             <div data-aos="fade-right">
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-4 md:mb-6">Let's plan your journey.</h2>
-                <p class="text-teal-900/70 font-light mb-8 md:mb-12 max-w-sm text-sm md:text-base">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers.</p>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-teal-900 mb-4 md:mb-6" data-i18n="contact_title">Let's plan your journey.</h2>
+                <p class="text-teal-900/70 font-light mb-8 md:mb-12 max-w-sm text-sm md:text-base" data-i18n="contact_subtitle">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers.</p>
                 
                 <div class="space-y-4 md:space-y-6">
                     <div class="flex items-center text-teal-900">
@@ -540,19 +505,19 @@
                 <form class="space-y-6 md:space-y-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                         <div class="relative">
-                            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                            <input type="text" placeholder="Your Name" data-i18n-placeholder="form_name" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
                         </div>
                         <div class="relative">
-                            <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                            <input type="email" placeholder="Email Address" data-i18n-placeholder="form_email" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
                         </div>
                     </div>
                     <div class="relative">
-                        <input type="tel" placeholder="Phone Number" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+                        <input type="tel" placeholder="Phone Number" data-i18n-placeholder="form_phone" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
                     </div>
                     <div class="relative">
-                        <textarea placeholder="Tell us about your dream trip..." rows="3" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition resize-none"></textarea>
+                        <textarea placeholder="Tell us about your dream trip..." data-i18n-placeholder="form_message" rows="3" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition resize-none"></textarea>
                     </div>
-                    <button type="button" class="bg-teal-900 text-cream px-8 md:px-10 py-3 md:py-4 font-medium tracking-wide hover:bg-gold transition duration-300 w-full sm:w-auto">Submit Request</button>
+                    <button type="button" class="bg-teal-900 text-cream px-8 md:px-10 py-3 md:py-4 font-medium tracking-wide hover:bg-gold transition duration-300 w-full sm:w-auto" data-i18n="form_submit">Submit Request</button>
                 </form>
             </div>
         </div>
@@ -563,8 +528,8 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 border-b border-cream/10 pb-10 md:pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-2xl md:text-3xl font-bold tracking-tight mb-4 md:mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-               <div class="flex items-center space-x-4 text-cream/60">
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
                     <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
@@ -578,36 +543,318 @@
             </div>
             
             <div>
-                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Budget Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_budget_tours">Budget Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-4 md:mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "TGS Travel | Total Guest Satisfaction",
+                hero_title: "Experience the World <br>with TGS Travel",
+                hero_subtitle: "Bestseller: Sacred Uzbekistan Journey. Custom tours in Uzbekistan, Kazakhstan, Kyrgyzstan, and beyond.",
+                hero_cta: "Request Custom Tour",
+                services_title: "Our Services",
+                services_subtitle: "We provide comprehensive travel solutions to ensure Total Guest Satisfaction at every step of your journey.",
+                service_1_title: "Custom Tours",
+                service_1_desc: "We offer both group and individual inbound & outbound tours tailored entirely to your wishes.",
+                service_2_title: "Flights & Transfers",
+                service_2_desc: "Seamless logistics from the moment you arrive.",
+                service_3_title: "Hotel Booking",
+                service_3_desc: "Exclusive access to premium 4 and 5-star accommodations.",
+                service_4_title: "Visa Support",
+                service_4_desc: "Skip the paperwork. We provide full visa assistance for a stress-free experience.",
+                map_badge: "Interactive Map",
+                map_title: "Our Destinations",
+                map_subtitle: "Tap on a glowing pin to explore our tours. Zoom in and out freely using the buttons.",
+                map_legend_uz: "Uzbekistan (Featured)",
+                map_legend_ca: "Central Asia",
+                map_legend_caucasus: "Caucasus & Turkey",
+                quote_text: "\"Total Guest Satisfaction isn't a goal.<br> <span class=\"text-gold font-bold not-italic\">It's our standard.</span>\"",
+                quote_cta: "PLAN YOUR JOURNEY",
+                tours_title: "Popular Tours",
+                tours_subtitle: "Check out our best group tours starting shortly. If you haven't found the itinerary you like, don't hesitate to get in touch with us — we'll offer an individual tour.",
+                tour1_cities: "Tashkent, Samarkand, Bukhara",
+                tour1_title: "Orient Journey",
+                tour1_desc: "Walk through centuries of history across Uzbekistan's legendary cities.",
+                tour1_price: "from <span class=\"text-gold font-bold\">$899</span>",
+                tour2_cities: "Samarkand, Bukhara, Tashkent",
+                tour2_title: "Echoes of the Silk Road",
+                tour2_desc: "Step into a world of blue domes and ancient legends.",
+                tour2_price: "from <span class=\"text-gold font-bold\">$1,200</span>",
+                tour3_cities: "Uzbekistan, Turkmenistan, Tajikistan",
+                tour3_title: "3Stan",
+                tour3_desc: "Discover the soul of Central Asia across three Stans.",
+                tour3_price: "from <span class=\"text-gold font-bold\">$1,400</span>",
+                btn_learn_more: "Learn More",
+                btn_view_all_tours: "View All Uzbekistan Tours",
+                test_badge: "What They Say",
+                test_title: "Guest Testimonials",
+                test1_quote: "\"An absolute dream! The Orient Journey tour exceeded all our expectations. The guides were incredibly knowledgeable, and the hotels were top-notch. Samarkand at night is something I will never forget.\"",
+                test1_meta: "UK • Visited Uzbekistan",
+                test2_quote: "\"TGS Travel handled everything perfectly. From our private transfers to the visa support, we didn't have to worry about a single detail. The 3Stan tour is highly recommended for true adventurers.\"",
+                test2_meta: "Germany • Visited Central Asia",
+                test3_quote: "\"The guides genuinely care about sharing their culture. Every meal was a feast, and every city felt magical. If you are thinking about visiting Kazakhstan or Uzbekistan, book with TGS.\"",
+                test3_meta: "USA • Visited Kazakhstan",
+                contact_title: "Let's plan your journey.",
+                contact_subtitle: "Feel free to contact us if you have any questions related to our tours, custom packages, or special offers.",
+                form_name: "Your Name",
+                form_email: "Email Address",
+                form_phone: "Phone Number",
+                form_message: "Tell us about your dream trip...",
+                form_submit: "Submit Request"
+            },
+            ru: {
+                page_title: "TGS Travel | Полное удовлетворение каждого гостя",
+                hero_title: "Откройте мир <br>вместе с TGS Travel",
+                hero_subtitle: "Хит продаж: Путешествие по священному Узбекистану. Индивидуальные туры по Узбекистану, Казахстану, Кыргызстану и не только.",
+                hero_cta: "Заказать индивидуальный тур",
+                services_title: "Наши услуги",
+                services_subtitle: "Мы предлагаем комплексные решения для путешествий, гарантируя высочайший комфорт на каждом этапе вашего маршрута.",
+                service_1_title: "Индивидуальные туры",
+                service_1_desc: "Организуем групповые и персональные въездные и выездные туры, созданные точно под ваши пожелания.",
+                service_2_title: "Авиабилеты и трансферы",
+                service_2_desc: "Безупречная логистика с первой минуты вашего прибытия.",
+                service_3_title: "Бронирование отелей",
+                service_3_desc: "Эксклюзивные условия в лучших отелях 4 и 5 звёзд.",
+                service_4_title: "Визовая поддержка",
+                service_4_desc: "Забудьте о бумагах — мы берём на себя полную помощь в оформлении виз.",
+                map_badge: "Интерактивная карта",
+                map_title: "Наши направления",
+                map_subtitle: "Нажмите на светящуюся точку, чтобы изучить направление. Масштаб карты можно менять кнопками.",
+                map_legend_uz: "Узбекистан (Главное)",
+                map_legend_ca: "Центральная Азия",
+                map_legend_caucasus: "Кавказ и Турция",
+                quote_text: "«Абсолютное удовлетворение гостя — не цель.<br> <span class=\"text-gold font-bold not-italic\">Это наш стандарт.</span>»",
+                quote_cta: "СПЛАНИРОВАТЬ ПУТЕШЕСТВИЕ",
+                tours_title: "Популярные туры",
+                tours_subtitle: "Ознакомьтесь с ближайшими групповыми турами. Если вы не нашли идеальный маршрут, напишите нам — мы составим индивидуальную программу.",
+                tour1_cities: "Ташкент, Самарканд, Бухара",
+                tour1_title: "Путешествие на Восток",
+                tour1_desc: "Пройдите сквозь века истории по легендарным городам Узбекистана.",
+                tour1_price: "от <span class=\"text-gold font-bold\">$899</span>",
+                tour2_cities: "Самарканд, Бухара, Ташкент",
+                tour2_title: "Эхо Шёлкового пути",
+                tour2_desc: "Погрузитесь в мир лазурных куполов и древних легенд.",
+                tour2_price: "от <span class=\"text-gold font-bold\">$1,200</span>",
+                tour3_cities: "Узбекистан, Туркменистан, Таджикистан",
+                tour3_title: "3 Стана",
+                tour3_desc: "Откройте душу Центральной Азии в одном путешествии по трём странам.",
+                tour3_price: "от <span class=\"text-gold font-bold\">$1,400</span>",
+                btn_learn_more: "Подробнее",
+                btn_view_all_tours: "Все туры по Узбекистану",
+                test_badge: "Отзывы гостей",
+                test_title: "Что о нас говорят",
+                test1_quote: "«Настоящая мечта! Тур «Путешествие на Восток» превзошёл все ожидания. Гиды потрясающе эрудированы, а отели на высшем уровне. Ночной Самарканд я не забуду никогда.»",
+                test1_meta: "Великобритания • Посетила Узбекистан",
+                test2_quote: "«TGS Travel организовали всё безупречно. От частных трансферов до визовой поддержки — нам не пришлось волноваться ни о чём. Тур 3Stan — must-have для настоящих искателей приключений.»",
+                test2_meta: "Германия • Посетили Центральную Азию",
+                test3_quote: "«Гиды с искренней любовью делятся своей культурой. Каждый ужин был праздником, а каждый город — сказкой. Планируете поездку в Казахстан или Узбекистан — смело выбирайте TGS.»",
+                test3_meta: "США • Посетил Казахстан",
+                contact_title: "Давайте спланируем ваше путешествие.",
+                contact_subtitle: "Свяжитесь с нами по любым вопросам о турах, индивидуальных маршрутах и специальных предложениях.",
+                form_name: "Ваше имя",
+                form_email: "Электронная почта",
+                form_phone: "Номер телефона",
+                form_message: "Расскажите о путешествии вашей мечты...",
+                form_submit: "Отправить заявку"
+            },
+            fr: {
+                page_title: "TGS Travel | Satisfaction Totale des Voyageurs",
+                hero_title: "Explorez le monde <br>avec TGS Travel",
+                hero_subtitle: "Best-seller : Voyage au cœur de l'Ouzbékistan sacré. Circuits sur mesure en Ouzbékistan, au Kazakhstan, au Kirghizistan et au-delà.",
+                hero_cta: "Demander un circuit sur mesure",
+                services_title: "Nos Services",
+                services_subtitle: "Nous offrons des solutions de voyage complètes pour garantir une satisfaction absolue à chaque étape de votre séjour.",
+                service_1_title: "Circuits sur mesure",
+                service_1_desc: "Nous proposons des voyages en groupe ou privés entièrement adaptés à vos envies.",
+                service_2_title: "Vols & Transferts",
+                service_2_desc: "Une logistique fluide et sans souci dès votre arrivée.",
+                service_3_title: "Réservation d'hôtels",
+                service_3_desc: "Accès privilégié aux meilleurs hôtels 4 et 5 étoiles.",
+                service_4_title: "Assistance Visa",
+                service_4_desc: "Oubliez les démarches administratives : nous vous accompagnons intégralement pour vos visas.",
+                map_badge: "Carte Interactive",
+                map_title: "Nos Destinations",
+                map_subtitle: "Cliquez sur un repère lumineux pour découvrir nos circuits. Zoomez librement à l'aide des boutons.",
+                map_legend_uz: "Ouzbékistan (À la une)",
+                map_legend_ca: "Asie centrale",
+                map_legend_caucasus: "Caucase & Turquie",
+                quote_text: "« La satisfaction totale de nos hôtes n'est pas un objectif.<br> <span class=\"text-gold font-bold not-italic\">C'est notre exigence.</span> »",
+                quote_cta: "PLANIFIER VOTRE VOYAGE",
+                tours_title: "Circuits Populaires",
+                tours_subtitle: "Découvrez nos prochains départs en groupe. Vous ne trouvez pas l'itinéraire idéal ? Contactez-nous pour créer un voyage sur mesure.",
+                tour1_cities: "Tachkent, Samarcande, Boukhara",
+                tour1_title: "Voyage en Orient",
+                tour1_desc: "Traversez des siècles d'histoire au cœur des cités légendaires d'Ouzbékistan.",
+                tour1_price: "à partir de <span class=\"text-gold font-bold\">899 $</span>",
+                tour2_cities: "Samarcande, Boukhara, Tachkent",
+                tour2_title: "Échos de la Route de la Soie",
+                tour2_desc: "Plongez dans un univers de coupoles turquoise et de légendes millénaires.",
+                tour2_price: "à partir de <span class=\"text-gold font-bold\">1 200 $</span>",
+                tour3_cities: "Ouzbékistan, Turkménistan, Tadjikistan",
+                tour3_title: "3Stan",
+                tour3_desc: "Découvrez l'âme de l'Asie centrale à travers trois pays fascinants.",
+                tour3_price: "à partir de <span class=\"text-gold font-bold\">1 400 $</span>",
+                btn_learn_more: "En savoir plus",
+                btn_view_all_tours: "Voir tous les circuits en Ouzbékistan",
+                test_badge: "Témoignages",
+                test_title: "Avis de nos voyageurs",
+                test1_quote: "« Un véritable rêve ! Le circuit Voyage en Orient a dépassé toutes nos attentes. Des guides passionnés et des hôtels d'exception. Samarcande de nuit restera gravée dans ma mémoire. »",
+                test1_meta: "Royaume-Uni • A visité l'Ouzbékistan",
+                test2_quote: "« TGS Travel a tout géré à la perfection. Des transferts privés à l'assistance visa, aucun souci à se faire. Nous recommandons vivement le circuit 3Stan aux vrais aventuriers. »",
+                test2_meta: "Allemagne • Ont visité l'Asie centrale",
+                test3_quote: "« Les guides partagent leur culture avec une passion sincère. Chaque repas était un festin et chaque ville semblait magique. Pour découvrir le Kazakhstan ou l'Ouzbékistan, choisissez TGS. »",
+                test3_meta: "États-Unis • A visité le Kazakhstan",
+                contact_title: "Planifions votre voyage.",
+                contact_subtitle: "N'hésitez pas à nous contacter pour toute question concernant nos circuits, voyages sur mesure ou offres spéciales.",
+                form_name: "Votre nom",
+                form_email: "Adresse e-mail",
+                form_phone: "Numéro de téléphone",
+                form_message: "Parlez-nous de votre voyage de rêve...",
+                form_submit: "Envoyer la demande"
+            },
+            de: {
+                page_title: "TGS Travel | Höchste Gästezufriedenheit",
+                hero_title: "Erleben Sie die Welt <br>mit TGS Travel",
+                hero_subtitle: "Bestseller: Reise durch das heilige Usbekistan. Maßgeschneiderte Touren in Usbekistan, Kasachstan, Kirgisistan und darüber hinaus.",
+                hero_cta: "Individuelle Reise anfragen",
+                services_title: "Unsere Leistungen",
+                services_subtitle: "Wir bieten umfassende Reiselösungen für höchste Gästezufriedenheit bei jedem Schritt Ihrer Reise.",
+                service_1_title: "Individuelle Touren",
+                service_1_desc: "Wir gestalten Gruppen- und Privatreisen ganz nach Ihren persönlichen Wünschen.",
+                service_2_title: "Flüge & Transfers",
+                service_2_desc: "Reibungslose Logistik ab dem ersten Moment Ihrer Ankunft.",
+                service_3_title: "Hotelbuchung",
+                service_3_desc: "Exklusiver Zugang zu erstklassigen 4- und 5-Sterne-Hotels.",
+                service_4_title: "Visa-Service",
+                service_4_desc: "Sparen Sie sich den Papierkram – wir unterstützen Sie vollständig bei der Visabeschaffung.",
+                map_badge: "Interaktive Karte",
+                map_title: "Unsere Reiseziele",
+                map_subtitle: "Klicken Sie auf einen leuchtenden Pin, um unsere Touren zu entdecken. Zoomen Sie bequem über die Schaltflächen.",
+                map_legend_uz: "Usbekistan (Highlight)",
+                map_legend_ca: "Zentralasien",
+                map_legend_caucasus: "Kaukasus & Türkei",
+                quote_text: "„Absolute Gästezufriedenheit ist kein Ziel.<br> <span class=\"text-gold font-bold not-italic\">Sie ist unser Standard.</span>“",
+                quote_cta: "REISE PLANEN",
+                tours_title: "Beliebte Touren",
+                tours_subtitle: "Entdecken Sie unsere nächsten Gruppenreisen. Falls nicht die passende Route dabei ist, erstellen wir gerne eine maßgeschneiderte Privatreise für Sie.",
+                tour1_cities: "Taschkent, Samarkand, Buchara",
+                tour1_title: "Orient-Reise",
+                tour1_desc: "Wandeln Sie durch Jahrhunderte der Geschichte in den legendären Städten Usbekistans.",
+                tour1_price: "ab <span class=\"text-gold font-bold\">899 $</span>",
+                tour2_cities: "Samarkand, Buchara, Taschkent",
+                tour2_title: "Echo der Seidenstraße",
+                tour2_desc: "Tauchen Sie ein in eine Welt aus türkisfarbenen Kuppeln und alten Legenden.",
+                tour2_price: "ab <span class=\"text-gold font-bold\">1.200 $</span>",
+                tour3_cities: "Usbekistan, Turkmenistan, Tadschikistan",
+                tour3_title: "3Stan",
+                tour3_desc: "Entdecken Sie die Seele Zentralasiens auf einer Reise durch drei Länder.",
+                tour3_price: "ab <span class=\"text-gold font-bold\">1.400 $</span>",
+                btn_learn_more: "Mehr erfahren",
+                btn_view_all_tours: "Alle Usbekistan-Touren ansehen",
+                test_badge: "Kundenstimmen",
+                test_title: "Was unsere Gäste sagen",
+                test1_quote: "„Ein absoluter Traum! Die Orient-Reise hat alle unsere Erwartungen übertroffen. Die Reiseleiter waren unglaublich kompetent und die Hotels erstklassig. Samarkand bei Nacht werde ich nie vergessen.“",
+                test1_meta: "Großbritannien • Besuch in Usbekistan",
+                test2_quote: "„TGS Travel hat alles perfekt organisiert. Von den privaten Transfers bis zum Visa-Service mussten wir uns um nichts kümmern. Die 3Stan-Tour ist ein Muss für echte Entdecker.“",
+                test2_meta: "Deutschland • Besuch in Zentralasien",
+                test3_quote: "„Die Guides teilen ihre Kultur mit echter Leidenschaft. Jedes Essen war ein Festmahl und jede Stadt wirkte magisch. Wer Kasachstan oder Usbekistan bereisen möchte, sollte mit TGS buchen.“",
+                test3_meta: "USA • Besuch in Kasachstan",
+                contact_title: "Planen wir Ihre Reise.",
+                contact_subtitle: "Kontaktieren Sie uns gerne bei Fragen zu unseren Touren, individuellen Paketen oder Sonderangeboten.",
+                form_name: "Ihr Name",
+                form_email: "E-Mail-Adresse",
+                form_phone: "Telefonnummer",
+                form_message: "Erzählen Sie uns von Ihrer Traumreise...",
+                form_submit: "Anfrage senden"
+            },
+            tr: {
+                page_title: "TGS Travel | Tam Misafir Memnuniyeti",
+                hero_title: "TGS Travel ile <br>Dünyayı Keşfedin",
+                hero_subtitle: "Çok Satan: Kutsal Özbekistan Yolculuğu. Özbekistan, Kazakistan, Kırgızistan ve ötesinde kişiye özel turlar.",
+                hero_cta: "Özel Tur Talep Et",
+                services_title: "Hizmetlerimiz",
+                services_subtitle: "Yolculuğunuzun her adımında tam misafir memnuniyeti sağlamak için kapsamlı seyahat çözümleri sunuyoruz.",
+                service_1_title: "Kişiye Özel Turlar",
+                service_1_desc: "Tamamen isteklerinize göre tasarlanan grup ve bireysel yurt içi/yurt dışı turlar sunuyoruz.",
+                service_2_title: "Uçuşlar ve Transferler",
+                service_2_desc: "Varış anınızdan itibaren kusursuz ve konforlu ulaşım.",
+                service_3_title: "Otel Rezervasyonu",
+                service_3_desc: "Seçkin 4 ve 5 yıldızlı otellerde ayrıcalıklı konaklama.",
+                service_4_title: "Vize Desteği",
+                service_4_desc: "Evrak işlerini dert etmeyin; stressiz bir seyahat için tam vize desteği sağlıyoruz.",
+                map_badge: "İnteraktif Harita",
+                map_title: "Destinasyonlarımız",
+                map_subtitle: "Turlarımızı keşfetmek için parlayan bir noktaya dokunun. Düğmelerle haritayı yakınlaştırıp uzaklaştırabilirsiniz.",
+                map_legend_uz: "Özbekistan (Öne Çıkan)",
+                map_legend_ca: "Orta Asya",
+                map_legend_caucasus: "Kafkasya ve Türkiye",
+                quote_text: "«Tam Misafir Memnuniyeti sadece bir hedef değil.<br> <span class=\"text-gold font-bold not-italic\">Bizim standardımızdır.</span>»",
+                quote_cta: "YOLCULUĞUNUZU PLANLAYIN",
+                tours_title: "Popüler Turlar",
+                tours_subtitle: "Yakında başlayacak en iyi grup turlarımıza göz atın. Aradığınız rotayı bulamadıysanız bizimle iletişime geçin, size özel bir tur hazırlayalım.",
+                tour1_cities: "Taşkent, Semerkant, Buhara",
+                tour1_title: "Doğu Yolculuğu",
+                tour1_desc: "Özbekistan'ın efsanevi şehirlerinde yüzyıllar süren bir tarih yolculuğuna çıkın.",
+                tour1_price: "<span class=\"text-gold font-bold\">$899</span>'dan başlayan fiyatlarla",
+                tour2_cities: "Semerkant, Buhara, Taşkent",
+                tour2_title: "İpek Yolu'nun Yankıları",
+                tour2_desc: "Turkuaz kubbeler ve kadim efsaneler dünyasına adım atın.",
+                tour2_price: "<span class=\"text-gold font-bold\">$1.200</span>'dan başlayan fiyatlarla",
+                tour3_cities: "Özbekistan, Türkmenistan, Tacikistan",
+                tour3_title: "3Stan",
+                tour3_desc: "Üç ülke boyunca Orta Asya'nın ruhunu keşfedin.",
+                tour3_price: "<span class=\"text-gold font-bold\">$1.400</span>'dan başlayan fiyatlarla",
+                btn_learn_more: "Detayları Gör",
+                btn_view_all_tours: "Tüm Özbekistan Turlarını Gör",
+                test_badge: "Misafir Yorumları",
+                test_title: "Hakkımızda Ne Dediler",
+                test1_quote: "«Gerçek bir rüya gibiydi! Doğu Yolculuğu turu tüm beklentilerimizi aştı. Rehberler inanılmaz bilgiliydi ve oteller birinci sınıftı. Gece Semerkant'ı asla unutamayacağım.»",
+                test1_meta: "Birleşik Krallık • Özbekistan'ı Ziyaret Etti",
+                test2_quote: "«TGS Travel her şeyi kusursuz şekilde organize etti. Özel transferlerden vize desteğine kadar tek bir detay için bile endişelenmedik. Gerçek maceraperestlere 3Stan turunu kesinlikle öneririz.»",
+                test2_meta: "Almanya • Orta Asya'yı Ziyaret Etti",
+                test3_quote: "«Rehberler kültürlerini paylaşmayı gerçekten önemsiyor. Her yemek bir ziyafetti ve her şehir büyüleyiciydi. Kazakistan veya Özbekistan'a gitmeyi düşünüyorsanız TGS ile planlayın.»",
+                test3_meta: "ABD • Kazakistan'ı Ziyaret Etti",
+                contact_title: "Yolculuğunuzu birlikte planlayalım.",
+                contact_subtitle: "Turlarımız, özel paketlerimiz veya kampanyalarımız hakkında her türlü sorunuz için bizimle iletişime geçebilirsiniz.",
+                form_name: "Adınız Soyadınız",
+                form_email: "E-posta Adresiniz",
+                form_phone: "Telefon Numaranız",
+                form_message: "Hayalinizdeki seyahatten bahsedin...",
+                form_submit: "Talep Gönder"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <!-- СКРИПТЫ -->
     <script>
@@ -628,15 +875,15 @@
         const mobileContactLink = document.getElementById('mobile-contact-link');
 
         function toggleMobileMenu() {
-            if(mobileMenu) {
+            if (mobileMenu) {
                 mobileMenu.classList.toggle('mobile-menu-open');
                 document.body.classList.toggle('overflow-hidden');
             }
         }
 
-        if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
-        if(mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
 
         // Логика слайдера
         (function() {
@@ -648,16 +895,91 @@
 
             function goToSlide(n) {
                 slides[current].classList.remove('active');
-                if(dots[current]) dots[current].classList.remove('active');
+                if (dots[current]) dots[current].classList.remove('active');
                 current = (n + slides.length) % slides.length;
                 slides[current].classList.add('active');
-                if(dots[current]) dots[current].classList.add('active');
+                if (dots[current]) dots[current].classList.add('active');
                 
                 clearInterval(timer);
                 timer = setInterval(() => goToSlide(current + 1), 6000);
             }
             window.goToSlide = goToSlide;
             timer = setInterval(() => goToSlide(current + 1), 6000);
+        })();
+
+        // Интерактивная карта с поддержкой 5 языков
+        (function() {
+            var mapMarkers = [];
+
+            function getTooltipHtml(countryKey) {
+                var countryName = window.tgsTranslate ? (window.tgsTranslate(countryKey) || countryKey) : countryKey;
+                var tapText = window.tgsTranslate ? (window.tgsTranslate('map_tap_explore') || 'Tap to explore →') : 'Tap to explore →';
+                return '<b>' + countryName + '</b><br><span style="color:#FFA62B;font-size:11px;">' + tapText + '</span>';
+            }
+
+            function refreshMapTooltips() {
+                mapMarkers.forEach(function(item) {
+                    item.marker.setTooltipContent(getTooltipHtml(item.key));
+                });
+            }
+
+            window.addEventListener('load', function() {
+                var map = L.map('worldMap', {
+                    center: [41, 57],
+                    zoom: window.innerWidth < 768 ? 3 : 4,
+                    minZoom: 2,
+                    maxZoom: 8,
+                    scrollWheelZoom: false
+                });
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    subdomains: ['a','b','c'],
+                    maxZoom: 19
+                }).addTo(map);
+
+                var destinations = [
+                    { key: 'country_uzbekistan', coords: [41.3775, 64.5853], url: 'uzbekistan.html', color: 'bg-gold', border: 'border-white' },
+                    { key: 'country_kazakhstan', coords: [48.0196, 66.9237], url: 'kazakhstan.html', color: 'bg-teal-500', border: 'border-white' },
+                    { key: 'country_kyrgyzstan', coords: [41.2044, 74.7661], url: 'kyrgyzstan.html', color: 'bg-teal-500', border: 'border-white' },
+                    { key: 'country_tajikistan', coords: [38.8610, 71.2761], url: 'tajikistan.html', color: 'bg-teal-500', border: 'border-white' },
+                    { key: 'country_turkmenistan', coords: [38.9697, 59.5563], url: 'turkmenistan.html', color: 'bg-teal-500', border: 'border-white' },
+                    { key: 'country_turkey', coords: [38.9637, 35.2433], url: 'turkey.html', color: 'bg-teal-900', border: 'border-gold' },
+                    { key: 'country_azerbaijan', coords: [40.1431, 47.5769], url: 'azerbaijan.html', color: 'bg-teal-900', border: 'border-gold' },
+                    { key: 'country_georgia', coords: [42.3154, 43.3569], url: 'georgia.html', color: 'bg-teal-900', border: 'border-gold' },
+                    { key: 'country_armenia', coords: [40.0691, 45.0382], url: 'armenia.html', color: 'bg-teal-900', border: 'border-gold' }
+                ];
+
+                destinations.forEach(function(loc) {
+                    var isUzbekistan = loc.key === 'country_uzbekistan';
+                    var sizeClass = isUzbekistan ? 'h-6 w-6' : 'h-4 w-4';
+                    var innerSizeClass = isUzbekistan ? 'h-4 w-4' : 'h-3 w-3';
+
+                    var iconHtml = '<div class="relative flex ' + sizeClass + ' items-center justify-center">' +
+                                   '<span class="animate-ping absolute inline-flex h-full w-full rounded-full ' + loc.color + ' opacity-75"></span>' +
+                                   '<span class="relative inline-flex rounded-full ' + innerSizeClass + ' ' + loc.color + ' border-2 ' + loc.border + ' shadow-lg z-10"></span>' +
+                                   '</div>';
+
+                    var customIcon = L.divIcon({
+                        html: iconHtml,
+                        className: '',
+                        iconSize: isUzbekistan ? [24, 24] : [16, 16],
+                        iconAnchor: isUzbekistan ? [12, 12] : [8, 8]
+                    });
+
+                    var marker = L.marker(loc.coords, { icon: customIcon }).addTo(map);
+                    marker.bindTooltip(getTooltipHtml(loc.key), {
+                        className: 'tgs-tooltip',
+                        direction: 'top',
+                        offset: [0, -10]
+                    });
+                    marker.on('click', function() { window.location.href = loc.url; });
+
+                    mapMarkers.push({ marker: marker, key: loc.key });
+                });
+            });
+
+            window.addEventListener('languageChanged', refreshMapTooltips);
         })();
     </script>
 </body>
