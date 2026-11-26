@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,10 @@
             transform: translateY(0);
         }
 
+        /* Мобильное меню */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
         /* Accordion */
         .accordion-content {
             max-height: 0;
@@ -68,82 +72,163 @@
 </head>
 <body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
 
-  <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+    <!-- НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-gold font-bold text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
     <!-- HERO -->
     <section class="relative pt-40 pb-24 flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1580217503701-c4146ab9c6f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Echoes of the Silk Road" class="w-full h-full object-cover opacity-30">
+            <img src="https://images.unsplash.com/photo-1580217503701-c4146ab9c6f5?w=1600&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Echoes of the Silk Road" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 bg-teal-900/60"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-3xl">
             <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-up">
-                <a href="index.html" class="hover:text-cream transition">Home</a> &gt; Echoes of the Silk Road
+                <a href="index.html" class="hover:text-cream transition" data-i18n="nav_home">Home</a> > <span data-i18n="tour_name">Echoes of the Silk Road</span>
             </div>
-            <h1 class="font-serif text-5xl md:text-6xl text-cream font-bold leading-tight" data-aos="fade-up" data-aos-delay="100">Echoes of the Silk Road</h1>
+            <h1 class="font-serif text-4xl md:text-6xl text-cream font-bold leading-tight" data-aos="fade-up" data-aos-delay="100" data-i18n="tour_name">Echoes of the Silk Road</h1>
         </div>
     </section>
 
     <!-- MAIN IMAGE -->
     <section class="max-w-5xl mx-auto px-6 -mt-12 relative z-10" data-aos="fade-up">
         <div class="overflow-hidden h-80 md:h-[28rem] shadow-xl">
-            <img src="https://images.unsplash.com/photo-1715540335640-d9e2c7e60aaf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Bukhara domes" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1715540335640-d9e2c7e60aaf?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Bukhara domes" class="w-full h-full object-cover">
         </div>
     </section>
 
@@ -151,59 +236,32 @@
     <section class="py-20 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div data-aos="fade-up" data-aos-delay="100">
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4">Where?</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed">Step into a world of ancient legends, majestic architecture, and rich culture with this unforgettable 7-day journey through the heart of Uzbekistan. From the modern capital of Tashkent to the historic Silk Road gems of Bukhara and Samarkand, this tour offers a perfect blend of tradition, beauty, and comfort.</p>
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w1_t">Where?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w1_p">Step into a world of ancient legends, majestic architecture, and rich culture with this unforgettable 7-day journey through the heart of Uzbekistan. From the modern capital of Tashkent to the historic Silk Road gems of Bukhara and Samarkand, this tour offers a perfect blend of tradition, beauty, and comfort.</p>
                 <ul class="space-y-3">
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Modern and Bright Tashkent
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Majestic Blue Domes Samarkand
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Living Ancient City of Bukhara
-                    </li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l1">Modern and Bright Tashkent</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l2">Majestic Blue Domes Samarkand</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l3">Living Ancient City of Bukhara</span></li>
                 </ul>
             </div>
 
             <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4">Who?</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed">Our group consists of 1-10 people. We invite active people who love adventure.</p>
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w2_t">Who?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w2_p">Our group consists of 1-10 people. We invite active people who love adventure.</p>
                 <ul class="space-y-3">
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Tour for kids and adults
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Couples are welcome
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        All guides speak English
-                    </li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l1">Tour for kids and adults</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l2">Couples are welcome</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l3">All guides speak English</span></li>
                 </ul>
             </div>
 
             <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4">Why?</h3>
-                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed">Uzbekistan is an incredible place. Here we will enjoy historical landscapes.</p>
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w3_t">Why?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w3_p">Uzbekistan is an incredible place. Here we will enjoy historical landscapes.</p>
                 <ul class="space-y-3">
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Tashkent Metro Art
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Registan Square Glory
-                    </li>
-                    <li class="flex items-start text-sm text-teal-900">
-                        <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i>
-                        Poi Kalyan Ensemble
-                    </li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l1">Tashkent Metro Art</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l2">Registan Square Glory</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l3">Poi Kalyan Ensemble</span></li>
                 </ul>
             </div>
         </div>
@@ -213,17 +271,17 @@
     <section class="py-20 px-6 max-w-7xl mx-auto bg-white">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Ancient Beauty</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6 leading-tight">Join Us on Our Tour to Uzbekistan</h2>
-                <p class="text-teal-900/70 font-light mb-6 leading-relaxed">Experience the vibrant contrast of Uzbekistan — from Tashkent's modern energy and artistic metro to the timeless Silk Road grandeur of Samarkand and the spiritual, living history of Bukhara. These tours immerse you in breathtaking architecture, local flavors, and centuries-old traditions brought to life.</p>
-                <p class="text-teal-900/70 font-light mb-10 leading-relaxed">Echoes of the Silk Road is a cultural journey through Tashkent, Samarkand, and Bukhara in the heart of Uzbekistan. These legendary cities attract travelers from around the world with their magnificent architecture, rich history, and timeless Silk Road heritage.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="join_badge">Ancient Beauty</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6 leading-tight" data-i18n="join_title">Join Us on Our Tour to Uzbekistan</h2>
+                <p class="text-teal-900/70 font-light mb-6 leading-relaxed" data-i18n="join_p1">Experience the vibrant contrast of Uzbekistan — from Tashkent's modern energy and artistic metro to the timeless Silk Road grandeur of Samarkand and the spiritual, living history of Bukhara. These tours immerse you in breathtaking architecture, local flavors, and centuries-old traditions brought to life.</p>
+                <p class="text-teal-900/70 font-light mb-10 leading-relaxed" data-i18n="join_p2">Echoes of the Silk Road is a cultural journey through Tashkent, Samarkand, and Bukhara in the heart of Uzbekistan. These legendary cities attract travelers from around the world with their magnificent architecture, rich history, and timeless Silk Road heritage.</p>
 
                 <div class="flex items-center">
                     <div class="bg-cream rounded-full p-4 mr-4 flex-shrink-0">
                         <i data-lucide="mail" class="w-6 h-6 text-gold"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-teal-900">Email Us</div>
+                        <div class="font-bold text-teal-900" data-i18n="email_us">Email Us</div>
                         <a href="mailto:tripginfo@gmail.com" class="text-teal-500 font-medium hover:text-gold transition">tripginfo@gmail.com</a>
                     </div>
                 </div>
@@ -232,23 +290,23 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left" data-aos-delay="200">
                 <div class="bg-cream p-8">
                     <i data-lucide="hourglass" class="w-8 h-8 text-gold mb-4"></i>
-                    <div class="font-serif text-xl font-bold text-teal-900 mb-2"><span class="text-gold">7 Days</span> Duration</div>
-                    <p class="text-teal-900/70 font-light text-sm">This will be enough to explore and go on excursions.</p>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic1_t"><span class="text-gold">7 Days</span> Duration</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic1_d">This will be enough to explore and go on excursions.</p>
                 </div>
                 <div class="bg-cream p-8">
                     <i data-lucide="circle-dollar-sign" class="w-8 h-8 text-gold mb-4"></i>
-                    <div class="font-serif text-xl font-bold text-teal-900 mb-2">from <span class="text-gold">$1,200</span> Price Per Person</div>
-                    <p class="text-teal-900/70 font-light text-sm">Accommodation, insurance, transport, and excursions are included.</p>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic2_t">from <span class="text-gold">$1,200</span> Price Per Person</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic2_d">Accommodation, insurance, transport, and excursions are included.</p>
                 </div>
                 <div class="bg-cream p-8">
                     <i data-lucide="users" class="w-8 h-8 text-gold mb-4"></i>
-                    <div class="font-serif text-xl font-bold text-teal-900 mb-2"><span class="text-gold">1-10</span> People</div>
-                    <p class="text-teal-900/70 font-light text-sm">We enjoy organizing tours for small groups of like-minded people.</p>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic3_t"><span class="text-gold">1-10</span> People</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic3_d">We enjoy organizing tours for small groups of like-minded people.</p>
                 </div>
                 <div class="bg-cream p-8">
                     <i data-lucide="tag" class="w-8 h-8 text-gold mb-4"></i>
-                    <div class="font-serif text-xl font-bold text-teal-900 mb-2"><span class="text-gold">-15%</span> Discount</div>
-                    <p class="text-teal-900/70 font-light text-sm">Book three or more tours and get your -15% discount on this tour!</p>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic4_t"><span class="text-gold">-15%</span> Discount</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic4_d">Book three or more tours and get your -15% discount on this tour!</p>
                 </div>
             </div>
         </div>
@@ -256,16 +314,16 @@
 
     <!-- ITINERARY -->
     <section class="py-20 px-6 max-w-3xl mx-auto">
-        <h2 class="font-serif text-4xl md:text-5xl font-bold text-gold text-center mb-12" data-aos="fade-up">Itinerary</h2>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-gold text-center mb-12" data-aos="fade-up" data-i18n="it_title">Itinerary</h2>
 
         <div class="space-y-0 border-t border-teal-900/10" id="itinerary-accordion">
             <div class="accordion-item active border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 1: Arrival in Tashkent</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d1_t">DAY 1: Arrival in Tashkent</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d1_b">
                         <p>Upon arrival at Tashkent International Airport, you will be greeted by our representative holding a sign with your name. Enjoy a comfortable transfer to your hotel, where you can check in and relax after your journey. Depending on your arrival time, you may explore the surrounding area at your own pace or simply rest and prepare for the exciting days ahead.</p>
                         <p>Overnight in Tashkent.</p>
                     </div>
@@ -274,11 +332,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 2: Sightseeing in Tashkent</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d2_t">DAY 2: Sightseeing in Tashkent</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d2_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- City tour: Khast Imam Complex, Chorsu Bazaar, Tashkent Metro</p>
                         <p>- Lunch at a local restaurant</p>
@@ -289,11 +347,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 3: Tashkent - Bukhara</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d3_t">DAY 3: Tashkent - Bukhara</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d3_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- Morning train or flight to Bukhara</p>
                         <p>- Check-in at the hotel and free time to rest</p>
@@ -304,11 +362,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 4: Bukhara - Samarkand</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d4_t">DAY 4: Bukhara - Samarkand</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d4_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- City tour: Ark Fortress, Poi Kalyan Ensemble, Lyab-i Hauz</p>
                         <p>- Transfer to Samarkand</p>
@@ -319,11 +377,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 5: Sightseeing in Samarkand</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d5_t">DAY 5: Sightseeing in Samarkand</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d5_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- Visit Registan Square, Gur-e-Amir Mausoleum, Shah-i-Zinda</p>
                         <p>- Lunch at a local restaurant</p>
@@ -334,11 +392,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 6: Samarkand - Tashkent</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d6_t">DAY 6: Samarkand - Tashkent</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d6_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- Visit Ulugbek Observatory</p>
                         <p>- Morning train back to Tashkent</p>
@@ -349,11 +407,11 @@
 
             <div class="accordion-item border-b border-teal-900/10">
                 <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
-                    <span class="font-serif text-lg font-bold text-teal-900">DAY 7: Last day in Tashkent, Departure</span>
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d7_t">DAY 7: Last day in Tashkent, Departure</span>
                     <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                 </button>
                 <div class="accordion-content">
-                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2">
+                    <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d7_b">
                         <p>- Breakfast at the hotel</p>
                         <p>- Free time / optional excursions</p>
                         <p>- Transfer to the airport</p>
@@ -368,35 +426,35 @@
     <section class="py-20 px-6 max-w-7xl mx-auto bg-white">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div data-aos="fade-right" class="flex flex-col gap-6">
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Tashkent is often called the gateway to Central Asia, where ancient traditions meet a modern metropolis. The city surprises visitors with its wide green avenues, striking Soviet-era architecture, and one of the oldest Qurans in the world preserved in the Khast Imam Complex.</p>
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Tashkent is also known for its vibrant cultural life, colorful bazaars like Chorsu, and one of the most beautiful metro systems in the world, each station designed as a work of art. Curious already? Welcome to Tashkent — a city full of stories waiting to be discovered.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="cd1_p1">Tashkent is often called the gateway to Central Asia, where ancient traditions meet a modern metropolis. The city surprises visitors with its wide green avenues, striking Soviet-era architecture, and one of the oldest Qurans in the world preserved in the Khast Imam Complex.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="cd1_p2">Tashkent is also known for its vibrant cultural life, colorful bazaars like Chorsu, and one of the most beautiful metro systems in the world, each station designed as a work of art. Curious already? Welcome to Tashkent — a city full of stories waiting to be discovered.</p>
                 <div class="overflow-hidden h-64 image-zoom">
-                    <img src="https://plus.unsplash.com/premium_photo-1756123084239-9a92c0343e5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Tashkent" class="w-full h-full object-cover">
+                    <img src="https://plus.unsplash.com/premium_photo-1756123084239-9a92c0343e5a?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Tashkent" class="w-full h-full object-cover">
                 </div>
             </div>
             <div data-aos="fade-left" data-aos-delay="100" class="flex flex-col gap-6">
                 <div class="overflow-hidden h-64 image-zoom">
-                    <img src="https://images.unsplash.com/photo-1673446840855-1c82bafdb67d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Bukhara Ark Fortress" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1673446840855-1c82bafdb67d?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Bukhara Ark Fortress" class="w-full h-full object-cover">
                 </div>
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Samarkand is often called the pearl of the Silk Road, a city that once amazed the greatest travelers and conquerors of history. Its legendary Registan Square, blue-tiled madrasas, and the majestic Gur-e-Amir Mausoleum reflect the glory of Timur's empire. Walking through Samarkand feels like stepping into a living legend where science, art, and trade once flourished side by side.</p>
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Bukhara is known as a living museum under the open sky, preserving more than two thousand years of history within its ancient walls. The city enchants visitors with its labyrinth of narrow streets, historic mosques, madrasas, and caravanserais, including the iconic Poi Kalyan complex. Bukhara's calm atmosphere and deep spiritual heritage make it a timeless stop on the Silk Road.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="cd2_p1">Samarkand is often called the pearl of the Silk Road, a city that once amazed the greatest travelers and conquerors of history. Its legendary Registan Square, blue-tiled madrasas, and the majestic Gur-e-Amir Mausoleum reflect the glory of Timur's empire. Walking through Samarkand feels like stepping into a living legend where science, art, and trade once flourished side by side.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="cd2_p2">Bukhara is known as a living museum under the open sky, preserving more than two thousand years of history within its ancient walls. The city enchants visitors with its labyrinth of narrow streets, historic mosques, madrasas, and caravanserais, including the iconic Poi Kalyan complex. Bukhara's calm atmosphere and deep spiritual heritage make it a timeless stop on the Silk Road.</p>
             </div>
         </div>
 
         <!-- HIGHLIGHT TEXT + FAQ -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div data-aos="fade-right" class="space-y-6">
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Exploring the ancient cities of Tashkent, Samarkand, and Bukhara is the highlight of the Echoes of the Silk Road tour. This journey lets you experience legendary architecture, vibrant bazaars, and historic landmarks up close, following the footsteps of merchants and travelers who once crossed these lands. Thousands of visitors choose this route each year to feel the true spirit of the Silk Road.</p>
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">The main feature of the Echoes of the Silk Road tour is its legendary cities shaped by centuries of trade, science, and spirituality. Ancient madrasas, mosques, caravanserais, and fortified walls tell stories of merchants, scholars, and pilgrims who once crossed Asia and Europe through these lands.</p>
-                <p class="text-teal-900/70 font-light leading-relaxed text-sm">Majestic blue-domed monuments of Samarkand and the preserved historic quarters of Bukhara have become symbols of the Silk Road. Local legends speak of great rulers, hidden treasures, and sacred knowledge, giving these cities an almost mythical atmosphere that continues to fascinate travelers today.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="hl_p1">Exploring the ancient cities of Tashkent, Samarkand, and Bukhara is the highlight of the Echoes of the Silk Road tour. This journey lets you experience legendary architecture, vibrant bazaars, and historic landmarks up close, following the footsteps of merchants and travelers who once crossed these lands. Thousands of visitors choose this route each year to feel the true spirit of the Silk Road.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="hl_p2">The main feature of the Echoes of the Silk Road tour is its legendary cities shaped by centuries of trade, science, and spirituality. Ancient madrasas, mosques, caravanserais, and fortified walls tell stories of merchants, scholars, and pilgrims who once crossed Asia and Europe through these lands.</p>
+                <p class="text-teal-900/70 font-light leading-relaxed text-sm" data-i18n="hl_p3">Majestic blue-domed monuments of Samarkand and the preserved historic quarters of Bukhara have become symbols of the Silk Road. Local legends speak of great rulers, hidden treasures, and sacred knowledge, giving these cities an almost mythical atmosphere that continues to fascinate travelers today.</p>
 
                 <div class="flex items-center pt-4">
                     <div class="bg-cream rounded-full p-4 mr-4 flex-shrink-0">
                         <i data-lucide="phone" class="w-6 h-6 text-gold"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-teal-900">Do You Have Any Questions?</div>
-                        <span class="text-teal-900/70 text-sm">Call us </span><a href="tel:+998931849144" class="text-teal-500 font-medium hover:text-gold transition">+998 93 1849144</a>
+                        <div class="font-bold text-teal-900" data-i18n="have_q">Do You Have Any Questions?</div>
+                        <span class="text-teal-900/70 text-sm" data-i18n="call_us">Call us </span><a href="tel:+998931849144" class="text-teal-500 font-medium hover:text-gold transition">+998 93 1849144</a>
                     </div>
                 </div>
             </div>
@@ -405,55 +463,55 @@
                 <div class="border border-teal-900/10" id="faq-accordion">
                     <div class="accordion-item active border-b border-teal-900/10 bg-cream">
                         <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
-                            <span class="font-medium text-teal-900">When is the best time to visit Uzbekistan?</span>
+                            <span class="font-medium text-teal-900" data-i18n="fq1_q">When is the best time to visit Uzbekistan?</span>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light">
+                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq1_a">
                                 Spring (March-May) and autumn (September-November) offer the most comfortable temperatures and ideal conditions for sightseeing.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item border-b border-teal-900/10 bg-cream">
                         <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
-                            <span class="font-medium text-teal-900">What if I want to visit more cities?</span>
+                            <span class="font-medium text-teal-900" data-i18n="fq2_q">What if I want to visit more cities?</span>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light">
+                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq2_a">
                                 We can extend the itinerary with additional cities such as Khiva or Shakhrisabz upon request, with adjusted pricing and duration.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item border-b border-teal-900/10 bg-cream">
                         <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
-                            <span class="font-medium text-teal-900">How do we get from one city to another?</span>
+                            <span class="font-medium text-teal-900" data-i18n="fq3_q">How do we get from one city to another?</span>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light">
+                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq3_a">
                                 Transfers between cities are made by comfortable private vehicles or high-speed trains, all included in the tour package.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item border-b border-teal-900/10 bg-cream">
                         <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
-                            <span class="font-medium text-teal-900">Can I choose a hotel myself?</span>
+                            <span class="font-medium text-teal-900" data-i18n="fq4_q">Can I choose a hotel myself?</span>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light">
+                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq4_a">
                                 Yes, we can arrange an alternative hotel upon request, subject to availability and possible price changes.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item bg-cream">
                         <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
-                            <span class="font-medium text-teal-900">Which airport do we fly into?</span>
+                            <span class="font-medium text-teal-900" data-i18n="fq5_q">Which airport do we fly into?</span>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light">
+                            <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq5_a">
                                 Tashkent International Airport (TAS) is the main entry point for this tour.
                             </div>
                         </div>
@@ -467,10 +525,10 @@
     <section class="bg-gold py-10 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div>
-                <h3 class="font-serif text-2xl md:text-3xl font-bold text-cream mb-1">Get a Free Audio Guide!</h3>
-                <p class="text-cream/90 text-sm font-light">When you purchase any of our tours, you get a free audio guide. You can explore the spot with it or follow our guide.</p>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-cream mb-1" data-i18n="ag_t">Get a Free Audio Guide!</h3>
+                <p class="text-cream/90 text-sm font-light" data-i18n="ag_d">When you purchase any of our tours, you get a free audio guide. You can explore the spot with it or follow our guide.</p>
             </div>
-            <a href="index.html#contact" class="inline-block bg-teal-900 text-cream px-8 py-4 font-medium tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 whitespace-nowrap">Learn More</a>
+            <a href="index.html#contact" class="inline-block bg-teal-900 text-cream px-8 py-4 font-medium tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 whitespace-nowrap" data-i18n="btn_learn_more">Learn More</a>
         </div>
     </section>
 
@@ -478,20 +536,20 @@
     <section id="contact" class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Contacts</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Contact Us Now</h2>
-                <p class="text-cream/70 font-light mb-6 max-w-md">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers. We offer both group and individual tours. If you have a special request, we'll be happy to discuss it with you. Feel free to contact us to book your next adventure to the city of your dreams!</p>
-                <a href="mailto:info@tgstraveluz.com" class="inline-block bg-gold text-cream px-8 py-4 font-medium tracking-wide hover:bg-cream hover:text-teal-900 transition duration-300">Get Free Consultation</a>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="nav_contacts">Contacts</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6" data-i18n="contact_title">Contact Us Now</h2>
+                <p class="text-cream/70 font-light mb-6 max-w-md" data-i18n="contact_desc">Feel free to contact us if you have any questions related to our tours, custom packages, or special offers. We offer both group and individual tours. If you have a special request, we'll be happy to discuss it with you. Feel free to contact us to book your next adventure to the city of your dreams!</p>
+                <a href="mailto:info@tgstraveluz.com" class="inline-block bg-gold text-cream px-8 py-4 font-medium tracking-wide hover:bg-cream hover:text-teal-900 transition duration-300" data-i18n="contact_btn">Get Free Consultation</a>
             </div>
             <div data-aos="fade-left" data-aos-delay="200" class="bg-teal-900/40 p-10 border border-cream/10">
-                <h4 class="font-serif text-xl font-bold mb-6 text-gold">Hours</h4>
-                <p class="text-cream/70 text-sm mb-1">Monday - Saturday: 11 AM - 9 PM</p>
-                <p class="text-cream/70 text-sm mb-6">Sunday: 11 AM - 7 PM</p>
+                <h4 class="font-serif text-xl font-bold mb-6 text-gold" data-i18n="box_hours">Hours</h4>
+                <p class="text-cream/70 text-sm mb-1" data-i18n="box_mon_sat">Monday - Saturday: 11 AM - 9 PM</p>
+                <p class="text-cream/70 text-sm mb-6" data-i18n="box_sun">Sunday: 11 AM - 7 PM</p>
 
                 <h4 class="font-serif text-xl font-bold mb-6 text-gold">Instagram</h4>
                 <p class="text-cream/70 text-sm mb-6">@tgs.travel</p>
 
-                <h4 class="font-serif text-xl font-bold mb-6 text-gold">Contacts</h4>
+                <h4 class="font-serif text-xl font-bold mb-6 text-gold" data-i18n="nav_contacts">Contacts</h4>
                 <p class="text-cream/70 text-sm">+998 93 1849144</p>
                 <p class="text-cream/70 text-sm">info@tgstraveluz.com</p>
             </div>
@@ -503,54 +561,288 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-               <div class="flex items-center space-x-4 text-cream/60">
-    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="instagram" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="send" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="facebook" class="w-5 h-5"></i>
-    </a>
-</div>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
-                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition">Majestic Minarets Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition" data-i18n="footer_tour_minarets">Majestic Minarets Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ ТУРА ECHOES OF THE SILK ROAD (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Echoes of the Silk Road | TGS Travel",
+                tour_name: "Echoes of the Silk Road",
+                w1_t: "Where?", w1_p: "Step into a world of ancient legends, majestic architecture, and rich culture with this unforgettable 7-day journey through the heart of Uzbekistan. From the modern capital of Tashkent to the historic Silk Road gems of Bukhara and Samarkand, this tour offers a perfect blend of tradition, beauty, and comfort.",
+                w1_l1: "Modern and Bright Tashkent", w1_l2: "Majestic Blue Domes Samarkand", w1_l3: "Living Ancient City of Bukhara",
+                w2_t: "Who?", w2_p: "Our group consists of 1-10 people. We invite active people who love adventure.",
+                w2_l1: "Tour for kids and adults", w2_l2: "Couples are welcome", w2_l3: "All guides speak English",
+                w3_t: "Why?", w3_p: "Uzbekistan is an incredible place. Here we will enjoy historical landscapes.",
+                w3_l1: "Tashkent Metro Art", w3_l2: "Registan Square Glory", w3_l3: "Poi Kalyan Ensemble",
+                join_badge: "Ancient Beauty", join_title: "Join Us on Our Tour to Uzbekistan",
+                join_p1: "Experience the vibrant contrast of Uzbekistan — from Tashkent's modern energy and artistic metro to the timeless Silk Road grandeur of Samarkand and the spiritual, living history of Bukhara. These tours immerse you in breathtaking architecture, local flavors, and centuries-old traditions brought to life.",
+                join_p2: "Echoes of the Silk Road is a cultural journey through Tashkent, Samarkand, and Bukhara in the heart of Uzbekistan. These legendary cities attract travelers from around the world with their magnificent architecture, rich history, and timeless Silk Road heritage.",
+                email_us: "Email Us",
+                ic1_t: "<span class=\"text-gold\">7 Days</span> Duration", ic1_d: "This will be enough to explore and go on excursions.",
+                ic2_t: "from <span class=\"text-gold\">$1,200</span> Price Per Person", ic2_d: "Accommodation, insurance, transport, and excursions are included.",
+                ic3_t: "<span class=\"text-gold\">1-10</span> People", ic3_d: "We enjoy organizing tours for small groups of like-minded people.",
+                ic4_t: "<span class=\"text-gold\">-15%</span> Discount", ic4_d: "Book three or more tours and get your -15% discount on this tour!",
+                it_title: "Itinerary",
+                d1_t: "DAY 1: Arrival in Tashkent",
+                d1_b: "<p>Upon arrival at Tashkent International Airport, you will be greeted by our representative holding a sign with your name. Enjoy a comfortable transfer to your hotel, where you can check in and relax after your journey. Depending on your arrival time, you may explore the surrounding area at your own pace or simply rest and prepare for the exciting days ahead.</p><p>Overnight in Tashkent.</p>",
+                d2_t: "DAY 2: Sightseeing in Tashkent", d2_b: "<p>- Breakfast at the hotel</p><p>- City tour: Khast Imam Complex, Chorsu Bazaar, Tashkent Metro</p><p>- Lunch at a local restaurant</p><p>- Free evening in Tashkent</p>",
+                d3_t: "DAY 3: Tashkent - Bukhara", d3_b: "<p>- Breakfast at the hotel</p><p>- Morning train or flight to Bukhara</p><p>- Check-in at the hotel and free time to rest</p><p>- Night in Bukhara</p>",
+                d4_t: "DAY 4: Bukhara - Samarkand", d4_b: "<p>- Breakfast at the hotel</p><p>- City tour: Ark Fortress, Poi Kalyan Ensemble, Lyab-i Hauz</p><p>- Transfer to Samarkand</p><p>- Night in Samarkand</p>",
+                d5_t: "DAY 5: Sightseeing in Samarkand", d5_b: "<p>- Breakfast at the hotel</p><p>- Visit Registan Square, Gur-e-Amir Mausoleum, Shah-i-Zinda</p><p>- Lunch at a local restaurant</p><p>- Free evening in Samarkand</p>",
+                d6_t: "DAY 6: Samarkand - Tashkent", d6_b: "<p>- Breakfast at the hotel</p><p>- Visit Ulugbek Observatory</p><p>- Morning train back to Tashkent</p><p>- Farewell dinner with traditional show</p>",
+                d7_t: "DAY 7: Last day in Tashkent, Departure", d7_b: "<p>- Breakfast at the hotel</p><p>- Free time / optional excursions</p><p>- Transfer to the airport</p><p>- Departure</p>",
+                cd1_p1: "Tashkent is often called the gateway to Central Asia, where ancient traditions meet a modern metropolis. The city surprises visitors with its wide green avenues, striking Soviet-era architecture, and one of the oldest Qurans in the world preserved in the Khast Imam Complex.",
+                cd1_p2: "Tashkent is also known for its vibrant cultural life, colorful bazaars like Chorsu, and one of the most beautiful metro systems in the world, each station designed as a work of art. Curious already? Welcome to Tashkent — a city full of stories waiting to be discovered.",
+                cd2_p1: "Samarkand is often called the pearl of the Silk Road, a city that once amazed the greatest travelers and conquerors of history. Its legendary Registan Square, blue-tiled madrasas, and the majestic Gur-e-Amir Mausoleum reflect the glory of Timur's empire. Walking through Samarkand feels like stepping into a living legend where science, art, and trade once flourished side by side.",
+                cd2_p2: "Bukhara is known as a living museum under the open sky, preserving more than two thousand years of history within its ancient walls. The city enchants visitors with its labyrinth of narrow streets, historic mosques, madrasas, and caravanserais, including the iconic Poi Kalyan complex. Bukhara's calm atmosphere and deep spiritual heritage make it a timeless stop on the Silk Road.",
+                hl_p1: "Exploring the ancient cities of Tashkent, Samarkand, and Bukhara is the highlight of the Echoes of the Silk Road tour. This journey lets you experience legendary architecture, vibrant bazaars, and historic landmarks up close, following the footsteps of merchants and travelers who once crossed these lands. Thousands of visitors choose this route each year to feel the true spirit of the Silk Road.",
+                hl_p2: "The main feature of the Echoes of the Silk Road tour is its legendary cities shaped by centuries of trade, science, and spirituality. Ancient madrasas, mosques, caravanserais, and fortified walls tell stories of merchants, scholars, and pilgrims who once crossed Asia and Europe through these lands.",
+                hl_p3: "Majestic blue-domed monuments of Samarkand and the preserved historic quarters of Bukhara have become symbols of the Silk Road. Local legends speak of great rulers, hidden treasures, and sacred knowledge, giving these cities an almost mythical atmosphere that continues to fascinate travelers today.",
+                have_q: "Do You Have Any Questions?", call_us: "Call us ",
+                fq1_q: "When is the best time to visit Uzbekistan?", fq1_a: "Spring (March-May) and autumn (September-November) offer the most comfortable temperatures and ideal conditions for sightseeing.",
+                fq2_q: "What if I want to visit more cities?", fq2_a: "We can extend the itinerary with additional cities such as Khiva or Shakhrisabz upon request, with adjusted pricing and duration.",
+                fq3_q: "How do we get from one city to another?", fq3_a: "Transfers between cities are made by comfortable private vehicles or high-speed trains, all included in the tour package.",
+                fq4_q: "Can I choose a hotel myself?", fq4_a: "Yes, we can arrange an alternative hotel upon request, subject to availability and possible price changes.",
+                fq5_q: "Which airport do we fly into?", fq5_a: "Tashkent International Airport (TAS) is the main entry point for this tour.",
+                ag_t: "Get a Free Audio Guide!", ag_d: "When you purchase any of our tours, you get a free audio guide. You can explore the spot with it or follow our guide.",
+                btn_learn_more: "Learn More",
+                contact_title: "Contact Us Now",
+                contact_desc: "Feel free to contact us if you have any questions related to our tours, custom packages, or special offers. We offer both group and individual tours. If you have a special request, we'll be happy to discuss it with you. Feel free to contact us to book your next adventure to the city of your dreams!",
+                contact_btn: "Get Free Consultation",
+                box_hours: "Hours", box_mon_sat: "Monday - Saturday: 11 AM - 9 PM", box_sun: "Sunday: 11 AM - 7 PM",
+                footer_tour_minarets: "Majestic Minarets Tour"
+            },
+            ru: {
+                page_title: "Эхо Шёлкового пути | TGS Travel",
+                tour_name: "Эхо Шёлкового пути",
+                w1_t: "Куда?", w1_p: "Погрузитесь в мир древних легенд, величественной архитектуры и богатой культуры в этом незабываемом 7-дневном путешествии по сердцу Узбекистана. От современного Ташкента до жемчужин Шёлкового пути — Бухары и Самарканда.",
+                w1_l1: "Современный и солнечный Ташкент", w1_l2: "Величественные голубые купола Самарканда", w1_l3: "Живой древний город Бухара",
+                w2_t: "Для кого?", w2_p: "Группы от 1 до 10 человек. Приглашаем активных путешественников, любящих открытия.",
+                w2_l1: "Тур для детей и взрослых", w2_l2: "Идеально для пар", w2_l3: "Гиды говорят на английском и русском",
+                w3_t: "Почему?", w3_p: "Узбекистан — удивительная страна, где на каждом шагу оживают исторические панорамы.",
+                w3_l1: "Искусство ташкентского метро", w3_l2: "Величие площади Регистан", w3_l3: "Ансамбль Пои-Калян",
+                join_badge: "Древняя красота", join_title: "Присоединяйтесь к нашему туру по Узбекистану",
+                join_p1: "Ощутите яркий контраст Узбекистана — от современной энергии Ташкента и его художественного метро до величественного Самарканда и духовной, живой истории Бухары. Вас ждут шедевры архитектуры, местная кухня и многовековые традиции.",
+                join_p2: "«Эхо Шёлкового пути» — это культурное путешествие через Ташкент, Самарканд и Бухару в самом сердце Узбекистана. Эти легендарные города притягивают путешественников со всего мира своим неповторимым наследием.",
+                email_us: "Напишите нам",
+                ic1_t: "<span class=\"text-gold\">7 дней</span> длительность", ic1_d: "Идеально, чтобы спокойно увидеть всё главное и побывать на экскурсиях.",
+                ic2_t: "от <span class=\"text-gold\">$1,200</span> за человека", ic2_d: "Проживание, страховка, транспорт и экскурсии включены.",
+                ic3_t: "<span class=\"text-gold\">1–10</span> человек", ic3_d: "Любим организовывать туры для небольших компаний единомышленников.",
+                ic4_t: "Скидка <span class=\"text-gold\">-15%</span>", ic4_d: "Забронируйте три или более тура и получите скидку 15% на это путешествие!",
+                it_title: "Программа тура",
+                d1_t: "ДЕНЬ 1: Прибытие в Ташкент",
+                d1_b: "<p>По прилёте в Международный аэропорт Ташкента вас встретит наш представитель с именной табличкой. Комфортный трансфер в отель, заселение и отдых после перелёта. В зависимости от времени прибытия можно прогуляться по окрестностям или отдохнуть перед насыщенной программой.</p><p>Ночь в Ташкенте.</p>",
+                d2_t: "ДЕНЬ 2: Экскурсия по Ташкенту", d2_b: "<p>— Завтрак в отеле</p><p>— Обзорная экскурсия: комплекс Хаст-Имам, базар Чорсу, Ташкентское метро</p><p>— Обед в местном ресторане</p><p>— Свободный вечер в Ташкенте</p>",
+                d3_t: "ДЕНЬ 3: Ташкент – Бухара", d3_b: "<p>— Завтрак в отеле</p><p>— Утренний поезд или перелёт в Бухару</p><p>— Заселение в отель и свободное время для отдыха</p><p>— Ночь в Бухаре</p>",
+                d4_t: "ДЕНЬ 4: Бухара – Самарканд", d4_b: "<p>— Завтрак в отеле</p><p>— Экскурсия по городу: крепость Арк, ансамбль Пои-Калян, Ляби-Хауз</p><p>— Переезд в Самарканд</p><p>— Ночь в Самарканде</p>",
+                d5_t: "ДЕНЬ 5: Экскурсия по Самарканду", d5_b: "<p>— Завтрак в отеле</p><p>— Площадь Регистан, мавзолей Гур-Эмир, ансамбль Шахи-Зинда</p><p>— Обед в местном ресторане</p><p>— Свободный вечер в Самарканде</p>",
+                d6_t: "ДЕНЬ 6: Самарканд – Ташкент", d6_b: "<p>— Завтрак в отеле</p><p>— Посещение обсерватории Улугбека</p><p>— Утренний поезд обратно в Ташкент</p><p>— Прощальный ужин с национальной шоу-программой</p>",
+                d7_t: "ДЕНЬ 7: Последний день в Ташкенте, вылет", d7_b: "<p>— Завтрак в отеле</p><p>— Свободное время или дополнительные экскурсии</p><p>— Трансфер в аэропорт</p><p>— Вылет домой</p>",
+                cd1_p1: "Ташкент часто называют воротами в Центральную Азию, где древние традиции встречаются с современным мегаполисом. Город удивляет широкими зелёными проспектами, выразительной архитектурой и одним из древнейших Коранов мира в комплексе Хаст-Имам.",
+                cd1_p2: "Ташкент также славится яркой культурной жизнью, колоритным базаром Чорсу и одним из красивейших метрополитенов мира, где каждая станция — произведение искусства. Добро пожаловать в Ташкент!",
+                cd2_p1: "Самарканд называют жемчужиной Шёлкового пути — городом, некогда восхищавшим величайших путешественников истории. Площадь Регистан, лазурные медресе и мавзолей Гур-Эмир отражают величие империи Амира Тимура.",
+                cd2_p2: "Бухара — живой музей под открытым небом, хранящий более двух тысяч лет истории за своими стенами. Лабиринт узких улочек, мечети, караван-сараи и ансамбль Пои-Калян создают неповторимую, умиротворяющую атмосферу.",
+                hl_p1: "Знакомство с древними городами Ташкентом, Самаркандом и Бухарой — сердце тура «Эхо Шёлкового пути». Вы пройдёте по следам купцов и путешественников, увидев легендарную архитектуру и колоритные базары вблизи.",
+                hl_p2: "Главная особенность маршрута — города, сформированные веками торговли, науки и духовности. Древние медресе, мечети и караван-сараи хранят истории караванов, соединявших Азию и Европу.",
+                hl_p3: "Величественные голубые купола Самарканда и старинные кварталы Бухары стали символами Шёлкового пути, а местные легенды придают им особую, почти сказочную атмосферу.",
+                have_q: "Остались вопросы?", call_us: "Позвоните нам: ",
+                fq1_q: "Когда лучше всего ехать в Узбекистан?", fq1_a: "Весна (март–май) и осень (сентябрь–ноябрь) дарят самые комфортные температуры и идеальные условия для экскурсий.",
+                fq2_q: "А если я захочу посетить больше городов?", fq2_a: "По запросу мы можем расширить маршрут, добавив Хиву или Шахрисабз, с пересчётом длительности и стоимости.",
+                fq3_q: "Как организованы переезды между городами?", fq3_a: "Переезды осуществляются на комфортабельных частных автомобилях или скоростных поездах — всё уже включено в стоимость тура.",
+                fq4_q: "Могу ли я сам выбрать отель?", fq4_a: "Да, по запросу мы подберём альтернативный отель с учётом наличия мест и возможной корректировки цены.",
+                fq5_q: "В какой аэропорт прилетаем?", fq5_a: "Основная точка прилёта для этого тура — Международный аэропорт Ташкента (TAS).",
+                ag_t: "Получите бесплатный аудиогид!", ag_d: "При покупке любого нашего тура вы получаете бесплатный аудиогид — исследуйте локации в своём ритме или вместе с гидом.",
+                btn_learn_more: "Подробнее",
+                contact_title: "Свяжитесь с нами",
+                contact_desc: "Напишите нам по любым вопросам о турах, индивидуальных маршрутах и спецпредложениях. Мы организуем групповые и частные поездки и с радостью обсудим ваши пожелания!",
+                contact_btn: "Бесплатная консультация",
+                box_hours: "Часы работы", box_mon_sat: "Понедельник – Суббота: 11:00 – 21:00", box_sun: "Воскресенье: 11:00 – 19:00",
+                footer_tour_minarets: "Тур «Величественные минареты»"
+            },
+            fr: {
+                page_title: "Échos de la Route de la Soie | TGS Travel",
+                tour_name: "Échos de la Route de la Soie",
+                w1_t: "Où ?", w1_p: "Plongez dans un monde de légendes anciennes, d'architecture majestueuse et de culture riche lors de ce voyage inoubliable de 7 jours au cœur de l'Ouzbékistan, de Tachkent à Boukhara et Samarcande.",
+                w1_l1: "Tachkent moderne et lumineuse", w1_l2: "Samarcande et ses coupoles bleues", w1_l3: "Boukhara, cité ancienne vivante",
+                w2_t: "Pour qui ?", w2_p: "Petits groupes de 1 à 10 personnes. Nous invitons les voyageurs curieux et amateurs d'aventure.",
+                w2_l1: "Circuit pour enfants et adultes", w2_l2: "Idéal pour les couples", w2_l3: "Guides anglophones (francophones sur demande)",
+                w3_t: "Pourquoi ?", w3_p: "L'Ouzbékistan est une terre d'exception aux paysages historiques inoubliables.",
+                w3_l1: "L'art du métro de Tachkent", w3_l2: "La splendeur de la place du Régistan", w3_l3: "L'ensemble Po-i-Kalyan",
+                join_badge: "Beauté Antique", join_title: "Rejoignez notre circuit en Ouzbékistan",
+                join_p1: "Vivez le contraste fascinant de l'Ouzbékistan — de l'énergie moderne de Tachkent et son métro artistique à la grandeur intemporelle de Samarcande et l'histoire spirituelle de Boukhara.",
+                join_p2: "Échos de la Route de la Soie est un voyage culturel à travers Tachkent, Samarcande et Boukhara, trois cités légendaires célébrées dans le monde entier pour leur patrimoine exceptionnel.",
+                email_us: "Écrivez-nous",
+                ic1_t: "<span class=\"text-gold\">7 Jours</span> Durée", ic1_d: "Le rythme idéal pour explorer et profiter des excursions.",
+                ic2_t: "dès <span class=\"text-gold\">1 200 $</span> par personne", ic2_d: "Hébergement, assurance, transport et excursions inclus.",
+                ic3_t: "<span class=\"text-gold\">1–10</span> Personnes", ic3_d: "Nous aimons organiser des circuits en petits groupes conviviaux.",
+                ic4_t: "Remise <span class=\"text-gold\">-15%</span>", ic4_d: "Réservez trois circuits ou plus et bénéficiez de -15 % sur ce voyage !",
+                it_title: "Itinéraire",
+                d1_t: "JOUR 1 : Arrivée à Tachkent",
+                d1_b: "<p>À votre arrivée à l'aéroport international de Tachkent, notre représentant vous accueille avec une pancarte à votre nom. Transfert confortable vers votre hôtel pour vous installer et vous reposer après votre vol, avec temps libre selon l'heure d'arrivée.</p><p>Nuit à Tachkent.</p>",
+                d2_t: "JOUR 2 : Visite de Tachkent", d2_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Visite : complexe Khast Imam, bazar Chorsu, métro de Tachkent</p><p>- Déjeuner dans un restaurant local</p><p>- Soirée libre à Tachkent</p>",
+                d3_t: "JOUR 3 : Tachkent – Boukhara", d3_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Train ou vol matinal vers Boukhara</p><p>- Installation à l'hôtel et temps libre pour se reposer</p><p>- Nuit à Boukhara</p>",
+                d4_t: "JOUR 4 : Boukhara – Samarcande", d4_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Visite : forteresse de l'Ark, ensemble Po-i-Kalyan, Liab-i Haouz</p><p>- Transfert vers Samarcande</p><p>- Nuit à Samarcande</p>",
+                d5_t: "JOUR 5 : Visite de Samarcande", d5_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Place du Régistan, mausolée Gour-Emir, nécropole Chah-i-Zinda</p><p>- Déjeuner dans un restaurant local</p><p>- Soirée libre à Samarcande</p>",
+                d6_t: "JOUR 6 : Samarcande – Tachkent", d6_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Visite de l'observatoire d'Oulough Beg</p><p>- Train du matin retour vers Tachkent</p><p>- Dîner d'adieu avec spectacle traditionnel</p>",
+                d7_t: "JOUR 7 : Dernier jour à Tachkent, Départ", d7_b: "<p>- Petit-déjeuner à l'hôtel</p><p>- Temps libre / excursions en option</p><p>- Transfert à l'aéroport</p><p>- Vol retour</p>",
+                cd1_p1: "Tachkent est la porte d'entrée de l'Asie centrale, où traditions anciennes et métropole moderne se rencontrent. Elle surprend par ses avenues verdoyantes et l'un des plus anciens Corans au monde au complexe Khast Imam.",
+                cd1_p2: "Réputée pour sa vie culturelle animée, son bazar Chorsu et son métro somptueux dont chaque station est une œuvre d'art, Tachkent regorge d'histoires à découvrir.",
+                cd2_p1: "Samarcande, perle de la Route de la Soie, émerveille par sa place du Régistan, ses médersas aux faïences bleues et le mausolée Gour-Emir, reflets de la splendeur de l'empire de Tamerlan.",
+                cd2_p2: "Boukhara est un véritable musée vivant à ciel ouvert de plus de deux mille ans, réputé pour ses ruelles anciennes, ses caravansérails et son atmosphère paisible et spirituelle.",
+                hl_p1: "Explorer Tachkent, Samarcande et Boukhara est le cœur du circuit Échos de la Route de la Soie : suivez les pas des marchands et voyageurs qui parcouraient jadis ces terres légendaires.",
+                hl_p2: "Façonnées par des siècles de commerce, de science et de spiritualité, ces cités abritent des médersas, mosquées et caravansérails chargés d'histoire.",
+                hl_p3: "Les coupoles azur de Samarcande et les quartiers historiques préservés de Boukhara incarnent toute la magie intemporelle de la Route de la Soie.",
+                have_q: "Des questions ?", call_us: "Appelez-nous au ",
+                fq1_q: "Quelle est la meilleure période pour visiter l'Ouzbékistan ?", fq1_a: "Le printemps (mars–mai) et l'automne (septembre–novembre) offrent les températures les plus agréables pour les visites.",
+                fq2_q: "Et si je souhaite visiter davantage de villes ?", fq2_a: "Nous pouvons prolonger l'itinéraire vers Khiva ou Chakhrisabz sur demande, en ajustant la durée et le tarif.",
+                fq3_q: "Comment se font les trajets d'une ville à l'autre ?", fq3_a: "Les transferts s'effectuent en véhicule privé confortable ou en train à grande vitesse, tout étant inclus dans le forfait.",
+                fq4_q: "Puis-je choisir mon propre hôtel ?", fq4_a: "Oui, nous pouvons réserver un autre hôtel sur demande, selon disponibilité et ajustement tarifaire éventuel.",
+                fq5_q: "À quel aéroport arrivons-nous ?", fq5_a: "L'aéroport international de Tachkent (TAS) est le point d'entrée principal de ce circuit.",
+                ag_t: "Audioguide gratuit offert !", ag_d: "Pour l'achat de chacun de nos circuits, recevez un audioguide gratuit pour explorer librement ou en complément de notre guide.",
+                btn_learn_more: "En savoir plus",
+                contact_title: "Contactez-nous",
+                contact_desc: "Écrivez-nous pour toute question sur nos circuits, voyages sur mesure ou offres spéciales. Nous proposons des voyages en groupe et privés adaptés à toutes vos envies !",
+                contact_btn: "Consultation gratuite",
+                box_hours: "Horaires", box_mon_sat: "Lundi – Samedi : 11h00 – 21h00", box_sun: "Dimanche : 11h00 – 19h00",
+                footer_tour_minarets: "Circuit Minarets Majestueux"
+            },
+            de: {
+                page_title: "Echo der Seidenstraße | TGS Travel",
+                tour_name: "Echo der Seidenstraße",
+                w1_t: "Wohin?", w1_p: "Tauchen Sie ein in eine Welt alter Legenden, majestätischer Architektur und reicher Kultur auf dieser unvergesslichen 7-tägigen Reise durch Taschkent, Buchara und Samarkand.",
+                w1_l1: "Modernes, lebendiges Taschkent", w1_l2: "Samarkand mit majestätischen blauen Kuppeln", w1_l3: "Buchara, die lebendige Altstadt",
+                w2_t: "Für wen?", w2_p: "Kleine Gruppen von 1–10 Personen – ideal für aktive Reisende mit Abenteuerlust.",
+                w2_l1: "Für Kinder und Erwachsene", w2_l2: "Paare herzlich willkommen", w2_l3: "Alle Guides sprechen Englisch (Deutsch auf Anfrage)",
+                w3_t: "Warum?", w3_p: "Usbekistan ist ein außergewöhnliches Land voller beeindruckender historischer Kulissen.",
+                w3_l1: "Kunstvolle Metro Taschkent", w3_l2: "Pracht des Registan-Platzes", w3_l3: "Poi-Kalon-Ensemble",
+                join_badge: "Antike Schönheit", join_title: "Begleiten Sie uns nach Usbekistan",
+                join_p1: "Erleben Sie die faszinierenden Kontraste Usbekistans – von Taschkents moderner Energie und kunstvoller Metro über die Pracht Samarkands bis zur lebendigen Geschichte Bucharas.",
+                join_p2: "Echo der Seidenstraße ist eine Kulturreise durch Taschkent, Samarkand und Buchara im Herzen Usbekistans, die Reisende aus aller Welt mit ihrem zeitlosen Erbe begeistert.",
+                email_us: "Schreiben Sie uns",
+                ic1_t: "<span class=\"text-gold\">7 Tage</span> Dauer", ic1_d: "Genug Zeit, um alle Höhepunkte entspannt zu erkunden.",
+                ic2_t: "ab <span class=\"text-gold\">1.200 $</span> pro Person", ic2_d: "Unterkunft, Versicherung, Transfers und Ausflüge inklusive.",
+                ic3_t: "<span class=\"text-gold\">1–10</span> Personen", ic3_d: "Wir gestalten besonders gerne Touren für kleine Gruppen.",
+                ic4_t: "<span class=\"text-gold\">-15%</span> Rabatt", ic4_d: "Buchen Sie drei oder mehr Touren und sichern Sie sich 15 % Rabatt!",
+                it_title: "Reiseverlauf",
+                d1_t: "TAG 1: Ankunft in Taschkent",
+                d1_b: "<p>Bei Ihrer Ankunft am internationalen Flughafen Taschkent empfängt Sie unser Mitarbeiter mit einem Namensschild. Bequemer Transfer zum Hotel, Check-in und Entspannung nach der Anreise. Je nach Ankunftszeit können Sie die Umgebung erkunden oder sich ausruhen.</p><p>Übernachtung in Taschkent.</p>",
+                d2_t: "TAG 2: Stadtbesichtigung Taschkent", d2_b: "<p>– Frühstück im Hotel</p><p>– Stadtrundfahrt: Chast-Imam-Komplex, Chorsu-Basar, Metro Taschkent</p><p>– Mittagessen im lokalen Restaurant</p><p>– Freier Abend in Taschkent</p>",
+                d3_t: "TAG 3: Taschkent – Buchara", d3_b: "<p>– Frühstück im Hotel</p><p>– Morgenzug oder Flug nach Buchara</p><p>– Check-in im Hotel und Freizeit zum Ausruhen</p><p>– Übernachtung in Buchara</p>",
+                d4_t: "TAG 4: Buchara – Samarkand", d4_b: "<p>– Frühstück im Hotel</p><p>– Stadtrundgang: Festung Ark, Poi-Kalon-Ensemble, Ljab-i Hauz</p><p>– Transfer nach Samarkand</p><p>– Übernachtung in Samarkand</p>",
+                d5_t: "TAG 5: Stadtbesichtigung Samarkand", d5_b: "<p>– Frühstück im Hotel</p><p>– Registan-Platz, Gur-Emir-Mausoleum, Schah-i-Sinda</p><p>– Mittagessen im lokalen Restaurant</p><p>– Freier Abend in Samarkand</p>",
+                d6_t: "TAG 6: Samarkand – Taschkent", d6_b: "<p>– Frühstück im Hotel</p><p>– Besuch des Ulugbek-Observatoriums</p><p>– Morgenzug zurück nach Taschkent</p><p>– Abschiedsabendessen mit traditioneller Show</p>",
+                d7_t: "TAG 7: Letzter Tag in Taschkent, Abreise", d7_b: "<p>– Frühstück im Hotel</p><p>– Freizeit / optionale Ausflüge</p><p>– Transfer zum Flughafen</p><p>– Rückflug</p>",
+                cd1_p1: "Taschkent gilt als Tor zu Zentralasien, wo alte Traditionen auf eine moderne Metropole treffen – mit breiten grünen Alleen und einem der ältesten Korane der Welt im Chast-Imam-Komplex.",
+                cd1_p2: "Die Stadt begeistert zudem mit dem farbenfrohen Chorsu-Basar und einer der schönsten U-Bahnen der Welt, deren Stationen wie Kunstwerke gestaltet sind. Willkommen in Taschkent!",
+                cd2_p1: "Samarkand, die Perle der Seidenstraße, verzaubert mit dem legendären Registan-Platz, blau gekachelten Medresen und dem majestätischen Gur-Emir-Mausoleum.",
+                cd2_p2: "Buchara ist ein Freilichtmuseum mit über zweitausendjähriger Geschichte: schmale Gassen, historische Moscheen, Karawansereien und der ikonische Poi-Kalon-Komplex schaffen eine zeitlose Atmosphäre.",
+                hl_p1: "Das Erkunden von Taschkent, Samarkand und Buchara bildet das Herzstück dieser Reise – folgen Sie den Spuren der Händler und Reisenden der alten Seidenstraße.",
+                hl_p2: "Jahrhunderte von Handel, Wissenschaft und Spiritualität prägten diese legendären Städte mit ihren monumentalen Medresen, Moscheen und Karawansereien.",
+                hl_p3: "Die strahlend blauen Kuppeln Samarkands und die bewahrten Altstadtviertel Bucharas sind weltberühmte Symbole der Seidenstraße mit fast mythischer Ausstrahlung.",
+                have_q: "Haben Sie Fragen?", call_us: "Rufen Sie uns an: ",
+                fq1_q: "Wann ist die beste Reisezeit für Usbekistan?", fq1_a: "Frühling (März–Mai) und Herbst (September–November) bieten die angenehmsten Temperaturen für Besichtigungen.",
+                fq2_q: "Was, wenn ich noch mehr Städte besuchen möchte?", fq2_a: "Auf Wunsch erweitern wir die Route gerne um weitere Städte wie Chiwa oder Schachrisabs mit angepasster Dauer und Preis.",
+                fq3_q: "Wie reisen wir von einer Stadt zur nächsten?", fq3_a: "Die Transfers erfolgen bequem im klimatisierten Privatfahrzeug oder mit dem Hochgeschwindigkeitszug – alles im Paket enthalten.",
+                fq4_q: "Kann ich selbst ein Hotel wählen?", fq4_a: "Ja, auf Wunsch arrangieren wir gerne ein alternatives Hotel (je nach Verfügbarkeit und eventueller Preisanpassung).",
+                fq5_q: "Welchen Flughafen fliegen wir an?", fq5_a: "Der internationale Flughafen Taschkent (TAS) ist der Hauptankunftsort für diese Tour.",
+                ag_t: "Kostenloser Audioguide inklusive!", ag_d: "Bei Buchung jeder unserer Touren erhalten Sie einen kostenlosen Audioguide als ideale Ergänzung zum Reiseleiter.",
+                btn_learn_more: "Mehr erfahren",
+                contact_title: "Kontaktieren Sie uns",
+                contact_desc: "Melden Sie sich gerne bei Fragen zu unseren Touren, individuellen Paketen oder Sonderangeboten. Wir bieten Gruppen- und Privatreisen ganz nach Ihren Wünschen!",
+                contact_btn: "Kostenlose Beratung",
+                box_hours: "Öffnungszeiten", box_mon_sat: "Montag – Samstag: 11:00 – 21:00 Uhr", box_sun: "Sonntag: 11:00 – 19:00 Uhr",
+                footer_tour_minarets: "Majestätische Minarette Tour"
+            },
+            tr: {
+                page_title: "İpek Yolu'nun Yankıları | TGS Travel",
+                tour_name: "İpek Yolu'nun Yankıları",
+                w1_t: "Nereye?", w1_p: "Özbekistan'ın kalbinde 7 günlük bu unutulmaz yolculukla kadim efsaneler, görkemli mimari ve köklü kültür dünyasına adım atın. Modern Taşkent'ten tarihi Buhara ve Semerkant'a gelenek, güzellik ve konfor bir arada.",
+                w1_l1: "Modern ve Aydınlık Taşkent", w1_l2: "Görkemli Mavi Kubbeli Semerkant", w1_l3: "Yaşayan Kadim Şehir Buhara",
+                w2_t: "Kimler İçin?", w2_p: "Gruplarımız 1–10 kişiden oluşur. Macerayı seven aktif gezginleri bekliyoruz.",
+                w2_l1: "Çocuklar ve yetişkinler için uygun", w2_l2: "Çiftler için ideal", w2_l3: "Tüm rehberler İngilizce bilir (talebe göre Türkçe)",
+                w3_t: "Neden?", w3_p: "Özbekistan her köşesinde tarihi manzaralar sunan eşsiz bir coğrafyadır.",
+                w3_l1: "Taşkent Metrosu Sanatı", w3_l2: "Registan Meydanı İhtişamı", w3_l3: "Poi Kalyan Külliyesi",
+                join_badge: "Kadim Güzellik", join_title: "Özbekistan Turumuza Katılın",
+                join_p1: "Taşkent'in modern enerjisi ve sanatsal metrosundan Semerkant'ın zamansız İpek Yolu ihtişamına ve Buhara'nın yaşayan manevi tarihine kadar Özbekistan'ın büyüleyici kontrastını deneyimleyin.",
+                join_p2: "İpek Yolu'nun Yankıları; Özbekistan'ın kalbindeki Taşkent, Semerkant ve Buhara boyunca uzanan, görkemli mimarisi ve köklü tarihiyle dünyanın dört bir yanından gezginleri çeken özel bir kültür yolculuğudur.",
+                email_us: "Bize E-posta Gönderin",
+                ic1_t: "<span class=\"text-gold\">7 Gün</span> Süre", ic1_d: "Keşfetmek ve tüm gezilerin tadını çıkarmak için ideal süre.",
+                ic2_t: "Kişi başı <span class=\"text-gold\">$1.200</span>'dan", ic2_d: "Konaklama, sigorta, ulaşım ve rehberli geziler dahildir.",
+                ic3_t: "<span class=\"text-gold\">1–10</span> Kişi", ic3_d: "Küçük ve samimi gruplarla özel turlar düzenlemekten keyif alıyoruz.",
+                ic4_t: "<span class=\"text-gold\">-%15</span> İndirim", ic4_d: "Üç veya daha fazla tur rezerve edin, bu turda %15 indirim kazanın!",
+                it_title: "Tur Programı",
+                d1_t: "1. GÜN: Taşkent'e Varış",
+                d1_b: "<p>Taşkent Uluslararası Havalimanı'na varışınızda temsilcimiz sizi isminizin yazılı olduğu tabela ile karşılar. Otelinize konforlu transferin ardından giriş yapıp dinlenebilirsiniz. Varış saatinize göre çevreyi kendi temponuzda keşfedebilirsiniz.</p><p>Taşkent'te konaklama.</p>",
+                d2_t: "2. GÜN: Taşkent Şehir Turu", d2_b: "<p>– Otelde kahvaltı</p><p>– Şehir turu: Hazreti İmam Külliyesi, Çorsu Pazarı, Taşkent Metrosu</p><p>– Yerel restoranda öğle yemeği</p><p>– Taşkent'te serbest akşam</p>",
+                d3_t: "3. GÜN: Taşkent – Buhara", d3_b: "<p>– Otelde kahvaltı</p><p>– Sabah treni veya uçuşu ile Buhara'ya yolculuk</p><p>– Otele giriş ve dinlenme için serbest zaman</p><p>– Buhara'da konaklama</p>",
+                d4_t: "4. GÜN: Buhara – Semerkant", d4_b: "<p>– Otelde kahvaltı</p><p>– Şehir turu: Ark Kalesi, Poi Kalyan Külliyesi, Leb-i Havuz</p><p>– Semerkant'a transfer</p><p>– Semerkant'ta konaklama</p>",
+                d5_t: "5. GÜN: Semerkant Şehir Turu", d5_b: "<p>– Otelde kahvaltı</p><p>– Registan Meydanı, Gur-i Emir Türbesi, Şah-ı Zinde ziyareti</p><p>– Yerel restoranda öğle yemeği</p><p>– Semerkant'ta serbest akşam</p>",
+                d6_t: "6. GÜN: Semerkant – Taşkent", d6_b: "<p>– Otelde kahvaltı</p><p>– Uluğ Bey Rasathanesi ziyareti</p><p>– Sabah treni ile Taşkent'e dönüş</p><p>– Geleneksel gösteri eşliğinde veda yemeği</p>",
+                d7_t: "7. GÜN: Taşkent'te Son Gün, Dönüş", d7_b: "<p>– Otelde kahvaltı</p><p>– Serbest zaman / isteğe bağlı geziler</p><p>– Havalimanına transfer</p><p>– Dönüş uçuşu</p>",
+                cd1_p1: "Orta Asya'nın kapısı olarak anılan Taşkent, kadim geleneklerle modern metropolü buluşturur. Geniş yeşil bulvarları ve Hazreti İmam Külliyesi'ndeki en eski Kur'an nüshalarından biriyle ziyaretçilerini şaşırtır.",
+                cd1_p2: "Renkli Çorsu Pazarı, canlı kültür hayatı ve her istasyonu bir sanat eseri olan dünyanın en güzel metrolarından biriyle Taşkent keşfedilmeyi bekleyen hikayelerle doludur.",
+                cd2_p1: "İpek Yolu'nun incisi Semerkant; efsanevi Registan Meydanı, mavi çinili medreseleri ve Gur-i Emir Türbesi ile Timur İmparatorluğu'nun görkemini yansıtır.",
+                cd2_p2: "Açık hava müzesi olarak bilinen Buhara, iki bin yılı aşan tarihini dar sokakları, tarihi camileri, kervansarayları ve Poi Kalyan Külliyesi ile bugüne taşır.",
+                hl_p1: "Taşkent, Semerkant ve Buhara'yı keşfetmek bu turun en özel deneyimidir; yüzyıllar önce bu topraklardan geçen tüccarların izinde İpek Yolu'nun gerçek ruhunu hissedersiniz.",
+                hl_p2: "Yüzyıllar süren ticaret, bilim ve maneviyatın şekillendirdiği kadim medreseler, camiler ve kervansaraylar Asya ile Avrupa arasındaki kadim bağları anlatır.",
+                hl_p3: "Semerkant'ın turkuaz kubbeleri ve Buhara'nın korunmuş tarihi mahalleleri İpek Yolu'nun zamansız simgeleri olarak bugün de gezginleri büyülemeye devam eder.",
+                have_q: "Sorularınız mı var?", call_us: "Bizi arayın: ",
+                fq1_q: "Özbekistan'ı ziyaret etmek için en iyi zaman nedir?", fq1_a: "İlkbahar (Mart–Mayıs) ve sonbahar (Eylül–Kasım) gezi için en ideal ve konforlu sıcaklıklara sahiptir.",
+                fq2_q: "Daha fazla şehir ziyaret etmek istersem ne olur?", fq2_a: "Talebinize göre Hive veya Şehrisebz gibi ek şehirleri süre ve fiyat düzenlemesiyle rotaya dahil edebiliriz.",
+                fq3_q: "Şehirler arası ulaşım nasıl sağlanıyor?", fq3_a: "Şehirler arası transferler konforlu özel araçlar veya yüksek hızlı trenlerle yapılır ve tamamı tur paketine dahildir.",
+                fq4_q: "Oteli kendim seçebilir miyim?", fq4_a: "Evet, müsaitlik ve olası fiyat farkına bağlı olarak talebinize göre alternatif otel ayarlayabiliriz.",
+                fq5_q: "Hangi havalimanına iniyoruz?", fq5_a: "Bu tur için ana giriş noktası Taşkent Uluslararası Havalimanı'dır (TAS).",
+                ag_t: "Ücretsiz Sesli Rehber Kazanın!", ag_d: "Turlarımızdan herhangi birini satın aldığınızda ücretsiz sesli rehber hediye ediyoruz; ister kendi temponuzda ister rehberimizle keşfedin.",
+                btn_learn_more: "Detayları Gör",
+                contact_title: "Hemen İletişime Geçin",
+                contact_desc: "Turlarımız, özel paketlerimiz veya kampanyalarımız hakkında her türlü sorunuz için bize ulaşabilirsiniz. Hem grup hem bireysel turlar düzenliyoruz!",
+                contact_btn: "Ücretsiz Danışmanlık Al",
+                box_hours: "Çalışma Saatleri", box_mon_sat: "Pazartesi – Cumartesi: 11:00 – 21:00", box_sun: "Pazar: 11:00 – 19:00",
+                footer_tour_minarets: "Görkemli Minareler Turu"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
@@ -563,19 +855,30 @@
             once: true,
         });
 
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
         // Accordion logic
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-
-                // Close siblings within the same accordion group
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
     </script>
