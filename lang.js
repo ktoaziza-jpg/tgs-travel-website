@@ -43,7 +43,6 @@ window.TGS_COMMON_TRANSLATIONS = {
 
         map_tap_explore: "Tap to explore →",
 
-        // Консьерж и формы
         concierge_btn: "Ask an Expert",
         concierge_title: "TGS Travel Concierge",
         concierge_sub: "We usually reply within 5 minutes",
@@ -376,6 +375,7 @@ window.TGS_COMMON_TRANSLATIONS = {
             });
             payload["_subject"] = "New TGS Travel Request (" + document.title + ")";
             payload["_template"] = "table";
+            payload["_captcha"] = "false";
             payload["Page"] = window.location.href;
             payload["Language"] = (window.tgsLang || "en").toUpperCase();
 
@@ -389,12 +389,16 @@ window.TGS_COMMON_TRANSLATIONS = {
                     body: JSON.stringify(payload)
                 });
                 const data = await res.json();
+
                 if (res.ok && (data.success === "true" || data.success === true)) {
-                    statusEl.className = "tgs-form-status text-sm mt-3 font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3";
+                    statusEl.className = "tgs-form-status text-sm mt-3 font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3";
                     statusEl.textContent = window.tgsTranslate("form_success");
                     form.reset();
+                } else if (data && data.message && data.message.toLowerCase().includes("activation")) {
+                    statusEl.className = "tgs-form-status text-sm mt-3 font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3";
+                    statusEl.textContent = "Almost done! Check info@tgstraveluz.com and click 'Activate Form' (one-time setup).";
                 } else {
-                    throw new Error("Submit error");
+                    throw new Error((data && data.message) || "Submit error");
                 }
             } catch (err) {
                 statusEl.className = "tgs-form-status text-sm mt-3 font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3";
@@ -416,7 +420,6 @@ window.TGS_COMMON_TRANSLATIONS = {
         root.id = "tgs-concierge-root";
         root.innerHTML = `
             <div class="fixed bottom-5 right-5 z-[90] font-sans">
-                <!-- Окно консьержа -->
                 <div id="tgs-concierge-panel" class="hidden mb-3 w-[320px] sm:w-[350px] bg-white rounded-2xl shadow-2xl border border-teal-900/15 overflow-hidden">
                     <div class="bg-teal-900 text-cream px-5 py-4 flex items-center justify-between">
                         <div class="flex items-center gap-3">
@@ -463,7 +466,6 @@ window.TGS_COMMON_TRANSLATIONS = {
                     </div>
                 </div>
 
-                <!-- Плавающая кнопка -->
                 <button type="button" id="tgs-concierge-toggle"
                     class="ml-auto flex items-center gap-3 bg-teal-900 text-cream pl-4 pr-5 py-3 rounded-full shadow-2xl border border-gold/40 hover:bg-gold hover:text-teal-900 transition duration-300 group">
                     <span class="relative flex h-3 w-3">

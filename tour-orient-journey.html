@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
         tailwind.config = {
@@ -68,16 +70,24 @@
         .accordion-icon {
             transition: transform 0.3s ease;
         }
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>
-    .leaflet-tile-pane { filter: saturate(0.25) brightness(1.08) contrast(0.9) sepia(0.12); }
-    .route-tooltip {
-        background: #16697A !important; color: #EDE7E3 !important; border: none !important;
-        border-radius: 6px !important; padding: 6px 10px !important;
-        font-family: 'Inter', sans-serif !important; font-size: 12px !important; font-weight: 500;
-    }
-</style>
+
+        /* Карта маршрута */
+        .leaflet-tile-pane { filter: saturate(0.25) brightness(1.08) contrast(0.9) sepia(0.12); }
+        .route-tooltip {
+            background: #16697A !important;
+            color: #EDE7E3 !important;
+            border: none !important;
+            border-radius: 6px !important;
+            padding: 6px 10px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+        }
+        .leaflet-tooltip-top.route-tooltip::before {
+            border-top-color: #16697A !important;
+        }
+    </style>
 </head>
 <body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
 
@@ -290,7 +300,7 @@
                     </div>
                     <div>
                         <div class="font-bold text-teal-900" data-i18n="email_us">Email Us</div>
-                        <a href="mailto:tripginfo@gmail.com" class="text-teal-500 font-medium hover:text-gold transition">tripginfo@gmail.com</a>
+                        <a href="mailto:info@tgstraveluz.com" class="text-teal-500 font-medium hover:text-gold transition">info@tgstraveluz.com</a>
                     </div>
                 </div>
             </div>
@@ -320,12 +330,13 @@
         </div>
     </section>
 
-    <!-- ITINERARY -->
+    <!-- ITINERARY + ИНТЕРАКТИВНАЯ КАРТА МАРШРУТА -->
     <section class="py-20 px-6 max-w-3xl mx-auto">
-        <h2 class="font-serif text-4xl md:text-5xl font-bold text-gold text-center mb-12" data-aos="fade-up" data-i18n="it_title">Itinerary</h2>
-<div class="mb-10 rounded-2xl overflow-hidden border border-teal-900/15 shadow-lg relative z-0 h-[300px] md:h-[360px]" data-aos="fade-up">
-    <div id="tourRouteMap" style="width:100%;height:100%;background:#f8f9fa;"></div>
-</div>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-gold text-center mb-10" data-aos="fade-up" data-i18n="it_title">Itinerary</h2>
+
+        <div class="mb-10 rounded-2xl overflow-hidden border border-teal-900/15 shadow-lg relative z-0 h-[300px] md:h-[360px]">
+            <div id="tourRouteMap" style="width:100%;height:100%;background:#f8f9fa;"></div>
+        </div>
 
         <div class="space-y-0 border-t border-teal-900/10" id="itinerary-accordion">
             <div class="accordion-item active border-b border-teal-900/10">
@@ -335,7 +346,7 @@
                 </button>
                 <div class="accordion-content">
                     <div class="pb-6 text-sm text-teal-900/70 font-light space-y-2" data-i18n-html="d1_b">
-                        <p>- Meeting at the airport with a tourists or groups name poster</p>
+                        <p>- Meeting at the airport with a name sign</p>
                         <p>- Transfer to the hotel</p>
                         <p>- Time for rest</p>
                         <p>- Night in Tashkent</p>
@@ -845,7 +856,7 @@
             }
         };
     </script>
-    <script src="lang.js"></script>
+    <script src="lang.js?v=2"></script>
 
     <script>
         lucide.createIcons();
@@ -874,7 +885,7 @@
         if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
         if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
 
-        // Accordion logic
+        // Аккордеоны
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
@@ -885,86 +896,86 @@
             });
         });
     </script>
-<script>
-(function () {
-    const stops = [
-        { key: "tashkent",  coords: [41.2995, 69.2401], names: { en: "Tashkent",  ru: "Ташкент",  fr: "Tachkent",   de: "Taschkent", tr: "Taşkent" } },
-        { key: "samarkand", coords: [39.6542, 66.9597], names: { en: "Samarkand", ru: "Самарканд", fr: "Samarcande", de: "Samarkand", tr: "Semerkant" } },
-        { key: "bukhara",   coords: [39.7747, 64.4286], names: { en: "Bukhara",   ru: "Бухара",   fr: "Boukhara",   de: "Buchara",   tr: "Buhara" } }
-    ];
 
-    // Какой город соответствует каждому дню аккордеона (индексы 0..6)
-    const dayToStop = [0, 0, 1, 2, 2, 0, 0];
+    <!-- АНИМИРОВАННАЯ КАРТА МАРШРУТА -->
+    <script>
+    (function () {
+        const stops = [
+            { key: "tashkent",  coords: [41.2995, 69.2401], names: { en: "Tashkent",  ru: "Ташкент",  fr: "Tachkent",   de: "Taschkent", tr: "Taşkent" } },
+            { key: "samarkand", coords: [39.6542, 66.9597], names: { en: "Samarkand", ru: "Самарканд", fr: "Samarcande", de: "Samarkand", tr: "Semerkant" } },
+            { key: "bukhara",   coords: [39.7747, 64.4286], names: { en: "Bukhara",   ru: "Бухара",   fr: "Boukhara",   de: "Buchara",   tr: "Buhara" } }
+        ];
 
-    let map, markers = [];
+        const dayToStop = [0, 0, 1, 2, 2, 0, 0];
+        let map, markers = [];
 
-    function makeIcon(active) {
-        const size = active ? 22 : 14;
-        const ring = active ? '<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>' : '';
-        const bg = active ? 'bg-gold border-white' : 'bg-teal-900 border-gold';
-        return L.divIcon({
-            html: `<div class="relative flex items-center justify-center" style="width:${size}px;height:${size}px;">${ring}<span class="relative inline-flex rounded-full ${bg} border-2 shadow-md" style="width:${size - 4}px;height:${size - 4}px;"></span></div>`,
-            className: '',
-            iconSize: [size, size],
-            iconAnchor: [size / 2, size / 2]
-        });
-    }
-
-    function highlightStop(stopIndex, shouldFly) {
-        const lang = window.tgsLang || "en";
-        markers.forEach((m, i) => {
-            const isActive = i === stopIndex;
-            m.setIcon(makeIcon(isActive));
-            m.setTooltipContent(stops[i].names[lang] || stops[i].names.en);
-            if (isActive) m.openTooltip(); else m.closeTooltip();
-        });
-        if (shouldFly && map) {
-            map.flyTo(stops[stopIndex].coords, 7, { duration: 1.2 });
+        function makeIcon(active) {
+            const size = active ? 22 : 14;
+            const ring = active ? '<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>' : '';
+            const bg = active ? 'bg-gold border-white' : 'bg-teal-900 border-gold';
+            return L.divIcon({
+                html: `<div class="relative flex items-center justify-center" style="width:${size}px;height:${size}px;">${ring}<span class="relative inline-flex rounded-full ${bg} border-2 shadow-md" style="width:${size - 4}px;height:${size - 4}px;"></span></div>`,
+                className: '',
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+            });
         }
-    }
 
-    window.addEventListener("load", function () {
-        const el = document.getElementById("tourRouteMap");
-        if (!el || typeof L === "undefined") return;
-
-        map = L.map("tourRouteMap", { center: [40.3, 66.9], zoom: 6, scrollWheelZoom: false });
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: "© OpenStreetMap",
-            subdomains: ["a", "b", "c"]
-        }).addTo(map);
-
-        // Золотая пунктирная линия маршрута (туда и обратно)
-        L.polyline([stops[0].coords, stops[1].coords, stops[2].coords, stops[0].coords], {
-            color: "#FFA62B", weight: 3, dashArray: "8, 8", opacity: 0.9
-        }).addTo(map);
-
-        const lang = window.tgsLang || "en";
-        stops.forEach((s, idx) => {
-            const m = L.marker(s.coords, { icon: makeIcon(idx === 0) }).addTo(map);
-            m.bindTooltip(s.names[lang] || s.names.en, { className: "route-tooltip", direction: "top", offset: [0, -10] });
-            markers.push(m);
-        });
-        highlightStop(0, false);
-
-        // При клике на любой день в #itinerary-accordion — летим к его городу
-        const items = document.querySelectorAll("#itinerary-accordion .accordion-item");
-        items.forEach((item, idx) => {
-            const btn = item.querySelector(".accordion-trigger");
-            if (btn) {
-                btn.addEventListener("click", () => {
-                    const stopIdx = dayToStop[idx] !== undefined ? dayToStop[idx] : 0;
-                    highlightStop(stopIdx, true);
-                });
+        function highlightStop(stopIndex, shouldFly) {
+            const lang = window.tgsLang || "en";
+            markers.forEach((m, i) => {
+                const isActive = i === stopIndex;
+                m.setIcon(makeIcon(isActive));
+                m.setTooltipContent(stops[i].names[lang] || stops[i].names.en);
+                if (isActive) m.openTooltip(); else m.closeTooltip();
+            });
+            if (shouldFly && map) {
+                map.flyTo(stops[stopIndex].coords, 7, { duration: 1.2 });
             }
-        });
-    });
+        }
 
-    window.addEventListener("languageChanged", () => {
-        const activeIdx = Array.from(document.querySelectorAll("#itinerary-accordion .accordion-item"))
-            .findIndex(i => i.classList.contains("active"));
-        if (markers.length) highlightStop(dayToStop[activeIdx >= 0 ? activeIdx : 0] || 0, false);
-    });
-})();
-</script>
+        function initRouteMap() {
+            const el = document.getElementById("tourRouteMap");
+            if (!el || typeof L === "undefined" || map) return;
+
+            map = L.map("tourRouteMap", { center: [40.3, 66.9], zoom: 6, scrollWheelZoom: false });
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "© OpenStreetMap",
+                subdomains: ["a", "b", "c"]
+            }).addTo(map);
+
+            L.polyline([stops[0].coords, stops[1].coords, stops[2].coords, stops[0].coords], {
+                color: "#FFA62B", weight: 3, dashArray: "8, 8", opacity: 0.9
+            }).addTo(map);
+
+            const lang = window.tgsLang || "en";
+            stops.forEach((s, idx) => {
+                const m = L.marker(s.coords, { icon: makeIcon(idx === 0) }).addTo(map);
+                m.bindTooltip(s.names[lang] || s.names.en, { className: "route-tooltip", direction: "top", offset: [0, -10] });
+                markers.push(m);
+            });
+
+            highlightStop(0, false);
+            setTimeout(() => map.invalidateSize(), 400);
+
+            document.querySelectorAll("#itinerary-accordion .accordion-item").forEach((item, idx) => {
+                const btn = item.querySelector(".accordion-trigger");
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        const stopIdx = dayToStop[idx] !== undefined ? dayToStop[idx] : 0;
+                        highlightStop(stopIdx, true);
+                    });
+                }
+            });
+        }
+
+        window.addEventListener("load", initRouteMap);
+        window.addEventListener("languageChanged", () => {
+            const activeIdx = Array.from(document.querySelectorAll("#itinerary-accordion .accordion-item"))
+                .findIndex(i => i.classList.contains("active"));
+            if (markers.length) highlightStop(dayToStop[activeIdx >= 0 ? activeIdx : 0] || 0, false);
+        });
+    })();
+    </script>
 </body>
-</html>
+</html>ы
