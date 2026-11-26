@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
     <style>
         html { scroll-behavior: smooth; }
         .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
-        
+
         /* Dropdown Menu */
         .dropdown-menu {
             opacity: 0;
@@ -49,6 +49,14 @@
             transform: translateY(0);
         }
 
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.4s ease-in-out;
+        }
+        .mobile-menu-open {
+            transform: translateX(0) !important;
+        }
+
         /* Accordion */
         .accordion-content {
             max-height: 0;
@@ -57,7 +65,7 @@
             opacity: 0;
         }
         .accordion-item.active .accordion-content {
-            max-height: 500px;
+            max-height: 800px;
             opacity: 1;
         }
         .accordion-item.active .accordion-icon {
@@ -66,9 +74,10 @@
 
         /* Season Tabs */
         .season-tab.active {
-            background-color: #16697A;
-            color: #EDE7E3;
-            border-color: #16697A;
+            background-color: #FFA62B;
+            color: #16697A;
+            border-color: #FFA62B;
+            font-weight: 600;
         }
         .season-content {
             display: none;
@@ -85,112 +94,195 @@
 </head>
 <body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
 
+    <!-- НАВИГАЦИЯ -->
     <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок: Язык + Get a Quote (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-gold font-bold text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
+    <!-- HERO -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
             <img src="https://static1.evcdn.net/cdn-cgi/image/width=3840,height=3072,quality=70,fit=crop/offer/raw/2025/09/19/c7e4c3fc-1e3f-4711-85d4-80c771cb4b5a.jpg" alt="Kazakhstan Landscape" class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down" data-i18n="hero_badge">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-i18n="country_kazakhstan">
                 Kazakhstan
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
                 The Land of Great Steppes & Modern Marvels
             </p>
         </div>
     </section>
 
+    <!-- INTRO -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Discover the 9th Largest Country</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">Heart of Eurasia</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="intro_badge">Discover the 9th Largest Country</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6" data-i18n="intro_title">Heart of Eurasia</h2>
                 <div class="w-16 h-1 bg-gold mb-8"></div>
                 
-                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed" data-i18n="intro_p1">
                     Kazakhstan is a country of breathtaking contrasts. From the endless, sweeping steppes where nomadic traditions were born, to the hyper-modern, futuristic skyline of Astana, it offers an adventure unlike any other in Central Asia.
                 </p>
-                <p class="text-teal-900/80 font-light mb-6 leading-relaxed">
+                <p class="text-teal-900/80 font-light mb-6 leading-relaxed" data-i18n="intro_p2">
                     Here, you can hike through alpine meadows, explore dramatic canyons that rival the Grand Canyon, ski down Olympic-grade mountain slopes, and experience the warm hospitality of the Kazakh people in traditional yurts.
                 </p>
                 
                 <div class="grid grid-cols-2 gap-6 mt-10">
                     <div>
-                        <div class="font-bold text-2xl text-gold mb-1">Capital</div>
-                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Astana</div>
+                        <div class="font-bold text-2xl text-gold mb-1" data-i18n="fact_capital_label">Capital</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider" data-i18n="fact_capital_val">Astana</div>
                     </div>
                     <div>
-                        <div class="font-bold text-2xl text-gold mb-1">Currency</div>
-                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Tenge (KZT)</div>
+                        <div class="font-bold text-2xl text-gold mb-1" data-i18n="fact_currency_label">Currency</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider" data-i18n="fact_currency_val">Tenge (KZT)</div>
                     </div>
                     <div>
-                        <div class="font-bold text-2xl text-gold mb-1">Language</div>
-                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Kazakh, Russian</div>
+                        <div class="font-bold text-2xl text-gold mb-1" data-i18n="fact_language_label">Language</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider" data-i18n="fact_language_val">Kazakh, Russian</div>
                     </div>
                     <div>
-                        <div class="font-bold text-2xl text-gold mb-1">Best For</div>
-                        <div class="text-sm text-teal-900/70 uppercase tracking-wider">Nature, Trekking, Culture</div>
+                        <div class="font-bold text-2xl text-gold mb-1" data-i18n="fact_bestfor_label">Best For</div>
+                        <div class="text-sm text-teal-900/70 uppercase tracking-wider" data-i18n="fact_bestfor_val">Nature, Trekking, Culture</div>
                     </div>
                 </div>
             </div>
@@ -200,33 +292,34 @@
                     <img src="https://i.natgeofe.com/n/65b5d84b-c44e-41d0-8ee9-5295e1e6eba5/silkroad_shutterstock_1236828025_HR.jpg" alt="Charyn Canyon" class="w-full h-full object-cover">
                 </div>
                 <div class="absolute -bottom-8 -left-8 bg-white p-6 shadow-xl max-w-xs border-t-4 border-gold hidden md:block">
-                    <div class="font-serif text-xl font-bold text-teal-900 mb-2">Charyn Canyon</div>
-                    <p class="text-sm text-teal-900/60 font-light">Nature's ancient masterpiece carved over 12 million years.</p>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n="charyn_card_title">Charyn Canyon</div>
+                    <p class="text-sm text-teal-900/60 font-light" data-i18n="charyn_card_desc">Nature's ancient masterpiece carved over 12 million years.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- TOP DESTINATIONS -->
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="dest_badge">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="dest_title">Top Destinations</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Almaty & Surroundings</span>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d1_title">Almaty & Surroundings</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The cultural and financial hub of Kazakhstan, beautifully nestled at the foothills of the Trans-Ili Alatau mountains. It is the perfect blend of a vibrant modern city and accessible alpine nature.</p>
+                            <p class="mb-4" data-i18n="d1_p">The cultural and financial hub of Kazakhstan, beautifully nestled at the foothills of the Trans-Ili Alatau mountains. It is the perfect blend of a vibrant modern city and accessible alpine nature.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Medeu & Shymbulak:</strong> The world's highest skating rink and a premium ski resort located just 30 minutes from the city center.</li>
-                                <li><strong>Big Almaty Lake:</strong> A stunning, turquoise-colored alpine lake situated at 2,511 meters above sea level.</li>
-                                <li><strong>Zenkov Cathedral:</strong> A gorgeous wooden orthodox cathedral built entirely without nails, located in Panfilov Park.</li>
+                                <li data-i18n-html="d1_li1"><strong>Medeu & Shymbulak:</strong> The world's highest skating rink and a premium ski resort located just 30 minutes from the city center.</li>
+                                <li data-i18n-html="d1_li2"><strong>Big Almaty Lake:</strong> A stunning, turquoise-colored alpine lake situated at 2,511 meters above sea level.</li>
+                                <li data-i18n-html="d1_li3"><strong>Zenkov Cathedral:</strong> A gorgeous wooden orthodox cathedral built entirely without nails, located in Panfilov Park.</li>
                             </ul>
                         </div>
                     </div>
@@ -234,16 +327,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Astana (Nur-Sultan)</span>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d2_title">Astana (Nur-Sultan)</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The futuristic capital rising from the northern steppes. Astana is an architectural playground featuring designs by world-renowned architects.</p>
+                            <p class="mb-4" data-i18n="d2_p">The futuristic capital rising from the northern steppes. Astana is an architectural playground featuring designs by world-renowned architects.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Baiterek Tower:</strong> The symbol of the city, representing a mythical tree of life with a golden egg.</li>
-                                <li><strong>Khan Shatyr:</strong> A massive, transparent tent-like structure that houses a shopping mall and an indoor beach resort.</li>
-                                <li><strong>Hazrat Sultan Mosque:</strong> One of the largest and most magnificent mosques in Central Asia.</li>
+                                <li data-i18n-html="d2_li1"><strong>Baiterek Tower:</strong> The symbol of the city, representing a mythical tree of life with a golden egg.</li>
+                                <li data-i18n-html="d2_li2"><strong>Khan Shatyr:</strong> A massive, transparent tent-like structure that houses a shopping mall and an indoor beach resort.</li>
+                                <li data-i18n-html="d2_li3"><strong>Hazrat Sultan Mosque:</strong> One of the largest and most magnificent mosques in Central Asia.</li>
                             </ul>
                         </div>
                     </div>
@@ -251,33 +344,33 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Turkestan & The South</span>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d3_title">Turkestan & The South</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The spiritual and historical heart of Kazakhstan, connected deeply to the ancient Silk Road and Sufi traditions.</p>
+                            <p class="mb-4" data-i18n="d3_p">The spiritual and historical heart of Kazakhstan, connected deeply to the ancient Silk Road and Sufi traditions.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Mausoleum of Khoja Ahmed Yasawi:</strong> A UNESCO World Heritage site built by Amir Timur, showcasing incredible Timurid architecture.</li>
-                                <li><strong>Arystan Bab Mausoleum:</strong> An important pilgrimage site dedicated to the legendary mentor of Yasawi.</li>
-                                <li><strong>Otrar:</strong> The ancient ruins of a once-great Silk Road city destroyed by Genghis Khan.</li>
+                                <li data-i18n-html="d3_li1"><strong>Mausoleum of Khoja Ahmed Yasawi:</strong> A UNESCO World Heritage site built by Amir Timur, showcasing incredible Timurid architecture.</li>
+                                <li data-i18n-html="d3_li2"><strong>Arystan Bab Mausoleum:</strong> An important pilgrimage site dedicated to the legendary mentor of Yasawi.</li>
+                                <li data-i18n-html="d3_li3"><strong>Otrar:</strong> The ancient ruins of a once-great Silk Road city destroyed by Genghis Khan.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="400">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">National Parks & Canyons</span>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d4_title">National Parks & Canyons</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Kazakhstan's untouched nature is its greatest treasure, offering landscapes that look like they belong on another planet.</p>
+                            <p class="mb-4" data-i18n="d4_p">Kazakhstan's untouched nature is its greatest treasure, offering landscapes that look like they belong on another planet.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Charyn Canyon:</strong> Often compared to the Grand Canyon, featuring the dramatic "Valley of Castles" rock formations.</li>
-                                <li><strong>Kolsai & Kaindy Lakes:</strong> Stunning mountain lakes. Kaindy is famous for its submerged forest with spruce tree trunks piercing the water surface.</li>
-                                <li><strong>Altyn-Emel:</strong> Famous for the "Singing Dune" and the multi-colored Aktau mountains.</li>
+                                <li data-i18n-html="d4_li1"><strong>Charyn Canyon:</strong> Often compared to the Grand Canyon, featuring the dramatic "Valley of Castles" rock formations.</li>
+                                <li data-i18n-html="d4_li2"><strong>Kolsai & Kaindy Lakes:</strong> Stunning mountain lakes. Kaindy is famous for its submerged forest with spruce tree trunks piercing the water surface.</li>
+                                <li data-i18n-html="d4_li3"><strong>Altyn-Emel:</strong> Famous for the "Singing Dune" and the multi-colored Aktau mountains.</li>
                             </ul>
                         </div>
                     </div>
@@ -286,35 +379,36 @@
         </div>
     </section>
 
+    <!-- BEST TIME TO VISIT -->
     <section class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate & Seasons</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold">Best Time to Visit</h2>
-                <p class="mt-4 text-cream/70 max-w-2xl mx-auto font-light">Kazakhstan has a sharp continental climate. Depending on what you want to experience—from skiing to desert trekking—every season offers something unique.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="season_badge">Climate & Seasons</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold" data-i18n="season_title">Best Time to Visit</h2>
+                <p class="mt-4 text-cream/70 max-w-2xl mx-auto font-light" data-i18n="season_subtitle">Kazakhstan has a sharp continental climate. Depending on what you want to experience—from skiing to desert trekking—every season offers something unique.</p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
-                <button class="season-tab active px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="spring">Spring</button>
-                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="summer">Summer</button>
-                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="autumn">Autumn</button>
-                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="winter">Winter</button>
+                <button class="season-tab active px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="spring" data-i18n="tab_spring">Spring</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="summer" data-i18n="tab_summer">Summer</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="autumn" data-i18n="tab_autumn">Autumn</button>
+                <button class="season-tab px-8 py-3 border border-cream/20 rounded-full font-medium tracking-wide hover:border-gold transition duration-300" data-season="winter" data-i18n="tab_winter">Winter</button>
             </div>
 
             <div class="bg-white text-teal-900 p-8 md:p-12 shadow-2xl relative" data-aos="fade-up" data-aos-delay="200">
-                
+
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-10 items-center">
                         <div>
-                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Spring (April - May)</h3>
-                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Ideal Time</div>
-                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900" data-i18n="sp_title">Spring (April - May)</h3>
+                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded" data-i18n="sp_tag">Ideal Time</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80" data-i18n="sp_p">
                                 Spring is a magical time when the endless steppes burst into color. It is the perfect season for visiting the southern regions (Almaty, Turkestan) before the intense summer heat arrives.
                             </p>
                             <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
-                                <li>Wild tulips bloom across the steppes (Kazakhstan is the ancestral home of the tulip).</li>
-                                <li>Comfortable weather for exploring cities and canyons.</li>
-                                <li>Celebrate "Nauryz" (Persian New Year) in late March with traditional games and food.</li>
+                                <li data-i18n="sp_li1">Wild tulips bloom across the steppes (Kazakhstan is the ancestral home of the tulip).</li>
+                                <li data-i18n="sp_li2">Comfortable weather for exploring cities and canyons.</li>
+                                <li data-i18n="sp_li3">Celebrate "Nauryz" (Persian New Year) in late March with traditional games and food.</li>
                             </ul>
                         </div>
                         <div class="h-64 overflow-hidden rounded-lg image-zoom">
@@ -326,15 +420,15 @@
                 <div class="season-content" data-season="summer">
                     <div class="grid md:grid-cols-2 gap-10 items-center">
                         <div>
-                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Summer (June - August)</h3>
-                            <div class="inline-block bg-teal-500/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Mountain Trekking</div>
-                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900" data-i18n="su_title">Summer (June - August)</h3>
+                            <div class="inline-block bg-teal-500/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded" data-i18n="su_tag">Mountain Trekking</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80" data-i18n="su_p">
                                 Summer can be quite hot in the cities and steppes (often above 30°C/86°F), making it the perfect time to head into the high mountains of the Tien Shan.
                             </p>
                             <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
-                                <li>Best season for hiking, camping, and horseback riding in the mountains.</li>
-                                <li>Visit Kolsai Lakes and the singing dunes of Altyn-Emel.</li>
-                                <li>Enjoy the modern air-conditioned marvels of Astana.</li>
+                                <li data-i18n="su_li1">Best season for hiking, camping, and horseback riding in the mountains.</li>
+                                <li data-i18n="su_li2">Visit Kolsai Lakes and the singing dunes of Altyn-Emel.</li>
+                                <li data-i18n="su_li3">Enjoy the modern air-conditioned marvels of Astana.</li>
                             </ul>
                         </div>
                         <div class="h-64 overflow-hidden rounded-lg image-zoom">
@@ -346,15 +440,15 @@
                 <div class="season-content" data-season="autumn">
                     <div class="grid md:grid-cols-2 gap-10 items-center">
                         <div>
-                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Autumn (September - October)</h3>
-                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Harvest & Colors</div>
-                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900" data-i18n="au_title">Autumn (September - October)</h3>
+                            <div class="inline-block bg-gold/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded" data-i18n="au_tag">Harvest & Colors</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80" data-i18n="au_p">
                                 September is arguably the most comfortable month. The heat subsides, and the mountains around Almaty turn into a stunning canvas of gold, red, and orange.
                             </p>
                             <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
-                                <li>Perfect temperatures for sightseeing and outdoor activities.</li>
-                                <li>Almaty's famous apple harvest (Almaty literally translates to "Father of Apples").</li>
-                                <li>Great time for photography at Charyn Canyon and Big Almaty Lake.</li>
+                                <li data-i18n="au_li1">Perfect temperatures for sightseeing and outdoor activities.</li>
+                                <li data-i18n="au_li2">Almaty's famous apple harvest (Almaty literally translates to "Father of Apples").</li>
+                                <li data-i18n="au_li3">Great time for photography at Charyn Canyon and Big Almaty Lake.</li>
                             </ul>
                         </div>
                         <div class="h-64 overflow-hidden rounded-lg image-zoom">
@@ -366,15 +460,15 @@
                 <div class="season-content" data-season="winter">
                     <div class="grid md:grid-cols-2 gap-10 items-center">
                         <div>
-                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900">Winter (Dec - February)</h3>
-                            <div class="inline-block bg-teal-300/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded">Winter Sports</div>
-                            <p class="font-light leading-relaxed mb-4 text-teal-900/80">
+                            <h3 class="font-serif text-3xl font-bold mb-4 text-teal-900" data-i18n="wi_title">Winter (Dec - February)</h3>
+                            <div class="inline-block bg-teal-300/20 text-teal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded" data-i18n="wi_tag">Winter Sports</div>
+                            <p class="font-light leading-relaxed mb-4 text-teal-900/80" data-i18n="wi_p">
                                 Kazakhstan turns into a winter wonderland. While Astana gets freezing cold, the regions around Almaty offer world-class winter sports facilities.
                             </p>
                             <ul class="list-disc pl-5 space-y-2 text-sm text-teal-900/70 font-light">
-                                <li>Skiing and snowboarding at Shymbulak Ski Resort.</li>
-                                <li>Ice skating at the legendary high-altitude Medeu rink.</li>
-                                <li>Experience the true frozen beauty of the steppes (bring very warm clothes!).</li>
+                                <li data-i18n="wi_li1">Skiing and snowboarding at Shymbulak Ski Resort.</li>
+                                <li data-i18n="wi_li2">Ice skating at the legendary high-altitude Medeu rink.</li>
+                                <li data-i18n="wi_li3">Experience the true frozen beauty of the steppes (bring very warm clothes!).</li>
                             </ul>
                         </div>
                         <div class="h-64 overflow-hidden rounded-lg image-zoom">
@@ -387,113 +481,501 @@
         </div>
     </section>
 
+    <!-- CTA -->
     <section class="py-24 px-6 bg-white text-center">
         <div class="max-w-3xl mx-auto" data-aos="zoom-in">
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6">Ready to Explore Kazakhstan?</h2>
-            <p class="text-teal-900/70 font-light mb-10 text-lg">Let our experts craft the perfect itinerary for your journey across the Great Steppe.</p>
-            <a href="index.html#contact" class="inline-block bg-gold text-cream px-10 py-4 font-bold tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg">Start Planning</a>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6" data-i18n="cta_title">Ready to Explore Kazakhstan?</h2>
+            <p class="text-teal-900/70 font-light mb-10 text-lg" data-i18n="cta_desc">Let our experts craft the perfect itinerary for your journey across the Great Steppe.</p>
+            <a href="index.html#contact" class="inline-block bg-gold text-cream px-10 py-4 font-bold tracking-wide hover:bg-teal-900 transition duration-300 shadow-lg" data-i18n="cta_btn">Start Planning</a>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
-               <div class="flex items-center space-x-4 text-cream/60">
-    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="instagram" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="send" class="w-5 h-5"></i>
-    </a>
-    
-    <a href="https://facebook.com/ТУТ_ВАШ_ФЕЙСБУК" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-        <i data-lucide="facebook" class="w-5 h-5"></i>
-    </a>
-</div>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
-                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition">Majestic Minarets Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition" data-i18n="footer_tour_minarets">Majestic Minarets Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ СТРАНИЦЫ КАЗАХСТАНА -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Kazakhstan Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "The Land of Great Steppes & Modern Marvels",
+                intro_badge: "Discover the 9th Largest Country",
+                intro_title: "Heart of Eurasia",
+                intro_p1: "Kazakhstan is a country of breathtaking contrasts. From the endless, sweeping steppes where nomadic traditions were born, to the hyper-modern, futuristic skyline of Astana, it offers an adventure unlike any other in Central Asia.",
+                intro_p2: "Here, you can hike through alpine meadows, explore dramatic canyons that rival the Grand Canyon, ski down Olympic-grade mountain slopes, and experience the warm hospitality of the Kazakh people in traditional yurts.",
+                fact_capital_label: "Capital",
+                fact_capital_val: "Astana",
+                fact_currency_label: "Currency",
+                fact_currency_val: "Tenge (KZT)",
+                fact_language_label: "Language",
+                fact_language_val: "Kazakh, Russian",
+                fact_bestfor_label: "Best For",
+                fact_bestfor_val: "Nature, Trekking, Culture",
+                charyn_card_title: "Charyn Canyon",
+                charyn_card_desc: "Nature's ancient masterpiece carved over 12 million years.",
+                dest_badge: "Must-Visit Places",
+                dest_title: "Top Destinations",
+                d1_title: "Almaty & Surroundings",
+                d1_p: "The cultural and financial hub of Kazakhstan, beautifully nestled at the foothills of the Trans-Ili Alatau mountains. It is the perfect blend of a vibrant modern city and accessible alpine nature.",
+                d1_li1: "<strong>Medeu & Shymbulak:</strong> The world's highest skating rink and a premium ski resort located just 30 minutes from the city center.",
+                d1_li2: "<strong>Big Almaty Lake:</strong> A stunning, turquoise-colored alpine lake situated at 2,511 meters above sea level.",
+                d1_li3: "<strong>Zenkov Cathedral:</strong> A gorgeous wooden orthodox cathedral built entirely without nails, located in Panfilov Park.",
+                d2_title: "Astana",
+                d2_p: "The futuristic capital rising from the northern steppes. Astana is an architectural playground featuring designs by world-renowned architects.",
+                d2_li1: "<strong>Baiterek Tower:</strong> The symbol of the city, representing a mythical tree of life with a golden egg.",
+                d2_li2: "<strong>Khan Shatyr:</strong> A massive, transparent tent-like structure that houses a shopping mall and an indoor beach resort.",
+                d2_li3: "<strong>Hazrat Sultan Mosque:</strong> One of the largest and most magnificent mosques in Central Asia.",
+                d3_title: "Turkestan & The South",
+                d3_p: "The spiritual and historical heart of Kazakhstan, connected deeply to the ancient Silk Road and Sufi traditions.",
+                d3_li1: "<strong>Mausoleum of Khoja Ahmed Yasawi:</strong> A UNESCO World Heritage site built by Amir Timur, showcasing incredible Timurid architecture.",
+                d3_li2: "<strong>Arystan Bab Mausoleum:</strong> An important pilgrimage site dedicated to the legendary mentor of Yasawi.",
+                d3_li3: "<strong>Otrar:</strong> The ancient ruins of a once-great Silk Road city destroyed by Genghis Khan.",
+                d4_title: "National Parks & Canyons",
+                d4_p: "Kazakhstan's untouched nature is its greatest treasure, offering landscapes that look like they belong on another planet.",
+                d4_li1: "<strong>Charyn Canyon:</strong> Often compared to the Grand Canyon, featuring the dramatic \"Valley of Castles\" rock formations.",
+                d4_li2: "<strong>Kolsai & Kaindy Lakes:</strong> Stunning mountain lakes. Kaindy is famous for its submerged forest with spruce tree trunks piercing the water surface.",
+                d4_li3: "<strong>Altyn-Emel:</strong> Famous for the \"Singing Dune\" and the multi-colored Aktau mountains.",
+                season_badge: "Climate & Seasons",
+                season_title: "Best Time to Visit",
+                season_subtitle: "Kazakhstan has a sharp continental climate. Depending on what you want to experience—from skiing to desert trekking—every season offers something unique.",
+                tab_spring: "Spring",
+                tab_summer: "Summer",
+                tab_autumn: "Autumn",
+                tab_winter: "Winter",
+                sp_title: "Spring (April - May)",
+                sp_tag: "Ideal Time",
+                sp_p: "Spring is a magical time when the endless steppes burst into color. It is the perfect season for visiting the southern regions (Almaty, Turkestan) before the intense summer heat arrives.",
+                sp_li1: "Wild tulips bloom across the steppes (Kazakhstan is the ancestral home of the tulip).",
+                sp_li2: "Comfortable weather for exploring cities and canyons.",
+                sp_li3: "Celebrate \"Nauryz\" (Spring New Year) in late March with traditional games and food.",
+                su_title: "Summer (June - August)",
+                su_tag: "Mountain Trekking",
+                su_p: "Summer can be quite hot in the cities and steppes (often above 30°C/86°F), making it the perfect time to head into the high mountains of the Tien Shan.",
+                su_li1: "Best season for hiking, camping, and horseback riding in the mountains.",
+                su_li2: "Visit Kolsai Lakes and the singing dunes of Altyn-Emel.",
+                su_li3: "Enjoy the modern air-conditioned marvels of Astana.",
+                au_title: "Autumn (September - October)",
+                au_tag: "Harvest & Colors",
+                au_p: "September is arguably the most comfortable month. The heat subsides, and the mountains around Almaty turn into a stunning canvas of gold, red, and orange.",
+                au_li1: "Perfect temperatures for sightseeing and outdoor activities.",
+                au_li2: "Almaty's famous apple harvest (Almaty literally translates to \"Father of Apples\").",
+                au_li3: "Great time for photography at Charyn Canyon and Big Almaty Lake.",
+                wi_title: "Winter (Dec - February)",
+                wi_tag: "Winter Sports",
+                wi_p: "Kazakhstan turns into a winter wonderland. While Astana gets freezing cold, the regions around Almaty offer world-class winter sports facilities.",
+                wi_li1: "Skiing and snowboarding at Shymbulak Ski Resort.",
+                wi_li2: "Ice skating at the legendary high-altitude Medeu rink.",
+                wi_li3: "Experience the true frozen beauty of the steppes (bring very warm clothes!).",
+                cta_title: "Ready to Explore Kazakhstan?",
+                cta_desc: "Let our experts craft the perfect itinerary for your journey across the Great Steppe.",
+                cta_btn: "Start Planning",
+                footer_tour_minarets: "Majestic Minarets Tour"
+            },
+            ru: {
+                page_title: "Путеводитель по Казахстану | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Край Великой степи и современных чудес",
+                intro_badge: "Откройте 9-ю по величине страну мира",
+                intro_title: "Сердце Евразии",
+                intro_p1: "Казахстан — страна захватывающих контрастов. От бескрайних степей, где зародились кочевые традиции, до ультрасовременного футуристического силуэта Астаны — здесь вас ждёт путешествие, не похожее ни на одно другое в Центральной Азии.",
+                intro_p2: "Здесь можно гулять по альпийским лугам, исследовать величественные каньоны, не уступающие Гранд-Каньону, кататься на горных лыжах олимпийского уровня и ощутить тёплое гостеприимство казахского народа в традиционных юртах.",
+                fact_capital_label: "Столица",
+                fact_capital_val: "Астана",
+                fact_currency_label: "Валюта",
+                fact_currency_val: "Тенге (KZT)",
+                fact_language_label: "Язык",
+                fact_language_val: "Казахский, русский",
+                fact_bestfor_label: "Идеально для",
+                fact_bestfor_val: "Природы, треккинга, культуры",
+                charyn_card_title: "Чарынский каньон",
+                charyn_card_desc: "Древний шедевр природы, созданный за 12 миллионов лет.",
+                dest_badge: "Обязательно к посещению",
+                dest_title: "Главные направления",
+                d1_title: "Алматы и окрестности",
+                d1_p: "Культурный и финансовый центр Казахстана, живописно раскинувшийся у подножия гор Заилийского Алатау. Идеальное сочетание динамичного мегаполиса и доступной альпийской природы.",
+                d1_li1: "<strong>Медеу и Шымбулак:</strong> Самый высокогорный каток в мире и премиальный горнолыжный курорт всего в 30 минутах от центра города.",
+                d1_li2: "<strong>Большое Алматинское озеро:</strong> Потрясающее бирюзовое высокогорное озеро на высоте 2 511 метров над уровнем моря.",
+                d1_li3: "<strong>Вознесенский собор (Зенкова):</strong> Уникальный деревянный собор, построенный без единого гвоздя в парке 28 гвардейцев-панфиловцев.",
+                d2_title: "Астана",
+                d2_p: "Футуристическая столица, выросшая посреди северной степи. Астана — настоящая витрина архитектуры с проектами лучших мировых зодчих.",
+                d2_li1: "<strong>Монумент Байтерек:</strong> Символ города, воплощающий мифическое Древо Жизни с золотым яйцом на вершине.",
+                d2_li2: "<strong>Хан Шатыр:</strong> Грандиозный прозрачный шатёр, внутри которого расположены торговый центр и крытый пляжный курорт.",
+                d2_li3: "<strong>Мечеть Хазрет Султан:</strong> Одна из крупнейших и самых величественных мечетей Центральной Азии.",
+                d3_title: "Туркестан и Юг",
+                d3_p: "Духовное и историческое сердце Казахстана, тесно связанное с Великим Шёлковым путём и суфийской традицией.",
+                d3_li1: "<strong>Мавзолей Ходжи Ахмеда Ясави:</strong> Объект Всемирного наследия ЮНЕСКО, возведённый Амиром Тимуром — жемчужина тимуридского зодчества.",
+                d3_li2: "<strong>Мавзолей Арыстан-Баба:</strong> Значимое место паломничества, посвящённое легендарному учителю Ясави.",
+                d3_li3: "<strong>Отрар:</strong> Древние руины некогда процветающего города Шёлкового пути, разрушенного Чингисханом.",
+                d4_title: "Национальные парки и каньоны",
+                d4_p: "Нетронутая природа Казахстана — его главное богатство с пейзажами, словно сошедшими с другой планеты.",
+                d4_li1: "<strong>Чарынский каньон:</strong> Часто сравнивают с Гранд-Каньоном благодаря впечатляющей «Долине замков».",
+                d4_li2: "<strong>Озёра Кольсай и Каинды:</strong> Живописные горные озёра; Каинды знаменито затопленным еловым лесом, стволы которого поднимаются прямо из воды.",
+                d4_li3: "<strong>Алтын-Эмель:</strong> Известен «Поющим барханом» и разноцветными меловыми горами Актау.",
+                season_badge: "Климат и сезоны",
+                season_title: "Когда лучше ехать",
+                season_subtitle: "В Казахстане резко континентальный климат. От горных лыж до походов по каньонам — каждый сезон дарит уникальные впечатления.",
+                tab_spring: "Весна",
+                tab_summer: "Лето",
+                tab_autumn: "Осень",
+                tab_winter: "Зима",
+                sp_title: "Весна (апрель – май)",
+                sp_tag: "Идеальное время",
+                sp_p: "Волшебная пора, когда бескрайние степи расцветают яркими красками. Лучшее время для путешествия по югу страны (Алматы, Туркестан) до наступления летней жары.",
+                sp_li1: "В степях цветут дикие тюльпаны — именно Казахстан считается исторической родиной этого цветка.",
+                sp_li2: "Комфортная погода для прогулок по городам и каньонам.",
+                sp_li3: "Празднование Наурыза в конце марта с национальными играми и угощениями.",
+                su_title: "Лето (июнь – август)",
+                su_tag: "Горный треккинг",
+                su_p: "В городах и степях летом бывает жарко (часто выше +30°C), поэтому это идеальное время отправиться в прохладные горы Тянь-Шаня.",
+                su_li1: "Лучший сезон для походов, кемпинга и конных прогулок в горах.",
+                su_li2: "Поездки к озёрам Кольсай и к Поющему бархану в Алтын-Эмеле.",
+                su_li3: "Комфортное знакомство с футуристической Астаной.",
+                au_title: "Осень (сентябрь – октябрь)",
+                au_tag: "Урожай и краски",
+                au_p: "Сентябрь — пожалуй, самый комфортный месяц года. Жара спадает, а горы вокруг Алматы вспыхивают золотыми, алыми и янтарными красками.",
+                au_li1: "Идеальная температура для экскурсий и отдыха на природе.",
+                au_li2: "Знаменитый сезон яблок в Алматы (название города переводится как «Отец яблок»).",
+                au_li3: "Прекрасное время для фототуров в Чарынский каньон и на Большое Алматинское озеро.",
+                wi_title: "Зима (декабрь – февраль)",
+                wi_tag: "Зимние виды спорта",
+                wi_p: "Казахстан превращается в настоящую зимнюю сказку. Пока в Астане стоят крепкие морозы, предгорья Алматы предлагают первоклассные горнолыжные трассы.",
+                wi_li1: "Катание на лыжах и сноуборде на курорте Шымбулак.",
+                wi_li2: "Коньки на легендарном высокогорном катке Медеу.",
+                wi_li3: "Суровая и завораживающая красота заснеженной степи (возьмите тёплую одежду!).",
+                cta_title: "Готовы открыть Казахстан?",
+                cta_desc: "Доверьте нашим экспертам разработку идеального маршрута по Великой степи.",
+                cta_btn: "Начать планирование",
+                footer_tour_minarets: "Тур «Величественные минареты»"
+            },
+            fr: {
+                page_title: "Guide de voyage au Kazakhstan | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "Terre de Grandes Steppes et de Merveilles Modernes",
+                intro_badge: "Découvrez le 9e plus grand pays du monde",
+                intro_title: "Le Cœur de l'Eurasie",
+                intro_p1: "Le Kazakhstan est un pays de contrastes saisissants. Des steppes infinies où sont nées les traditions nomades jusqu'à la silhouette futuriste d'Astana, il offre une aventure unique en Asie centrale.",
+                intro_p2: "Vous pourrez y randonner dans des prairies alpines, explorer des canyons spectaculaires rivalisant avec le Grand Canyon, skier sur des pistes olympiques et vivre l'hospitalité chaleureuse du peuple kazakh sous la yourte.",
+                fact_capital_label: "Capitale",
+                fact_capital_val: "Astana",
+                fact_currency_label: "Devise",
+                fact_currency_val: "Tengue (KZT)",
+                fact_language_label: "Langues",
+                fact_language_val: "Kazakh, Russe",
+                fact_bestfor_label: "Idéal pour",
+                fact_bestfor_val: "Nature, Trekking, Culture",
+                charyn_card_title: "Canyon de Charyn",
+                charyn_card_desc: "Chef-d'œuvre naturel sculpté sur plus de 12 millions d'années.",
+                dest_badge: "Incontournables",
+                dest_title: "Destinations phares",
+                d1_title: "Almaty et ses environs",
+                d1_p: "Cœur culturel et économique du Kazakhstan, niché au pied des monts Tian Shan. L'alliance parfaite entre une métropole dynamique et une nature alpine immédiatement accessible.",
+                d1_li1: "<strong>Medeu et Shymbulak :</strong> La plus haute patinoire du monde et une station de ski prestigieuse à seulement 30 minutes du centre.",
+                d1_li2: "<strong>Grand lac d'Almaty :</strong> Un lac alpin d'un turquoise éclatant perché à 2 511 mètres d'altitude.",
+                d1_li3: "<strong>Cathédrale Zenkov :</strong> Une splendide cathédrale orthodoxe en bois construite entièrement sans clous, au cœur du parc Panfilov.",
+                d2_title: "Astana",
+                d2_p: "Capitale futuriste surgissant des steppes du nord, Astana est un terrain d'expression pour les plus grands architectes du monde.",
+                d2_li1: "<strong>Tour Baïterek :</strong> Symbole de la ville représentant l'arbre de vie mythique surmonté d'un œuf d'or.",
+                d2_li2: "<strong>Khan Shatyr :</strong> Une immense tente transparente abritant un centre commercial et une plage tropicale intérieure.",
+                d2_li3: "<strong>Mosquée Hazrat Sultan :</strong> L'une des plus vastes et majestueuses mosquées d'Asie centrale.",
+                d3_title: "Turkestan et le Sud",
+                d3_p: "Berceau spirituel et historique du Kazakhstan, profondément lié à l'ancienne Route de la Soie et au soufisme.",
+                d3_li1: "<strong>Mausolée de Khoja Ahmed Yasawi :</strong> Site classé à l'UNESCO bâti par Tamerlan, joyau de l'architecture timouride.",
+                d3_li2: "<strong>Mausolée d'Arystan Bab :</strong> Haut lieu de pèlerinage dédié au maître spirituel de Yasawi.",
+                d3_li3: "<strong>Otrar :</strong> Vestiges d'une grande cité caravanière de la Route de la Soie.",
+                d4_title: "Parcs nationaux et Canyons",
+                d4_p: "La nature sauvage du Kazakhstan est son plus beau trésor, offrant des décors dignes d'une autre planète.",
+                d4_li1: "<strong>Canyon de Charyn :</strong> Souvent comparé au Grand Canyon pour sa spectaculaire « Vallée des Châteaux ».",
+                d4_li2: "<strong>Lacs Kolsai et Kaindy :</strong> Des lacs d'altitude féeriques ; Kaindy est célèbre pour sa forêt engloutie dont les troncs émergent de l'eau.",
+                d4_li3: "<strong>Altyn-Emel :</strong> Renommé pour sa « Dune chantante » et les montagnes multicolores d'Aktau.",
+                season_badge: "Climat et Saisons",
+                season_title: "Quand partir",
+                season_subtitle: "Le Kazakhstan connaît un climat continental marqué. Du ski alpin aux treks dans le désert, chaque saison révèle un visage unique.",
+                tab_spring: "Printemps",
+                tab_summer: "Été",
+                tab_autumn: "Automne",
+                tab_winter: "Hiver",
+                sp_title: "Printemps (avril – mai)",
+                sp_tag: "Période idéale",
+                sp_p: "Le printemps pare les steppes de mille couleurs. C'est la saison rêvée pour explorer le sud (Almaty, Turkestan) avant les fortes chaleurs estivales.",
+                sp_li1: "Floraison des tulipes sauvages dans la steppe (berceau originel de la tulipe).",
+                sp_li2: "Températures très agréables pour visiter villes et canyons.",
+                sp_li3: "Célébrations de Nauryz fin mars avec jeux traditionnels et gastronomie festive.",
+                su_title: "Été (juin – août)",
+                su_tag: "Trek en montagne",
+                su_p: "Les villes et steppes étant chaudes (souvent plus de 30°C), l'été est le moment parfait pour prendre de l'altitude dans les monts Tian Shan.",
+                su_li1: "Meilleure saison pour la randonnée, le bivouac et les balades à cheval.",
+                su_li2: "Excursions vers les lacs Kolsai et les dunes chantantes d'Altyn-Emel.",
+                su_li3: "Découverte des merveilles modernes et climatisées d'Astana.",
+                au_title: "Automne (septembre – octobre)",
+                au_tag: "Récoltes & Couleurs",
+                au_p: "Septembre est sans doute le mois le plus agréable. La chaleur retombe et les montagnes autour d'Almaty s'embrasent d'or et de pourpre.",
+                au_li1: "Climat parfait pour les visites culturelles et les activités de plein air.",
+                au_li2: "Récolte des célèbres pommes d'Almaty (littéralement « Père des pommes »).",
+                au_li3: "Lumière superbe pour photographier le canyon de Charyn et le Grand lac d'Almaty.",
+                wi_title: "Hiver (décembre – février)",
+                wi_tag: "Sports d'hiver",
+                wi_p: "Le Kazakhstan se transforme en pays des merveilles hivernal. Tandis qu'Astana gèle, la région d'Almaty offre des infrastructures de ski de premier ordre.",
+                wi_li1: "Ski et snowboard sur le domaine de Shymbulak.",
+                wi_li2: "Patinage sur la mythique patinoire d'altitude de Medeu.",
+                wi_li3: "Beauté glacée et authentique des steppes (prévoyez des vêtements très chauds !).",
+                cta_title: "Prêt à explorer le Kazakhstan ?",
+                cta_desc: "Laissez nos experts concevoir l'itinéraire idéal pour votre voyage à travers la Grande Steppe.",
+                cta_btn: "Commencer à planifier",
+                footer_tour_minarets: "Circuit Minarets Majestueux"
+            },
+            de: {
+                page_title: "Kasachstan Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Das Land der großen Steppen & modernen Wunder",
+                intro_badge: "Entdecken Sie das neuntgrößte Land der Welt",
+                intro_title: "Herz Eurasiens",
+                intro_p1: "Kasachstan ist ein Land voller atemberaubender Kontraste. Von endlosen Steppen, in denen die Nomadenkultur entstand, bis zur futuristischen Skyline von Astana bietet es ein einzigartiges Abenteuer in Zentralasien.",
+                intro_p2: "Hier können Sie durch Almwiesen wandern, dramatische Schluchten entdecken, die es mit dem Grand Canyon aufnehmen, auf erstklassigen Pisten Ski fahren und echte kasachische Gastfreundschaft in traditionellen Jurten erleben.",
+                fact_capital_label: "Hauptstadt",
+                fact_capital_val: "Astana",
+                fact_currency_label: "Währung",
+                fact_currency_val: "Tenge (KZT)",
+                fact_language_label: "Sprache",
+                fact_language_val: "Kasachisch, Russisch",
+                fact_bestfor_label: "Ideal für",
+                fact_bestfor_val: "Natur, Trekking, Kultur",
+                charyn_card_title: "Scharyn-Canyon",
+                charyn_card_desc: "Ein 12 Millionen Jahre altes Meisterwerk der Natur.",
+                dest_badge: "Sehenswürdigkeiten",
+                dest_title: "Top-Reiseziele",
+                d1_title: "Almaty & Umgebung",
+                d1_p: "Das kulturelle und wirtschaftliche Zentrum Kasachstans, malerisch am Fuße des Transili-Alatau gelegen – die ideale Mischung aus lebendiger Metropole und alpiner Natur.",
+                d1_li1: "<strong>Medeu & Schymbulak:</strong> Die höchstgelegene Eislaufbahn der Welt und ein erstklassiges Skigebiet nur 30 Minuten vom Stadtzentrum entfernt.",
+                d1_li2: "<strong>Großer Almaty-See:</strong> Ein türkisfarbener Gebirgssee auf 2.511 Metern Höhe.",
+                d1_li3: "<strong>Zenkov-Kathedrale:</strong> Eine prachtvolle orthodoxe Holzkirche im Panfilov-Park, erbaut ohne einen einzigen Nagel.",
+                d2_title: "Astana",
+                d2_p: "Die futuristische Hauptstadt inmitten der nördlichen Steppe beeindruckt mit kühner Architektur weltbekannter Stararchitekten.",
+                d2_li1: "<strong>Bajterek-Turm:</strong> Das Wahrzeichen der Stadt – ein mythischer Lebensbaum mit goldenem Ei.",
+                d2_li2: "<strong>Khan Shatyr:</strong> Ein gigantisches transparentes Zelt mit Einkaufszentrum und Indoor-Sandstrand.",
+                d2_li3: "<strong>Chasret-Sultan-Moschee:</strong> Eine der größten und prächtigsten Moscheen Zentralasiens.",
+                d3_title: "Turkestan & Der Süden",
+                d3_p: "Das spirituelle und historische Herz Kasachstans, tief verbunden mit der alten Seidenstraße und der Sufi-Tradition.",
+                d3_li1: "<strong>Mausoleum von Chodscha Ahmad Yasawi:</strong> UNESCO-Welterbe, erbaut unter Amir Timur – ein Meisterwerk timuridischer Baukunst.",
+                d3_li2: "<strong>Arystan-Bab-Mausoleum:</strong> Bedeutende Pilgerstätte zu Ehren des legendären Lehrers von Yasawi.",
+                d3_li3: "<strong>Otrar:</strong> Die antiken Ruinen einer einst blühenden Handelsstadt an der Seidenstraße.",
+                d4_title: "Nationalparks & Canyons",
+                d4_p: "Kasachstans unberührte Natur ist sein größter Schatz mit Landschaften wie von einem anderen Planeten.",
+                d4_li1: "<strong>Scharyn-Canyon:</strong> Mit seinem spektakulären „Tal der Schlösser“ oft mit dem Grand Canyon verglichen.",
+                d4_li2: "<strong>Kolsai- & Kaindy-Seen:</strong> Traumhafte Bergseen; der Kaindy-See ist berühmt für seinen versunkenen Fichtenwald.",
+                d4_li3: "<strong>Altyn-Emel:</strong> Bekannt für die „Singende Düne“ und die farbenprächtigen Aktau-Berge.",
+                season_badge: "Klima & Jahreszeiten",
+                season_title: "Beste Reisezeit",
+                season_subtitle: "Kasachstan hat ein ausgeprägtes Kontinentalklima. Vom Skifahren bis zum Wüstentrekking bietet jede Jahreszeit einzigartige Erlebnisse.",
+                tab_spring: "Frühling",
+                tab_summer: "Sommer",
+                tab_autumn: "Herbst",
+                tab_winter: "Winter",
+                sp_title: "Frühling (April – Mai)",
+                sp_tag: "Ideale Reisezeit",
+                sp_p: "Im Frühling erblühen die endlosen Steppen in bunten Farben. Perfekt für den Süden (Almaty, Turkestan), bevor die Sommerhitze einsetzt.",
+                sp_li1: "Wilde Tulpen blühen in der Steppe – Kasachstan gilt als Urheimat der Tulpe.",
+                sp_li2: "Angenehmes Wetter für Stadtbesichtigungen und Canyon-Ausflüge.",
+                sp_li3: "Feiern Sie Ende März das Frühlingsfest „Nauryz“ mit traditionellen Spielen und Spezialitäten.",
+                su_title: "Sommer (Juni – August)",
+                su_tag: "Bergtrekking",
+                su_p: "Während es in den Städten und Steppen oft über 30°C warm wird, lockt das kühle Hochgebirge des Tian Shan.",
+                su_li1: "Beste Saison zum Wandern, Campen und Reiten in den Bergen.",
+                su_li2: "Ausflüge zu den Kolsai-Seen und den Singenden Dünen im Altyn-Emel-Nationalpark.",
+                su_li3: "Entdecken Sie die modernen, klimatisierten Highlights von Astana.",
+                au_title: "Herbst (September – Oktober)",
+                au_tag: "Ernte & Farbenpracht",
+                au_p: "Der September ist wohl der angenehmste Reisemonat. Die Hitze weicht und die Berge rund um Almaty leuchten in Gold, Rot und Orange.",
+                au_li1: "Perfekte Temperaturen für Besichtigungen und Outdoor-Aktivitäten.",
+                au_li2: "Berühmte Apfelernte in Almaty (der Name bedeutet „Vater der Äpfel“).",
+                au_li3: "Traumhafte Lichtstimmung für Fotos am Scharyn-Canyon und Großen Almaty-See.",
+                wi_title: "Winter (Dezember – Februar)",
+                wi_tag: "Wintersport",
+                wi_p: "Kasachstan verwandelt sich in ein Winterwunderland. Während es in Astana eisig kalt wird, lockt rund um Almaty erstklassiger Wintersport.",
+                wi_li1: "Skifahren und Snowboarden im Skigebiet Schymbulak.",
+                wi_li2: "Schlittschuhlaufen auf der legendären Hochgebirgsbahn Medeu.",
+                wi_li3: "Erleben Sie die faszinierende Wintersteppe (sehr warme Kleidung einpacken!).",
+                cta_title: "Bereit, Kasachstan zu entdecken?",
+                cta_desc: "Unsere Experten stellen die perfekte Route für Ihre Reise durch die Große Steppe zusammen.",
+                cta_btn: "Planung starten",
+                footer_tour_minarets: "Majestätische Minarette Tour"
+            },
+            tr: {
+                page_title: "Kazakistan Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "Büyük Bozkırların ve Modern Harikaların Ülkesi",
+                intro_badge: "Dünyanın En Büyük 9. Ülkesini Keşfedin",
+                intro_title: "Avrasya'nın Kalbi",
+                intro_p1: "Kazakistan nefes kesici zıtlıkların ülkesidir. Göçebe geleneklerin doğduğu uçsuz bucaksız bozkırlardan Astana'nın fütüristik siluetine kadar Orta Asya'da eşi benzeri olmayan bir macera sunar.",
+                intro_p2: "Burada alp çayırlarında yürüyüş yapabilir, Büyük Kanyon ile yarışan görkemli kanyonları keşfedebilir, olimpik düzeyde pistlerde kayak yapabilir ve geleneksel yurtlarda sıcak Kazak misafirperverliğini yaşayabilirsiniz.",
+                fact_capital_label: "Başkent",
+                fact_capital_val: "Astana",
+                fact_currency_label: "Para Birimi",
+                fact_currency_val: "Tenge (KZT)",
+                fact_language_label: "Dil",
+                fact_language_val: "Kazakça, Rusça",
+                fact_bestfor_label: "En İyi Aktiviteler",
+                fact_bestfor_val: "Doğa, Trekking, Kültür",
+                charyn_card_title: "Çarın Kanyonu",
+                charyn_card_desc: "Doğanın 12 milyon yılda şekillendirdiği kadim başyapıt.",
+                dest_badge: "Mutlaka Görülmesi Gerekenler",
+                dest_title: "Öne Çıkan Destinasyonlar",
+                d1_title: "Almatı ve Çevresi",
+                d1_p: "İli Aladağları'nın eteklerine kurulmuş Kazakistan'ın kültür ve finans merkezi; canlı bir modern şehir ile kolay ulaşılabilir alp doğasının kusursuz birleşimi.",
+                d1_li1: "<strong>Medeu ve Şımbulak:</strong> Şehir merkezine sadece 30 dakika uzaklıkta dünyanın en yüksek buz pisti ve seçkin kayak merkezi.",
+                d1_li2: "<strong>Büyük Almatı Gölü:</strong> Deniz seviyesinden 2.511 metre yükseklikte büyüleyici turkuaz bir dağ gölü.",
+                d1_li3: "<strong>Zenkov Katedrali:</strong> Panfilov Parkı içinde tek bir çivi bile kullanılmadan inşa edilmiş muhteşem ahşap katedral.",
+                d2_title: "Astana",
+                d2_p: "Kuzey bozkırlarının ortasında yükselen fütüristik başkent; dünyaca ünlü mimarların imzasını taşıyan yapılarla dolu modern bir vitrin.",
+                d2_li1: "<strong>Bayterek Kulesi:</strong> Altın yumurtalı efsanevi hayat ağacını simgeleyen şehrin ikonik yapısı.",
+                d2_li2: "<strong>Han Şatır:</strong> İçinde alışveriş merkezi ve kapalı tropikal plaj bulunan dev şeffaf çadır yapı.",
+                d2_li3: "<strong>Hazret Sultan Camii:</strong> Orta Asya'nın en büyük ve en görkemli camilerinden biri.",
+                d3_title: "Türkistan ve Güney",
+                d3_p: "Antik İpek Yolu ve tasavvuf geleneğiyle derinden bağlı Kazakistan'ın manevi ve tarihi kalbi.",
+                d3_li1: "<strong>Hoca Ahmed Yesevi Türbesi:</strong> Emir Timur tarafından yaptırılan ve Timurlu mimarisini yansıtan UNESCO Dünya Mirası.",
+                d3_li2: "<strong>Arslan Baba Türbesi:</strong> Yesevi'nin efsanevi hocasına adanmış önemli bir ziyaret noktası.",
+                d3_li3: "<strong>Otrar:</strong> Bir zamanlar İpek Yolu'nun en büyük şehirlerinden olan antik harabeler.",
+                d4_title: "Milli Parklar ve Kanyonlar",
+                d4_p: "Kazakistan'ın el değmemiş doğası, başka bir gezegendeymişsiniz hissi veren manzaralarıyla ülkenin en büyük hazinesidir.",
+                d4_li1: "<strong>Çarın Kanyonu:</strong> Etkileyici \"Kaleler Vadisi\" kaya oluşumlarıyla sıkça Büyük Kanyon'a benzetilir.",
+                d4_li2: "<strong>Kolsay ve Kayındı Gölleri:</strong> Büyüleyici dağ gölleri; Kayındı, su yüzeyinden yükselen batık ladin ormanıyla ünlüdür.",
+                d4_li3: "<strong>Altın-Emel:</strong> \"Şarkı Söyleyen Kum Tepesi\" ve rengarenk Aktau dağlarıyla tanınır.",
+                season_badge: "İklim ve Mevsimler",
+                season_title: "Ne Zaman Gidilir",
+                season_subtitle: "Kazakistan sert karasal iklime sahiptir. Kayaktan çöl yürüyüşüne kadar her mevsim benzersiz bir deneyim sunar.",
+                tab_spring: "İlkbahar",
+                tab_summer: "Yaz",
+                tab_autumn: "Sonbahar",
+                tab_winter: "Kış",
+                sp_title: "İlkbahar (Nisan – Mayıs)",
+                sp_tag: "İdeal Dönem",
+                sp_p: "Uçsuz bucaksız bozkırların rengarenk çiçeklerle canlandığı büyülü mevsim. Yaz sıcakları bastırmadan güney bölgeleri (Almatı, Türkistan) keşfetmek için mükemmeldir.",
+                sp_li1: "Bozkırlarda yabani laleler açar (Kazakistan, lalenin anavatanıdır).",
+                sp_li2: "Şehirleri ve kanyonları gezmek için ideal sıcaklıklar.",
+                sp_li3: "Mart sonunda geleneksel oyunlar ve lezzetlerle Nevruz kutlamaları.",
+                su_title: "Yaz (Haziran – Ağustos)",
+                su_tag: "Dağ Yürüyüşü",
+                su_p: "Şehirler ve bozkırlar oldukça sıcak olabileceğinden (genellikle 30°C üzeri), Tanrı Dağları'nın serin yaylalarına çıkmak için en güzel zamandır.",
+                su_li1: "Dağlarda yürüyüş, kamp ve at binme için en iyi sezon.",
+                su_li2: "Kolsay Gölleri ve Altın-Emel'deki Şarkı Söyleyen Kum Tepesi gezileri.",
+                su_li3: "Astana'nın modern ve klimalı mimari harikalarının keyfini çıkarın.",
+                au_title: "Sonbahar (Eylül – Ekim)",
+                au_tag: "Hasat ve Renkler",
+                au_p: "Eylül ayı ülkenin en konforlu dönemidir. Sıcaklıklar yumuşar ve Almatı çevresindeki dağlar altın, kızıl ve turuncu tonlara bürünür.",
+                au_li1: "Kültür turları ve açık hava etkinlikleri için kusursuz hava.",
+                au_li2: "Almatı'nın meşhur elma hasadı (Almatı kelimesi \"Elmanın Atası\" anlamına gelir).",
+                au_li3: "Çarın Kanyonu ve Büyük Almatı Gölü'nde fotoğrafçılık için harika ışık.",
+                wi_title: "Kış (Aralık – Şubat)",
+                wi_tag: "Kış Sporları",
+                wi_p: "Kazakistan bir kış masalına dönüşür. Astana dondurucu soğuklara bürünürken Almatı çevresi dünya standartlarında kış sporları sunar.",
+                wi_li1: "Şımbulak Kayak Merkezi'nde kayak ve snowboard keyfi.",
+                wi_li2: "Efsanevi yüksek irtifa buz pisti Medeu'da buz pateni.",
+                wi_li3: "Bozkırın büyüleyici kar manzarası (çok sıcak kıyafetler getirmeyi unutmayın!).",
+                cta_title: "Kazakistan'ı Keşfetmeye Hazır mısınız?",
+                cta_desc: "Uzmanlarımız Büyük Bozkır yolculuğunuz için size en uygun rotayı hazırlasın.",
+                cta_btn: "Planlamaya Başla",
+                footer_tour_minarets: "Görkemli Minareler Turu"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Инициализация анимаций
         AOS.init({
             duration: 1000,
             easing: 'ease-in-out-quad',
             once: true,
         });
 
-        // Логика аккордеона (Destinations)
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Аккордеон
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
-                // Закрываем все остальные открытые вкладки
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                // Если кликнутая вкладка не была активна, открываем её
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Логика табов (Времена года)
+        // Сезоны
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
-                // Убираем активный класс со всех кнопок
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
-                // Добавляем активный класс нажатой кнопке
                 tab.classList.add('active');
-
-                // Переключаем контент
                 document.querySelectorAll('.season-content').forEach(c => {
-                    if (c.dataset.season === season) {
-                        c.classList.add('active');
-                    } else {
-                        c.classList.remove('active');
-                    }
+                    c.classList.toggle('active', c.dataset.season === season);
                 });
             });
         });
