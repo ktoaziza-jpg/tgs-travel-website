@@ -502,23 +502,23 @@
             </div>
 
             <div data-aos="fade-left" data-aos-delay="200">
-                <form class="space-y-6 md:space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        <div class="relative">
-                            <input type="text" placeholder="Your Name" data-i18n-placeholder="form_name" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
-                        </div>
-                        <div class="relative">
-                            <input type="email" placeholder="Email Address" data-i18n-placeholder="form_email" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <input type="tel" placeholder="Phone Number" data-i18n-placeholder="form_phone" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
-                    </div>
-                    <div class="relative">
-                        <textarea placeholder="Tell us about your dream trip..." data-i18n-placeholder="form_message" rows="3" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition resize-none"></textarea>
-                    </div>
-                    <button type="button" class="bg-teal-900 text-cream px-8 md:px-10 py-3 md:py-4 font-medium tracking-wide hover:bg-gold transition duration-300 w-full sm:w-auto" data-i18n="form_submit">Submit Request</button>
-                </form>
+                <form data-tgs-form="true" class="space-y-6 md:space-y-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div class="relative">
+            <input type="text" name="Name" required placeholder="Your Name" data-i18n-placeholder="form_name" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+        </div>
+        <div class="relative">
+            <input type="email" name="Email" required placeholder="Email Address" data-i18n-placeholder="form_email" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+        </div>
+    </div>
+    <div class="relative">
+        <input type="tel" name="Phone" placeholder="Phone Number" data-i18n-placeholder="form_phone" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition">
+    </div>
+    <div class="relative">
+        <textarea name="Message" required placeholder="Tell us about your dream trip..." data-i18n-placeholder="form_message" rows="3" class="w-full bg-transparent border-b border-teal-900/30 py-3 text-teal-900 placeholder-teal-900/40 focus:border-gold transition resize-none"></textarea>
+    </div>
+    <button type="submit" class="bg-teal-900 text-cream px-8 md:px-10 py-3 md:py-4 font-medium tracking-wide hover:bg-gold transition duration-300 w-full sm:w-auto" data-i18n="form_submit">Submit Request</button>
+</form>
             </div>
         </div>
     </section>
