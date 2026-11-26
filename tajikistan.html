@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,10 @@
             transform: translateY(0);
         }
 
+        /* Mobile Menu */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
         /* Season tabs */
         .season-tab.active {
             background-color: #16697A;
@@ -59,9 +63,7 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        .season-content.active {
-            display: block;
-        }
+        .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -75,7 +77,7 @@
             opacity: 0;
         }
         .accordion-item.active .accordion-content {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
         }
         .accordion-item.active .accordion-icon {
@@ -90,60 +92,139 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-gold font-bold text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
 
     <!-- EPIC HERO SECTION (ПАМИРСКИЙ ВАЙБ) -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
@@ -152,13 +233,13 @@
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down" data-i18n="hero_badge">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-i18n="country_tajikistan">
                 Tajikistan
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
                 The Roof of the World & Alpine Wonders
             </p>
         </div>
@@ -167,36 +248,36 @@
     <!-- INTRO & QUICK FACTS -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
-            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="intro_text">
                 Discover the raw, untouched beauty of Tajikistan. From the legendary high-altitude Pamir Highway to the mirror-like glacial lakes of the Fann Mountains, this is a sanctuary for adventure seekers, ancient history enthusiasts, and lovers of sublime nature.
             </p>
         </div>
 
         <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="facts_badge">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="facts_title">Quick Facts</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
-                <p class="text-teal-900/70 font-light text-sm">Tajik Somoni (TJS). ATMs are available in Dushanbe and Khujand; cash is absolutely required in the Pamir region.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf1_t">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf1_d">Tajik Somoni (TJS). ATMs are available in Dushanbe and Khujand; cash is absolutely required in the Pamir region.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
-                <p class="text-teal-900/70 font-light text-sm">Tajik (official language) and Russian widely used. TGS Travel guides speak fluent English.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf2_t">Language</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf2_d">Tajik (official language) and Russian widely used. TGS Travel guides speak fluent English.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
-                <p class="text-teal-900/70 font-light text-sm">TJT (UTC+5). Perfectly aligned with neighbor countries, no daylight saving time.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf3_t">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf3_d">TJT (UTC+5). Perfectly aligned with neighbor countries, no daylight saving time.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
-                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Standard European C and F plug sockets. Power banks are highly advised for mountain homestays.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf4_t">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf4_d">220V, 50Hz. Standard European C and F plug sockets. Power banks are highly advised for mountain homestays.</p>
             </div>
         </div>
     </section>
@@ -205,23 +286,23 @@
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="dest_badge">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="dest_title">Top Destinations</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Dushanbe - The Green Capital</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d1_t">Dushanbe - The Green Capital</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Dushanbe is a beautiful, tree-lined capital surrounded by snow-capped peaks. It elegantly combines modern national monuments with welcoming teahouses and green parks.</p>
+                            <p class="mb-4" data-i18n="d1_p">Dushanbe is a beautiful, tree-lined capital surrounded by snow-capped peaks. It elegantly combines modern national monuments with welcoming teahouses and green parks.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Rudaki Park:</strong> A grand central park featuring a massive statue of the famous poet Rudaki and monumental fountains.</li>
-                                <li><strong>Koh-i-Navruz:</strong> A breathtaking modern palace built in exquisite national style with intricate wood carving and mirror mosaics.</li>
-                                <li><strong>National Museum of Tajikistan:</strong> Exhibits fascinating artifacts from ancient Buddhist settlements and Zoroastrian history.</li>
+                                <li data-i18n-html="d1_li1"><strong>Rudaki Park:</strong> A grand central park featuring a massive statue of the famous poet Rudaki and monumental fountains.</li>
+                                <li data-i18n-html="d1_li2"><strong>Koh-i-Navruz:</strong> A breathtaking modern palace built in exquisite national style with intricate wood carving and mirror mosaics.</li>
+                                <li data-i18n-html="d1_li3"><strong>National Museum of Tajikistan:</strong> Exhibits fascinating artifacts from ancient Buddhist settlements and Zoroastrian history.</li>
                             </ul>
                         </div>
                     </div>
@@ -229,16 +310,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">The Pamir Highway - The Ultimate Road Trip</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d2_t">The Pamir Highway - The Ultimate Road Trip</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The M41 Pamir Highway is the second highest international road on Earth. It scales rugged passes above 4,600 meters and reveals unforgettable moon-like plateau landscapes.</p>
+                            <p class="mb-4" data-i18n="d2_p">The M41 Pamir Highway is the second highest international road on Earth. It scales rugged passes above 4,600 meters and reveals unforgettable moon-like plateau landscapes.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Wakhan Corridor:</strong> A spectacular border valley facing Afghanistan, lined with ancient stone fortresses.</li>
-                                <li><strong>Karakul Lake:</strong> A surreal, massive saltwater lake formed inside a meteor impact crater at 3,900 meters altitude.</li>
-                                <li><strong>Local Pamiri Culture:</strong> Experience stays in traditional Pamiri homes with unique religious philosophy and warm hospitality.</li>
+                                <li data-i18n-html="d2_li1"><strong>Wakhan Corridor:</strong> A spectacular border valley facing Afghanistan, lined with ancient stone fortresses.</li>
+                                <li data-i18n-html="d2_li2"><strong>Karakul Lake:</strong> A surreal, massive saltwater lake formed inside a meteor impact crater at 3,900 meters altitude.</li>
+                                <li data-i18n-html="d2_li3"><strong>Local Pamiri Culture:</strong> Experience stays in traditional Pamiri homes with unique religious philosophy and warm hospitality.</li>
                             </ul>
                         </div>
                     </div>
@@ -246,16 +327,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Iskanderkul - Jewel of the Fann Mountains</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d3_t">Iskanderkul - Jewel of the Fann Mountains</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">A mesmerizing, crescent-shaped mountain lake named after Alexander the Great. Its brilliant turquoise waters reflect the dramatic jagged ridges of the Fann range.</p>
+                            <p class="mb-4" data-i18n="d3_p">A mesmerizing, crescent-shaped mountain lake named after Alexander the Great. Its brilliant turquoise waters reflect the dramatic jagged ridges of the Fann range.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Tajik Niagara Waterfall:</strong> A powerful 40-meter waterfall located just a short scenic walk from the lakeshore.</li>
-                                <li><strong>Snake Lake:</strong> A smaller, tranquil neighboring lake hidden in the mountain forests.</li>
-                                <li><strong>Alpine Hiking:</strong> Excellent trails for travelers looking to enjoy fresh mountain air and striking panoramic views.</li>
+                                <li data-i18n-html="d3_li1"><strong>Tajik Niagara Waterfall:</strong> A powerful 40-meter waterfall located just a short scenic walk from the lakeshore.</li>
+                                <li data-i18n-html="d3_li2"><strong>Snake Lake:</strong> A smaller, tranquil neighboring lake hidden in the mountain forests.</li>
+                                <li data-i18n-html="d3_li3"><strong>Alpine Hiking:</strong> Excellent trails for travelers looking to enjoy fresh mountain air and striking panoramic views.</li>
                             </ul>
                         </div>
                     </div>
@@ -268,12 +349,12 @@
     <section class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">Smooth & Simple Border Entry</h2>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Tajikistan offers a completely automated online E-Visa system for over 80 countries, making the entry process incredibly quick and straightforward. No physical embassy appointments are required.</p>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed"><strong>Important for Pamir travelers:</strong> Visiting the Gorno-Badakhshan Autonomous Region (GBAO) requires a special permit. TGS Travel arranges all specific mountain permits and registrations automatically with your tour booking.</p>
-                <p class="text-cream/80 font-light mb-8 leading-relaxed">Just hand over your passport copy to our manager, and we will take care of the rest of the logistical paperwork before your flight arrives.</p>
-                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Inquire About Your Tour</a>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="visa_badge">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight" data-i18n="visa_title">Smooth & Simple Border Entry</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p1">Tajikistan offers a completely automated online E-Visa system for over 80 countries, making the entry process incredibly quick and straightforward. No physical embassy appointments are required.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n-html="visa_p2"><strong>Important for Pamir travelers:</strong> Visiting the Gorno-Badakhshan Autonomous Region (GBAO) requires a special permit. TGS Travel arranges all specific mountain permits and registrations automatically with your tour booking.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed" data-i18n="visa_p3">Just hand over your passport copy to our manager, and we will take care of the rest of the logistical paperwork before your flight arrives.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300" data-i18n="visa_btn">Inquire About Your Tour</a>
             </div>
 
             <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
@@ -282,8 +363,8 @@
                         <i data-lucide="check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">E-Visa Availability</div>
-                        <p class="text-cream/70 font-light text-sm">EU nations, USA, UK, Canada, Australia, UAE, and East Asian countries can apply online seamlessly.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc1_t">E-Visa Availability</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc1_d">EU nations, USA, UK, Canada, Australia, UAE, and East Asian countries can apply online seamlessly.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -291,8 +372,8 @@
                         <i data-lucide="mountain" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">GBAO Permit (Pamir Region)</div>
-                        <p class="text-cream/70 font-light text-sm">Mandatory for entering the mountain passes. We order and issue this along with your visa paperwork.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc2_t">GBAO Permit (Pamir Region)</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc2_d">Mandatory for entering the mountain passes. We order and issue this along with your visa paperwork.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -300,8 +381,8 @@
                         <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Safety & Security</div>
-                        <p class="text-cream/70 font-light text-sm">Tajikistan is a remarkably safe country with exceptionally hospitable locals who highly respect travelers.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc3_t">Safety & Security</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc3_d">Tajikistan is a remarkably safe country with exceptionally hospitable locals who highly respect travelers.</p>
                     </div>
                 </div>
             </div>
@@ -312,37 +393,35 @@
     <section class="py-24 px-6 bg-cream">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
-                <p class="text-teal-900/70 font-light max-w-xl mx-auto">Because of its massive elevation differences, weather varies widely between lowland cities and highland passes. Here is what to plan for.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="when_badge">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4" data-i18n="when_title">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto" data-i18n="when_desc">Because of its massive elevation differences, weather varies widely between lowland cities and highland passes. Here is what to plan for.</p>
             </div>
 
             <!-- Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
-                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring" data-i18n="tab_spring">Spring (Mar–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer" data-i18n="tab_summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn" data-i18n="tab_autumn">Autumn (Sep–Nov)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter" data-i18n="tab_winter">Winter (Dec–Feb)</button>
             </div>
 
             <!-- Content Blocks -->
             <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                
                 <!-- Spring -->
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Green Valleys & Navruz 🌸</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring is beautiful in Dushanbe and the lower valleys. Landscapes are lush green, and late March brings grand national Navruz celebrations with traditional sports and street food festivals.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="sp_t">Green Valleys & Navruz 🌸</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="sp_d">Spring is beautiful in Dushanbe and the lower valleys. Landscapes are lush green, and late March brings grand national Navruz celebrations with traditional sports and street food festivals.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Valleys Temp</span><span class="font-bold text-teal-900">18–25°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">High Mountains Pass</span><span class="font-bold text-teal-900">Snowy / Blocked</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">City & Culture Tours</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_valleys">Avg. Valleys Temp</span><span class="font-bold text-teal-900">18–25°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_passes">High Mountain Passes</span><span class="font-bold text-teal-900" data-i18n="sp_passes">Snowy / Blocked</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="sp_best">City & Culture Tours</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
-                            <img src="https://embassylife.ru/wp-content/uploads/2023/03/photo_2023-03-20_16-41-28.jpg" alt="Spring Alpine Valley Central Asia" class="w-full h-full object-cover">
+                            <img src="https://embassylife.ru/wp-content/uploads/2023/03/photo_2023-03-20_16-41-28.jpg" alt="Spring Alpine Valley Tajikistan" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -351,13 +430,12 @@
                 <div class="season-content" data-season="summer">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Peak Adventure Season ☀️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">The absolute prime season for trekking the Fann Mountains and embarking on the legendary Pamir Highway road trip. High-altitude mountain roads are clear, passes are fully open, and mountain evenings are perfectly cool.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="su_t">Peak Adventure Season ☀️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="su_d">The absolute prime season for trekking the Fann Mountains and embarking on the legendary Pamir Highway road trip. High-altitude mountain roads are clear, passes are fully open, and mountain evenings are perfectly cool.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Valleys Temp</span><span class="font-bold text-teal-900">30–38°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Pamir Temp</span><span class="font-bold text-teal-900">15–22°C</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Pamir Highway & Trekking</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_valleys">Avg. Valleys Temp</span><span class="font-bold text-teal-900">30–38°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_pamir">Avg. Pamir Temp</span><span class="font-bold text-teal-900">15–22°C</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="su_best">Pamir Highway & Trekking</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -370,13 +448,12 @@
                 <div class="season-content" data-season="autumn">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Golden Harvest Season 🍂</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September and October offer excellent visibility and gentle climate. High mountain valleys turn beautiful golden-brown colors, and local fruit bazaars overflow with sweet grapes, melons, and pomegranates.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="au_t">Golden Harvest Season 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="au_d">September and October offer excellent visibility and gentle climate. High mountain valleys turn beautiful golden-brown colors, and local fruit bazaars overflow with sweet grapes, melons, and pomegranates.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Valleys Temp</span><span class="font-bold text-teal-900">20–28°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Mountain Passes</span><span class="font-bold text-teal-900">Chilly, open until Nov</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Photography & Photography Tours</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_valleys">Avg. Valleys Temp</span><span class="font-bold text-teal-900">20–28°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_passes">High Mountain Passes</span><span class="font-bold text-teal-900" data-i18n="au_passes">Chilly, open until Nov</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="au_best">Scenic & Photography Tours</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -389,13 +466,12 @@
                 <div class="season-content" data-season="winter">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Snowbound Peak Silence ❄️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Winter brings heavy snow to the mountains, rendering passes inaccessible. However, it is an exceptionally serene, budget-friendly period to visit historic sites in Khujand and enjoy authentic teahouses in Dushanbe.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="wi_t">Snowbound Peak Silence ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="wi_d">Winter brings heavy snow to the mountains, rendering passes inaccessible. However, it is an exceptionally serene, budget-friendly period to visit historic sites in Khujand and enjoy authentic teahouses in Dushanbe.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Valleys Temp</span><span class="font-bold text-teal-900">2–8°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Mountain Passes</span><span class="font-bold text-teal-900">Blocked by Heavy Snow</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Cultural Budget Trips</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_valleys">Avg. Valleys Temp</span><span class="font-bold text-teal-900">2–8°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_passes">High Mountain Passes</span><span class="font-bold text-teal-900" data-i18n="wi_passes">Blocked by Heavy Snow</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="wi_best">Cultural Budget Trips</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -407,12 +483,12 @@
         </div>
     </section>
 
-    <!-- TRANSPORT logistics -->
+    <!-- TRANSPORT LOGISTICS -->
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Tajikistan</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="log_badge">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="log_title">Getting Around Tajikistan</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -420,22 +496,22 @@
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Arrival Flights</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">International flights serve Dushanbe International Airport (DYU). Our team coordinates private pickups directly at the terminal with premium meet-and-greet service.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr1_t">Arrival Flights</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr1_d">International flights serve Dushanbe International Airport (DYU). Our team coordinates private pickups directly at the terminal with premium meet-and-greet service.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="truck" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">4x4 Mountain Fleet</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Because mountain roads are rugged and demanding, TGS Travel provides exclusively reliable, heavily equipped heavy-duty 4x4 SUVs driven by seasoned mountain operators.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr2_t">4x4 Mountain Fleet</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr2_d">Because mountain roads are rugged and demanding, TGS Travel provides exclusively reliable, heavily equipped 4x4 SUVs driven by seasoned mountain operators.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="map-pin" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Multi-Stans Borders</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">We provide cross-border transport nodes for guests combining tours through Samarkand directly into Tajikistan's Fann Mountains via the Penjakent land border point.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr3_t">Multi-Stans Borders</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr3_d">We provide cross-border transport nodes for guests combining tours through Samarkand directly into Tajikistan's Fann Mountains via the Penjakent land border point.</p>
                 </div>
             </div>
         </div>
@@ -445,40 +521,40 @@
     <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="faq_badge">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="faq_title">Traveler Tips & FAQ</h2>
             </div>
 
             <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
                 <div class="accordion-item active border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">How should I prepare for high altitudes in Pamir?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq1_q">How should I prepare for high altitudes in Pamir?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq1_a">
                             Pamir tours ascend above 3,500 meters. We build gradual acclimatization days directly into our itineraries. It is highly advised to stay hydrated, limit physical overexertion during the first two days, and consult a physician regarding altitude medications.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What are the overnight conditions along the Pamir Highway?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq2_q">What are the overnight conditions along the Pamir Highway?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq2_a">
                             While major cities offer standard hotels, deep mountain regions rely heavily on local village homestays and yurt camps. These provide an incredibly immersive, historic connection with rustic communal settings and clean facilities.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What traditional Tajik dishes should I try?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq3_q">What traditional Tajik dishes should I try?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq3_a">
                             Do not miss Qurutob — the national dish of Tajikistan made of flaky layered pastry bread soaked in a rich yogurt sauce and topped with roasted onions and fresh herbs. Also try authentic Pamiri flatbread and mountain lamb skewers.
                         </div>
                     </div>
@@ -491,12 +567,12 @@
     <section class="bg-gold py-16 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
             <div>
-                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready for a Lifetime Adventure?</h3>
-                <p class="text-teal-900/80 text-lg font-medium">Explore the wild beauty of Tajikistan or let us design a tailor-made expedition just for you.</p>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2" data-i18n="cta_title">Ready for a Lifetime Adventure?</h3>
+                <p class="text-teal-900/80 text-lg font-medium" data-i18n="cta_desc">Explore the wild beauty of Tajikistan or let us design a tailor-made expedition just for you.</p>
             </div>
             <div class="flex gap-4 flex-wrap justify-center">
-                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">View Central Asia Tours</a>
-                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap" data-i18n="cta_btn1">View Central Asia Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap" data-i18n="cta_btn2">Contact Us</a>
             </div>
         </div>
     </section>
@@ -506,48 +582,311 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
                 <div class="flex items-center space-x-4 text-cream/60">
-                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </a>
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
                 </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ ТАДЖИКИСТАНА (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Tajikistan Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "The Roof of the World & Alpine Wonders",
+                intro_text: "Discover the raw, untouched beauty of Tajikistan. From the legendary high-altitude Pamir Highway to the mirror-like glacial lakes of the Fann Mountains, this is a sanctuary for adventure seekers, ancient history enthusiasts, and lovers of sublime nature.",
+                facts_badge: "Good to Know", facts_title: "Quick Facts",
+                qf1_t: "Currency", qf1_d: "Tajik Somoni (TJS). ATMs are available in Dushanbe and Khujand; cash is absolutely required in the Pamir region.",
+                qf2_t: "Language", qf2_d: "Tajik (official language) and Russian widely used. TGS Travel guides speak fluent English.",
+                qf3_t: "Time Zone", qf3_d: "TJT (UTC+5). Perfectly aligned with neighbor countries, no daylight saving time.",
+                qf4_t: "Electricity", qf4_d: "220V, 50Hz. Standard European C and F plug sockets. Power banks are highly advised for mountain homestays.",
+                dest_badge: "Must-Visit Places", dest_title: "Top Destinations",
+                d1_t: "Dushanbe - The Green Capital",
+                d1_p: "Dushanbe is a beautiful, tree-lined capital surrounded by snow-capped peaks. It elegantly combines modern national monuments with welcoming teahouses and green parks.",
+                d1_li1: "<strong>Rudaki Park:</strong> A grand central park featuring a massive statue of the famous poet Rudaki and monumental fountains.",
+                d1_li2: "<strong>Koh-i-Navruz:</strong> A breathtaking modern palace built in exquisite national style with intricate wood carving and mirror mosaics.",
+                d1_li3: "<strong>National Museum of Tajikistan:</strong> Exhibits fascinating artifacts from ancient Buddhist settlements and Zoroastrian history.",
+                d2_t: "The Pamir Highway - The Ultimate Road Trip",
+                d2_p: "The M41 Pamir Highway is the second highest international road on Earth. It scales rugged passes above 4,600 meters and reveals unforgettable moon-like plateau landscapes.",
+                d2_li1: "<strong>Wakhan Corridor:</strong> A spectacular border valley facing Afghanistan, lined with ancient stone fortresses.",
+                d2_li2: "<strong>Karakul Lake:</strong> A surreal, massive saltwater lake formed inside a meteor impact crater at 3,900 meters altitude.",
+                d2_li3: "<strong>Local Pamiri Culture:</strong> Experience stays in traditional Pamiri homes with unique religious philosophy and warm hospitality.",
+                d3_t: "Iskanderkul - Jewel of the Fann Mountains",
+                d3_p: "A mesmerizing, crescent-shaped mountain lake named after Alexander the Great. Its brilliant turquoise waters reflect the dramatic jagged ridges of the Fann range.",
+                d3_li1: "<strong>Tajik Niagara Waterfall:</strong> A powerful 40-meter waterfall located just a short scenic walk from the lakeshore.",
+                d3_li2: "<strong>Snake Lake:</strong> A smaller, tranquil neighboring lake hidden in the mountain forests.",
+                d3_li3: "<strong>Alpine Hiking:</strong> Excellent trails for travelers looking to enjoy fresh mountain air and striking panoramic views.",
+                visa_badge: "Visa & Entry", visa_title: "Smooth & Simple Border Entry",
+                visa_p1: "Tajikistan offers a completely automated online E-Visa system for over 80 countries, making the entry process incredibly quick and straightforward. No physical embassy appointments are required.",
+                visa_p2: "<strong>Important for Pamir travelers:</strong> Visiting the Gorno-Badakhshan Autonomous Region (GBAO) requires a special permit. TGS Travel arranges all specific mountain permits and registrations automatically with your tour booking.",
+                visa_p3: "Just hand over your passport copy to our manager, and we will take care of the rest of the logistical paperwork before your flight arrives.",
+                visa_btn: "Inquire About Your Tour",
+                vc1_t: "E-Visa Availability", vc1_d: "EU nations, USA, UK, Canada, Australia, UAE, and East Asian countries can apply online seamlessly.",
+                vc2_t: "GBAO Permit (Pamir Region)", vc2_d: "Mandatory for entering the mountain passes. We order and issue this along with your visa paperwork.",
+                vc3_t: "Safety & Security", vc3_d: "Tajikistan is a remarkably safe country with exceptionally hospitable locals who highly respect travelers.",
+                when_badge: "Climate Guide", when_title: "When to Go",
+                when_desc: "Because of its massive elevation differences, weather varies widely between lowland cities and highland passes. Here is what to plan for.",
+                tab_spring: "Spring (Mar–May)", tab_summer: "Summer (Jun–Aug)", tab_autumn: "Autumn (Sep–Nov)", tab_winter: "Winter (Dec–Feb)",
+                lbl_valleys: "Avg. Valleys Temp", lbl_passes: "High Mountain Passes", lbl_best: "Best For", lbl_pamir: "Avg. Pamir Temp",
+                sp_t: "Green Valleys & Navruz 🌸", sp_d: "Spring is beautiful in Dushanbe and the lower valleys. Landscapes are lush green, and late March brings grand national Navruz celebrations with traditional sports and street food festivals.", sp_passes: "Snowy / Blocked", sp_best: "City & Culture Tours",
+                su_t: "Peak Adventure Season ☀️", su_d: "The absolute prime season for trekking the Fann Mountains and embarking on the legendary Pamir Highway road trip. High-altitude mountain roads are clear, passes are fully open, and mountain evenings are perfectly cool.", su_best: "Pamir Highway & Trekking",
+                au_t: "Golden Harvest Season 🍂", au_d: "September and October offer excellent visibility and gentle climate. High mountain valleys turn beautiful golden-brown colors, and local fruit bazaars overflow with sweet grapes, melons, and pomegranates.", au_passes: "Chilly, open until Nov", au_best: "Scenic & Photography Tours",
+                wi_t: "Snowbound Peak Silence ❄️", wi_d: "Winter brings heavy snow to the mountains, rendering passes inaccessible. However, it is an exceptionally serene, budget-friendly period to visit historic sites in Khujand and enjoy authentic teahouses in Dushanbe.", wi_passes: "Blocked by Heavy Snow", wi_best: "Cultural Budget Trips",
+                log_badge: "Logistics", log_title: "Getting Around Tajikistan",
+                tr1_t: "Arrival Flights", tr1_d: "International flights serve Dushanbe International Airport (DYU). Our team coordinates private pickups directly at the terminal with premium meet-and-greet service.",
+                tr2_t: "4x4 Mountain Fleet", tr2_d: "Because mountain roads are rugged and demanding, TGS Travel provides exclusively reliable, heavily equipped 4x4 SUVs driven by seasoned mountain operators.",
+                tr3_t: "Multi-Stans Borders", tr3_d: "We provide cross-border transport nodes for guests combining tours through Samarkand directly into Tajikistan's Fann Mountains via the Penjakent land border point.",
+                faq_badge: "Before You Pack", faq_title: "Traveler Tips & FAQ",
+                fq1_q: "How should I prepare for high altitudes in Pamir?", fq1_a: "Pamir tours ascend above 3,500 meters. We build gradual acclimatization days directly into our itineraries. It is highly advised to stay hydrated, limit physical overexertion during the first two days, and consult a physician regarding altitude medications.",
+                fq2_q: "What are the overnight conditions along the Pamir Highway?", fq2_a: "While major cities offer standard hotels, deep mountain regions rely heavily on local village homestays and yurt camps. These provide an incredibly immersive, historic connection with rustic communal settings and clean facilities.",
+                fq3_q: "What traditional Tajik dishes should I try?", fq3_a: "Do not miss Qurutob — the national dish of Tajikistan made of flaky layered pastry bread soaked in a rich yogurt sauce and topped with roasted onions and fresh herbs. Also try authentic Pamiri flatbread and mountain lamb skewers.",
+                cta_title: "Ready for a Lifetime Adventure?", cta_desc: "Explore the wild beauty of Tajikistan or let us design a tailor-made expedition just for you.", cta_btn1: "View Central Asia Tours", cta_btn2: "Contact Us"
+            },
+            ru: {
+                page_title: "Путеводитель по Таджикистану | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Крыша мира и чудеса высокогорья",
+                intro_text: "Откройте первозданную красоту Таджикистана. От легендарного высокогорного Памирского тракта до зеркальных ледниковых озёр Фанских гор — это настоящий рай для искателей приключений, ценителей древней истории и величественной природы.",
+                facts_badge: "Полезно знать", facts_title: "Коротко о главном",
+                qf1_t: "Валюта", qf1_d: "Таджикский сомони (TJS). Банкоматы есть в Душанбе и Худжанде; на Памире обязательно иметь наличные.",
+                qf2_t: "Язык", qf2_d: "Таджикский (государственный) и русский широко распространены. Гиды TGS Travel свободно говорят по-английски.",
+                qf3_t: "Часовой пояс", qf3_d: "TJT (UTC+5). Совпадает с Ташкентом и Узбекистаном, перехода на летнее время нет.",
+                qf4_t: "Электричество", qf4_d: "220В, 50Гц. Стандартные европейские розетки типов C и F. Для гостевых домов в горах очень пригодится пауэрбанк.",
+                dest_badge: "Главные локации", dest_title: "Топ направлений",
+                d1_t: "Душанбе — Зелёная столица",
+                d1_p: "Душанбе — уютная, утопающая в зелени столица в окружении снежных вершин. Она гармонично сочетает монументальные памятники, тенистые парки и гостеприимные чайханы.",
+                d1_li1: "<strong>Парк Рудаки:</strong> величественный центральный парк с памятником поэту Рудаки и каскадом фонтанов.",
+                d1_li2: "<strong>Кохи Навруз:</strong> потрясающий дворец в национальном стиле с тончайшей резьбой по дереву и зеркальными мозаиками.",
+                d1_li3: "<strong>Национальный музей Таджикистана:</strong> богатейшая коллекция артефактов буддийской и зороастрийской эпох.",
+                d2_t: "Памирский тракт — Легендарное дорожное путешествие",
+                d2_p: "Трасса M41 (Памирский тракт) — вторая по высоте международная автодорога на планете. Она проходит через суровые перевалы выше 4 600 м и открывает неземные марсианские пейзажи.",
+                d2_li1: "<strong>Ваханский коридор:</strong> захватывающая пограничная долина напротив Афганистана с руинами древних крепостей.",
+                d2_li2: "<strong>Озеро Каракуль:</strong> гигантское солёное озеро в кратере метеорита на высоте 3 900 метров над уровнем моря.",
+                d2_li3: "<strong>Культура Памира:</strong> ночёвки в традиционных памирских домах с уникальной архитектурой и искренним радушием.",
+                d3_t: "Искандеркуль — Жемчужина Фанских гор",
+                d3_p: "Завораживающее горное озеро в форме полумесяца, названное в честь Александра Македонского. В его ярко-бирюзовой воде отражаются острые вершины Фанских гор.",
+                d3_li1: "<strong>Водопад «Таджикская Ниагара»:</strong> мощный 40-метровый водопад в получасе живописной прогулки от берега.",
+                d3_li2: "<strong>Змеиное озеро:</strong> тихое уединённое озеро по соседству, укрытое среди горных лесов.",
+                d3_li3: "<strong>Горный треккинг:</strong> великолепные тропы с кристальным горным воздухом и панорамными видами.",
+                visa_badge: "Виза и въезд", visa_title: "Простой и понятный въезд",
+                visa_p1: "Граждане СНГ и ряда стран въезжают в Таджикистан без визы, а для граждан более 80 государств работает удобный автоматизированный портал электронных виз (E-Visa) без визита в посольство.",
+                visa_p2: "<strong>Важно для поездок на Памир:</strong> для посещения Горно-Бадахшанской автономной области (ГБАО) требуется специальный пропуск. TGS Travel оформляет все горные разрешения и регистрации автоматически при бронировании тура.",
+                visa_p3: "Просто передайте копию паспорта нашему менеджеру — мы возьмём на себя все формальности ещё до вашего прилёта.",
+                visa_btn: "Уточнить детали тура",
+                vc1_t: "Удобная E-Visa", vc1_d: "Граждане ЕС, США, Великобритании, Канады, Австралии, ОАЭ и стран Азии легко оформляют визу онлайн.",
+                vc2_t: "Пропуск ГБАО (Памир)", vc2_d: "Обязателен для проезда через памирские перевалы — мы оформляем его вместе с визовыми документами.",
+                vc3_t: "Безопасность и радушие", vc3_d: "Таджикистан — удивительно безопасная страна с исключительно гостеприимными и доброжелательными жителями.",
+                when_badge: "Гид по климату", when_title: "Когда ехать",
+                when_desc: "Из-за колоссального перепада высот погода в долинах и на высокогорных перевалах сильно различается. Вот на что ориентироваться:",
+                tab_spring: "Весна (Мар–Май)", tab_summer: "Лето (Июн–Авг)", tab_autumn: "Осень (Сен–Ноя)", tab_winter: "Зима (Дек–Фев)",
+                lbl_valleys: "Темп. в долинах", lbl_passes: "Высокие перевалы", lbl_best: "Лучше всего для", lbl_pamir: "Темп. на Памире",
+                sp_t: "Зелёные долины и Навруз 🌸", sp_d: "Весна прекрасна в Душанбе и предгорьях: долины расцветают, а в конце марта по всей стране проходят грандиозные гуляния Навруза с национальными играми и угощениями.", sp_passes: "Под снегом / закрыты", sp_best: "Городские и культурные туры",
+                su_t: "Пик приключенческого сезона ☀️", su_d: "Абсолютно лучшее время для треккинга в Фанских горах и экспедиции по Памирскому тракту. Высокогорные дороги и перевалы полностью открыты, а вечера в горах приятно прохладны.", su_best: "Памирский тракт и треккинг",
+                au_t: "Золотой сезон урожая 🍂", au_d: "Сентябрь и октябрь дарят идеальную видимость и мягкое тепло. Горные долины окрашиваются в золотисто-охристые тона, а базары ломятся от винограда, дынь и гранатов.", au_passes: "Прохладно, открыты до ноября", au_best: "Пейзажные и фототуры",
+                wi_t: "Снежная тишина вершин ❄️", wi_d: "Зимой высокогорные перевалы заносит снегом, но это невероятно спокойный и доступный сезон для знакомства с древним Худжандом и уютными чайханами Душанбе.", wi_passes: "Закрыты из-за снегопадов", wi_best: "Спокойные культурные поездки",
+                log_badge: "Логистика", log_title: "Передвижение по Таджикистану",
+                tr1_t: "Прилёт и встреча", tr1_d: "Международные рейсы принимает аэропорт Душанбе (DYU). Наша команда встречает гостей прямо у терминала и организует частный трансфер.",
+                tr2_t: "Горный автопарк 4x4", tr2_d: "Суровые горные дороги требуют особой техники. TGS Travel предоставляет надёжные, полностью подготовленные внедорожники 4x4 с опытнейшими горными водителями.",
+                tr3_t: "Маршруты между странами", tr3_d: "Обеспечиваем удобные стыковки для туристов, совмещающих Самарканд и Фанские горы Таджикистана через наземный переход Пенджикент.",
+                faq_badge: "Перед поездкой", faq_title: "Советы и частые вопросы",
+                fq1_q: "Как подготовиться к высокогорью на Памире?", fq1_a: "Маршруты по Памиру поднимаются выше 3 500 метров. Мы закладываем плавную акклиматизацию прямо в программу. Рекомендуем пить больше воды, избегать сильных нагрузок в первые два дня и при необходимости проконсультироваться с врачом.",
+                fq2_q: "Какие условия ночёвки на Памирском тракте?", fq2_a: "В крупных городах гостей ждут стандартные отели, а в высокогорных сёлах — уютные семейные гостевые дома и юрты. Это чистые, душевные места, дарящие живое погружение в памирскую культуру.",
+                fq3_q: "Какие традиционные блюда обязательно попробовать?", fq3_a: "Не пропустите курутоб — национальное блюдо Таджикистана из слоёной лепёшки в нежном соусе из курута с жареным луком и свежей зеленью, а также памирские лепёшки и шашлык из горного ягнёнка.",
+                cta_title: "Готовы к путешествию всей жизни?", cta_desc: "Откройте дикую красоту Таджикистана или позвольте нам разработать индивидуальную экспедицию именно для вас.", cta_btn1: "Туры по Центральной Азии", cta_btn2: "Связаться с нами"
+            },
+            fr: {
+                page_title: "Guide de voyage Tadjikistan | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "Le Toit du Monde & Merveilles Alpines",
+                intro_text: "Découvrez la beauté brute et préservée du Tadjikistan. De la légendaire route du Pamir aux lacs glaciaires aux eaux miroir des monts Fan, c'est un sanctuaire pour les aventuriers, les passionnés d'histoire et les amoureux de grande nature.",
+                facts_badge: "Bon à savoir", facts_title: "Infos pratiques",
+                qf1_t: "Devise", qf1_d: "Somoni tadjik (TJS). Distributeurs disponibles à Douchanbé et Khodjent ; les espèces sont indispensables dans le Pamir.",
+                qf2_t: "Langue", qf2_d: "Tadjik (langue officielle) et russe largement parlés. Les guides TGS Travel parlent couramment anglais.",
+                qf3_t: "Fuseau horaire", qf3_d: "TJT (UTC+5). Parfaitement aligné sur l'Ouzbékistan, sans changement d'heure.",
+                qf4_t: "Électricité", qf4_d: "220V, 50Hz. Prises européennes standard C et F. Une batterie externe est fortement recommandée pour les nuits en montagne.",
+                dest_badge: "Lieux incontournables", dest_title: "Destinations phares",
+                d1_t: "Douchanbé — La Capitale Verdoyante",
+                d1_p: "Douchanbé est une capitale arborée encadrée de sommets enneigés, mêlant monuments nationaux modernes, parcs ombragés et maisons de thé accueillantes.",
+                d1_li1: "<strong>Parc Rudaki :</strong> vaste parc central orné de la statue du grand poète Rudaki et de fontaines monumentales.",
+                d1_li2: "<strong>Kohi Navruz :</strong> palais moderne époustouflant de style traditionnel aux boiseries sculptées et mosaïques de miroirs.",
+                d1_li3: "<strong>Musée national du Tadjikistan :</strong> trésors archéologiques fascinants des époques bouddhiste et zoroastrienne.",
+                d2_t: "La Route du Pamir — Le Road Trip Ultime",
+                d2_p: "La route M41 du Pamir est la deuxième plus haute route internationale au monde. Elle franchit des cols à plus de 4 600 m à travers des plateaux lunaires inoubliables.",
+                d2_li1: "<strong>Corridor du Wakhan :</strong> vallée frontalière spectaculaire face à l'Afghanistan, jalonnée d'anciennes forteresses de pierre.",
+                d2_li2: "<strong>Lac Karakul :</strong> immense lac salé surréaliste niché dans un cratère météoritique à 3 900 m d'altitude.",
+                d2_li3: "<strong>Culture pamirie :</strong> séjournez dans des maisons traditionnelles pamiries réputées pour leur hospitalité exceptionnelle.",
+                d3_t: "Iskanderkul — Joyau des Monts Fan",
+                d3_p: "Lac glaciaire en croissant baptisé d'après Alexandre le Grand, dont les eaux turquoise reflètent les pics acérés des monts Fan.",
+                d3_li1: "<strong>Cascade du « Niagara tadjik » :</strong> puissante chute de 40 mètres accessible par une courte marche panoramique.",
+                d3_li2: "<strong>Lac du Serpent :</strong> petit lac paisible voisin caché dans les bois d'altitude.",
+                d3_li3: "<strong>Randonnée alpine :</strong> superbes sentiers entre air pur et panoramas grandioses.",
+                visa_badge: "Visa & Entrée", visa_title: "Une entrée simple et fluide",
+                visa_p1: "Le Tadjikistan propose un système de visa électronique (E-Visa) entièrement en ligne pour plus de 80 pays (ainsi que des exemptions pour de nombreux passeports), sans passage à l'ambassade.",
+                visa_p2: "<strong>Important pour le Pamir :</strong> l'accès à la région autonome du Haut-Badakhchan (GBAO) nécessite un permis spécial. TGS Travel organise automatiquement tous vos permis de montagne avec votre circuit.",
+                visa_p3: "Transmettez simplement une copie de votre passeport à notre équipe : nous nous occupons de toutes les formalités avant votre départ.",
+                visa_btn: "Renseignez-vous sur votre circuit",
+                vc1_t: "E-Visa disponible", vc1_d: "Les citoyens de l'UE, des États-Unis, du Royaume-Uni, du Canada, d'Australie et des Émirats font leur demande facilement en ligne.",
+                vc2_t: "Permis GBAO (Région du Pamir)", vc2_d: "Obligatoire pour franchir les cols du Pamir — nous le commandons avec vos documents de visa.",
+                vc3_t: "Sécurité & Accueil", vc3_d: "Le Tadjikistan est un pays remarquablement sûr, célèbre pour la bienveillance de ses habitants.",
+                when_badge: "Guide climatique", when_title: "Quand partir",
+                when_desc: "En raison des forts dénivelés, le climat varie beaucoup entre les vallées et les hauts cols. Voici nos repères par saison :",
+                tab_spring: "Printemps (Mar–Mai)", tab_summer: "Été (Juin–Août)", tab_autumn: "Automne (Sep–Nov)", tab_winter: "Hiver (Déc–Fév)",
+                lbl_valleys: "Temp. vallées", lbl_passes: "Hauts cols", lbl_best: "Idéal pour", lbl_pamir: "Temp. Pamir",
+                sp_t: "Vallées vertes & Norouz 🌸", sp_d: "Le printemps enchante Douchanbé et les basses vallées : nature luxuriante et grandes fêtes nationales de Norouz fin mars.", sp_passes: "Enneigés / fermés", sp_best: "Circuits culturels & villes",
+                su_t: "Haute saison d'aventure ☀️", su_d: "La période idéale pour randonner dans les monts Fan et parcourir la route du Pamir. Les cols d'altitude sont dégagés et les soirées fraîches.", su_best: "Route du Pamir & Trekking",
+                au_t: "Saison dorée des récoltes 🍂", au_d: "Septembre et octobre offrent une lumière cristalline, des vallées dorées et des marchés débordant de raisins, melons et grenades.", au_passes: "Frais, ouverts jusqu'en nov.", au_best: "Paysages & Photographie",
+                wi_t: "Silence hivernal des sommets ❄️", wi_d: "La neige ferme les hauts cols, mais la saison est calme et abordable pour découvrir le patrimoine de Khodjent et les maisons de thé de Douchanbé.", wi_passes: "Fermés par la neige", wi_best: "Séjours culturels économiques",
+                log_badge: "Logistique", log_title: "Se déplacer au Tadjikistan",
+                tr1_t: "Vols & Accueil", tr1_d: "Les vols internationaux arrivent à l'aéroport de Douchanbé (DYU). Notre équipe vous accueille dès le terminal avec un transfert privé.",
+                tr2_t: "Flotte 4x4 de montagne", tr2_d: "Les pistes d'altitude exigent des véhicules robustes : nous utilisons uniquement des 4x4 fiables conduits par des chauffeurs montagnards aguerris.",
+                tr3_t: "Liaisons transfrontalières", tr3_d: "Nous organisons des transferts fluides pour combiner Samarcande et les monts Fan via le poste frontière de Penjikent.",
+                faq_badge: "Avant de partir", faq_title: "Conseils & FAQ",
+                fq1_q: "Comment se préparer à la haute altitude dans le Pamir ?", fq1_a: "Les itinéraires dépassent 3 500 m. Nous intégrons une acclimatation progressive ; hydratez-vous bien, évitez les efforts intenses les deux premiers jours et demandez conseil à votre médecin.",
+                fq2_q: "Quelles sont les conditions d'hébergement sur la route du Pamir ?", fq2_a: "Les grandes villes offrent des hôtels classiques, tandis que les villages d'altitude proposent des maisons d'hôtes familiales et des yourtes propres, chaleureuses et très authentiques.",
+                fq3_q: "Quels plats traditionnels tadjiks goûter ?", fq3_a: "Ne manquez pas le Qurutob — plat national à base de pain feuilleté imbibé d'une sauce au yaourt, garni d'oignons et d'herbes fraîches — ainsi que les brochettes d'agneau de montagne.",
+                cta_title: "Prêt pour l'aventure d'une vie ?", cta_desc: "Explorez la beauté sauvage du Tadjikistan ou confiez-nous la création de votre expédition sur mesure.", cta_btn1: "Circuits en Asie centrale", cta_btn2: "Nous contacter"
+            },
+            de: {
+                page_title: "Tadschikistan Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Das Dach der Welt & Alpine Wunder",
+                intro_text: "Entdecken Sie die unberührte Schönheit Tadschikistans. Vom legendären Pamir Highway bis zu den spiegelklaren Gletscherseen des Fann-Gebirges ist dieses Land ein Paradies für Abenteurer, Geschichtsliebhaber und Naturfreunde.",
+                facts_badge: "Gut zu wissen", facts_title: "Kurzinfos",
+                qf1_t: "Währung", qf1_d: "Tadschikischer Somoni (TJS). Geldautomaten gibt es in Duschanbe und Chudschand; im Pamir ist Bargeld zwingend erforderlich.",
+                qf2_t: "Sprache", qf2_d: "Tadschikisch (Amtssprache) und Russisch sind weit verbreitet. Die Guides von TGS Travel sprechen fließend Englisch.",
+                qf3_t: "Zeitzone", qf3_d: "TJT (UTC+5). Identisch mit Usbekistan, ganzjährig ohne Sommerzeit.",
+                qf4_t: "Strom", qf4_d: "220V, 50Hz. Europäische Steckdosen der Typen C und F. Für Unterkünfte in den Bergen ist eine Powerbank sehr empfehlenswert.",
+                dest_badge: "Sehenswürdigkeiten", dest_title: "Top-Reiseziele",
+                d1_t: "Duschanbe – Die grüne Hauptstadt",
+                d1_p: "Duschanbe ist eine von Bäumen gesäumte Hauptstadt vor schneebedeckten Gipfeln, die moderne Denkmäler mit grünen Parks und traditionellen Teehäusern verbindet.",
+                d1_li1: "<strong>Rudaki-Park:</strong> Weitläufiger Zentralpark mit monumentaler Statue des Dichters Rudaki und großen Brunnenanlagen.",
+                d1_li2: "<strong>Kohi Nawrus:</strong> Ein prachtvoller moderner Palast im traditionellen Stil mit kunstvollen Holzschnitzereien und Spiegelmosaiken.",
+                d1_li3: "<strong>Nationalmuseum Tadschikistans:</strong> Faszinierende Fundstücke aus buddhistischen Siedlungen und zoroastrischer Geschichte.",
+                d2_t: "Der Pamir Highway – Der ultimative Roadtrip",
+                d2_p: "Der M41 Pamir Highway ist die zweithöchste internationale Fernstraße der Erde. Er führt über raue Pässe jenseits der 4.600 Meter durch unvergessliche Hochplateaus.",
+                d2_li1: "<strong>Wakhan-Korridor:</strong> Spektakuläres Grenztal gegenüber Afghanistan, gesäumt von uralten Steinfestungen.",
+                d2_li2: "<strong>Karakul-See:</strong> Ein surrealer, riesiger Salzsee in einem Meteoritenkrater auf 3.900 Metern Höhe.",
+                d2_li3: "<strong>Pamiri-Kultur:</strong> Übernachten Sie in traditionellen Pamiri-Häusern mit einzigartiger Architektur und herzlicher Gastfreundschaft.",
+                d3_t: "Iskanderkul – Juwel des Fann-Gebirges",
+                d3_p: "Ein faszinierender, halbmondförmiger Bergsee, benannt nach Alexander dem Großen. In seinem leuchtend türkisfarbenen Wasser spiegeln sich die schroffen Gipfel des Fann-Gebirges.",
+                d3_li1: "<strong>„Tadschikischer Niagara“-Wasserfall:</strong> Ein kraftvoller 40-Meter-Wasserfall, nur einen kurzen Spaziergang vom Seeufer entfernt.",
+                d3_li2: "<strong>Schlangensee:</strong> Ein kleinerer, ruhiger Nachbarsee versteckt in den Bergwäldern.",
+                d3_li3: "<strong>Alpines Wandern:</strong> Hervorragende Wanderwege mit kristallklarer Bergluft und eindrucksvollen Panoramen.",
+                visa_badge: "Visum & Einreise", visa_title: "Unkomplizierte Einreise",
+                visa_p1: "Tadschikistan bietet ein vollautomatisches E-Visum-System für über 80 Länder (sowie visumfreie Einreise für viele europäische Pässe) – ganz ohne Botschaftstermin.",
+                visa_p2: "<strong>Wichtig für Pamir-Reisende:</strong> Für die Autonome Region Berg-Badachschan (GBAO) ist eine Sondergenehmigung erforderlich. TGS Travel organisiert sämtliche Berg-Permits automatisch mit Ihrer Buchung.",
+                visa_p3: "Senden Sie unserem Team einfach eine Kopie Ihres Reisepasses – wir kümmern uns um alle Formalitäten vor Ihrer Ankunft.",
+                visa_btn: "Reise anfragen",
+                vc1_t: "E-Visum & Einreise", vc1_d: "Bürger aus der EU, den USA, Großbritannien, Kanada, Australien, den VAE und Ostasien reisen einfach per Online-Verfahren ein.",
+                vc2_t: "GBAO-Permit (Pamir-Region)", vc2_d: "Pflicht für die Pamir-Pässe – wir beantragen und liefern die Genehmigung direkt mit Ihren Reiseunterlagen.",
+                vc3_t: "Sicherheit & Gastfreundschaft", vc3_d: "Tadschikistan gilt als ausgesprochen sicheres Reiseland mit außergewöhnlich herzlichen Gastgebern.",
+                when_badge: "Klimaguide", when_title: "Beste Reisezeit",
+                when_desc: "Durch die enormen Höhenunterschiede unterscheidet sich das Wetter stark zwischen Tälern und Hochpässen. Das erwartet Sie:",
+                tab_spring: "Frühling (Mär–Mai)", tab_summer: "Sommer (Jun–Aug)", tab_autumn: "Herbst (Sep–Nov)", tab_winter: "Winter (Dez–Feb)",
+                lbl_valleys: "Ø Temp. Täler", lbl_passes: "Hohe Bergpässe", lbl_best: "Ideal für", lbl_pamir: "Ø Temp. Pamir",
+                sp_t: "Grüne Täler & Nawrus 🌸", sp_d: "Der Frühling verzaubert Duschanbe und die tieferen Täler mit sattem Grün und den großen Nawrus-Frühlingsfesten Ende März.", sp_passes: "Verschneit / gesperrt", sp_best: "Stadt- & Kulturreisen",
+                su_t: "Hauptsaison für Abenteuer ☀️", su_d: "Die absolut beste Zeit für Trekking im Fann-Gebirge und den Pamir Highway. Alle Hochpässe sind frei und die Bergabende angenehm kühl.", su_best: "Pamir Highway & Trekking",
+                au_t: "Goldene Erntezeit 🍂", au_d: "September und Oktober bieten glasklare Sicht, goldbraune Bergtäler und Basare voller süßer Trauben, Melonen und Granatäpfel.", au_passes: "Kühl, offen bis Nov.", au_best: "Landschafts- & Fotoreisen",
+                wi_t: "Winterstille der Gipfel ❄️", wi_d: "Starker Schneefall schließt die Hochpässe, doch die ruhige, günstige Saison eignet sich wunderbar für Chudschand und gemütliche Teehäuser in Duschanbe.", wi_passes: "Durch Schnee gesperrt", wi_best: "Günstige Kulturreisen",
+                log_badge: "Logistik", log_title: "Unterwegs in Tadschikistan",
+                tr1_t: "Flüge & Ankunft", tr1_d: "Internationale Flüge landen in Duschanbe (DYU). Unser Team empfängt Sie persönlich am Terminal mit privatem Transfer.",
+                tr2_t: "4x4-Bergflotte", tr2_d: "Da die Gebirgsstraßen anspruchsvoll sind, setzt TGS Travel ausschließlich auf zuverlässige, bestens ausgerüstete 4x4-Geländewagen mit erfahrenen Bergfahrern.",
+                tr3_t: "Länderübergreifende Routen", tr3_d: "Wir bieten nahtlose Grenztransfers für Gäste, die Samarkand über den Grenzübergang Pandschakent direkt mit dem Fann-Gebirge kombinieren.",
+                faq_badge: "Vor der Reise", faq_title: "Reisetipps & FAQ",
+                fq1_q: "Wie bereite ich mich auf die große Höhe im Pamir vor?", fq1_a: "Pamir-Touren führen über 3.500 Meter hinaus. Wir planen eine schrittweise Akklimatisierung ein – trinken Sie viel Wasser, vermeiden Sie anfangs starke Anstrengung und sprechen Sie bei Bedarf mit Ihrem Arzt.",
+                fq2_q: "Wie sind die Übernachtungen entlang des Pamir Highway?", fq2_a: "In größeren Städten gibt es klassische Hotels, in den Bergdörfern saubere, herzliche Familien-Gästehäuser (Homestays) und Jurtenlager mit authentischem Einblick in die lokale Kultur.",
+                fq3_q: "Welche traditionellen Gerichte sollte ich probieren?", fq3_a: "Unbedingt Qurutob – das Nationalgericht aus Blätterteigbrot in würziger Joghurtsauce mit gebratenen Zwiebeln und frischen Kräutern – sowie Pamiri-Fladenbrot und Lammspieße.",
+                cta_title: "Bereit für das Abenteuer Ihres Lebens?", cta_desc: "Entdecken Sie die wilde Schönheit Tadschikistans oder lassen Sie uns Ihre individuelle Expedition planen.", cta_btn1: "Zentralasien-Touren ansehen", cta_btn2: "Kontakt aufnehmen"
+            },
+            tr: {
+                page_title: "Tacikistan Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "Dünyanın Çatısı ve Alpin Harikalar",
+                intro_text: "Tacikistan'ın el değmemiş, ham güzelliğini keşfedin. Efsanevi yüksek rakımlı Pamir Karayolu'ndan Fann Dağları'nın ayna gibi buzul göllerine kadar burası macera tutkunları, tarih meraklıları ve doğa aşıkları için eşsiz bir sığınaktır.",
+                facts_badge: "Bilmekte Fayda Var", facts_title: "Hızlı Bilgiler",
+                qf1_t: "Para Birimi", qf1_d: "Tacik Somonisi (TJS). Duşanbe ve Hocent'te ATM bulunur; Pamir bölgesinde mutlaka nakit bulundurulmalıdır.",
+                qf2_t: "Dil", qf2_d: "Tacikçe (resmi dil) ve Rusça yaygın olarak konuşulur. TGS Travel rehberleri akıcı İngilizce bilir.",
+                qf3_t: "Saat Dilimi", qf3_d: "TJT (UTC+5). Özbekistan ile aynı saat dilimindedir, yaz saati uygulaması yoktur.",
+                qf4_t: "Elektrik", qf4_d: "220V, 50Hz. Türkiye ile uyumlu Avrupa tipi C ve F prizler. Dağ evi konaklamaları için powerbank önerilir.",
+                dest_badge: "Görülecek Yerler", dest_title: "Öne Çıkan Destinasyonlar",
+                d1_t: "Duşanbe — Yeşil Başkent",
+                d1_p: "Karlı zirvelerle çevrili ağaçlıklı başkent Duşanbe; modern ulusal anıtları, huzurlu parkları ve samimi çayevlerini zarifçe bir araya getirir.",
+                d1_li1: "<strong>Rudaki Parkı:</strong> Ünlü şair Rudaki'nin görkemli heykeli ve anıtsal fıskiyeleriyle şehrin kalbi.",
+                d1_li2: "<strong>Koh-i Nevruz:</strong> İnce ahşap oymacılığı ve ayna mozaikleriyle ulusal tarzda inşa edilmiş büyüleyici modern saray.",
+                d1_li3: "<strong>Tacikistan Ulusal Müzesi:</strong> Antik Budist yerleşimleri ve Zerdüşt tarihinden büyüleyici eserler sergiler.",
+                d2_t: "Pamir Karayolu — Efsanevi Yolculuk",
+                d2_p: "M41 Pamir Karayolu, dünyanın en yüksek ikinci uluslararası yoludur. 4.600 metreyi aşan geçitlerden geçerek ay yüzeyini andıran unutulmaz platolar sunar.",
+                d2_li1: "<strong>Vahan Koridoru:</strong> Afganistan'a bakan, antik taş kalelerle sıralı nefes kesici sınır vadisi.",
+                d2_li2: "<strong>Karakul Gölü:</strong> 3.900 metre rakımda bir meteor krateri içinde oluşmuş devasa ve gerçeküstü tuz gölü.",
+                d2_li3: "<strong>Pamir Kültürü:</strong> Eşsiz mimarisi ve sıcacık misafirperverliğiyle geleneksel Pamir evlerinde konaklama deneyimi.",
+                d3_t: "İskenderkul — Fann Dağları'nın Mücevheri",
+                d3_p: "Adını Büyük İskender'den alan hilal şeklindeki büyüleyici dağ gölü. Parlak turkuaz suları Fann Dağları'nın sarp zirvelerini yansıtır.",
+                d3_li1: "<strong>Tacik Niagara Şelalesi:</strong> Göl kıyısından kısa ve keyifli bir yürüyüşle ulaşılan 40 metrelik güçlü şelale.",
+                d3_li2: "<strong>Yılan Gölü:</strong> Dağ ormanları arasında gizlenmiş, daha küçük ve dingin komşu göl.",
+                d3_li3: "<strong>Alpin Yürüyüş:</strong> Temiz dağ havası ve çarpıcı panoramik manzaralar sunan harika parkurlar.",
+                visa_badge: "Vize ve Giriş", visa_title: "Kolay ve Sorunsuz Sınır Geçişi",
+                visa_p1: "Tacikistan, 80'den fazla ülke için konsolosluğa gitmeden hızlıca alınabilen tam otomatik online E-Vize sistemi sunar.",
+                visa_p2: "<strong>Pamir gezginleri için önemli:</strong> Dağlık Badahşan Özerk Bölgesi'ni (GBAO) ziyaret etmek için özel izin gerekir. TGS Travel, tur rezervasyonunuzla birlikte tüm dağ izinlerini ve kayıtları otomatik olarak ayarlar.",
+                visa_p3: "Pasaport kopyanızı yöneticimize iletmeniz yeterli; uçuşunuzdan önce tüm resmi evrak süreçlerini sizin yerinize tamamlarız.",
+                visa_btn: "Turunuz Hakkında Bilgi Alın",
+                vc1_t: "E-Vize Kolaylığı", vc1_d: "AB ülkeleri, ABD, Birleşik Krallık, Kanada, Avustralya, BAE ve Asya ülkeleri online kolayca başvurabilir.",
+                vc2_t: "GBAO İzni (Pamir Bölgesi)", vc2_d: "Dağ geçitlerine giriş için zorunludur; vize evraklarınızla birlikte biz çıkarıyoruz.",
+                vc3_t: "Güvenlik ve Misafirperverlik", vc3_d: "Tacikistan, gezginlere büyük saygı duyan son derece misafirperver insanlarıyla çok güvenli bir ülkedir.",
+                when_badge: "İklim Rehberi", when_title: "Ne Zaman Gidilir",
+                when_desc: "Büyük rakım farkları nedeniyle vadi şehirleri ile yüksek geçitler arasında hava durumu ciddi şekilde değişir. İşte mevsim rehberi:",
+                tab_spring: "İlkbahar (Mar–May)", tab_summer: "Yaz (Haz–Ağu)", tab_autumn: "Sonbahar (Eyl–Kas)", tab_winter: "Kış (Ara–Şub)",
+                lbl_valleys: "Ort. Vadi Sıcaklığı", lbl_passes: "Yüksek Geçitler", lbl_best: "En İyisi", lbl_pamir: "Ort. Pamir Sıcaklığı",
+                sp_t: "Yeşil Vadiler ve Nevruz 🌸", sp_d: "İlkbahar Duşanbe ve alçak vadilerde harikadır; doğa yeşerir ve Mart sonunda geleneksel sporlar ve lezzetlerle büyük Nevruz kutlamaları yapılır.", sp_passes: "Karlı / Kapalı", sp_best: "Şehir ve Kültür Turları",
+                su_t: "Zirve Macera Sezonu ☀️", su_d: "Fann Dağları yürüyüşleri ve efsanevi Pamir Karayolu yolculuğu için en ideal dönemdir. Yüksek geçitler tamamen açık, dağ akşamları serindir.", su_best: "Pamir Karayolu ve Trekking",
+                au_t: "Altın Hasat Mevsimi 🍂", au_d: "Eylül ve Ekim ayları berrak manzaralar ve ılıman hava sunar. Vadiler altın tonlara bürünür, pazarlar üzüm, kavun ve narla dolar.", au_passes: "Serin, Kasım'a kadar açık", au_best: "Manzara ve Fotoğraf Turları",
+                wi_t: "Karlı Zirvelerin Sessizliği ❄️", wi_d: "Kışın yoğun kar geçitleri kapatır; ancak Hocent'in tarihi mirasını görmek ve Duşanbe'nin çayevlerinin tadını çıkarmak için sakin ve ekonomik bir dönemdir.", wi_passes: "Yoğun Kar Nedeniyle Kapalı", wi_best: "Ekonomik Kültür Gezileri",
+                log_badge: "Lojistik", log_title: "Tacikistan İçi Ulaşım",
+                tr1_t: "Uçuş ve Karşılama", tr1_d: "Uluslararası uçuşlar Duşanbe Uluslararası Havalimanı'na (DYU) iner. Ekibimiz terminalde özel karşılama ve transfer hizmeti sunar.",
+                tr2_t: "4x4 Dağ Araç Filosu", tr2_d: "Zorlu dağ yolları özel araç gerektirir; TGS Travel yalnızca deneyimli dağ şoförleriyle donanımlı ve güvenilir 4x4 SUV'lar kullanır.",
+                tr3_t: "Çok Ülkeli Sınır Geçişleri", tr3_d: "Semerkant turunu Pencikent kara sınır kapısı üzerinden doğrudan Tacikistan'ın Fann Dağları ile birleştiren misafirler için sorunsuz ulaşım sağlıyoruz.",
+                faq_badge: "Yola Çıkmadan Önce", faq_title: "Gezgin İpuçları ve SSS",
+                fq1_q: "Pamir'deki yüksek rakıma nasıl hazırlanmalıyım?", fq1_a: "Pamir turları 3.500 metrenin üzerine çıkar. Rotalarımıza kademeli uyum günleri ekliyoruz; bol su içmeniz, ilk iki gün aşırı efordan kaçınmanız ve gerekirse doktorunuza danışmanız önerilir.",
+                fq2_q: "Pamir Karayolu boyunca konaklama koşulları nasıldır?", fq2_a: "Büyük şehirlerde standart oteller bulunurken, derin dağ köylerinde yerel aile pansiyonları ve yurt kampları kullanılır. Temiz, samimi ve kültürü yakından tanıma fırsatı sunan yerlerdir.",
+                fq3_q: "Hangi geleneksel Tacik yemeklerini denemeliyim?", fq3_a: "Tacikistan'ın ulusal yemeği Qurutob'u (yoğurt sosuna batırılmış katmerli ekmek, kavrulmuş soğan ve taze otlarla), otantik Pamir ekmeğini ve dağ kuzu şişlerini mutlaka deneyin.",
+                cta_title: "Hayatınızın Macerasına Hazır mısınız?", cta_desc: "Tacikistan'ın vahşi güzelliğini keşfedin veya size özel bir keşif rotası tasarlamamıza izin verin.", cta_btn1: "Orta Asya Turlarını Gör", cta_btn2: "Bize Ulaşın"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
@@ -560,29 +899,39 @@
             once: true,
         });
 
-        // Accordion logic
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Логика аккордеонов
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Tabs logic
+        // Логика табов (Сезоны)
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
                 document.querySelectorAll('.season-content').forEach(c => {
                     c.classList.toggle('active', c.dataset.season === season);
                 });

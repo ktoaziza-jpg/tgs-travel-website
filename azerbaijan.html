@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,10 @@
             transform: translateY(0);
         }
 
+        /* Mobile Menu */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
         /* Season tabs */
         .season-tab.active {
             background-color: #16697A;
@@ -59,9 +63,7 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        .season-content.active {
-            display: block;
-        }
+        .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -75,7 +77,7 @@
             opacity: 0;
         }
         .accordion-item.active .accordion-content {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
         }
         .accordion-item.active .accordion-icon {
@@ -90,75 +92,154 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Azerbaijan</a>
-                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- EPIC HERO SECTION (БАКУ ВАЙБ) -->
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-gold font-bold text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
+    <!-- EPIC HERO SECTION -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Baku Flame Towers Skyline, Azerbaijan" class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down" data-i18n="hero_badge">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-i18n="country_azerbaijan">
                 Azerbaijan
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
                 The Land of Fire & Caspian Luxury
             </p>
         </div>
@@ -167,36 +248,36 @@
     <!-- INTRO & QUICK FACTS -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
-            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="intro_text">
                 Step into a dynamic crossroad where centuries-old Silk Road caravanserais sit in perfect harmony with futuristic skyscrapers. Azerbaijan seamlessly blends ultra-modern Caspian luxury, mystical burning hillsides, mud volcanoes, and pristine mountain villages to give you an incredibly diverse oriental escape.
             </p>
         </div>
 
         <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="facts_badge">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="facts_title">Quick Facts</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
-                <p class="text-teal-900/70 font-light text-sm">Azerbaijani Manat (AZN). Digital payments and credit cards are widely accepted across Baku’s premium venues.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf1_t">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf1_d">Azerbaijani Manat (AZN). Digital payments and credit cards are widely accepted across Baku’s premium venues.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
-                <p class="text-teal-900/70 font-light text-sm">Azerbaijani (official). Russian and English are extensively used across high-end hotels and restaurants.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf2_t">Language</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf2_d">Azerbaijani (official). Russian and English are extensively used across high-end hotels and restaurants.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
-                <p class="text-teal-900/70 font-light text-sm">AZT (UTC+4). Smooth alignment with standard flight connections across Europe and Asia.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf3_t">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf3_d">AZT (UTC+4). Smooth alignment with standard flight connections across Europe and Asia.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
-                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Standard European C and F plug sockets are operational in all luxury properties.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf4_t">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf4_d">220V, 50Hz. Standard European C and F plug sockets are operational in all luxury properties.</p>
             </div>
         </div>
     </section>
@@ -205,23 +286,23 @@
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="dest_badge">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="dest_title">Top Destinations</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Baku - The Caspian Symphony</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d1_t">Baku - The Caspian Symphony</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The dynamic capital beautifully fuses the heritage of Paris-style boulevards, ultra-futuristic skyscraper architecture, and the ancient stone charm of its inner walled fortress.</p>
+                            <p class="mb-4" data-i18n="d1_p">The dynamic capital beautifully fuses the heritage of Paris-style boulevards, ultra-futuristic skyscraper architecture, and the ancient stone charm of its inner walled fortress.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Icherisheher (Old City):</strong> A labyrinth of stone alleys featuring the mystical Maiden Tower and the Palace of the Shirvanshahs.</li>
-                                <li><strong>Flame Towers:</strong> The iconic trio of skyscrapers that transform into massive LED blazing fires every single evening.</li>
-                                <li><strong>Heydar Aliyev Center:</strong> Zaha Hadid’s architectural masterpiece, famous worldwide for its flowing, wave-like white curves.</li>
+                                <li data-i18n-html="d1_li1"><strong>Icherisheher (Old City):</strong> A labyrinth of stone alleys featuring the mystical Maiden Tower and the Palace of the Shirvanshahs.</li>
+                                <li data-i18n-html="d1_li2"><strong>Flame Towers:</strong> The iconic trio of skyscrapers that transform into massive LED blazing fires every single evening.</li>
+                                <li data-i18n-html="d1_li3"><strong>Heydar Aliyev Center:</strong> Zaha Hadid’s architectural masterpiece, famous worldwide for its flowing, wave-like white curves.</li>
                             </ul>
                         </div>
                     </div>
@@ -229,16 +310,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Gobustan & Mud Volcanoes - Nature's Raw Canvas</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d2_t">Gobustan & Mud Volcanoes - Nature's Raw Canvas</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Located just an hour from Baku, this surreal moonscape is home to nearly half of the entire planet's bubbling mud volcanoes and exceptional prehistoric stone carvings.</p>
+                            <p class="mb-4" data-i18n="d2_p">Located just an hour from Baku, this surreal moonscape is home to nearly half of the entire planet's bubbling mud volcanoes and exceptional prehistoric stone carvings.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Prehistoric Petroglyphs:</strong> UNESCO World Heritage rock art dating back over 40,000 years depicting ancient hunting rituals.</li>
-                                <li><strong>Active Mud Volcanoes:</strong> Get up close to watch the perfectly cold, mineral-rich grey clay bubble and vent out of the earth.</li>
-                                <li><strong>Yanar Dag:</strong> A fascinating natural gas hill that has been burning continuously for centuries without stopping.</li>
+                                <li data-i18n-html="d2_li1"><strong>Prehistoric Petroglyphs:</strong> UNESCO World Heritage rock art dating back over 40,000 years depicting ancient hunting rituals.</li>
+                                <li data-i18n-html="d2_li2"><strong>Active Mud Volcanoes:</strong> Get up close to watch the perfectly cold, mineral-rich grey clay bubble and vent out of the earth.</li>
+                                <li data-i18n-html="d2_li3"><strong>Yanar Dag:</strong> A fascinating natural gas hill that has been burning continuously for centuries without stopping.</li>
                             </ul>
                         </div>
                     </div>
@@ -246,16 +327,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Sheki - The Silk Road Legacy</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d3_t">Sheki - The Silk Road Legacy</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Nestled at the base of the forested Greater Caucasus Mountains, Sheki is an absolute jewel of ancient trade, master craftsmanship, and outstanding palace architecture.</p>
+                            <p class="mb-4" data-i18n="d3_p">Nestled at the base of the forested Greater Caucasus Mountains, Sheki is an absolute jewel of ancient trade, master craftsmanship, and outstanding palace architecture.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Palace of Sheki Khans:</strong> An 18th-century royal summer residence built completely without a single nail, featuring intricate Shebeke stained glass.</li>
-                                <li><strong>Sheki Caravanserai:</strong> A massive historic stone roadside inn where merchant caravans rested overnight along their long journeys.</li>
-                                <li><strong>Artisan Quarters:</strong> Watch masters assemble complex wooden stained glass frames and weave traditional silk scarves.</li>
+                                <li data-i18n-html="d3_li1"><strong>Palace of Sheki Khans:</strong> An 18th-century royal summer residence built completely without a single nail, featuring intricate Shebeke stained glass.</li>
+                                <li data-i18n-html="d3_li2"><strong>Sheki Caravanserai:</strong> A massive historic stone roadside inn where merchant caravans rested overnight along their long journeys.</li>
+                                <li data-i18n-html="d3_li3"><strong>Artisan Quarters:</strong> Watch masters assemble complex wooden stained glass frames and weave traditional silk scarves.</li>
                             </ul>
                         </div>
                     </div>
@@ -268,12 +349,12 @@
     <section class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">Instant ASAN E-Visa Processing</h2>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Entering Azerbaijan is streamlined and remarkably straightforward. Citizens of most Gulf nations, EU countries, the USA, Canada, and the UK can quickly secure an official e-Visa online within 3 business days.</p>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Citizens of most CIS states, including Uzbekistan, enjoy completely visa-free entry requirements for stays of up to 90 days with a standard international passport.</p>
-                <p class="text-cream/80 font-light mb-8 leading-relaxed">Our premium desk manages all necessary hotel confirmations and handles fast-track registration filings effortlessly for your complete comfort.</p>
-                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Plan Your Azerbaijan Escape</a>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="visa_badge">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight" data-i18n="visa_title">Instant ASAN E-Visa Processing</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p1">Entering Azerbaijan is streamlined and remarkably straightforward. Citizens of most Gulf nations, EU countries, the USA, Canada, and the UK can quickly secure an official e-Visa online within 3 business days.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p2">Citizens of most CIS states, including Uzbekistan, enjoy completely visa-free entry requirements for stays of up to 90 days with a standard international passport.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed" data-i18n="visa_p3">Our premium desk manages all necessary hotel confirmations and handles fast-track registration filings effortlessly for your complete comfort.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300" data-i18n="visa_btn">Plan Your Azerbaijan Escape</a>
             </div>
 
             <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
@@ -282,8 +363,8 @@
                         <i data-lucide="check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Visa-Free Travel</div>
-                        <p class="text-cream/70 font-light text-sm">90-day visa-free entry applies seamlessly to passport holders from several neighbor and CIS nations.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc1_t">Visa-Free Travel</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc1_d">90-day visa-free entry applies seamlessly to passport holders from several neighbor and CIS nations.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -291,8 +372,8 @@
                         <i data-lucide="monitor" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">ASAN Online Portal</div>
-                        <p class="text-cream/70 font-light text-sm">Electronic processing yields ready documents online quickly, requiring zero physical embassy queues.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc2_t">ASAN Online Portal</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc2_d">Electronic processing yields ready documents online quickly, requiring zero physical embassy queues.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -300,8 +381,8 @@
                         <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">State Security Registration</div>
-                        <p class="text-cream/70 font-light text-sm">Stays exceeding 15 days require automated registration with the State Migration Service. We file this for you.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc3_t">State Security Registration</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc3_d">Stays exceeding 15 days require automated registration with the State Migration Service. We file this for you.</p>
                     </div>
                 </div>
             </div>
@@ -312,33 +393,31 @@
     <section class="py-24 px-6 bg-cream">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
-                <p class="text-teal-900/70 font-light max-w-xl mx-auto">Azerbaijan features 9 distinct climate zones out of 11. Choose the ultimate window to match your desired holiday track.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="when_badge">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4" data-i18n="when_title">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto" data-i18n="when_desc">Azerbaijan features 9 distinct climate zones out of 11. Choose the ultimate window to match your desired holiday track.</p>
             </div>
 
             <!-- Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
-                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring" data-i18n="tab_spring">Spring (Mar–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer" data-i18n="tab_summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn" data-i18n="tab_autumn">Autumn (Sep–Nov)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter" data-i18n="tab_winter">Winter (Dec–Feb)</button>
             </div>
 
             <!-- Content Blocks -->
             <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                
                 <!-- Spring -->
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Caspian Breezes & Novruz 🌸</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring brings ideal sightseeing temperatures to Baku. Mid-March activates spectacular nation-wide Novruz celebrations with street performances, traditional dancing, fire-jumping rituals, and abundant sweet pastries.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="sp_t">Caspian Breezes & Novruz 🌸</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="sp_d">Spring brings ideal sightseeing temperatures to Baku. Mid-March activates spectacular nation-wide Novruz celebrations with street performances, traditional dancing, fire-jumping rituals, and abundant sweet pastries.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">14–24°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Weather</span><span class="font-bold text-teal-900">Pleasantly Crisp</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Baku Boulevard & Gobustan Excursions</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">14–24°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_weather">Weather</span><span class="font-bold text-teal-900" data-i18n="sp_weather">Pleasantly Crisp</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="sp_best">Baku Boulevard & Gobustan Excursions</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -351,13 +430,12 @@
                 <div class="season-content" data-season="summer">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Premium Beach & Highland Escapes ☀️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">While lowland Baku gets hot, summer turns luxury Caspian resorts (Bilgah, Amburan) into a premium beach sanctuary. It is also the ideal window to escape straight up into cool, emerald mountain villages like Quba and Gabala.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="su_t">Premium Beach & Highland Escapes ☀️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="su_d">While lowland Baku gets hot, summer turns luxury Caspian resorts (Bilgah, Amburan) into a premium beach sanctuary. It is also the ideal window to escape straight up into cool, emerald mountain villages like Quba and Gabala.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Baku Temp</span><span class="font-bold text-teal-900">30–36°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Mountain Temp</span><span class="font-bold text-teal-900">18–25°C</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Caspian Beach Resorts & Gabala Alpine Retreats</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_baku">Avg. Baku Temp</span><span class="font-bold text-teal-900">30–36°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_mtn">Mountain Temp</span><span class="font-bold text-teal-900">18–25°C</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="su_best">Caspian Beach Resorts & Gabala Alpine Retreats</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -370,13 +448,12 @@
                 <div class="season-content" data-season="autumn">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Pomegranate Gold Velvet 🍂</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September and October represent another ultimate peak travel window. The severe heat completely clears out, local fruit bazaars fill with fresh sweet pomegranates, and weather is absolutely perfect for historical strolling.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="au_t">Pomegranate Gold Velvet 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="au_d">September and October represent another ultimate peak travel window. The severe heat completely clears out, local fruit bazaars fill with fresh sweet pomegranates, and weather is absolutely perfect for historical strolling.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">18–26°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Crowds</span><span class="font-bold text-teal-900">Lower & Relaxed</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Sheki Khan Palaces & Wine Tasting Tours</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">18–26°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_crowds">Crowds</span><span class="font-bold text-teal-900" data-i18n="au_crowds">Lower & Relaxed</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="au_best">Sheki Khan Palaces & Wine Tasting Tours</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -389,13 +466,12 @@
                 <div class="season-content" data-season="winter">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Alpine Skiing & Hammam Luxury ❄️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Baku gets windy and chilly, creating the perfect context to disappear into ancient 17th-century stone hamams. Meanwhile, the high Caucasus ranges fill with thick snow, activating premier ski fields in Shahdag.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="wi_t">Alpine Skiing & Hammam Luxury ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="wi_d">Baku gets windy and chilly, creating the perfect context to disappear into ancient 17th-century stone hamams. Meanwhile, the high Caucasus ranges fill with thick snow, activating premier ski fields in Shahdag.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Baku Temp</span><span class="font-bold text-teal-900">4–9°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Ski Slopes</span><span class="font-bold text-teal-900">Fully Snowbound & Open</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Shahdag Ski Resorts & Baku Fine Dining</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_baku">Avg. Baku Temp</span><span class="font-bold text-teal-900">4–9°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_ski">Ski Slopes</span><span class="font-bold text-teal-900" data-i18n="wi_ski">Fully Snowbound & Open</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="wi_best">Shahdag Ski Resorts & Baku Fine Dining</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -411,8 +487,8 @@
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Azerbaijan</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="log_badge">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="log_title">Getting Around Azerbaijan</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -420,22 +496,22 @@
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Heydar Aliyev Hub</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">International flights land smoothly at Baku's architectural flagship Airport terminal (GYD). We deploy private luxury Mercedes vans with professional operators right at your terminal gate.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr1_t">Heydar Aliyev Hub</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr1_d">International flights land smoothly at Baku's architectural flagship Airport terminal (GYD). We deploy private luxury Mercedes vans with professional operators right at your terminal gate.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="truck" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Premium Inter-City Vans</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Journeys down smooth regional highways straight toward Sheki or up Caucasus peaks are executed exclusively inside climate-controlled luxury Mercedes Sprinters or multi-terrain SUVs.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr2_t">Premium Inter-City Vans</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr2_d">Journeys down smooth regional highways straight toward Sheki or up Caucasus peaks are executed exclusively inside climate-controlled luxury Mercedes Sprinters or multi-terrain SUVs.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="map-pin" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Caspian Fast Transit</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">All inner-city movements — from your premium hotel suites to architectural landmarks and seaside restaurant venues — are fully covered inside your individual all-inclusive itinerary package.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr3_t">Caspian Fast Transit</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr3_d">All inner-city movements — from your premium hotel suites to architectural landmarks and seaside restaurant venues — are fully covered inside your individual all-inclusive itinerary package.</p>
                 </div>
             </div>
         </div>
@@ -445,40 +521,40 @@
     <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="faq_badge">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="faq_title">Traveler Tips & FAQ</h2>
             </div>
 
             <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
                 <div class="accordion-item active border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Why is Baku nicknamed "The City of Winds"?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq1_q">Why is Baku nicknamed "The City of Winds"?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq1_a">
                             Baku naturally experiences strong, sudden marine wind currents throughout the entire year (the cold "Khazri" from the north and warm "Gilavar" from the south). Pack light windbreakers and stylish layer choices even for warm summer evenings.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What culinary traditions should I absolutely not miss?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq2_q">What culinary traditions should I absolutely not miss?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
-                            Aзербайджанская кухня невероятно богата. Taste authentic Shah Plov (royal rice crowned in a crisp golden pastry crust), delicate handmade Dushbara soup, fresh Caspian sturgeon, and savory Kutabs (paper-thin flatbreads stuffed with minced lamb or mountain greens).
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq2_a">
+                            Azerbaijani cuisine is remarkably rich. Taste authentic Shah Plov (royal rice crowned in a crisp golden pastry crust), delicate handmade Dushbara soup, fresh Caspian sturgeon, and savory Kutabs (paper-thin flatbreads stuffed with minced lamb or mountain greens).
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Is Azerbaijan suitable for wine connoisseurs?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq3_q">Is Azerbaijan suitable for wine connoisseurs?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq3_a">
                             Absolutely. Azerbaijan is experiencing a magnificent modern winemaking rebirth. Local valleys cultivate rare ancient grapes like Madrasa and Bayanshira. Our premium tours feature exclusive private degustations at boutique vineyards in Shamakhi and Gabala.
                         </div>
                     </div>
@@ -491,12 +567,12 @@
     <section class="bg-gold py-16 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
             <div>
-                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready to Witness the Land of Fire?</h3>
-                <p class="text-teal-900/80 text-lg font-medium">Browse our individual Caspian itineraries or speak with our planning desk to customize your trip.</p>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2" data-i18n="cta_title">Ready to Witness the Land of Fire?</h3>
+                <p class="text-teal-900/80 text-lg font-medium" data-i18n="cta_desc">Browse our individual Caspian itineraries or speak with our planning desk to customize your trip.</p>
             </div>
             <div class="flex gap-4 flex-wrap justify-center">
-                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">View Group Tours</a>
-                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap" data-i18n="cta_btn1">View Group Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap" data-i18n="cta_btn2">Contact Us</a>
             </div>
         </div>
     </section>
@@ -506,48 +582,311 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
                 <div class="flex items-center space-x-4 text-cream/60">
-                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </a>
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
                 </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ АЗЕРБАЙДЖАНА (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Azerbaijan Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "The Land of Fire & Caspian Luxury",
+                intro_text: "Step into a dynamic crossroad where centuries-old Silk Road caravanserais sit in perfect harmony with futuristic skyscrapers. Azerbaijan seamlessly blends ultra-modern Caspian luxury, mystical burning hillsides, mud volcanoes, and pristine mountain villages to give you an incredibly diverse oriental escape.",
+                facts_badge: "Good to Know", facts_title: "Quick Facts",
+                qf1_t: "Currency", qf1_d: "Azerbaijani Manat (AZN). Digital payments and credit cards are widely accepted across Baku’s premium venues.",
+                qf2_t: "Language", qf2_d: "Azerbaijani (official). Russian and English are extensively used across high-end hotels and restaurants.",
+                qf3_t: "Time Zone", qf3_d: "AZT (UTC+4). Smooth alignment with standard flight connections across Europe and Asia.",
+                qf4_t: "Electricity", qf4_d: "220V, 50Hz. Standard European C and F plug sockets are operational in all luxury properties.",
+                dest_badge: "Must-Visit Places", dest_title: "Top Destinations",
+                d1_t: "Baku - The Caspian Symphony",
+                d1_p: "The dynamic capital beautifully fuses the heritage of Paris-style boulevards, ultra-futuristic skyscraper architecture, and the ancient stone charm of its inner walled fortress.",
+                d1_li1: "<strong>Icherisheher (Old City):</strong> A labyrinth of stone alleys featuring the mystical Maiden Tower and the Palace of the Shirvanshahs.",
+                d1_li2: "<strong>Flame Towers:</strong> The iconic trio of skyscrapers that transform into massive LED blazing fires every single evening.",
+                d1_li3: "<strong>Heydar Aliyev Center:</strong> Zaha Hadid’s architectural masterpiece, famous worldwide for its flowing, wave-like white curves.",
+                d2_t: "Gobustan & Mud Volcanoes - Nature's Raw Canvas",
+                d2_p: "Located just an hour from Baku, this surreal moonscape is home to nearly half of the entire planet's bubbling mud volcanoes and exceptional prehistoric stone carvings.",
+                d2_li1: "<strong>Prehistoric Petroglyphs:</strong> UNESCO World Heritage rock art dating back over 40,000 years depicting ancient hunting rituals.",
+                d2_li2: "<strong>Active Mud Volcanoes:</strong> Get up close to watch the perfectly cold, mineral-rich grey clay bubble and vent out of the earth.",
+                d2_li3: "<strong>Yanar Dag:</strong> A fascinating natural gas hill that has been burning continuously for centuries without stopping.",
+                d3_t: "Sheki - The Silk Road Legacy",
+                d3_p: "Nestled at the base of the forested Greater Caucasus Mountains, Sheki is an absolute jewel of ancient trade, master craftsmanship, and outstanding palace architecture.",
+                d3_li1: "<strong>Palace of Sheki Khans:</strong> An 18th-century royal summer residence built completely without a single nail, featuring intricate Shebeke stained glass.",
+                d3_li2: "<strong>Sheki Caravanserai:</strong> A massive historic stone roadside inn where merchant caravans rested overnight along their long journeys.",
+                d3_li3: "<strong>Artisan Quarters:</strong> Watch masters assemble complex wooden stained glass frames and weave traditional silk scarves.",
+                visa_badge: "Visa & Entry", visa_title: "Instant ASAN E-Visa Processing",
+                visa_p1: "Entering Azerbaijan is streamlined and remarkably straightforward. Citizens of most Gulf nations, EU countries, the USA, Canada, and the UK can quickly secure an official e-Visa online within 3 business days.",
+                visa_p2: "Citizens of most CIS states, including Uzbekistan, enjoy completely visa-free entry requirements for stays of up to 90 days with a standard international passport.",
+                visa_p3: "Our premium desk manages all necessary hotel confirmations and handles fast-track registration filings effortlessly for your complete comfort.",
+                visa_btn: "Plan Your Azerbaijan Escape",
+                vc1_t: "Visa-Free Travel", vc1_d: "90-day visa-free entry applies seamlessly to passport holders from several neighbor and CIS nations.",
+                vc2_t: "ASAN Online Portal", vc2_d: "Electronic processing yields ready documents online quickly, requiring zero physical embassy queues.",
+                vc3_t: "State Security Registration", vc3_d: "Stays exceeding 15 days require automated registration with the State Migration Service. We file this for you.",
+                when_badge: "Climate Guide", when_title: "When to Go",
+                when_desc: "Azerbaijan features 9 distinct climate zones out of 11. Choose the ultimate window to match your desired holiday track.",
+                tab_spring: "Spring (Mar–May)", tab_summer: "Summer (Jun–Aug)", tab_autumn: "Autumn (Sep–Nov)", tab_winter: "Winter (Dec–Feb)",
+                lbl_temp: "Avg. Temp", lbl_weather: "Weather", lbl_best: "Best For", lbl_baku: "Avg. Baku Temp", lbl_mtn: "Mountain Temp", lbl_crowds: "Crowds", lbl_ski: "Ski Slopes",
+                sp_t: "Caspian Breezes & Novruz 🌸", sp_d: "Spring brings ideal sightseeing temperatures to Baku. Mid-March activates spectacular nation-wide Novruz celebrations with street performances, traditional dancing, fire-jumping rituals, and abundant sweet pastries.", sp_weather: "Pleasantly Crisp", sp_best: "Baku Boulevard & Gobustan Excursions",
+                su_t: "Premium Beach & Highland Escapes ☀️", su_d: "While lowland Baku gets hot, summer turns luxury Caspian resorts (Bilgah, Amburan) into a premium beach sanctuary. It is also the ideal window to escape straight up into cool, emerald mountain villages like Quba and Gabala.", su_best: "Caspian Beach Resorts & Gabala Alpine Retreats",
+                au_t: "Pomegranate Gold Velvet 🍂", au_d: "September and October represent another ultimate peak travel window. The severe heat completely clears out, local fruit bazaars fill with fresh sweet pomegranates, and weather is absolutely perfect for historical strolling.", au_crowds: "Lower & Relaxed", au_best: "Sheki Khan Palaces & Wine Tasting Tours",
+                wi_t: "Alpine Skiing & Hammam Luxury ❄️", wi_d: "Baku gets windy and chilly, creating the perfect context to disappear into ancient 17th-century stone hamams. Meanwhile, the high Caucasus ranges fill with thick snow, activating premier ski fields in Shahdag.", wi_ski: "Fully Snowbound & Open", wi_best: "Shahdag Ski Resorts & Baku Fine Dining",
+                log_badge: "Logistics", log_title: "Getting Around Azerbaijan",
+                tr1_t: "Heydar Aliyev Hub", tr1_d: "International flights land smoothly at Baku's architectural flagship Airport terminal (GYD). We deploy private luxury Mercedes vans with professional operators right at your terminal gate.",
+                tr2_t: "Premium Inter-City Vans", tr2_d: "Journeys down smooth regional highways straight toward Sheki or up Caucasus peaks are executed exclusively inside climate-controlled luxury Mercedes Sprinters or multi-terrain SUVs.",
+                tr3_t: "Caspian Fast Transit", tr3_d: "All inner-city movements — from your premium hotel suites to architectural landmarks and seaside restaurant venues — are fully covered inside your individual all-inclusive itinerary package.",
+                faq_badge: "Before You Pack", faq_title: "Traveler Tips & FAQ",
+                fq1_q: "Why is Baku nicknamed \"The City of Winds\"?", fq1_a: "Baku naturally experiences strong, sudden marine wind currents throughout the entire year (the cold \"Khazri\" from the north and warm \"Gilavar\" from the south). Pack light windbreakers and stylish layer choices even for warm summer evenings.",
+                fq2_q: "What culinary traditions should I absolutely not miss?", fq2_a: "Azerbaijani cuisine is remarkably rich. Taste authentic Shah Plov (royal rice crowned in a crisp golden pastry crust), delicate handmade Dushbara soup, fresh Caspian sturgeon, and savory Kutabs (paper-thin flatbreads stuffed with minced lamb or mountain greens).",
+                fq3_q: "Is Azerbaijan suitable for wine connoisseurs?", fq3_a: "Absolutely. Azerbaijan is experiencing a magnificent modern winemaking rebirth. Local valleys cultivate rare ancient grapes like Madrasa and Bayanshira. Our premium tours feature exclusive private degustations at boutique vineyards in Shamakhi and Gabala.",
+                cta_title: "Ready to Witness the Land of Fire?", cta_desc: "Browse our individual Caspian itineraries or speak with our planning desk to customize your trip.", cta_btn1: "View Group Tours", cta_btn2: "Contact Us"
+            },
+            ru: {
+                page_title: "Путеводитель по Азербайджану | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Страна Огней и каспийской роскоши",
+                intro_text: "Откройте динамичный перекрёсток, где многовековые караван-сараи Шёлкового пути гармонично соседствуют с футуристическими небоскрёбами. Азербайджан соединяет ультрасовременный блеск Каспия, мистические пылающие склоны, грязевые вулканы и уютные горные деревушки.",
+                facts_badge: "Полезно знать", facts_title: "Коротко о главном",
+                qf1_t: "Валюта", qf1_d: "Азербайджанский манат (AZN). Банковские карты и бесконтактная оплата широко принимаются по всему Баку.",
+                qf2_t: "Язык", qf2_d: "Азербайджанский (официальный). Русский и английский свободно используют в отелях, ресторанах и туристических местах.",
+                qf3_t: "Часовой пояс", qf3_d: "AZT (UTC+4). На один час позади Ташкента и Узбекистана, удобные прямые стыковки с Европой и Азией.",
+                qf4_t: "Электричество", qf4_d: "220В, 50Гц. Стандартные европейские розетки типов C и F.",
+                dest_badge: "Главные локации", dest_title: "Топ направлений",
+                d1_t: "Баку — Каспийская симфония",
+                d1_p: "Яркая столица соединяет элегантность бульваров в парижском стиле, смелую современную архитектуру и каменное очарование древней крепости.",
+                d1_li1: "<strong>Ичери-Шехер (Старый город):</strong> лабиринт узких улочек с загадочной Девичьей башней и Дворцом Ширваншахов.",
+                d1_li2: "<strong>Пламенные башни (Flame Towers):</strong> культовое трио небоскрёбов, каждый вечер превращающееся в гигантские языки пламени.",
+                d1_li3: "<strong>Центр Гейдара Алиева:</strong> архитектурный шедевр Захи Хадид, прославившийся плавными белыми волнами без единого острого угла.",
+                d2_t: "Гобустан и грязевые вулканы — Первозданная природа",
+                d2_p: "Всего в часе езды от Баку раскинулись сюрреалистичные лунные пейзажи, где сосредоточена почти половина грязевых вулканов планеты и древнейшие наскальные рисунки.",
+                d2_li1: "<strong>Доисторические петроглифы:</strong> объект ЮНЕСКО возрастом более 40 000 лет со сценами древней охоты и ритуалов.",
+                d2_li2: "<strong>Действующие грязевые вулканы:</strong> понаблюдайте вблизи, как из земли пузырится прохладная целебная серая глина.",
+                d2_li3: "<strong>Янардаг:</strong> удивительная «Горящая гора», где природный газ пылает непрерывно уже много столетий.",
+                d3_t: "Шеки — Наследие Шёлкового пути",
+                d3_p: "Укрытый у подножия зелёных гор Большого Кавказа, Шеки — жемчужина старинной торговли, ремёсел и изысканной дворцовой архитектуры.",
+                d3_li1: "<strong>Дворец Шекинских ханов:</strong> летняя резиденция XVIII века, построенная без единого гвоздя с виртуозными витражами шебеке.",
+                d3_li2: "<strong>Шекинский караван-сарай:</strong> монументальный каменный постоялый двор, где веками отдыхали торговые караваны.",
+                d3_li3: "<strong>Мастерские ремесленников:</strong> увидите, как мастера собирают деревянные витражи и ткут традиционные шёлковые платки келагаи.",
+                visa_badge: "Виза и въезд", visa_title: "Мгновенная электронная виза ASAN",
+                visa_p1: "Въезд в Азербайджан максимально прост. Граждане стран ЕС, Персидского залива, США, Канады и Великобритании оформляют электронную визу ASAN онлайн за 3 рабочих дня.",
+                visa_p2: "Граждане большинства стран СНГ, включая Узбекистан, въезжают полностью без визы на срок до 90 дней по обычному загранпаспорту.",
+                visa_p3: "Наша команда оформляет все необходимые подтверждения отелей и регистрацию, обеспечивая безупречный комфорт на каждом этапе.",
+                visa_btn: "Спланировать поездку в Азербайджан",
+                vc1_t: "Безвизовый въезд", vc1_d: "До 90 дней без визы для граждан Узбекистана и большинства стран СНГ.",
+                vc2_t: "Онлайн-портал ASAN", vc2_d: "Быстрая электронная подача без очередей и визитов в посольство.",
+                vc3_t: "Миграционная регистрация", vc3_d: "При пребывании более 15 дней требуется регистрация в миграционной службе — мы берём её на себя.",
+                when_badge: "Гид по климату", when_title: "Когда ехать",
+                when_desc: "В Азербайджане представлены 9 из 11 климатических зон планеты. Выберите идеальное время под ваш формат отдыха:",
+                tab_spring: "Весна (Мар–Май)", tab_summer: "Лето (Июн–Авг)", tab_autumn: "Осень (Сен–Ноя)", tab_winter: "Зима (Дек–Фев)",
+                lbl_temp: "Средняя темп.", lbl_weather: "Погода", lbl_best: "Лучше всего для", lbl_baku: "Темп. в Баку", lbl_mtn: "Темп. в горах", lbl_crowds: "Туристы", lbl_ski: "Горнолыжные трассы",
+                sp_t: "Каспийский бриз и Новруз 🌸", sp_d: "Весна дарит Баку идеальную температуру для прогулок. В середине марта вся страна ярко отмечает Новруз — с уличными шествиями, танцами, кострами и горами восточных сладостей.", sp_weather: "Приятно свежая", sp_best: "Приморский бульвар Баку и Гобустан",
+                su_t: "Пляжи Каспия и прохлада гор ☀️", su_d: "Летом в Баку жарко, но на побережье открываются элитные пляжные курорты (Бильгя, Амбуран), а в зелёных горах Губы и Габалы царит освежающая прохлада.", su_best: "Курорты Каспия и горный отдых в Габале",
+                au_t: "Золотой гранатовый бархат 🍂", au_d: "Сентябрь и октябрь — ещё один идеальный сезон: летний зной уходит, рынки наполняются спелыми гранатами, а погода создана для неспешных экскурсий.", au_crowds: "Спокойно и комфортно", au_best: "Дворцы Шеки и винные дегустации",
+                wi_t: "Горные лыжи и старинные хаммамы ❄️", wi_d: "Зимний ветер в Баку — прекрасный повод согреться в каменных хаммамах XVII века, а в горах Большого Кавказа открывается горнолыжный курорт Шахдаг.", wi_ski: "Заснежены и открыты", wi_best: "Горнолыжный курорт Шахдаг и рестораны Баку",
+                log_badge: "Логистика", log_title: "Передвижение по Азербайджану",
+                tr1_t: "Аэропорт Гейдара Алиева", tr1_d: "Международные рейсы прибывают в эффектный терминал Баку (GYD). Наш водитель на люксовом Mercedes встречает вас прямо у выхода.",
+                tr2_t: "Премиальные минивэны", tr2_d: "Поездки по отличным трассам в Шеки, Габалу и горные районы проходят на кондиционированных Mercedes Sprinter и комфортабельных внедорожниках.",
+                tr3_t: "Городской трансфер", tr3_d: "Все передвижения по Баку — между отелем, достопримечательностями и ресторанами у моря — полностью включены в ваш индивидуальный тур.",
+                faq_badge: "Перед поездкой", faq_title: "Советы и частые вопросы",
+                fq1_q: "Почему Баку называют «Городом ветров»?", fq1_a: "В Баку круглый год дуют характерные морские ветра — прохладный северный «Хазри» и тёплый южный «Гилавар». Даже летом стоит захватить лёгкую ветровку для вечерних прогулок по набережной.",
+                fq2_q: "Какие блюда азербайджанской кухни обязательно попробовать?", fq2_a: "Азербайджанская кухня невероятно богата: обязательно попробуйте царский шах-плов в хрустящей корочке, нежнейший суп дюшбара с мини-пельменями, каспийского осетра и тончайшие кутабы с мясом или зеленью.",
+                fq3_q: "Понравится ли Азербайджан ценителям вина?", fq3_a: "Безусловно! Виноделие страны переживает настоящий расцвет: здесь выращивают редкие автохтонные сорта Мадраса и Баяншира. В наши туры можно включить приватные дегустации на винодельнях Шемахи и Габалы.",
+                cta_title: "Готовы увидеть Страну Огней?", cta_desc: "Выберите готовый маршрут по Каспию или свяжитесь с нами для создания индивидуальной программы.", cta_btn1: "Смотреть групповые туры", cta_btn2: "Связаться с нами"
+            },
+            fr: {
+                page_title: "Guide de voyage Azerbaïdjan | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "Terre de Feu & Luxe Caspien",
+                intro_text: "Découvrez un carrefour fascinant où d'anciens caravansérails de la Route de la Soie côtoient des gratte-ciel futuristes. L'Azerbaïdjan marie luxe caspien moderne, collines enflammées, volcans de boue et villages de montagne authentiques.",
+                facts_badge: "Bon à savoir", facts_title: "Infos pratiques",
+                qf1_t: "Devise", qf1_d: "Manat azerbaïdjanais (AZN). Paiements sans contact et cartes bancaires largement acceptés dans les établissements de Bakou.",
+                qf2_t: "Langue", qf2_d: "Azéri (officiel). Le russe et l'anglais sont couramment parlés dans les hôtels et restaurants.",
+                qf3_t: "Fuseau horaire", qf3_d: "AZT (UTC+4). Correspondances aériennes fluides entre l'Europe et l'Asie.",
+                qf4_t: "Électricité", qf4_d: "220V, 50Hz. Prises européennes standard de types C et F.",
+                dest_badge: "Lieux incontournables", dest_title: "Destinations phares",
+                d1_t: "Bakou — La Symphonie Caspienne",
+                d1_p: "Capitale vibrante mêlant boulevards d'inspiration parisienne, gratte-ciel avant-gardistes et charme médiéval de sa vieille ville fortifiée.",
+                d1_li1: "<strong>Icherisheher (Vieille Ville) :</strong> dédale de ruelles pavées abritant la mystérieuse Tour de la Vierge et le Palais des Shirvanshahs.",
+                d1_li2: "<strong>Flame Towers :</strong> trio emblématique de tours s'illuminant chaque soir en gigantesques flammes LED.",
+                d1_li3: "<strong>Centre Heydar Aliyev :</strong> chef-d'œuvre architectural de Zaha Hadid célèbre pour ses courbes blanches fluides.",
+                d2_t: "Gobustan & Volcans de Boue — Toile Naturelle",
+                d2_p: "À une heure de Bakou, ce paysage lunaire abrite près de la moitié des volcans de boue de la planète et des gravures rupestres préhistoriques exceptionnelles.",
+                d2_li1: "<strong>Pétroglyphes préhistoriques :</strong> art rupestre classé à l'UNESCO datant de plus de 40 000 ans.",
+                d2_li2: "<strong>Volcans de boue actifs :</strong> observez de près l'argile grise froide et minérale bouillonner à la surface.",
+                d2_li3: "<strong>Yanar Dag :</strong> colline de gaz naturel dont les flammes brûlent sans interruption depuis des siècles.",
+                d3_t: "Sheki — Héritage de la Route de la Soie",
+                d3_p: "Nichée au pied des montagnes boisées du Grand Caucase, Sheki est un joyau d'artisanat traditionnel et d'architecture palatiale.",
+                d3_li1: "<strong>Palais des Khans de Sheki :</strong> résidence d'été du XVIIIe siècle bâtie sans un seul clou et ornée de vitraux Shebeke.",
+                d3_li2: "<strong>Caravansérail de Sheki :</strong> vaste relais historique en pierre où les caravanes marchandes faisaient halte.",
+                d3_li3: "<strong>Quartiers d'artisans :</strong> découvrez les maîtres verriers et le tissage traditionnel des foulards en soie.",
+                visa_badge: "Visa & Entrée", visa_title: "E-Visa ASAN Rapide en Ligne",
+                visa_p1: "Entrer en Azerbaïdjan est simple et rapide. Les citoyens de l'UE (France, Belgique), de Suisse, du Royaume-Uni, des États-Unis et du Canada obtiennent leur e-Visa officiel en ligne sous 3 jours ouvrés.",
+                visa_p2: "Les citoyens de la plupart des pays de la CEI, dont l'Ouzbékistan, bénéficient d'une entrée sans visa jusqu'à 90 jours.",
+                visa_p3: "Notre équipe gère toutes vos confirmations hôtelières et formalités d'enregistrement pour un voyage en toute sérénité.",
+                visa_btn: "Planifier votre séjour en Azerbaïdjan",
+                vc1_t: "Voyage sans visa", vc1_d: "Séjour sans visa jusqu'à 90 jours pour les passeports de plusieurs pays voisins et de la CEI.",
+                vc2_t: "Portail en ligne ASAN", vc2_d: "Procédure 100 % électronique rapide, sans file d'attente en ambassade.",
+                vc3_t: "Enregistrement officiel", vc3_d: "Tout séjour dépassant 15 jours nécessite un enregistrement migratoire — nous nous en chargeons.",
+                when_badge: "Guide climatique", when_title: "Quand partir",
+                when_desc: "L'Azerbaïdjan compte 9 des 11 zones climatiques mondiales. Choisissez la saison idéale selon vos envies :",
+                tab_spring: "Printemps (Mar–Mai)", tab_summer: "Été (Juin–Août)", tab_autumn: "Automne (Sep–Nov)", tab_winter: "Hiver (Déc–Fév)",
+                lbl_temp: "Temp. moy.", lbl_weather: "Météo", lbl_best: "Idéal pour", lbl_baku: "Temp. Bakou", lbl_mtn: "Temp. montagne", lbl_crowds: "Affluence", lbl_ski: "Pistes de ski",
+                sp_t: "Brises Caspiennes & Norouz 🌸", sp_d: "Le printemps offre des températures idéales à Bakou. Mi-mars célèbre Norouz dans tout le pays avec danses, rituels du feu et pâtisseries traditionnelles.", sp_weather: "Agréablement fraîche", sp_best: "Boulevard de Bakou & Gobustan",
+                su_t: "Plages de Luxe & Fraîcheur Alpine ☀️", su_d: "Alors que Bakou se réchauffe, les resorts caspiens (Bilgah, Amburan) s'animent et les villages verts de Quba et Gabala offrent une escapade fraîche.", su_best: "Plages de la Caspienne & Gabala",
+                au_t: "Douceur Dorée des Grenades 🍂", au_d: "Septembre et octobre offrent un climat idéal : la chaleur retombe, les marchés regorgent de grenades fraîches et les visites sont très agréables.", au_crowds: "Calme & détendue", au_best: "Palais de Sheki & dégustations de vins",
+                wi_t: "Ski Alpin & Hammams Historiques ❄️", wi_d: "Le vent frais de Bakou invite à profiter des hammams du XVIIe siècle, tandis que le Grand Caucase ouvre les pistes enneigées de Shahdag.", wi_ski: "Enneigées & ouvertes", wi_best: "Station de ski Shahdag & gastronomie",
+                log_badge: "Logistique", log_title: "Se déplacer en Azerbaïdjan",
+                tr1_t: "Aéroport Heydar Aliyev", tr1_d: "Les vols internationaux arrivent au terminal moderne de Bakou (GYD). Nos chauffeurs privés en Mercedes vous accueillent dès la sortie.",
+                tr2_t: "Vans interurbains haut de gamme", tr2_d: "Les trajets vers Sheki ou le Caucase s'effectuent en Mercedes Sprinter climatisés ou SUV confortables.",
+                tr3_t: "Transferts urbains fluides", tr3_d: "Tous vos déplacements en ville — hôtels, monuments et restaurants en bord de mer — sont inclus dans votre programme.",
+                faq_badge: "Avant de partir", faq_title: "Conseils & FAQ",
+                fq1_q: "Pourquoi surnomme-t-on Bakou la « Ville des Vents » ?", fq1_a: "Bakou connaît toute l'année des vents marins marqués (le « Khazri » frais du nord et le « Gilavar » chaud du sud). Prévoyez un coupe-vent léger même pour les soirées d'été.",
+                fq2_q: "Quelles spécialités culinaires faut-il absolument goûter ?", fq2_a: "La cuisine azerbaïdjanaise est somptueuse : goûtez au Shah Plov en croûte dorée, à la délicate soupe Dushbara, à l'esturgeon de la Caspienne et aux Kutabs farcis à la viande ou aux herbes.",
+                fq3_q: "L'Azerbaïdjan est-il une bonne destination pour les amateurs de vin ?", fq3_a: "Absolument. Le pays vit une véritable renaissance viticole avec des cépages anciens comme le Madrasa et le Bayanshira. Nos circuits incluent des dégustations privées à Shamakhi et Gabala.",
+                cta_title: "Prêt à découvrir la Terre de Feu ?", cta_desc: "Explorez nos itinéraires caspiens ou contactez notre équipe pour créer votre voyage sur mesure.", cta_btn1: "Voir les circuits en groupe", cta_btn2: "Nous contacter"
+            },
+            de: {
+                page_title: "Aserbaidschan Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Das Land des Feuers & Kaspischer Luxus",
+                intro_text: "Entdecken Sie eine faszinierende Schnittstelle, an der jahrhundertealte Karawansereien der Seidenstraße neben futuristischen Wolkenkratzern stehen. Aserbaidschan vereint modernen kaspischen Luxus, brennende Hügel, Schlammvulkane und malerische Bergdörfer.",
+                facts_badge: "Gut zu wissen", facts_title: "Kurzinfos",
+                qf1_t: "Währung", qf1_d: "Aserbaidschanischer Manat (AZN). Karten und kontaktlose Zahlungen werden in Baku fast überall akzeptiert.",
+                qf2_t: "Sprache", qf2_d: "Aserbaidschanisch (Amtssprache). Russisch und Englisch werden in Hotels und Restaurants weitgehend gesprochen.",
+                qf3_t: "Zeitzone", qf3_d: "AZT (UTC+4). Ideale Fluganbindungen zwischen Europa und Asien.",
+                qf4_t: "Strom", qf4_d: "220V, 50Hz. Europäische Standardsteckdosen der Typen C und F.",
+                dest_badge: "Sehenswürdigkeiten", dest_title: "Top-Reiseziele",
+                d1_t: "Baku – Die Kaspische Symphonie",
+                d1_p: "Die dynamische Hauptstadt verbindet Pariser Boulevards, futuristische Hochhausarchitektur und den historischen Charme ihrer ummauerten Altstadt.",
+                d1_li1: "<strong>Icherisheher (Altstadt):</strong> Ein Labyrinth aus Steingassen mit dem sagenumwobenen Jungfrauenturm und dem Palast der Schirwanschahs.",
+                d1_li2: "<strong>Flame Towers:</strong> Das ikonische Hochhaus-Trio, das sich jeden Abend in riesige leuchtende LED-Flammen verwandelt.",
+                d1_li3: "<strong>Heydar-Aliyev-Zentrum:</strong> Zaha Hadids weltberühmtes Meisterwerk mit fließenden, wellenförmigen weißen Linien.",
+                d2_t: "Gobustan & Schlammvulkane – Ungezähmte Natur",
+                d2_p: "Nur eine Stunde von Baku entfernt liegt diese surreale Mondlandschaft mit fast der Hälfte aller Schlammvulkane der Erde und uralten Felszeichnungen.",
+                d2_li1: "<strong>Prähistorische Petroglyphen:</strong> Über 40.000 Jahre alte UNESCO-Felskunst mit Szenen antiker Jagdrituale.",
+                d2_li2: "<strong>Aktive Schlammvulkane:</strong> Beobachten Sie aus nächster Nähe, wie kalter, mineralreicher grauer Schlamm aus der Erde blubbert.",
+                d2_li3: "<strong>Yanar Dag:</strong> Ein faszinierender Erdgashügel, der seit Jahrhunderten ununterbrochen brennt.",
+                d3_t: "Scheki – Erbe der Seidenstraße",
+                d3_p: "Am Fuß der bewaldeten Hänge des Großen Kaukasus gelegen, begeistert Scheki mit feinstem Kunsthandwerk und einzigartiger Palastarchitektur.",
+                d3_li1: "<strong>Palast der Khane von Scheki:</strong> Sommerresidenz aus dem 18. Jahrhundert, komplett ohne Nägel erbaut und berühmt für bunte Schebeke-Fenster.",
+                d3_li2: "<strong>Karawanserei von Scheki:</strong> Historische steinerne Herberge, in der einst Handelskarawanen übernachteten.",
+                d3_li3: "<strong>Handwerksviertel:</strong> Schauen Sie Meistern beim Bau von Holzglasfenstern und beim Weben traditioneller Seidentücher zu.",
+                visa_badge: "Visum & Einreise", visa_title: "Schnelles ASAN E-Visum Online",
+                visa_p1: "Die Einreise nach Aserbaidschan ist unkompliziert. Bürger Deutschlands, Österreichs, der Schweiz, der EU, Großbritanniens, der USA und Kanadas erhalten ihr offizielles E-Visum online in 3 Werktagen.",
+                visa_p2: "Bürger der meisten GUS-Staaten, einschließlich Usbekistans, reisen bis zu 90 Tage völlig visumfrei ein.",
+                visa_p3: "Unser Team kümmert sich um alle Hotelbestätigungen und Registrierungen für eine rundum entspannte Reise.",
+                visa_btn: "Ihre Aserbaidschan-Reise planen",
+                vc1_t: "Visumfreie Einreise", vc1_d: "90 Tage visumfrei für Reisepässe aus mehreren Nachbar- und GUS-Ländern.",
+                vc2_t: "ASAN Online-Portal", vc2_d: "Schnelle elektronische Bearbeitung ohne Warteschlangen bei der Botschaft.",
+                vc3_t: "Behördliche Registrierung", vc3_d: "Bei Aufenthalten über 15 Tagen ist eine Meldung bei der Migrationsbehörde nötig – wir erledigen das für Sie.",
+                when_badge: "Klimaguide", when_title: "Beste Reisezeit",
+                when_desc: "Aserbaidschan vereint 9 von 11 Klimazonen der Erde. Wählen Sie das perfekte Zeitfenster für Ihre Reise:",
+                tab_spring: "Frühling (Mär–Mai)", tab_summer: "Sommer (Jun–Aug)", tab_autumn: "Herbst (Sep–Nov)", tab_winter: "Winter (Dez–Feb)",
+                lbl_temp: "Ø Temp.", lbl_weather: "Wetter", lbl_best: "Ideal für", lbl_baku: "Ø Baku-Temp.", lbl_mtn: "Berg-Temp.", lbl_crowds: "Besucher", lbl_ski: "Skipisten",
+                sp_t: "Kaspische Brisen & Nowruz 🌸", sp_d: "Der Frühling bringt angenehmes Sightseeing-Wetter nach Baku. Mitte März feiert das ganze Land Nowruz mit Musik, Tänzen, Feuerritualen und Gebäck.", sp_weather: "Angenehm frisch", sp_best: "Baku-Boulevard & Gobustan",
+                su_t: "Strandresorts & kühle Berge ☀️", su_d: "Während Baku sommerlich heiß wird, locken die Strände von Bilgah und Amburan – oder ein Ausflug in die grünen Bergdörfer Quba und Gabala.", su_best: "Kaspische Strände & Gabala",
+                au_t: "Goldene Granatapfelzeit 🍂", au_d: "September und Oktober gehören zur besten Reisezeit: angenehme Wärme, Basare voller süßer Granatäpfel und entspannte Atmosphäre.", au_crowds: "Ruhig & entspannt", au_best: "Scheki-Palast & Weinproben",
+                wi_t: "Skifahren & historische Hamams ❄️", wi_d: "Windige Wintertage in Baku laden zum Besuch historischer Hamams aus dem 17. Jahrhundert ein, während im Kaukasus das Skigebiet Shahdag öffnet.", wi_ski: "Schneesicher & geöffnet", wi_best: "Skigebiet Shahdag & Bakus Spitzengastronomie",
+                log_badge: "Logistik", log_title: "Unterwegs in Aserbaidschan",
+                tr1_t: "Flughafen Heydar Aliyev", tr1_d: "Internationale Flüge landen am architektonisch beeindruckenden Terminal Baku (GYD). Unser privater Mercedes-Transfer erwartet Sie direkt am Ausgang.",
+                tr2_t: "Premium-Überlandfahrzeuge", tr2_d: "Fahrten nach Scheki oder in den Kaukasus erfolgen ausschließlich in klimatisierten Mercedes-Sprinter-Vans oder komfortablen SUVs.",
+                tr3_t: "Komfortable Stadttransfers", tr3_d: "Alle Fahrten innerhalb Bakus – zwischen Hotel, Sehenswürdigkeiten und Restaurants am Meer – sind Teil Ihres maßgeschneiderten Pakets.",
+                faq_badge: "Vor der Reise", faq_title: "Reisetipps & FAQ",
+                fq1_q: "Warum wird Baku „Stadt der Winde“ genannt?", fq1_a: "In Baku wehen ganzjährig kräftige Meereswinde – der kühle „Chasri“ aus Norden und der warme „Gilawar“ aus Süden. Eine leichte Windjacke gehört selbst im Sommer ins Gepäck.",
+                fq2_q: "Welche kulinarischen Spezialitäten sollte ich unbedingt probieren?", fq2_a: "Die aserbaidschanische Küche ist äußerst vielfältig: Probieren Sie königlichen Schah-Plow in knuspriger Teigkruste, feine Duschbara-Suppe, kaspischen Stör und hauchdünne Kutabs mit Lamm oder Kräutern.",
+                fq3_q: "Eignet sich Aserbaidschan für Weinliebhaber?", fq3_a: "Absolut! Das Land erlebt eine beeindruckende Weinbau-Renaissance mit alten Rebsorten wie Madrasa und Bayanshira. Unsere Touren bieten private Verkostungen in Schamachi und Gabala.",
+                cta_title: "Bereit für das Land des Feuers?", cta_desc: "Entdecken Sie unsere individuellen Routen am Kaspischen Meer oder lassen Sie sich Ihre Reise maßschneidern.", cta_btn1: "Gruppenreisen ansehen", cta_btn2: "Kontakt aufnehmen"
+            },
+            tr: {
+                page_title: "Azerbaycan Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "Ateşler Ülkesi ve Hazar Lüksü",
+                intro_text: "Yüzyıllık İpek Yolu kervansaraylarının fütüristik gökdelenlerle kusursuz uyum içinde buluştuğu dinamik bir kavşağa adım atın. Azerbaycan; modern Hazar lüksünü, yanan tepeleri, çamur volkanlarını ve el değmemiş dağ köylerini bir araya getirir.",
+                facts_badge: "Bilmekte Fayda Var", facts_title: "Hızlı Bilgiler",
+                qf1_t: "Para Birimi", qf1_d: "Azerbaycan Manatı (AZN). Bakü'nün seçkin mekanlarında dijital ödemeler ve kredi kartları yaygın olarak kabul edilir.",
+                qf2_t: "Dil", qf2_d: "Azerbaycan Türkçesi (resmi). Otel ve restoranlarda Rusça ve İngilizce de yaygın olarak konuşulur.",
+                qf3_t: "Saat Dilimi", qf3_d: "AZT (UTC+4). Türkiye'den bir saat ileridedir; Avrupa ve Asya uçuşlarıyla uyumludur.",
+                qf4_t: "Elektrik", qf4_d: "220V, 50Hz. Türkiye ile uyumlu Avrupa tipi C ve F prizler kullanılır.",
+                dest_badge: "Görülecek Yerler", dest_title: "Öne Çıkan Destinasyonlar",
+                d1_t: "Bakü — Hazar Senfonisi",
+                d1_p: "Dinamik başkent; Paris tarzı bulvarların zarafetini, fütüristik gökdelen mimarisini ve surlarla çevrili tarihi kalenin cazibesini birleştirir.",
+                d1_li1: "<strong>İçerişehir (Eski Şehir):</strong> Gizemli Kız Kulesi ve Şirvanşahlar Sarayı'na ev sahipliği yapan taş sokaklar labirenti.",
+                d1_li2: "<strong>Alev Kuleleri (Flame Towers):</strong> Her akşam dev LED alevlere dönüşen ikonik üçlü gökdelen kompleksi.",
+                d1_li3: "<strong>Haydar Aliyev Merkezi:</strong> Zaha Hadid'in akışkan beyaz kıvrımlarıyla dünyaca ünlü mimari başyapıtı.",
+                d2_t: "Kobustan ve Çamur Volkanları — Doğanın Ham Tuvali",
+                d2_p: "Bakü'ye yalnızca bir saat mesafedeki bu gerçeküstü arazi, dünyadaki çamur volkanlarının neredeyse yarısına ve tarih öncesi kaya resimlerine ev sahipliği yapar.",
+                d2_li1: "<strong>Tarih Öncesi Petroglifler:</strong> 40.000 yılı aşkın geçmişe sahip UNESCO Dünya Mirası kaya sanatı.",
+                d2_li2: "<strong>Aktif Çamur Volkanları:</strong> Mineral açısından zengin, serin gri kilin yerden fokurdayarak çıkışını yakından izleyin.",
+                d2_li3: "<strong>Yanardağ:</strong> Yüzyıllardır hiç sönmeden kesintisiz yanan büyüleyici doğal gaz tepesi.",
+                d3_t: "Şeki — İpek Yolu Mirası",
+                d3_p: "Büyük Kafkas Dağları'nın ormanlık eteklerinde yer alan Şeki; kadim ticaretin, ustalık gerektiren el sanatlarının ve zarif saray mimarisinin incisidir.",
+                d3_li1: "<strong>Şeki Hanları Sarayı:</strong> Tek bir çivi kullanılmadan 18. yüzyılda inşa edilmiş, renkli Şebeke vitraylarıyla ünlü yazlık saray.",
+                d3_li2: "<strong>Şeki Kervansarayı:</strong> Tüccar kervanlarının uzun yolculuklarında konakladığı görkemli tarihi taş han.",
+                d3_li3: "<strong>Zanaatkar Atölyeleri:</strong> Ustaların ahşap vitray çerçevelerini ve geleneksel ipek kelağayı şalları dokumasını izleyin.",
+                visa_badge: "Vize ve Giriş", visa_title: "Hızlı ASAN E-Vize İşlemleri",
+                visa_p1: "Azerbaycan'a giriş son derece kolay ve hızlıdır. AB, Körfez ülkeleri, ABD, Kanada ve Birleşik Krallık vatandaşları 3 iş günü içinde online resmi e-Vize alabilir.",
+                visa_p2: "Türkiye (kimlikle veya pasaportla) ve Özbekistan dahil birçok BDT ülkesinin vatandaşları 90 güne kadar vizesiz giriş yapabilir.",
+                visa_p3: "Ekibimiz tüm otel onaylarınızı ve gerekli kayıt işlemlerini sizin yerinize zahmetsizce yönetir.",
+                visa_btn: "Azerbaycan Seyahatinizi Planlayın",
+                vc1_t: "Vizesiz Seyahat", vc1_d: "Türkiye ve birçok BDT ülkesi vatandaşları için 90 güne kadar sorunsuz vizesiz giriş.",
+                vc2_t: "ASAN Online Portalı", vc2_d: "Konsolosluk sırası olmadan hızlı ve tamamen dijital vize süreci.",
+                vc3_t: "Göç İdaresi Kaydı", vc3_d: "15 günü aşan konaklamalarda resmi kayıt zorunludur — sizin adınıza biz tamamlıyoruz.",
+                when_badge: "İklim Rehberi", when_title: "Ne Zaman Gidilir",
+                when_desc: "Azerbaycan dünyadaki 11 iklim kuşağından 9'una sahiptir. Tatil planınıza en uygun mevsimi seçin:",
+                tab_spring: "İlkbahar (Mar–May)", tab_summer: "Yaz (Haz–Ağu)", tab_autumn: "Sonbahar (Eyl–Kas)", tab_winter: "Kış (Ara–Şub)",
+                lbl_temp: "Ort. Sıcaklık", lbl_weather: "Hava Durumu", lbl_best: "En İyisi", lbl_baku: "Ort. Bakü Sıcaklığı", lbl_mtn: "Dağ Sıcaklığı", lbl_crowds: "Yoğunluk", lbl_ski: "Kayak Pistleri",
+                sp_t: "Hazar Esintisi ve Nevruz 🌸", sp_d: "İlkbahar Bakü'ye gezi için ideal sıcaklıklar getirir. Mart ortasında sokak gösterileri, ateş ritüelleri ve enfes tatlılarla görkemli Nevruz kutlamaları yaşanır.", sp_weather: "Ferah ve Ilıman", sp_best: "Bakü Bulvarı ve Kobustan Gezileri",
+                su_t: "Seçkin Plajlar ve Serin Yaylalar ☀️", su_d: "Bakü sıcakken Hazar kıyısındaki lüks plaj tesisleri (Bilgeh, Amburan) canlanır; serinlemek için Kuba ve Gebele'nin yemyeşil dağ köyleri idealdir.", su_best: "Hazar Plaj Tesisleri ve Gebele",
+                au_t: "Altın Nar Mevsimi 🍂", au_d: "Eylül ve Ekim en ideal seyahat dönemlerindendir: sıcaklar hafifler, pazarlar taze narlarla dolar ve tarihi geziler çok keyifli geçer.", au_crowds: "Sakin ve Rahat", au_best: "Şeki Han Sarayı ve Şarap Tadım Turları",
+                wi_t: "Alpin Kayak ve Tarihi Hamamlar ❄️", wi_d: "Bakü'nün serin ve rüzgarlı kış günleri 17. yüzyıl hamamlarında ısınmak için harikadır; Kafkasya'da ise Şahdağ kayak pistleri açılır.", wi_ski: "Karlı ve Açık", wi_best: "Şahdağ Kayak Merkezi ve Bakü Restoranları",
+                log_badge: "Lojistik", log_title: "Azerbaycan İçi Ulaşım",
+                tr1_t: "Haydar Aliyev Havalimanı", tr1_d: "Uluslararası uçuşlar Bakü'nün modern havalimanına (GYD) iner. Özel şoförlü lüks Mercedes araçlarımız sizi terminal çıkışında karşılar.",
+                tr2_t: "Konforlu Şehirler Arası Araçlar", tr2_d: "Şeki'ye veya Kafkas zirvelerine yapılan tüm yolculuklar klimalı lüks Mercedes Sprinter ve SUV araçlarla gerçekleştirilir.",
+                tr3_t: "Hızlı Şehir İçi Ulaşım", tr3_d: "Otelinizden tarihi yapılara ve sahil restoranlarına tüm şehir içi transferleriniz kişiye özel tur paketinize dahildir.",
+                faq_badge: "Yola Çıkmadan Önce", faq_title: "Gezgin İpuçları ve SSS",
+                fq1_q: "Bakü neden «Rüzgarlar Şehri» olarak anılır?", fq1_a: "Bakü yıl boyunca kuzeyden esen serin «Hezri» ve güneyden esen ılık «Gilavar» deniz rüzgarlarıyla tanınır. Yaz akşamları için bile yanınızda hafif bir rüzgarlık bulundurmanız iyi olur.",
+                fq2_q: "Azerbaycan mutfağında mutlaka hangi lezzetleri denemeliyim?", fq2_a: "Azerbaycan mutfağı olağanüstü zengindir: çıtır hamur içinde sunulan Şah Pilavı, minik mantılı Düşbere çorbası, taze Hazar mersin balığı ve etli veya yeşillikli incecik Kutabları mutlaka deneyin.",
+                fq3_q: "Azerbaycan şarap tutkunları için uygun mu?", fq3_a: "Kesinlikle! Ülke, Medrese ve Bayanşire gibi kadim yerel üzümlerle büyük bir şarapçılık rönesansı yaşıyor. Şamahı ve Gebele'deki butik bağlarda özel tadımlar düzenleyebiliyoruz.",
+                cta_title: "Ateşler Ülkesi'ni Keşfetmeye Hazır mısınız?", cta_desc: "Özel Hazar rotalarımıza göz atın veya seyahatinizi birlikte kişiselleştirmek için ekibimizle iletişime geçin.", cta_btn1: "Grup Turlarını Gör", cta_btn2: "Bize Ulaşın"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
@@ -560,29 +899,39 @@
             once: true,
         });
 
-        // Accordion logic
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Логика аккордеонов
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Tabs logic
+        // Логика табов (Сезоны)
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
                 document.querySelectorAll('.season-content').forEach(c => {
                     c.classList.toggle('active', c.dataset.season === season);
                 });

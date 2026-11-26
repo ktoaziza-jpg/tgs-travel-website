@@ -50,12 +50,8 @@
         }
 
         /* Mobile Menu */
-        #mobile-menu {
-            transition: transform 0.4s ease-in-out;
-        }
-        .mobile-menu-open {
-            transform: translateX(0) !important;
-        }
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
 
         /* Season tabs */
         .season-tab.active {
@@ -63,10 +59,7 @@
             color: #EDE7E3;
             border-color: #16697A;
         }
-        .season-content {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
+        .season-content { display: none; animation: fadeIn 0.5s ease-in-out; }
         .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -84,10 +77,7 @@
         .accordion-item.active .accordion-icon { transform: rotate(180deg); }
 
         /* PARALLAX HERO */
-        #hero-bg {
-            will-change: transform;
-            transform-origin: center center;
-        }
+        #hero-bg { will-change: transform; transform-origin: center center; }
 
         /* ANIMATED MARQUEE */
         .marquee-track {
@@ -123,11 +113,7 @@
             overflow: hidden;
             border-radius: 1rem;
         }
-        .photo-card img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
         .photo-card:hover img { transform: scale(1.07); }
         .photo-card-overlay {
             position: absolute; inset: 0;
@@ -190,9 +176,7 @@
             backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(22,105,122,0.12);
         }
-        @media (min-width: 768px) {
-            #city-nav { top: 88px; }
-        }
+        @media (min-width: 768px) { #city-nav { top: 88px; } }
         .city-nav-link {
             padding: 0.85rem 1.5rem;
             font-size: 0.8rem;
@@ -363,13 +347,13 @@
 
         <!-- floating mosaic tiles -->
         <div class="absolute top-32 right-16 w-28 h-28 rounded-xl overflow-hidden shadow-2xl float-a opacity-80 hidden lg:block z-10">
-            <img src="https://uzbekistan.travel/storage/app/media/Rasmlar/Toshkent/shaxar/cropped-images/AdobeStock_596864804-0-0-0-0-1738671594.jpeg" class="w-full h-full object-cover">
+            <img src="https://uzbekistan.travel/storage/app/media/Rasmlar/Toshkent/shaxar/cropped-images/AdobeStock_596864804-0-0-0-0-1738671594.jpeg" class="w-full h-full object-cover" alt="Tashkent">
         </div>
         <div class="absolute bottom-36 right-32 w-20 h-20 rounded-lg overflow-hidden shadow-xl float-b opacity-70 hidden lg:block z-10">
-            <img src="https://ychef.files.bbci.co.uk/1920x960/p0hc5x2w.jpeg" class="w-full h-full object-cover">
+            <img src="https://ychef.files.bbci.co.uk/1920x960/p0hc5x2w.jpeg" class="w-full h-full object-cover" alt="Uzbekistan Architecture">
         </div>
         <div class="absolute top-48 left-12 w-24 h-24 rounded-xl overflow-hidden shadow-xl float-b opacity-75 hidden lg:block z-10">
-            <img src="https://ychef.files.bbci.co.uk/2134x1404/p0ddh98z.jpeg" class="w-full h-full object-cover">
+            <img src="https://ychef.files.bbci.co.uk/2134x1404/p0ddh98z.jpeg" class="w-full h-full object-cover" alt="Samarkand">
         </div>
 
         <div class="relative z-10 text-center px-6 max-w-5xl mt-20">
@@ -540,14 +524,12 @@
             </p>
             <p class="text-cream/50 text-sm tracking-widest uppercase" data-i18n="quote_author">— Every traveller who has seen Uzbekistan</p>
         </div>
-        <!-- decorative circles -->
         <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full border border-gold/10"></div>
         <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full border border-gold/15"></div>
     </section>
 
     <!-- IMMERSIVE CITY SECTIONS -->
     <section id="cities">
-
         <div id="samarkand" class="grid grid-cols-1 lg:grid-cols-2" style="min-height:560px;">
             <div class="relative overflow-hidden" style="min-height:380px;">
                 <img src="https://images.squarespace-cdn.com/content/v1/63bd68c0216f6912b6e9a038/d5370d56-b558-4548-bfa1-087b2400aa2c/photo_2024-11-23_18-36-07.jpg" alt="Registan Samarkand" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105">
@@ -618,7 +600,6 @@
                 <div class="absolute inset-0 bg-teal-900/20"></div>
             </div>
         </div>
-
     </section>
 
     <!-- VISA & ENTRY -->
@@ -693,7 +674,6 @@
 
             <!-- Content Blocks -->
             <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-
                 <!-- Spring -->
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-0">
@@ -731,4 +711,673 @@
                 </div>
 
                 <!-- Autumn -->
-                <div class
+                <div class="season-content" data-season="autumn">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="au_title">Golden Season 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="au_desc">September and October bring mild, comfortable temperatures between 22–30°C, fresh harvests at local bazaars, and fewer crowds — many consider this the best season alongside spring.</p>
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">12–28°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_rain">Rainfall</span><span class="font-bold text-teal-900" data-i18n="au_rain">Low</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_pack">Pack</span><span class="font-bold text-teal-900" data-i18n="au_pack">Light layers</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://storage.kun.uz/source/9/CqS92becroWFtb9zd0u5ILi4C-JHSlYy.jpg" alt="Autumn in Bukhara" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winter -->
+                <div class="season-content" data-season="winter">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-10 md:p-12 flex flex-col justify-center">
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="wi_title">Quiet & Cozy ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="wi_desc">January is the coldest month, with highs around 7°C and occasional snow. Tourist sites are nearly empty and hotel prices drop — a great option for budget-conscious, culture-focused travelers who don't mind the chill.</p>
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">-2–7°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_rain">Rainfall</span><span class="font-bold text-teal-900" data-i18n="wi_rain">Moderate, some snow</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_pack">Pack</span><span class="font-bold text-teal-900" data-i18n="wi_pack">Warm coat</span></div>
+                            </div>
+                        </div>
+                        <div class="h-80 md:h-auto overflow-hidden image-zoom">
+                            <img src="https://kalpak-travel.com/wp-content/uploads/2025/01/uzbekistan-winter-snow-samarkand-blue-domes.jpg" alt="Winter in Samarkand" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GETTING AROUND / TRANSPORT -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="log_badge">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="log_title">Getting Around Uzbekistan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr1_t">Flights & Arrival</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr1_d">Most international flights land at Tashkent International Airport (TAS). We arrange a private airport pickup for every guest — just send us your flight details and your driver will be waiting with a name sign.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="train-front" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr2_t">High-Speed Trains</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr2_d">Uzbekistan operates the region's first high-speed rail network, connecting Tashkent, Samarkand, and Bukhara in just a few comfortable hours. Most of our multi-city tours use these trains between destinations.</p>
+                </div>
+                <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="car" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr3_t">Private Transfers</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr3_d">All transfers within cities — to hotels, sites, and between excursions — are included in your tour package with an air-conditioned vehicle and driver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVELER TIPS ACCORDION -->
+    <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="faq_badge">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="faq_title">Traveler Tips & FAQ</h2>
+            </div>
+
+            <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion-item active border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq1_q">What should I wear when visiting mosques and madrasas?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq1_a">
+                            Modest, comfortable clothing covering shoulders and knees is recommended. Comfortable walking shoes are a must — most historic sites involve a fair amount of walking on uneven stone surfaces.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq2_q">Is tap water safe to drink?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq2_a">
+                            We recommend bottled or filtered water, which is cheap and widely available. Most hotels also provide complimentary bottled water in rooms.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq3_q">Can I use my phone / get a local SIM card?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq3_a">
+                            Local SIM cards (Beeline, Ucell, Mobiuz) are inexpensive and easy to get at the airport with your passport. 4G coverage is good in all major cities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq4_q">Should I tip guides and drivers?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq4_a">
+                            Tipping is appreciated but not obligatory. As a guideline, $5-10 per day for guides and $3-5 per day for drivers is common among international travelers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item border border-teal-900/20 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq5_q">What food should I try?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq5_a">
+                            Don't miss plov (rice pilaf), shashlik (grilled skewers), samsa (baked pastries), and fresh non bread straight from a tandoor oven. Each region has its own specialties worth seeking out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gold py-16 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
+            <div>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2" data-i18n="cta_title">Ready to See It for Yourself?</h3>
+                <p class="text-teal-900/80 text-lg font-medium" data-i18n="cta_desc">Browse our Uzbekistan tours, or get in touch and we'll design a custom itinerary just for you.</p>
+            </div>
+            <div class="flex gap-4 flex-wrap justify-center">
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap" data-i18n="cta_btn1">View Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap" data-i18n="cta_btn2">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ УЗБЕКИСТАНА (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Uzbekistan Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "The Heart of the Silk Road",
+                hero_btn_tours: "Explore Tours",
+                hero_btn_cities: "Discover Cities ↓",
+                hero_scroll: "SCROLL",
+                marquee_html: "<span>✦ Samarkand</span><span>✦ Bukhara</span><span>✦ Khiva</span><span>✦ Tashkent</span><span>✦ Silk Road</span><span>✦ Registan</span><span>✦ Plov & Chai</span><span>✦ Blue Domes</span><span>✦ Ancient Bazaars</span><span>✦ Samarkand</span><span>✦ Bukhara</span><span>✦ Khiva</span><span>✦ Tashkent</span><span>✦ Silk Road</span><span>✦ Registan</span><span>✦ Plov & Chai</span><span>✦ Blue Domes</span><span>✦ Ancient Bazaars</span>",
+                intro_text: "Experience the magic of turquoise domes, ancient cities, and warm hospitality at the crossroads of East and West. Uzbekistan is a treasure trove of architectural marvels and rich cultural heritage that will leave you breathless.",
+                stat1_label: "Years of History", stat2_label: "UNESCO Sites", stat3_label: "Legendary Cities", stat4_label: "Million Travelers / yr",
+                facts_badge: "Good to Know", facts_title: "Quick Facts",
+                qf1_title: "Currency", qf1_desc: "Uzbek Som (UZS). Cards are widely accepted in cities; carry some cash for bazaars and rural areas.",
+                qf2_title: "Language", qf2_desc: "Uzbek (official) and Russian widely spoken. All our guides also speak English.",
+                qf3_title: "Time Zone", qf3_desc: "UZT (UTC+5), no daylight saving time observed throughout the year.",
+                qf4_title: "Electricity", qf4_desc: "220V, 50Hz. Type C and F sockets (European two-pin plugs). Bring an adapter if needed.",
+                city_samarkand: "Samarkand", city_bukhara: "Bukhara", city_khiva: "Khiva", city_tashkent: "Tashkent",
+                rail_badge: "Visual Journey", rail_title: "Authentic Uzbekistan", rail_drag: "← drag to explore →",
+                pc1_t: "Registan Square", pc2_t: "Blue Mosaic Domes", pc3_t: "Ancient Tilework", pc4_t: "Itchan Kala Citadel", pc5_t: "Desert Fortress Walls", pc6_t: "Poi Kalyan Ensemble", pc7_t: "Chorsu Bazaar",
+                quote_html: "\"To travel the Silk Road is to walk through <span class=\"text-gold font-bold not-italic\">ten thousand years</span> of human civilisation.\"",
+                quote_author: "— Every traveller who has seen Uzbekistan",
+                badge_unesco: "UNESCO Heritage", badge_arabian: "Arabian Nights",
+                s1_num: "01 / Samarkand", s1_title: "The Pearl<br>of the East",
+                s1_desc: "Once the dazzling capital of Tamerlane's empire, Samarkand's monumental squares and shimmering blue domes have inspired poets and conquerors alike for over two millennia.",
+                s1_li1: "<strong>Registan Square</strong> — three mosaic-covered madrasahs around the ancient city heart",
+                s1_li2: "<strong>Gur-e-Amir</strong> — spectacular mausoleum of Tamerlane with ribbed azure dome",
+                s1_li3: "<strong>Shah-i-Zinda</strong> — breathtaking avenue of intricately tiled royal mausoleums",
+                s2_num: "02 / Bukhara", s2_title: "The Living<br>Museum",
+                s2_desc: "With history spanning over two millennia, Bukhara's Old City is a UNESCO World Heritage site that feels completely untouched by time.",
+                s2_li1: "<strong>Poi Kalyan Ensemble</strong> — the towering Kalon Minaret even Genghis Khan spared",
+                s2_li2: "<strong>Ark Fortress</strong> — the massive citadel residence of the Emirs of Bukhara",
+                s2_li3: "<strong>Trading Domes</strong> — ancient bazaars with exquisite carpets, ceramics, and silk",
+                s3_num: "03 / Khiva", s3_title: "The Desert<br>Fortress",
+                s3_desc: "Stepping into Khiva's Itchan Kala is like walking directly into an Arabian Nights tale. Remarkably preserved mud-brick walls, mosques, and mausoleums await.",
+                s3_li1: "<strong>Kalta Minor</strong> — iconic unfinished turquoise minaret",
+                s3_li2: "<strong>Juma Mosque</strong> — 10th-century mosque with 212 carved wooden columns",
+                s3_li3: "<strong>Kuhna Ark</strong> — the ruler's fortress with stunning panoramic views",
+                s4_num: "04 / Tashkent", s4_title: "The Modern<br>Metropolis",
+                s4_desc: "The vibrant capital blends Islamic architecture, Soviet-era monuments, and modern developments. Your Uzbekistan journey likely starts here.",
+                s4_li1: "<strong>Chorsu Bazaar</strong> — a massive photogenic domed market with spices and street food",
+                s4_li2: "<strong>Tashkent Metro</strong> — one of the world's most beautiful subways",
+                s4_li3: "<strong>Khast Imam Complex</strong> — home to one of the world's oldest existing Qurans",
+                visa_badge: "Visa & Entry", visa_title: "Getting In Is Easier Than You Think",
+                visa_p1: "Citizens of the United States, Canada, most European Union countries, the United Kingdom, Australia, Japan, and South Korea can enter Uzbekistan visa-free for stays of up to 30 days with just a valid passport — no advance application needed.",
+                visa_p2: "If your country isn't on the visa-free list, Uzbekistan's e-visa system lets you apply online and typically receive approval within two business days — no embassy visit required.",
+                visa_p3: "Whatever your nationality, just send us a copy of your passport — we'll tell you exactly what (if anything) you need to do before you fly, and help with any paperwork.",
+                visa_btn: "Ask About Your Visa",
+                vc1_t: "Visa-Free (up to 30-90 days)", vc1_d: "EU, UK, USA, Canada, Australia, Japan, South Korea, GCC countries, and most CIS nations.",
+                vc2_t: "E-Visa (online, ~2 business days)", vc2_d: "Apply via the official e-visa.gov.uz portal — passport, digital photo, and hotel booking required.",
+                vc3_t: "Hotel Registration", vc3_d: "Foreign visitors must be registered at each place they stay — hotels handle this automatically.",
+                vc4_t: "Safety", vc4_d: "Identity-certified networks make Uzbekistan one of the safest countries in Central Asia for travelers.",
+                when_badge: "Climate Guide", when_title: "When to Go",
+                when_desc: "Tashkent has a warm climate with hot summers and mild winters, with rain rare during peak season. Here's what to expect throughout the year.",
+                tab_spring: "Spring (Mar–May)", tab_summer: "Summer (Jun–Aug)", tab_autumn: "Autumn (Sep–Nov)", tab_winter: "Winter (Dec–Feb)",
+                lbl_temp: "Avg. Temp", lbl_rain: "Rainfall", lbl_pack: "Pack",
+                sp_title: "Best Time of Year ☀️", sp_desc: "Spring is the most popular season to visit. Mild days, blooming almond and apricot trees, and green landscapes make this the ideal time for walking tours of Samarkand, Bukhara, and Khiva.", sp_rain: "Moderate", sp_pack: "Layers",
+                su_title: "Hot & Dry 🔥", su_desc: "July is the warmest month, with average highs around 36°C and low humidity. Great for clear skies and long sightseeing days, but plan indoor breaks during the midday heat and stay hydrated.", su_rain: "Almost none", su_pack: "Light, sun hat",
+                au_title: "Golden Season 🍂", au_desc: "September and October bring mild, comfortable temperatures between 22–30°C, fresh harvests at local bazaars, and fewer crowds — many consider this the best season alongside spring.", au_rain: "Low", au_pack: "Light layers",
+                wi_title: "Quiet & Cozy ❄️", wi_desc: "January is the coldest month, with highs around 7°C and occasional snow. Tourist sites are nearly empty and hotel prices drop — a great option for budget-conscious, culture-focused travelers who don't mind the chill.", wi_rain: "Moderate, some snow", wi_pack: "Warm coat",
+                log_badge: "Logistics", log_title: "Getting Around Uzbekistan",
+                tr1_t: "Flights & Arrival", tr1_d: "Most international flights land at Tashkent International Airport (TAS). We arrange a private airport pickup for every guest — just send us your flight details and your driver will be waiting with a name sign.",
+                tr2_t: "High-Speed Trains", tr2_d: "Uzbekistan operates the region's first high-speed rail network, connecting Tashkent, Samarkand, and Bukhara in just a few comfortable hours. Most of our multi-city tours use these trains between destinations.",
+                tr3_t: "Private Transfers", tr3_d: "All transfers within cities — to hotels, sites, and between excursions — are included in your tour package with an air-conditioned vehicle and driver.",
+                faq_badge: "Before You Pack", faq_title: "Traveler Tips & FAQ",
+                fq1_q: "What should I wear when visiting mosques and madrasas?", fq1_a: "Modest, comfortable clothing covering shoulders and knees is recommended. Comfortable walking shoes are a must — most historic sites involve a fair amount of walking on uneven stone surfaces.",
+                fq2_q: "Is tap water safe to drink?", fq2_a: "We recommend bottled or filtered water, which is cheap and widely available. Most hotels also provide complimentary bottled water in rooms.",
+                fq3_q: "Can I use my phone / get a local SIM card?", fq3_a: "Local SIM cards (Beeline, Ucell, Mobiuz) are inexpensive and easy to get at the airport with your passport. 4G coverage is good in all major cities.",
+                fq4_q: "Should I tip guides and drivers?", fq4_a: "Tipping is appreciated but not obligatory. As a guideline, $5-10 per day for guides and $3-5 per day for drivers is common among international travelers.",
+                fq5_q: "What food should I try?", fq5_a: "Don't miss plov (rice pilaf), shashlik (grilled skewers), samsa (baked pastries), and fresh non bread straight from a tandoor oven. Each region has its own specialties worth seeking out.",
+                cta_title: "Ready to See It for Yourself?", cta_desc: "Browse our Uzbekistan tours, or get in touch and we'll design a custom itinerary just for you.", cta_btn1: "View Tours", cta_btn2: "Contact Us"
+            },
+            ru: {
+                page_title: "Путеводитель по Узбекистану | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Сердце Великого Шёлкового пути",
+                hero_btn_tours: "Смотреть туры",
+                hero_btn_cities: "Открыть города ↓",
+                hero_scroll: "ВНИЗ",
+                marquee_html: "<span>✦ Самарканд</span><span>✦ Бухара</span><span>✦ Хива</span><span>✦ Ташкент</span><span>✦ Шёлковый путь</span><span>✦ Регистан</span><span>✦ Плов и чай</span><span>✦ Голубые купола</span><span>✦ Древние базары</span><span>✦ Самарканд</span><span>✦ Бухара</span><span>✦ Хива</span><span>✦ Ташкент</span><span>✦ Шёлковый путь</span><span>✦ Регистан</span><span>✦ Плов и чай</span><span>✦ Голубые купола</span><span>✦ Древние базары</span>",
+                intro_text: "Почувствуйте магию бирюзовых куполов, древних городов и тёплого гостеприимства на перекрёстке Востока и Запада. Узбекистан — настоящая сокровищница архитектурных шедевров и богатейшего культурного наследия.",
+                stat1_label: "Лет истории", stat2_label: "Объектов ЮНЕСКО", stat3_label: "Легендарных города", stat4_label: "Млн путешественников / год",
+                facts_badge: "Полезно знать", facts_title: "Коротко о главном",
+                qf1_title: "Валюта", qf1_desc: "Узбекский сум (UZS). В городах широко принимают карты; для базаров и регионов лучше иметь наличные.",
+                qf2_title: "Язык", qf2_desc: "Узбекский (государственный) и русский распространены повсеместно. Все наши гиды свободно говорят по-английски.",
+                qf3_title: "Часовой пояс", qf3_desc: "UZT (UTC+5), перевод на летнее время не осуществляется.",
+                qf4_title: "Электричество", qf4_desc: "220В, 50Гц. Стандартные европейские розетки типов C и F (два круглых штыря).",
+                city_samarkand: "Самарканд", city_bukhara: "Бухара", city_khiva: "Хива", city_tashkent: "Ташкент",
+                rail_badge: "Визуальное путешествие", rail_title: "Аутентичный Узбекистан", rail_drag: "← потяните, чтобы листать →",
+                pc1_t: "Площадь Регистан", pc2_t: "Голубые мозаичные купола", pc3_t: "Древняя керамика", pc4_t: "Крепость Ичан-Кала", pc5_t: "Стены пустынной крепости", pc6_t: "Ансамбль Пои-Калян", pc7_t: "Базар Чорсу",
+                quote_html: "«Путешествовать по Шёлковому пути — значит пройти сквозь <span class=\"text-gold font-bold not-italic\">тысячелетия</span> человеческой цивилизации.»",
+                quote_author: "— Каждый путешественник, увидевший Узбекистан",
+                badge_unesco: "Наследие ЮНЕСКО", badge_arabian: "Восточная сказка",
+                s1_num: "01 / Самарканд", s1_title: "Жемчужина<br>Востока",
+                s1_desc: "Некогда блистательная столица империи Тамерлана, Самарканд с его монументальными площадями и сияющими лазурными куполами вдохновляет поэтов и путешественников уже более двух тысячелетий.",
+                s1_li1: "<strong>Площадь Регистан</strong> — три величественных медресе с мозаикой в самом сердце древнего города",
+                s1_li2: "<strong>Гур-Эмир</strong> — впечатляющий мавзолей Амира Тимура с ребристым бирюзовым куполом",
+                s1_li3: "<strong>Шахи-Зинда</strong> — потрясающая аллея королевских мавзолеев с тончайшей майоликой",
+                s2_num: "02 / Бухара", s2_title: "Живой<br>музей",
+                s2_desc: "История Бухары насчитывает более двух тысяч лет, а её Старый город, внесённый в список ЮНЕСКО, сохранил неповторимую атмосферу прошлых эпох.",
+                s2_li1: "<strong>Ансамбль Пои-Калян</strong> — величественный минарет Калян, который пощадил даже Чингисхан",
+                s2_li2: "<strong>Крепость Арк</strong> — монументальная цитадель, служившая резиденцией бухарских эмиров",
+                s2_li3: "<strong>Торговые купола</strong> — старинные крытые базары с коврами, керамикой и шёлком",
+                s3_num: "03 / Хива", s3_title: "Крепость<br>в пустыне",
+                s3_desc: "Оказаться в Ичан-Кале — всё равно что шагнуть на страницы «Тысячи и одной ночи». Вас ждут великолепно сохранившиеся глинобитные стены, минареты и дворцы.",
+                s3_li1: "<strong>Кальта-Минор</strong> — культовый незавершённый бирюзовый минарет",
+                s3_li2: "<strong>Мечеть Джума</strong> — мечеть X века, своды которой держат 212 резных деревянных колонн",
+                s3_li3: "<strong>Куня-Арк</strong> — цитадель правителей с захватывающими панорамными видами на город",
+                s4_num: "04 / Ташкент", s4_title: "Современный<br>мегаполис",
+                s4_desc: "Динамичная столица гармонично сочетает исламскую архитектуру, памятники советского модернизма и зелёные проспекты. Чаще всего путешествие начинается именно здесь.",
+                s4_li1: "<strong>Базар Чорсу</strong> — колоритный купольный рынок со специями, фруктами и уличной едой",
+                s4_li2: "<strong>Ташкентское метро</strong> — один из самых красивых метрополитенов мира",
+                s4_li3: "<strong>Комплекс Хаст-Имам</strong> — хранитель одного из древнейших Коранов в мире",
+                visa_badge: "Виза и въезд", visa_title: "Приехать проще, чем кажется",
+                visa_p1: "Граждане более 90 стран — включая страны СНГ, ЕС, Великобританию, США, Канаду, Австралию, Японию, Южную Корею и ОАЭ — могут въезжать в Узбекистан без визы на срок от 30 до 90 дней по действующему загранпаспорту.",
+                visa_p2: "Если вашей страны нет в безвизовом списке, система электронных виз Узбекистана позволяет оформить визу онлайн примерно за два рабочих дня без визита в посольство.",
+                visa_p3: "Каким бы ни было ваше гражданство, просто пришлите нам копию паспорта — мы подскажем точные правила въезда и поможем с документами.",
+                visa_btn: "Узнать о визе",
+                vc1_t: "Без визы (от 30 до 90 дней)", vc1_d: "ЕС, Великобритания, США, Канада, Австралия, Япония, Южная Корея, страны Персидского залива и СНГ.",
+                vc2_t: "Электронная виза (~2 рабочих дня)", vc2_d: "Оформляется онлайн на официальном портале e-visa.gov.uz — нужен паспорт, фото и бронь отеля.",
+                vc3_t: "Регистрация в отеле", vc3_d: "Иностранные гости регистрируются по месту проживания — отели оформляют это автоматически.",
+                vc4_t: "Безопасность", vc4_d: "Узбекистан стабильно входит в число самых безопасных и гостеприимных стран Центральной Азии.",
+                when_badge: "Гид по климату", when_title: "Когда ехать",
+                when_desc: "В Узбекистане тёплый солнечный климат с жарким летом и мягкой зимой; в высокий сезон дожди бывают редко. Вот чего ожидать в каждое время года.",
+                tab_spring: "Весна (Мар–Май)", tab_summer: "Лето (Июн–Авг)", tab_autumn: "Осень (Сен–Ноя)", tab_winter: "Зима (Дек–Фев)",
+                lbl_temp: "Средняя темп.", lbl_rain: "Осадки", lbl_pack: "Что взять",
+                sp_title: "Лучшее время года ☀️", sp_desc: "Весна — самый популярный сезон. Мягкое тепло, цветущие сады миндаля и урюка и зелёные пейзажи идеальны для прогулок по Самарканду, Бухаре и Хиве.", sp_rain: "Умеренные", sp_pack: "Многослойная одежда",
+                su_title: "Жарко и сухо 🔥", su_desc: "Июль — самый тёплый месяц со средним максимумом около 36°C и низкой влажностью. Ясное небо и длинный день, но лучше планировать отдых в тени в полуденные часы.", su_rain: "Почти нет", su_pack: "Лёгкая одежда, головной убор",
+                au_title: "Бархатный сезон 🍂", au_desc: "Сентябрь и октябрь дарят комфортные 22–30°C, изобилие спелых фруктов на базарах и меньше туристов — многие считают осень лучшим временем наравне с весной.", au_rain: "Низкие", au_pack: "Лёгкие слои одежды",
+                wi_title: "Тихо и уютно ❄️", wi_desc: "Январь — самый прохладный месяц (днём около +7°C, иногда снег). У достопримечательностей почти нет очередей, а цены на отели ниже — отличный вариант для неспешных культурных поездок.", wi_rain: "Умеренные, возможен снег", wi_pack: "Тёплая куртка",
+                log_badge: "Логистика", log_title: "Передвижение по Узбекистану",
+                tr1_t: "Прилёт и встреча", tr1_d: "Большинство международных рейсов прибывает в аэропорт Ташкента (TAS). Мы организуем индивидуальный трансфер для каждого гостя — водитель встретит вас с табличкой.",
+                tr2_t: "Скоростные поезда", tr2_d: "Узбекистан располагает первой в регионе сетью скоростных поездов «Афросиаб», соединяющих Ташкент, Самарканд и Бухару всего за пару часов с максимальным комфортом.",
+                tr3_t: "Частные трансферы", tr3_d: "Все переезды внутри городов — в отели, к памятникам и между экскурсиями — включены в тур на комфортном автомобиле с кондиционером и водителем.",
+                faq_badge: "Перед поездкой", faq_title: "Советы и частые вопросы",
+                fq1_q: "Что надеть при посещении мечетей и медресе?", fq1_a: "Рекомендуется скромная удобная одежда, прикрывающая плечи и колени. Удобная обувь обязательна — в исторических комплексах много прогулок по брусчатке.",
+                fq2_q: "Можно ли пить воду из-под крана?", fq2_a: "Рекомендуем бутилированную или фильтрованную воду — она недорогая и продаётся повсюду. Большинство отелей бесплатно ставят воду в номерах.",
+                fq3_q: "Как обстоят дела со связью и SIM-картами?", fq3_a: "Местные SIM-карты (Beeline, Ucell, Mobiuz) стоят недорого и легко оформляются в аэропорту по паспорту. 4G отлично работает во всех крупных городах.",
+                fq4_q: "Принято ли оставлять чаевые гидам и водителям?", fq4_a: "Чаевые приветствуются, но не обязательны. Обычный ориентир для путешественников — $5–10 в день гиду и $3–5 в день водителю.",
+                fq5_q: "Какие блюда обязательно попробовать?", fq5_a: "Обязательно попробуйте плов (в каждом регионе он свой!), шашлык, хрустящую самсу и горячие лепёшки прямо из тандыра.",
+                cta_title: "Готовы увидеть всё своими глазами?", cta_desc: "Изучите наши туры по Узбекистану или напишите нам — мы создадим маршрут специально для вас.", cta_btn1: "Смотреть туры", cta_btn2: "Связаться с нами"
+            },
+            fr: {
+                page_title: "Guide de voyage Ouzbékistan | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "Le Cœur de la Route de la Soie",
+                hero_btn_tours: "Découvrir les circuits",
+                hero_btn_cities: "Explorer les villes ↓",
+                hero_scroll: "DÉFILER",
+                marquee_html: "<span>✦ Samarcande</span><span>✦ Boukhara</span><span>✦ Khiva</span><span>✦ Tachkent</span><span>✦ Route de la Soie</span><span>✦ Régistan</span><span>✦ Plov & Thé</span><span>✦ Coupoles bleues</span><span>✦ Bazars anciens</span><span>✦ Samarcande</span><span>✦ Boukhara</span><span>✦ Khiva</span><span>✦ Tachkent</span><span>✦ Route de la Soie</span><span>✦ Régistan</span><span>✦ Plov & Thé</span><span>✦ Coupoles bleues</span><span>✦ Bazars anciens</span>",
+                intro_text: "Vivez la magie des coupoles turquoise, des cités millénaires et d'une hospitalité chaleureuse au carrefour de l'Orient et de l'Occident. L'Ouzbékistan est un joyau d'architecture et d'histoire qui vous coupera le souffle.",
+                stat1_label: "Ans d'histoire", stat2_label: "Sites UNESCO", stat3_label: "Cités légendaires", stat4_label: "Mio de voyageurs / an",
+                facts_badge: "Bon à savoir", facts_title: "Infos pratiques",
+                qf1_title: "Devise", qf1_desc: "Sum ouzbek (UZS). Cartes acceptées en ville ; prévoyez des espèces pour les bazars et zones rurales.",
+                qf2_title: "Langue", qf2_desc: "Ouzbek (officiel) et russe largement parlés. Nos guides parlent anglais et français sur demande.",
+                qf3_title: "Fuseau horaire", qf3_desc: "UZT (UTC+5), pas de changement d'heure saisonnier.",
+                qf4_title: "Électricité", qf4_desc: "220V, 50Hz. Prises européennes standard de types C et F.",
+                city_samarkand: "Samarcande", city_bukhara: "Boukhara", city_khiva: "Khiva", city_tashkent: "Tachkent",
+                rail_badge: "Voyage visuel", rail_title: "Ouzbékistan Authentique", rail_drag: "← faites glisser pour explorer →",
+                pc1_t: "Place du Régistan", pc2_t: "Coupoles en mosaïque bleue", pc3_t: "Céramiques anciennes", pc4_t: "Citadelle d'Itchan Kala", pc5_t: "Remparts du désert", pc6_t: "Ensemble Po-i-Kalyan", pc7_t: "Bazar de Chorsu",
+                quote_html: "« Parcourir la Route de la Soie, c'est traverser <span class=\"text-gold font-bold not-italic\">dix mille ans</span> de civilisation humaine. »",
+                quote_author: "— Chaque voyageur ayant découvert l'Ouzbékistan",
+                badge_unesco: "Patrimoine UNESCO", badge_arabian: "Mille et Une Nuits",
+                s1_num: "01 / Samarcande", s1_title: "La Perle<br>de l'Orient",
+                s1_desc: "Autrefois capitale éblouissante de l'empire de Tamerlan, Samarcande fascine depuis plus de deux millénaires par ses places monumentales et ses dômes azur.",
+                s1_li1: "<strong>Place du Régistan</strong> — trois somptueuses médersas couvertes de mosaïques au cœur de la cité",
+                s1_li2: "<strong>Gour-Emir</strong> — spectaculaire mausolée de Tamerlan surmonté d'une coupole cannelée turquoise",
+                s1_li3: "<strong>Chah-i-Zinda</strong> — allée éblouissante de mausolées royaux aux faïences finement ouvragées",
+                s2_num: "02 / Boukhara", s2_title: "Le Musée<br>Vivant",
+                s2_desc: "Riche de plus de deux mille ans d'histoire, la vieille ville de Boukhara, classée à l'UNESCO, semble figée hors du temps.",
+                s2_li1: "<strong>Ensemble Po-i-Kalyan</strong> — l'imposant minaret Kalon que même Gengis Khan épargna",
+                s2_li2: "<strong>Forteresse de l'Ark</strong> — ancienne citadelle monumentale des émirs de Boukhara",
+                s2_li3: "<strong>Coupoles marchandes</strong> — bazars historiques dédiés aux tapis, céramiques et soieries",
+                s3_num: "03 / Khiva", s3_title: "La Forteresse<br>du Désert",
+                s3_desc: "Franchir les remparts d'Itchan Kala à Khiva, c'est entrer dans un conte des Mille et Une Nuits parmi des murs d'adobe et des mosquées admirablement préservés.",
+                s3_li1: "<strong>Kalta Minor</strong> — l'emblématique minaret turquoise inachevé",
+                s3_li2: "<strong>Mosquée Djouma</strong> — sanctuaire du Xe siècle soutenu par 212 colonnes de bois sculpté",
+                s3_li3: "<strong>Kounya-Ark</strong> — forteresse royale offrant une vue panoramique sur toute la vieille ville",
+                s4_num: "04 / Tachkent", s4_title: "La Métropole<br>Moderne",
+                s4_desc: "Capitale vibrante mêlant architecture islamique, héritage soviétique et grands parcs verdoyants, point de départ idéal de votre séjour.",
+                s4_li1: "<strong>Bazar de Chorsu</strong> — immense marché sous coupole regorgeant d'épices et de spécialités locales",
+                s4_li2: "<strong>Métro de Tachkent</strong> — l'un des plus beaux métros du monde aux stations artistiques",
+                s4_li3: "<strong>Complexe Khast Imam</strong> — abrite l'un des plus anciens Corans manuscrits au monde",
+                visa_badge: "Visa & Entrée", visa_title: "Entrer dans le pays est d'une grande simplicité",
+                visa_p1: "Les citoyens de l'Union européenne (dont la France, la Belgique et la Suisse), du Canada, du Royaume-Uni, des États-Unis, d'Australie et du Japon peuvent séjourner sans visa jusqu'à 30 jours avec un simple passeport valide.",
+                visa_p2: "Pour les autres nationalités, le portail officiel d'e-visa permet d'obtenir une autorisation en ligne en environ deux jours ouvrés, sans passage à l'ambassade.",
+                visa_p3: "Quelle que soit votre nationalité, envoyez-nous une copie de votre passeport : nous vérifions les formalités et vous accompagnons à chaque étape.",
+                visa_btn: "Vérifier votre visa",
+                vc1_t: "Sans visa (30 à 90 jours)", vc1_d: "UE, Suisse, Canada, Royaume-Uni, États-Unis, Australie, Japon, pays du Golfe et CEI.",
+                vc2_t: "E-Visa (en ligne, ~2 jours)", vc2_d: "Demande rapide sur e-visa.gov.uz avec passeport, photo numérique et réservation d'hôtel.",
+                vc3_t: "Enregistrement hôtelier", vc3_d: "Les voyageurs étrangers sont enregistrés dans chaque hébergement — géré automatiquement par nos hôtels.",
+                vc4_t: "Sécurité", vc4_d: "L'Ouzbékistan figure parmi les pays les plus sûrs et accueillants d'Asie centrale.",
+                when_badge: "Guide climatique", when_title: "Quand partir",
+                when_desc: "Le climat est ensoleillé et continental, avec des étés chauds, des hivers doux et très peu de pluie en haute saison.",
+                tab_spring: "Printemps (Mar–Mai)", tab_summer: "Été (Juin–Août)", tab_autumn: "Automne (Sep–Nov)", tab_winter: "Hiver (Déc–Fév)",
+                lbl_temp: "Temp. moy.", lbl_rain: "Pluie", lbl_pack: "À emporter",
+                sp_title: "La meilleure saison ☀️", sp_desc: "Le printemps est la période la plus prisée. Températures douces, amandiers et abricotiers en fleurs rendent les visites de Samarcande, Boukhara et Khiva idéales.", sp_rain: "Modérée", sp_pack: "Vêtements en couches",
+                su_title: "Chaud & Sec 🔥", su_desc: "Juillet est le mois le plus chaud (environ 36°C) avec un air très sec. Idéal pour un ciel dégagé ; privilégiez les visites le matin et en fin d'après-midi.", su_rain: "Quasi nulle", su_pack: "Tenues légères, chapeau",
+                au_title: "Saison dorée 🍂", au_desc: "Septembre et octobre offrent des températures agréables (22–30°C), des marchés débordant de fruits et moins d'affluence — un favori des voyageurs.", au_rain: "Faible", au_pack: "Couches légères",
+                wi_title: "Calme & Authentique ❄️", wi_desc: "En janvier (environ 7°C), les monuments sont presque déserts et parfois saupoudrés de neige, avec des tarifs hôteliers très doux.", wi_rain: "Modérée, neige possible", wi_pack: "Manteau chaud",
+                log_badge: "Logistique", log_title: "Se déplacer en Ouzbékistan",
+                tr1_t: "Vols & Accueil", tr1_d: "La plupart des vols internationaux arrivent à l'aéroport de Tachkent (TAS). Notre chauffeur privé vous accueille dès la sortie avec une pancarte à votre nom.",
+                tr2_t: "Trains à grande vitesse", tr2_d: "Le train rapide Afrosiyob relie Tachkent, Samarcande et Boukhara en quelques heures dans un grand confort.",
+                tr3_t: "Transferts privés", tr3_d: "Tous vos déplacements en ville, vers les hôtels et les sites historiques sont assurés en véhicule climatisé avec chauffeur.",
+                faq_badge: "Avant de faire vos valises", faq_title: "Conseils & FAQ",
+                fq1_q: "Comment s'habiller pour visiter les mosquées et médersas ?", fq1_a: "Une tenue confortable couvrant les épaules et les genoux est recommandée, accompagnée de bonnes chaussures de marche pour les rues pavées.",
+                fq2_q: "L'eau du robinet est-elle potable ?", fq2_a: "Nous conseillons l'eau en bouteille ou filtrée, peu coûteuse et disponible partout. Nos hôtels en fournissent généralement chaque jour.",
+                fq3_q: "Puis-je acheter une carte SIM locale ?", fq3_a: "Oui, les cartes SIM (Beeline, Ucell, Mobiuz) sont très abordables et s'achètent directement à l'aéroport avec votre passeport.",
+                fq4_q: "Faut-il laisser un pourboire aux guides et chauffeurs ?", fq4_a: "Les pourboires sont appréciés mais non obligatoires : comptez environ 5 à 10 $ par jour pour un guide et 3 à 5 $ pour un chauffeur.",
+                fq5_q: "Quelles spécialités culinaires goûter ?", fq5_a: "Ne manquez pas le plov, les brochettes de chachlik, les samsas dorés et le pain chaud « non » tout juste sorti du four tandoor.",
+                cta_title: "Prêt à le découvrir par vous-même ?", cta_desc: "Parcourez nos circuits en Ouzbékistan ou contactez-nous pour créer votre itinéraire sur mesure.", cta_btn1: "Voir les circuits", cta_btn2: "Nous contacter"
+            },
+            de: {
+                page_title: "Usbekistan Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Das Herz der Seidenstraße",
+                hero_btn_tours: "Touren entdecken",
+                hero_btn_cities: "Städte erkunden ↓",
+                hero_scroll: "SCROLLEN",
+                marquee_html: "<span>✦ Samarkand</span><span>✦ Buchara</span><span>✦ Chiwa</span><span>✦ Taschkent</span><span>✦ Seidenstraße</span><span>✦ Registan</span><span>✦ Plow & Tee</span><span>✦ Blaue Kuppeln</span><span>✦ Antike Basare</span><span>✦ Samarkand</span><span>✦ Buchara</span><span>✦ Chiwa</span><span>✦ Taschkent</span><span>✦ Seidenstraße</span><span>✦ Registan</span><span>✦ Plow & Tee</span><span>✦ Blaue Kuppeln</span><span>✦ Antike Basare</span>",
+                intro_text: "Erleben Sie den Zauber türkisfarbener Kuppeln, jahrtausendealter Städte und herzlicher Gastfreundschaft am Schnittpunkt von Orient und Okzident. Usbekistan ist eine Schatzkammer voller architektonischer Wunder.",
+                stat1_label: "Jahre Geschichte", stat2_label: "UNESCO-Stätten", stat3_label: "Legendäre Städte", stat4_label: "Mio. Reisende / Jahr",
+                facts_badge: "Gut zu wissen", facts_title: "Kurzinfos",
+                qf1_title: "Währung", qf1_desc: "Usbekischer So'm (UZS). Karten werden in Städten gut akzeptiert; für Basare und ländliche Gebiete empfiehlt sich Bargeld.",
+                qf2_title: "Sprache", qf2_desc: "Usbekisch (Amtssprache) und Russisch sind weit verbreitet. Unsere Reiseleiter sprechen fließend Englisch (und auf Wunsch Deutsch).",
+                qf3_title: "Zeitzone", qf3_desc: "UZT (UTC+5), ganzjährig ohne Sommerzeit.",
+                qf4_title: "Strom", qf4_desc: "220V, 50Hz. Europäische Steckdosen der Typen C und F – kein Adapter aus Deutschland nötig.",
+                city_samarkand: "Samarkand", city_bukhara: "Buchara", city_khiva: "Chiwa", city_tashkent: "Taschkent",
+                rail_badge: "Bilderreise", rail_title: "Authentisches Usbekistan", rail_drag: "← ziehen zum Entdecken →",
+                pc1_t: "Registan-Platz", pc2_t: "Blaue Mosaikkuppeln", pc3_t: "Antike Fliesen kunst", pc4_t: "Zitadelle Itschan-Kala", pc5_t: "Wüstenfestungsmauern", pc6_t: "Poi-Kalon-Ensemble", pc7_t: "Chorsu-Basar",
+                quote_html: "„Die Seidenstraße zu bereisen bedeutet, durch <span class=\"text-gold font-bold not-italic\">zehntausend Jahre</span> menschlicher Zivilisation zu wandeln.“",
+                quote_author: "— Jeder Reisende, der Usbekistan gesehen hat",
+                badge_unesco: "UNESCO-Welterbe", badge_arabian: "1001 Nacht",
+                s1_num: "01 / Samarkand", s1_title: "Die Perle<br>des Orients",
+                s1_desc: "Einst die glanzvolle Hauptstadt von Tamerlans Imperium, begeistern Samarkands monumentale Plätze und schimmernde blaue Kuppeln seit über zwei Jahrtausenden.",
+                s1_li1: "<strong>Registan-Platz</strong> — drei prachtvolle, mit Mosaiken verzierte Medresen im Herzen der Altstadt",
+                s1_li2: "<strong>Gur-Emir</strong> — das eindrucksvolle Mausoleum Tamerlans mit gerippter azurblauer Kuppel",
+                s1_li3: "<strong>Schah-i-Sinda</strong> — eine atemberaubende Gräberstraße mit meisterhafter Keramikkunst",
+                s2_num: "02 / Buchara", s2_title: "Das lebende<br>Museum",
+                s2_desc: "Mit einer über zweitausendjährigen Geschichte wirkt die UNESCO-geschützte Altstadt von Buchara wie eine Zeitreise.",
+                s2_li1: "<strong>Poi-Kalon-Ensemble</strong> — mit dem mächtigen Kalon-Minarett, das selbst Dschingis Khan verschonte",
+                s2_li2: "<strong>Festung Ark</strong> — die gewaltige Zitadelle und einstige Residenz der Emire von Buchara",
+                s2_li3: "<strong>Handelskuppeln</strong> — historische Basare mit feinen Teppichen, Keramik und Seide",
+                s3_num: "03 / Chiwa", s3_title: "Die Wüsten-<br>festung",
+                s3_desc: "Ein Spaziergang durch Chiwas Altstadt Itschan-Kala fühlt sich an wie ein Märchen aus Tausendundeiner Nacht inmitten perfekt erhaltener Lehmmauern.",
+                s3_li1: "<strong>Kalta Minor</strong> — das ikonische, unvollendete türkisfarbene Minarett",
+                s3_li2: "<strong>Dschuma-Moschee</strong> — Moschee aus dem 10. Jahrhundert mit 212 geschnitzten Holzsäulen",
+                s3_li3: "<strong>Kuhna Ark</strong> — die Herrscherfestung mit herrlichem Panoramablick über die Stadt",
+                s4_num: "04 / Taschkent", s4_title: "Die moderne<br>Metropole",
+                s4_desc: "Die lebendige Hauptstadt verbindet islamische Baukunst, sowjetische Denkmäler und grüne Boulevards – meist Ihr idealer Startpunkt.",
+                s4_li1: "<strong>Chorsu-Basar</strong> — ein riesiger Kuppelmarkt voller Gewürze, Früchte und Streetfood",
+                s4_li2: "<strong>Metro Taschkent</strong> — eine der schönsten U-Bahnen der Welt mit einzigartiger Architektur",
+                s4_li3: "<strong>Chast-Imam-Komplex</strong> — Heimat eines der ältesten erhaltenen Korane der Welt",
+                visa_badge: "Visum & Einreise", visa_title: "Die Einreise ist einfacher als gedacht",
+                visa_p1: "Staatsbürger Deutschlands, Österreichs, der Schweiz, der EU, Großbritanniens, der USA, Kanadas, Australiens und Japans können bis zu 30 Tage visumfrei mit gültigem Reisepass einreisen.",
+                visa_p2: "Für andere Nationalitäten ermöglicht das offizielle E-Visum-Portal eine einfache Online-Beantragung in etwa zwei Werktagen ohne Botschaftsbesuch.",
+                visa_p3: "Senden Sie uns einfach eine Kopie Ihres Reisepasses – wir prüfen alle Details und unterstützen Sie bei sämtlichen Formalitäten.",
+                visa_btn: "Visum-Status prüfen",
+                vc1_t: "Visumfrei (30–90 Tage)", vc1_d: "EU, Schweiz, Großbritannien, USA, Kanada, Australien, Japan, Golfstaaten und GUS-Länder.",
+                vc2_t: "E-Visum (online, ~2 Werktage)", vc2_d: "Bequeme Beantragung über e-visa.gov.uz mit Reisepass, Foto und Hotelbuchung.",
+                vc3_t: "Hotelregistrierung", vc3_d: "Ausländische Gäste werden in jeder Unterkunft registriert – unsere Hotels erledigen das automatisch.",
+                vc4_t: "Sicherheit", vc4_d: "Usbekistan zählt zu den sichersten und gastfreundlichsten Reisezielen Zentralasiens.",
+                when_badge: "Klimaguide", when_title: "Beste Reisezeit",
+                when_desc: "Usbekistan bietet ein sonniges, kontinentales Klima mit heißen Sommern, milden Wintern und wenig Regen in der Hauptreisezeit.",
+                tab_spring: "Frühling (Mär–Mai)", tab_summer: "Sommer (Jun–Aug)", tab_autumn: "Herbst (Sep–Nov)", tab_winter: "Winter (Dez–Feb)",
+                lbl_temp: "Ø Temp.", lbl_rain: "Niederschlag", lbl_pack: "Einpacken",
+                sp_title: "Beste Jahreszeit ☀️", sp_desc: "Der Frühling ist besonders beliebt: milde Tage, blühende Mandel- und Aprikosenbäume und grüne Gärten schaffen ideale Bedingungen für Stadtbesichtigungen.", sp_rain: "Mäßig", sp_pack: "Zwiebellook",
+                su_title: "Heiß & Trocken 🔥", su_desc: "Der Juli ist mit rund 36°C und sehr trockener Luft der wärmste Monat. Perfekt für blauen Himmel – planen Sie mittags schattige Pausen ein.", su_rain: "Kaum", su_pack: "Leichte Kleidung, Sonnenhut",
+                au_title: "Goldene Saison 🍂", au_desc: "September und Oktober bieten angenehme 22–30°C, reiche Ernten auf den Basaren und entspannte Atmosphäre – genauso beliebt wie der Frühling.", au_rain: "Gering", au_pack: "Leichte Schichten",
+                wi_title: "Ruhig & Gemütlich ❄️", wi_desc: "Im Januar (ca. 7°C, gelegentlich Schnee) sind die Monumente fast menschenleer und Hotelpreise deutlich günstiger – ideal für entspannte Kulturreisen.", wi_rain: "Mäßig, etwas Schnee", wi_pack: "Warmer Mantel",
+                log_badge: "Logistik", log_title: "Unterwegs in Usbekistan",
+                tr1_t: "Flüge & Ankunft", tr1_d: "Die meisten internationalen Flüge landen in Taschkent (TAS). Unser privater Fahrer empfängt Sie direkt am Flughafen mit Namensschild.",
+                tr2_t: "Hochgeschwindigkeitszüge", tr2_d: "Der moderne Afrosiyob-Schnellzug verbindet Taschkent, Samarkand und Buchara schnell und äußerst komfortabel.",
+                tr3_t: "Private Transfers", tr3_d: "Alle Fahrten innerhalb der Städte – zu Hotels, Sehenswürdigkeiten und Ausflügen – erfolgen im klimatisierten Privatfahrzeug mit Fahrer.",
+                faq_badge: "Vor der Reise", faq_title: "Reisetipps & FAQ",
+                fq1_q: "Was sollte ich beim Besuch von Moscheen und Medresen tragen?", fq1_a: "Bequeme, dezente Kleidung, die Schultern und Knie bedeckt, sowie gutes Schuhwerk für die historischen Pflasterwege.",
+                fq2_q: "Kann man das Leitungswasser trinken?", fq2_a: "Wir empfehlen günstiges Mineral- oder gefiltertes Wasser. Die meisten Hotels stellen täglich kostenloses Trinkwasser im Zimmer bereit.",
+                fq3_q: "Bekomme ich leicht eine lokale SIM-Karte?", fq3_a: "Ja, lokale SIM-Karten (Beeline, Ucell, Mobiuz) sind günstig und direkt am Flughafen mit dem Reisepass erhältlich. 4G ist in Städten sehr gut.",
+                fq4_q: "Sind Trinkgelder für Guides und Fahrer üblich?", fq4_a: "Trinkgeld ist willkommen, aber nicht verpflichtend. Üblich sind etwa 5–10 $ pro Tag für Reiseleiter und 3–5 $ pro Tag für Fahrer.",
+                fq5_q: "Welche Gerichte sollte ich unbedingt probieren?", fq5_a: "Verpassen Sie nicht Plow (Reisgericht), Schaschlik, knusprige Samsa und ofenfrisches Non-Fladenbrot direkt aus dem Tandoor.",
+                cta_title: "Bereit, es selbst zu erleben?", cta_desc: "Entdecken Sie unsere Usbekistan-Touren oder kontaktieren Sie uns für eine maßgeschneiderte Route.", cta_btn1: "Touren ansehen", cta_btn2: "Kontakt aufnehmen"
+            },
+            tr: {
+                page_title: "Özbekistan Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "İpek Yolu'nun Kalbi",
+                hero_btn_tours: "Turları Keşfet",
+                hero_btn_cities: "Şehirleri Keşfet ↓",
+                hero_scroll: "KAYDIR",
+                marquee_html: "<span>✦ Semerkant</span><span>✦ Buhara</span><span>✦ Hive</span><span>✦ Taşkent</span><span>✦ İpek Yolu</span><span>✦ Registan</span><span>✦ Pilav & Çay</span><span>✦ Turkuaz Kubbeler</span><span>✦ Kadim Çarşılar</span><span>✦ Semerkant</span><span>✦ Buhara</span><span>✦ Hive</span><span>✦ Taşkent</span><span>✦ İpek Yolu</span><span>✦ Registan</span><span>✦ Pilav & Çay</span><span>✦ Turkuaz Kubbeler</span><span>✦ Kadim Çarşılar</span>",
+                intro_text: "Doğu ile Batı'nın kesişim noktasında turkuaz kubbelerin, kadim şehirlerin ve sıcacık misafirperverliğin büyüsünü yaşayın. Özbekistan, nefes kesen mimari şaheserleri ve köklü kültürüyle gerçek bir hazinedir.",
+                stat1_label: "Yıllık Tarih", stat2_label: "UNESCO Alanı", stat3_label: "Efsanevi Şehir", stat4_label: "Milyon Ziyaretçi / Yıl",
+                facts_badge: "Bilmekte Fayda Var", facts_title: "Hızlı Bilgiler",
+                qf1_title: "Para Birimi", qf1_desc: "Özbek Somu (UZS). Şehirlerde kartlar yaygın kullanılır; çarşılar ve kırsal bölgeler için nakit bulundurun.",
+                qf2_title: "Dil", qf2_desc: "Özbekçe (resmi) ve Rusça yaygın olarak konuşulur. Rehberlerimiz akıcı İngilizce (ve talebe göre Türkçe) bilir.",
+                qf3_title: "Saat Dilimi", qf3_desc: "UZT (UTC+5), yıl boyunca yaz saati uygulaması yapılmaz.",
+                qf4_title: "Elektrik", qf4_desc: "220V, 50Hz. Türkiye ile uyumlu Avrupa tipi C ve F prizler kullanılır.",
+                city_samarkand: "Semerkant", city_bukhara: "Buhara", city_khiva: "Hive", city_tashkent: "Taşkent",
+                rail_badge: "Görsel Yolculuk", rail_title: "Otantik Özbekistan", rail_drag: "← keşfetmek için kaydırın →",
+                pc1_t: "Registan Meydanı", pc2_t: "Mavi Mozaik Kubbeler", pc3_t: "Kadim Çini Sanatı", pc4_t: "İçan Kale Hisarı", pc5_t: "Çöl Kalesi Surları", pc6_t: "Poi Kalyan Külliyesi", pc7_t: "Çorsu Pazarı",
+                quote_html: "«İpek Yolu'nda seyahat etmek, insanlık medeniyetinin <span class=\"text-gold font-bold not-italic\">on bin yılı</span> içinde yürümektir.»",
+                quote_author: "— Özbekistan'ı gören her gezgin",
+                badge_unesco: "UNESCO Mirası", badge_arabian: "Binbir Gece Masalları",
+                s1_num: "01 / Semerkant", s1_title: "Doğu'nun<br>İncisi",
+                s1_desc: "Bir zamanlar Timur İmparatorluğu'nun görkemli başkenti olan Semerkant, anıtsal meydanları ve ışıldayan mavi kubbeleriyle iki bin yılı aşkın süredir hayranlık uyandırıyor.",
+                s1_li1: "<strong>Registan Meydanı</strong> — kadim şehrin kalbinde mozaiklerle bezeli üç muhteşem medrese",
+                s1_li2: "<strong>Gur-i Emir</strong> — Emir Timur'un yivli turkuaz kubbeli görkemli türbesi",
+                s1_li3: "<strong>Şah-ı Zinde</strong> — ince çinilerle süslü kraliyet türbelerinin büyüleyici caddesi",
+                s2_num: "02 / Buhara", s2_title: "Yaşayan<br>Müze",
+                s2_desc: "İki bin yılı aşan tarihiyle UNESCO Dünya Mirası listesindeki Buhara Eski Şehri, zamanın durduğu eşsiz bir atmosfere sahiptir.",
+                s2_li1: "<strong>Poi Kalyan Külliyesi</strong> — Cengiz Han'ın bile zarar vermediği görkemli Kalyan Minaresi",
+                s2_li2: "<strong>Ark Kalesi</strong> — Buhara Emirleri'nin ikametgahı olan devasa tarihi kale",
+                s2_li3: "<strong>Tarihi Kubbeli Çarşılar</strong> — halı, seramik ve ipek dokumalarıyla ünlü kadim pazarlar",
+                s3_num: "03 / Hive", s3_title: "Çölün<br>Kalesi",
+                s3_desc: "Hive'nin İçan Kale surlarından içeri adım atmak adeta bir Binbir Gece masalına girmek gibidir; kerpiç surlar, camiler ve saraylar kusursuz korunmuştur.",
+                s3_li1: "<strong>Kalta Minor</strong> — ikonik yarım kalmış turkuaz minare",
+                s3_li2: "<strong>Cuma Camii</strong> — 212 oymalı ahşap sütunla desteklenen 10. yüzyıl camisi",
+                s3_li3: "<strong>Köhne Ark</strong> — tüm eski şehre hakim nefes kesen panoramik kale",
+                s4_num: "04 / Taşkent", s4_title: "Modern<br>Metropol",
+                s4_desc: "Canlı başkent, İslam mimarisini, Sovyet dönemi anıtlarını ve modern bulvarları harmanlar. Özbekistan yolculuğunuz genellikle burada başlar.",
+                s4_li1: "<strong>Çorsu Pazarı</strong> — baharatlar ve yöresel lezzetlerle dolu dev kubbeli pazar",
+                s4_li2: "<strong>Taşkent Metrosu</strong> — her istasyonu sanat eseri olan dünyanın en güzel metrolarından biri",
+                s4_li3: "<strong>Hazreti İmam Külliyesi</strong> — dünyanın en eski Kur'an-ı Kerim nüshalarından birine ev sahipliği yapar",
+                visa_badge: "Vize ve Giriş", visa_title: "Giriş Yapmak Düşündüğünüzden Daha Kolay",
+                visa_p1: "Türkiye, AB ülkeleri, Birleşik Krallık, ABD, Kanada, Avustralya, Japonya ve Güney Kore dahil 90'dan fazla ülke vatandaşı yalnızca geçerli pasaportla 30 güne kadar vizesiz giriş yapabilir.",
+                visa_p2: "Vizesiz listede yer almayan ülke vatandaşları, konsolosluğa gitmeden resmi e-vize portalı üzerinden yaklaşık iki iş günü içinde kolayca vize alabilir.",
+                visa_p3: "Uyruğunuz ne olursa olsun pasaport kopyanızı bize iletin — uçuş öncesi tüm giriş kurallarını kontrol edip size destek olalım.",
+                visa_btn: "Vize Durumunuzu Sorun",
+                vc1_t: "Vizesiz Giriş (30–90 Gün)", vc1_d: "Türkiye, AB, Birleşik Krallık, ABD, Kanada, Avustralya, Japonya, Körfez ve BDT ülkeleri.",
+                vc2_t: "E-Vize (Online, ~2 İş Günü)", vc2_d: "Resmi e-visa.gov.uz portalından pasaport, dijital fotoğraf ve otel rezervasyonu ile hızlı başvuru.",
+                vc3_t: "Otel Kaydı", vc3_d: "Yabancı misafirlerin konakladıkları yerlerde kayıt yaptırması gerekir — otellerimiz bunu otomatik halleder.",
+                vc4_t: "Güvenlik", vc4_d: "Özbekistan, Orta Asya'nın gezginler için en güvenli ve misafirperver ülkelerinden biridir.",
+                when_badge: "İklim Rehberi", when_title: "Ne Zaman Gidilir",
+                when_desc: "Özbekistan sıcak yazları, ılıman kışları ve yüksek sezonda az yağışı ile güneşli bir iklime sahiptir. İşte mevsimlere göre beklentiler:",
+                tab_spring: "İlkbahar (Mar–May)", tab_summer: "Yaz (Haz–Ağu)", tab_autumn: "Sonbahar (Eyl–Kas)", tab_winter: "Kış (Ara–Şub)",
+                lbl_temp: "Ort. Sıcaklık", lbl_rain: "Yağış", lbl_pack: "Yanınıza Alın",
+                sp_title: "Yılın En Güzel Zamanı ☀️", sp_desc: "İlkbahar en popüler dönemdir. Ilık günler, çiçek açan badem ve kayısı ağaçları Semerkant, Buhara ve Hive yürüyüş turları için mükemmeldir.", sp_rain: "Orta", sp_pack: "Katmanlı giysiler",
+                su_title: "Sıcak ve Kurak 🔥", su_desc: "Temmuz ortalama 36°C ve düşük nem ile en sıcak aydır. Açık gökyüzü için harika; öğle sıcağında kapalı mekan molaları planlamanızı öneririz.", su_rain: "Neredeyse yok", su_pack: "Hafif giysiler, şapka",
+                au_title: "Altın Mevsim 🍂", au_desc: "Eylül ve Ekim ayları 22–30°C'lik konforlu havası, taze meyvelerle dolu pazarları ve sakin atmosferiyle ilkbahar kadar idealdir.", au_rain: "Düşük", au_pack: "Hafif katmanlar",
+                wi_title: "Sakin ve Huzurlu ❄️", wi_desc: "Ocak ayı ortalama 7°C ve ara sıra kar yağışıyla en serin aydır. Tarihi alanlar sakin, otel fiyatları daha ekonomiktir.", wi_rain: "Orta, kar ihtimali", wi_pack: "Kalın mont",
+                log_badge: "Lojistik", log_title: "Özbekistan İçi Ulaşım",
+                tr1_t: "Uçuş ve Karşılama", tr1_d: "Uluslararası uçuşların çoğu Taşkent Havalimanı'na (TAS) iner. Şoförümüz isminizin yazılı olduğu tabela ile sizi özel olarak karşılar.",
+                tr2_t: "Yüksek Hızlı Trenler", tr2_d: "Bölgenin ilk yüksek hızlı tren ağı Afrosiyob, Taşkent, Semerkant ve Buhara'yı birkaç saat içinde son derece konforlu şekilde birbirine bağlar.",
+                tr3_t: "Özel Transferler", tr3_d: "Şehir içi otel, gezi ve tur transferlerinin tamamı klimalı özel araç ve deneyimli şoförle paketimize dahildir.",
+                faq_badge: "Yola Çıkmadan Önce", faq_title: "Gezgin İpuçları ve SSS",
+                fq1_q: "Cami ve medreseleri gezerken nasıl giyinmeliyim?", fq1_a: "Omuzları ve dizleri örten rahat, mütevazı kıyafetler ve taş sokaklar için konforlu yürüyüş ayakkabıları önerilir.",
+                fq2_q: "Musluk suyu içmek güvenli mi?", fq2_a: "Uygun fiyatlı ve her yerde bulunan şişe veya filtre su tüketmenizi öneririz. Çoğu otel odalarda ücretsiz su sunar.",
+                fq3_q: "Yerel SIM kart kolayca alabilir miyim?", fq3_a: "Evet, Beeline, Ucell ve Mobiuz SIM kartları havalimanında pasaportunuzla kolayca ve uygun fiyata alınabilir. Büyük şehirlerde 4G çekimi güçlüdür.",
+                fq4_q: "Rehber ve şoförlere bahşiş verilmeli mi?", fq4_a: "Bahşiş zorunlu değildir ancak memnuniyet göstergesi olarak takdir edilir. Rehberler için günlük 5–10 $, şoförler için 3–5 $ yaygındır.",
+                fq5_q: "Hangi yöresel yemekleri mutlaka denemeliyim?", fq5_a: "Özbek pilavı (plov), şaşlık, fırında çıtır samsa ve tandırdan yeni çıkmış sıcak non ekmeğini kesinlikle kaçırmayın.",
+                cta_title: "Kendi Gözlerinizle Görmeye Hazır mısınız?", cta_desc: "Özbekistan turlarımıza göz atın veya bizimle iletişime geçin, size özel bir rota tasarlayalım.", cta_btn1: "Turları Gör", cta_btn2: "Bize Ulaşın"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, easing: 'ease-in-out-quad', once: true });
+
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Аккордеон FAQ
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+
+        // Табы сезонов
+        document.querySelectorAll('.season-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const season = tab.dataset.season;
+                document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.season-content').forEach(c => {
+                    c.classList.toggle('active', c.dataset.season === season);
+                });
+            });
+        });
+
+        // Параллакс Hero
+        const heroBg = document.getElementById('hero-bg');
+        window.addEventListener('scroll', () => {
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${window.scrollY * 0.35}px) scale(1.1)`;
+            }
+        }, { passive: true });
+
+        // Подсветка курсора
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', e => {
+            if (glow) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Анимированные счётчики
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const step = target / (2000 / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current = Math.min(current + step, target);
+                el.textContent = Math.floor(current).toLocaleString();
+                if (current >= target) clearInterval(timer);
+            }, 16);
+        }
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+
+        // Перетаскиваемая фотолента
+        const rail = document.getElementById('photoRail');
+        if (rail) {
+            let isDown = false, startX, scrollLeft;
+            rail.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - rail.offsetLeft; scrollLeft = rail.scrollLeft; });
+            rail.addEventListener('mouseleave', () => isDown = false);
+            rail.addEventListener('mouseup', () => isDown = false);
+            rail.addEventListener('mousemove', e => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - rail.offsetLeft;
+                rail.scrollLeft = scrollLeft - (x - startX) * 1.5;
+            });
+        }
+
+        // Активный город в меню при скролле
+        const cityLinks = document.querySelectorAll('.city-nav-link');
+        const cityIds = ['samarkand', 'bukhara', 'khiva', 'tashkent'];
+        window.addEventListener('scroll', () => {
+            let active = null;
+            cityIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.getBoundingClientRect().top <= 200) active = id;
+            });
+            cityLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href').replace('#', '') === active);
+            });
+        }, { passive: true });
+    </script>
+</body>
+</html>

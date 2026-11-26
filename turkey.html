@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,10 @@
             transform: translateY(0);
         }
 
+        /* Mobile Menu */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
         /* Season tabs */
         .season-tab.active {
             background-color: #16697A;
@@ -59,9 +63,7 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        .season-content.active {
-            display: block;
-        }
+        .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -75,7 +77,7 @@
             opacity: 0;
         }
         .accordion-item.active .accordion-content {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
         }
         .accordion-item.active .accordion-icon {
@@ -90,60 +92,139 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition text-gold font-bold">Turkey</a>
-                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-gold font-bold text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
 
     <!-- EPIC HERO SECTION (КАППАДОКИЯ ВАЙБ) -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
@@ -152,13 +233,13 @@
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/40 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down" data-i18n="hero_badge">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-i18n="country_turkey">
                 Turkey
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
                 Where Continents Meet & Legends Live
             </p>
         </div>
@@ -167,36 +248,36 @@
     <!-- INTRO & QUICK FACTS -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
-            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="intro_text">
                 Immerse yourself in a land where timeless history effortlessly meets contemporary luxury. From the bustling, aromatic bazaars and historic mosques of Istanbul to the surreal fairy chimneys of Cappadocia and the crystal-clear turquoise shores of the Aegean Sea, Turkey offers an unparalleled tapestry of cultures.
             </p>
         </div>
 
         <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="facts_badge">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="facts_title">Quick Facts</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
-                <p class="text-teal-900/70 font-light text-sm">Turkish Lira (TRY). Credit cards are universally accepted in boutique shops, hotels, and upscale restaurants.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf1_t">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf1_d">Turkish Lira (TRY). Credit cards are universally accepted in boutique shops, hotels, and upscale restaurants.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
-                <p class="text-teal-900/70 font-light text-sm">Turkish (official language). English is widely spoken across all premier tourist hubs and coastlines.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf2_t">Language</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf2_d">Turkish (official language). English is widely spoken across all premier tourist hubs and coastlines.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
-                <p class="text-teal-900/70 font-light text-sm">TRT (UTC+3). Operates on a permanent standard time all year round.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf3_t">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf3_d">TRT (UTC+3). Operates on a permanent standard time all year round.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
-                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Standard European two-pin plug types C and F are fully operational.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf4_t">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf4_d">220V, 50Hz. Standard European two-pin plug types C and F are fully operational.</p>
             </div>
         </div>
     </section>
@@ -205,23 +286,23 @@
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="dest_badge">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="dest_title">Top Destinations</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Istanbul - The Imperial Intersection</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d1_t">Istanbul - The Imperial Intersection</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">The mesmerizing metropolis bridging Europe and Asia across the historic Bosphorus Strait. Istanbul acts as a massive living archive of Byzantine and Ottoman opulence.</p>
+                            <p class="mb-4" data-i18n="d1_p">The mesmerizing metropolis bridging Europe and Asia across the historic Bosphorus Strait. Istanbul acts as a massive living archive of Byzantine and Ottoman opulence.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Hagia Sophia & Blue Mosque:</strong> Two architectural triumphs framing the city skyline with spectacular domes and minarets.</li>
-                                <li><strong>Topkapi Palace:</strong> The luxurious, labyrinthine court complex that housed legendary Ottoman Sultans.</li>
-                                <li><strong>The Bosphorus Cruise:</strong> Private sunset sailing yachts dividing two continents elegantly.</li>
+                                <li data-i18n-html="d1_li1"><strong>Hagia Sophia & Blue Mosque:</strong> Two architectural triumphs framing the city skyline with spectacular domes and minarets.</li>
+                                <li data-i18n-html="d1_li2"><strong>Topkapi Palace:</strong> The luxurious, labyrinthine court complex that housed legendary Ottoman Sultans.</li>
+                                <li data-i18n-html="d1_li3"><strong>The Bosphorus Cruise:</strong> Private sunset sailing yachts dividing two continents elegantly.</li>
                             </ul>
                         </div>
                     </div>
@@ -229,16 +310,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Cappadocia - The Surreal Valley</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d2_t">Cappadocia - The Surreal Valley</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">A geological wonderland shaped like a completely different planet. Famous for its whimsical rock formations, ancient underground sanctuaries, and sky-filling hot air balloons.</p>
+                            <p class="mb-4" data-i18n="d2_p">A geological wonderland shaped like a completely different planet. Famous for its whimsical rock formations, ancient underground sanctuaries, and sky-filling hot air balloons.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Hot Air Balloon Flights:</strong> Ascend at dawn above the golden moonscapes for an unforgettable panorama.</li>
-                                <li><strong>Goreme Open Air Museum:</strong> Cave churches carved by early Christians displaying brilliant preserved frescoes.</li>
-                                <li><strong>Luxury Cave Hotels:</strong> Sleep inside historic, fully modernized stone suites offering private heated pools.</li>
+                                <li data-i18n-html="d2_li1"><strong>Hot Air Balloon Flights:</strong> Ascend at dawn above the golden moonscapes for an unforgettable panorama.</li>
+                                <li data-i18n-html="d2_li2"><strong>Goreme Open Air Museum:</strong> Cave churches carved by early Christians displaying brilliant preserved frescoes.</li>
+                                <li data-i18n-html="d2_li3"><strong>Luxury Cave Hotels:</strong> Sleep inside historic, fully modernized stone suites offering private heated pools.</li>
                             </ul>
                         </div>
                     </div>
@@ -246,16 +327,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">The Aegean Coast - Antique Luxury</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d3_t">The Aegean Coast - Antique Luxury</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Where rich Greco-Roman history rolls smoothly right down into pristine, sun-drenched sands, olive groves, and high-end resorts like Bodrum and Izmir.</p>
+                            <p class="mb-4" data-i18n="d3_p">Where rich Greco-Roman history rolls smoothly right down into pristine, sun-drenched sands, olive groves, and high-end resorts like Bodrum and Izmir.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Ancient Ephesus:</strong> Walk down marble streets toward the breathtaking facade of the Library of Celsus.</li>
-                                <li><strong>Pamukkale:</strong> Walk along the surreal, cascading thermal white travertine terraces and Cleopatra's antique pool.</li>
-                                <li><strong>Bodrum Riviera:</strong> Relax at 5-star secluded beach bays and premium yachting marinas.</li>
+                                <li data-i18n-html="d3_li1"><strong>Ancient Ephesus:</strong> Walk down marble streets toward the breathtaking facade of the Library of Celsus.</li>
+                                <li data-i18n-html="d3_li2"><strong>Pamukkale:</strong> Walk along the surreal, cascading thermal white travertine terraces and Cleopatra's antique pool.</li>
+                                <li data-i18n-html="d3_li3"><strong>Bodrum Riviera:</strong> Relax at 5-star secluded beach bays and premium yachting marinas.</li>
                             </ul>
                         </div>
                     </div>
@@ -268,12 +349,12 @@
     <section class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">Effortless E-Visa System</h2>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Traveling to Turkey is exceptionally fluid. Citizens of the European Union, UK, and several Central Asian nations enjoy fully visa-free entry for up to 90 days.</p>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">For nationalities requiring permissions (such as USA, Canada, or Australia), Turkey's official e-Visa portal issues approved documents within just a few clicks online. Our booking managers handle full checks for you automatically.</p>
-                <p class="text-cream/80 font-light mb-8 leading-relaxed">Simply share your travel dates, and TGS Travel will streamline your entry requirements, hotel filings, and airport fast-track lanes seamlessly.</p>
-                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Inquire About Custom Tours</a>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="visa_badge">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight" data-i18n="visa_title">Effortless E-Visa System</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p1">Traveling to Turkey is exceptionally fluid. Citizens of the European Union, UK, and several Central Asian nations enjoy fully visa-free entry for up to 90 days.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p2">For nationalities requiring permissions (such as USA, Canada, or Australia), Turkey's official e-Visa portal issues approved documents within just a few clicks online. Our booking managers handle full checks for you automatically.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed" data-i18n="visa_p3">Simply share your travel dates, and TGS Travel will streamline your entry requirements, hotel filings, and airport fast-track lanes seamlessly.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300" data-i18n="visa_btn">Inquire About Custom Tours</a>
             </div>
 
             <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
@@ -282,8 +363,8 @@
                         <i data-lucide="check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Visa-Free Hubs</div>
-                        <p class="text-cream/70 font-light text-sm">Most European, Gulf Cooperation Council, and CIS citizens can arrive passport-only easily.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc1_t">Visa-Free Hubs</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc1_d">Most European, Gulf Cooperation Council, and CIS citizens can arrive passport-only easily.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -291,8 +372,8 @@
                         <i data-lucide="monitor" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Instant E-Visas</div>
-                        <p class="text-cream/70 font-light text-sm">Processed entirely online via evisa.gov.tr, completely removing the need for embassy lines.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc2_t">Instant E-Visas</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc2_d">Processed entirely online via evisa.gov.tr, completely removing the need for embassy lines.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -300,8 +381,8 @@
                         <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Total Guest Comfort</div>
-                        <p class="text-cream/70 font-light text-sm">Private VIP airport greeting and seamless inter-city luxury Mercedes van transfers are fully integrated.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc3_t">Total Guest Comfort</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc3_d">Private VIP airport greeting and seamless inter-city luxury Mercedes van transfers are fully integrated.</p>
                     </div>
                 </div>
             </div>
@@ -312,33 +393,31 @@
     <section class="py-24 px-6 bg-cream">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
-                <p class="text-teal-900/70 font-light max-w-xl mx-auto">Turkey experiences four brilliant distinct seasons. Depending on your holiday goals, here is what to expect.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="when_badge">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4" data-i18n="when_title">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto" data-i18n="when_desc">Turkey experiences four brilliant distinct seasons. Depending on your holiday goals, here is what to expect.</p>
             </div>
 
             <!-- Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
-                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring" data-i18n="tab_spring">Spring (Mar–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer" data-i18n="tab_summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn" data-i18n="tab_autumn">Autumn (Sep–Nov)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter" data-i18n="tab_winter">Winter (Dec–Feb)</button>
             </div>
 
             <!-- Content Blocks -->
             <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                
                 <!-- Spring -->
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Tulips & Perfect Sightseeing 🌷</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Spring brings millions of blooming tulips across Istanbul's royal parks. Weather is exceptionally comfortable and crisp, making it the premier window for walking architectural explorations in Cappadocia and ancient ruins.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="sp_t">Tulips & Perfect Sightseeing 🌷</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="sp_d">Spring brings millions of blooming tulips across Istanbul's royal parks. Weather is exceptionally comfortable and crisp, making it the premier window for walking architectural explorations in Cappadocia and ancient ruins.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">16–24°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Crowds</span><span class="font-bold text-teal-900">Moderate</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Istanbul & Antique Excursions</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">16–24°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_crowds">Crowds</span><span class="font-bold text-teal-900" data-i18n="sp_crowds">Moderate</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="sp_best">Istanbul & Antique Excursions</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -351,13 +430,12 @@
                 <div class="season-content" data-season="summer">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Sun-Drenched Riviera Bliss ☀️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Summer turns the Aegean and Mediterranean coastlines into absolute paradise. Clear sapphire waters, vibrant beach clubs, and premium resort yachting are at their annual peak performance. Cities get hot, but shores stay refreshing.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="su_t">Sun-Drenched Riviera Bliss ☀️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="su_d">Summer turns the Aegean and Mediterranean coastlines into absolute paradise. Clear sapphire waters, vibrant beach clubs, and premium resort yachting are at their annual peak performance. Cities get hot, but shores stay refreshing.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Riviera Temp</span><span class="font-bold text-teal-900">28–35°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Sea Conditions</span><span class="font-bold text-teal-900">Warm & Calmer</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Bodrum Luxury Resorts & Gulet Yachts</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_riviera">Avg. Riviera Temp</span><span class="font-bold text-teal-900">28–35°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_sea">Sea Conditions</span><span class="font-bold text-teal-900" data-i18n="su_sea">Warm & Calm</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="su_best">Bodrum Luxury Resorts & Gulet Yachts</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -370,13 +448,12 @@
                 <div class="season-content" data-season="autumn">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Golden Velvet Relax 🍂</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September and October bring idyllic mild warmth. Sea waters retain summer heat, yet crowds diminish completely. Excellent season for long lunches at sea-view terraces and unhurried temple walks.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="au_t">Golden Velvet Relax 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="au_d">September and October bring idyllic mild warmth. Sea waters retain summer heat, yet crowds diminish completely. Excellent season for long lunches at sea-view terraces and unhurried temple walks.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Temp</span><span class="font-bold text-teal-900">20–27°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Atmosphere</span><span class="font-bold text-teal-900">Tranquil & Cozy</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Ephesus Walks & Cappadocia Balooning</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_temp">Avg. Temp</span><span class="font-bold text-teal-900">20–27°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_atm">Atmosphere</span><span class="font-bold text-teal-900" data-i18n="au_atm">Tranquil & Cozy</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="au_best">Ephesus Walks & Cappadocia Ballooning</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -389,13 +466,12 @@
                 <div class="season-content" data-season="winter">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Cozy Fireplaces & Snow Caps ❄️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Winter transforms Cappadocia into a stunning, snow-covered fairytale landscape. Hot air balloons continue flying above snow fields on clear days, and luxury cave suites activate rustic fireplace lounges.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="wi_t">Cozy Fireplaces & Snow Caps ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="wi_d">Winter transforms Cappadocia into a stunning, snow-covered fairytale landscape. Hot air balloons continue flying above snow fields on clear days, and luxury cave suites activate rustic fireplace lounges.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Istanbul Temp</span><span class="font-bold text-teal-900">5–11°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Cappadocia Peaks</span><span class="font-bold text-teal-900">Snow Covered</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Boutique Spa Cave Escapes & Shopping</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_ist">Avg. Istanbul Temp</span><span class="font-bold text-teal-900">5–11°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_cap">Cappadocia Peaks</span><span class="font-bold text-teal-900" data-i18n="wi_cap">Snow Covered</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="wi_best">Boutique Spa Cave Escapes & Shopping</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -411,8 +487,8 @@
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Turkey</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="log_badge">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="log_title">Getting Around Turkey</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -420,22 +496,22 @@
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Mega Airport Pickups</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Arrive at Istanbul's architectural mega-terminal (IST). Our local private chauffeurs coordinate direct meet-and-greets immediately past baggage claims with premium signs.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr1_t">Mega Airport Pickups</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr1_d">Arrive at Istanbul's architectural mega-terminal (IST). Our local private chauffeurs coordinate direct meet-and-greets immediately past baggage claims with premium signs.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="truck" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">VIP Mercedes Sprinters</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">All land journeys between historic sites, hotels, and coastal marinas are executed inside fully customized Mercedes Sprinter vans featuring soft leather seats and onboard refreshments.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr2_t">VIP Mercedes Sprinters</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr2_d">All land journeys between historic sites, hotels, and coastal marinas are executed inside fully customized Mercedes Sprinter vans featuring soft leather seats and onboard refreshments.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="ship" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Domestic Jet Transfers</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">To optimize your itinerary times smoothly, we deploy swift internal flight nodes connecting Istanbul directly into Cappadocia (NAV) or Izmir shores efficiently.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr3_t">Domestic Flight Transfers</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr3_d">To optimize your itinerary times smoothly, we deploy swift internal flight connections linking Istanbul directly to Cappadocia (NAV) or the Izmir coastline efficiently.</p>
                 </div>
             </div>
         </div>
@@ -445,41 +521,41 @@
     <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="faq_badge">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="faq_title">Traveler Tips & FAQ</h2>
             </div>
 
             <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
                 <div class="accordion-item active border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What protocol should I follow inside Turkish Mosques?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq1_q">What protocol should I follow inside Turkish Mosques?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq1_a">
                             Modest attire covering shoulders and knees is mandatory for both men and women. Women must also cover their hair with a headscarf prior to entry. Shoes are strictly taken off at the entrance mats.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Is bargaining appropriate inside the Grand Bazaar?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq2_q">Is bargaining appropriate inside the Grand Bazaar?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq2_a">
                             Bargaining is a highly respected cultural custom inside historic markets. Respectfully counter the shopkeeper's initial offer with roughly 30-40% less, and proceed with a friendly smile to secure the best souvenir value.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What culinary experiences are absolute must-tries?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq3_q">What culinary experiences are absolute must-tries?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
-                            Do not limit your palette to kebabs. Indulge in fresh Meze platters, flaky Pistachio Baklava soaked in honey syrup, authentic slow-brewed Turkish Coffee cooked over sand, and morning Simit bread paired with local Kaymak cream.
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq3_a">
+                            Do not limit your palate to kebabs. Indulge in fresh Meze platters, flaky Pistachio Baklava soaked in honey syrup, authentic slow-brewed Turkish Coffee cooked over sand, and morning Simit bread paired with local Kaymak cream.
                         </div>
                     </div>
                 </div>
@@ -491,12 +567,12 @@
     <section class="bg-gold py-16 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
             <div>
-                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Ready to Wander Antique Horizons?</h3>
-                <p class="text-teal-900/80 text-lg font-medium">Explore our premium cross-border routes or let our design desk build an individual itinerary for you.</p>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2" data-i18n="cta_title">Ready to Wander Antique Horizons?</h3>
+                <p class="text-teal-900/80 text-lg font-medium" data-i18n="cta_desc">Explore our premium cross-border routes or let our design desk build an individual itinerary for you.</p>
             </div>
             <div class="flex gap-4 flex-wrap justify-center">
-                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">View All Tours</a>
-                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap" data-i18n="cta_btn1">View All Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap" data-i18n="cta_btn2">Contact Us</a>
             </div>
         </div>
     </section>
@@ -506,48 +582,311 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
                 <div class="flex items-center space-x-4 text-cream/60">
-                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </a>
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
                 </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ ТУРЦИИ (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Turkey Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "Where Continents Meet & Legends Live",
+                intro_text: "Immerse yourself in a land where timeless history effortlessly meets contemporary luxury. From the bustling, aromatic bazaars and historic mosques of Istanbul to the surreal fairy chimneys of Cappadocia and the crystal-clear turquoise shores of the Aegean Sea, Turkey offers an unparalleled tapestry of cultures.",
+                facts_badge: "Good to Know", facts_title: "Quick Facts",
+                qf1_t: "Currency", qf1_d: "Turkish Lira (TRY). Credit cards are universally accepted in boutique shops, hotels, and upscale restaurants.",
+                qf2_t: "Language", qf2_d: "Turkish (official language). English is widely spoken across all premier tourist hubs and coastlines.",
+                qf3_t: "Time Zone", qf3_d: "TRT (UTC+3). Operates on a permanent standard time all year round.",
+                qf4_t: "Electricity", qf4_d: "220V, 50Hz. Standard European two-pin plug types C and F are fully operational.",
+                dest_badge: "Must-Visit Places", dest_title: "Top Destinations",
+                d1_t: "Istanbul - The Imperial Intersection",
+                d1_p: "The mesmerizing metropolis bridging Europe and Asia across the historic Bosphorus Strait. Istanbul acts as a massive living archive of Byzantine and Ottoman opulence.",
+                d1_li1: "<strong>Hagia Sophia & Blue Mosque:</strong> Two architectural triumphs framing the city skyline with spectacular domes and minarets.",
+                d1_li2: "<strong>Topkapi Palace:</strong> The luxurious, labyrinthine court complex that housed legendary Ottoman Sultans.",
+                d1_li3: "<strong>The Bosphorus Cruise:</strong> Private sunset sailing yachts dividing two continents elegantly.",
+                d2_t: "Cappadocia - The Surreal Valley",
+                d2_p: "A geological wonderland shaped like a completely different planet. Famous for its whimsical rock formations, ancient underground sanctuaries, and sky-filling hot air balloons.",
+                d2_li1: "<strong>Hot Air Balloon Flights:</strong> Ascend at dawn above the golden moonscapes for an unforgettable panorama.",
+                d2_li2: "<strong>Goreme Open Air Museum:</strong> Cave churches carved by early Christians displaying brilliant preserved frescoes.",
+                d2_li3: "<strong>Luxury Cave Hotels:</strong> Sleep inside historic, fully modernized stone suites offering private heated pools.",
+                d3_t: "The Aegean Coast - Antique Luxury",
+                d3_p: "Where rich Greco-Roman history rolls smoothly right down into pristine, sun-drenched sands, olive groves, and high-end resorts like Bodrum and Izmir.",
+                d3_li1: "<strong>Ancient Ephesus:</strong> Walk down marble streets toward the breathtaking facade of the Library of Celsus.",
+                d3_li2: "<strong>Pamukkale:</strong> Walk along the surreal, cascading thermal white travertine terraces and Cleopatra's antique pool.",
+                d3_li3: "<strong>Bodrum Riviera:</strong> Relax at 5-star secluded beach bays and premium yachting marinas.",
+                visa_badge: "Visa & Entry", visa_title: "Effortless E-Visa System",
+                visa_p1: "Traveling to Turkey is exceptionally fluid. Citizens of the European Union, UK, and several Central Asian nations enjoy fully visa-free entry for up to 90 days.",
+                visa_p2: "For nationalities requiring permissions (such as USA, Canada, or Australia), Turkey's official e-Visa portal issues approved documents within just a few clicks online. Our booking managers handle full checks for you automatically.",
+                visa_p3: "Simply share your travel dates, and TGS Travel will streamline your entry requirements, hotel filings, and airport fast-track lanes seamlessly.",
+                visa_btn: "Inquire About Custom Tours",
+                vc1_t: "Visa-Free Hubs", vc1_d: "Most European, Gulf Cooperation Council, and CIS citizens can arrive passport-only easily.",
+                vc2_t: "Instant E-Visas", vc2_d: "Processed entirely online via evisa.gov.tr, completely removing the need for embassy lines.",
+                vc3_t: "Total Guest Comfort", vc3_d: "Private VIP airport greeting and seamless inter-city luxury Mercedes van transfers are fully integrated.",
+                when_badge: "Climate Guide", when_title: "When to Go",
+                when_desc: "Turkey experiences four brilliant distinct seasons. Depending on your holiday goals, here is what to expect.",
+                tab_spring: "Spring (Mar–May)", tab_summer: "Summer (Jun–Aug)", tab_autumn: "Autumn (Sep–Nov)", tab_winter: "Winter (Dec–Feb)",
+                lbl_temp: "Avg. Temp", lbl_crowds: "Crowds", lbl_best: "Best For", lbl_riviera: "Avg. Riviera Temp", lbl_sea: "Sea Conditions", lbl_atm: "Atmosphere", lbl_ist: "Avg. Istanbul Temp", lbl_cap: "Cappadocia Peaks",
+                sp_t: "Tulips & Perfect Sightseeing 🌷", sp_d: "Spring brings millions of blooming tulips across Istanbul's royal parks. Weather is exceptionally comfortable and crisp, making it the premier window for walking architectural explorations in Cappadocia and ancient ruins.", sp_crowds: "Moderate", sp_best: "Istanbul & Antique Excursions",
+                su_t: "Sun-Drenched Riviera Bliss ☀️", su_d: "Summer turns the Aegean and Mediterranean coastlines into absolute paradise. Clear sapphire waters, vibrant beach clubs, and premium resort yachting are at their annual peak performance. Cities get hot, but shores stay refreshing.", su_sea: "Warm & Calm", su_best: "Bodrum Luxury Resorts & Gulet Yachts",
+                au_t: "Golden Velvet Relax 🍂", au_d: "September and October bring idyllic mild warmth. Sea waters retain summer heat, yet crowds diminish completely. Excellent season for long lunches at sea-view terraces and unhurried temple walks.", au_atm: "Tranquil & Cozy", au_best: "Ephesus Walks & Cappadocia Ballooning",
+                wi_t: "Cozy Fireplaces & Snow Caps ❄️", wi_d: "Winter transforms Cappadocia into a stunning, snow-covered fairytale landscape. Hot air balloons continue flying above snow fields on clear days, and luxury cave suites activate rustic fireplace lounges.", wi_cap: "Snow Covered", wi_best: "Boutique Spa Cave Escapes & Shopping",
+                log_badge: "Logistics", log_title: "Getting Around Turkey",
+                tr1_t: "Mega Airport Pickups", tr1_d: "Arrive at Istanbul's architectural mega-terminal (IST). Our local private chauffeurs coordinate direct meet-and-greets immediately past baggage claims with premium signs.",
+                tr2_t: "VIP Mercedes Sprinters", tr2_d: "All land journeys between historic sites, hotels, and coastal marinas are executed inside fully customized Mercedes Sprinter vans featuring soft leather seats and onboard refreshments.",
+                tr3_t: "Domestic Flight Transfers", tr3_d: "To optimize your itinerary times smoothly, we deploy swift internal flight connections linking Istanbul directly to Cappadocia (NAV) or the Izmir coastline efficiently.",
+                faq_badge: "Before You Pack", faq_title: "Traveler Tips & FAQ",
+                fq1_q: "What protocol should I follow inside Turkish Mosques?", fq1_a: "Modest attire covering shoulders and knees is mandatory for both men and women. Women must also cover their hair with a headscarf prior to entry. Shoes are strictly taken off at the entrance mats.",
+                fq2_q: "Is bargaining appropriate inside the Grand Bazaar?", fq2_a: "Bargaining is a highly respected cultural custom inside historic markets. Respectfully counter the shopkeeper's initial offer with roughly 30-40% less, and proceed with a friendly smile to secure the best souvenir value.",
+                fq3_q: "What culinary experiences are absolute must-tries?", fq3_a: "Do not limit your palate to kebabs. Indulge in fresh Meze platters, flaky Pistachio Baklava soaked in honey syrup, authentic slow-brewed Turkish Coffee cooked over sand, and morning Simit bread paired with local Kaymak cream.",
+                cta_title: "Ready to Wander Antique Horizons?", cta_desc: "Explore our premium cross-border routes or let our design desk build an individual itinerary for you.", cta_btn1: "View All Tours", cta_btn2: "Contact Us"
+            },
+            ru: {
+                page_title: "Путеводитель по Турции | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Где встречаются континенты и оживают легенды",
+                intro_text: "Погрузитесь в страну, где многовековая история гармонично переплетается с современной роскошью. От колоритных базаров и величественных мечетей Стамбула до сказочных долин Каппадокии и бирюзовых берегов Эгейского моря — Турция дарит удивительную палитру впечатлений.",
+                facts_badge: "Полезно знать", facts_title: "Коротко о главном",
+                qf1_t: "Валюта", qf1_d: "Турецкая лира (TRY). Банковские карты принимают повсеместно в бутиках, отелях и ресторанах.",
+                qf2_t: "Язык", qf2_d: "Турецкий (официальный). Английский и русский широко распространены в главных туристических городах и на курортах.",
+                qf3_t: "Часовой пояс", qf3_d: "TRT (UTC+3). Постоянное время круглый год, на два часа позади Ташкента.",
+                qf4_t: "Электричество", qf4_d: "220В, 50Гц. Стандартные европейские розетки типов C и F (два круглых штыря).",
+                dest_badge: "Главные локации", dest_title: "Топ направлений",
+                d1_t: "Стамбул — Имперский перекрёсток",
+                d1_p: "Завораживающий мегаполис, соединяющий Европу и Азию через легендарный пролив Босфор. Живой музей византийского и османского великолепия.",
+                d1_li1: "<strong>Айя-София и Голубая мечеть:</strong> два архитектурных шедевра, формирующих знаменитый силуэт города.",
+                d1_li2: "<strong>Дворец Топкапы:</strong> роскошный дворцовый комплекс, на протяжении веков служивший резиденцией османских султанов.",
+                d1_li3: "<strong>Круиз по Босфору:</strong> частная прогулка на яхте на закате между двумя континентами.",
+                d2_t: "Каппадокия — Сюрреалистическая долина",
+                d2_p: "Геологическое чудо, напоминающее другую планету: причудливые скалы-грибы, древние подземные города и сотни воздушных шаров на рассвете.",
+                d2_li1: "<strong>Полёты на воздушных шарах:</strong> поднимитесь на рассвете над золотистыми каньонами ради незабываемой панорамы.",
+                d2_li2: "<strong>Музей под открытым небом Гёреме:</strong> скальные церкви ранних христиан с великолепно сохранившимися фресками.",
+                d2_li3: "<strong>Роскошные пещерные отели:</strong> дизайнерские люксы прямо в исторических скалах с панорамными террасами и подогреваемыми бассейнами.",
+                d3_t: "Эгейское побережье — Античная роскошь",
+                d3_p: "Край, где греко-римская античность спускается прямо к золотым пляжам, оливковым рощам и элитным курортам Бодрума и Измира.",
+                d3_li1: "<strong>Древний Эфес:</strong> прогуляйтесь по мраморным улицам к величественному фасаду Библиотеки Цельса.",
+                d3_li2: "<strong>Памуккале:</strong> белоснежные термальные травертиновые террасы и античный бассейн Клеопатры.",
+                d3_li3: "<strong>Ривьера Бодрума:</strong> уединённые 5-звёздочные бухты, пляжные клубы и яхтенные марины.",
+                visa_badge: "Виза и въезд", visa_title: "Максимально простой въезд",
+                visa_p1: "Путешествовать в Турцию исключительно удобно. Граждане Узбекистана, стран СНГ, Европейского союза и Великобритании въезжают без визы на срок до 30–90 дней.",
+                visa_p2: "Для граждан стран, которым требуется разрешение, официальный портал e-Visa оформляет электронную визу за пару минут онлайн. Наши менеджеры заранее проверяют все требования.",
+                visa_p3: "Просто сообщите даты поездки — TGS Travel организует перелёты, отели и VIP-встречу с ускоренным прохождением контроля в аэропорту.",
+                visa_btn: "Запросить индивидуальный тур",
+                vc1_t: "Безвизовый въезд", vc1_d: "Граждане большинства стран Европы, Персидского залива и СНГ въезжают только по загранпаспорту.",
+                vc2_t: "Мгновенная E-Visa", vc2_d: "Оформляется онлайн на evisa.gov.tr — никаких очередей и визитов в консульство.",
+                vc3_t: "Абсолютный комфорт", vc3_d: "VIP-встреча в аэропорту и переезды между городами на люксовых Mercedes Sprinter.",
+                when_badge: "Гид по климату", when_title: "Когда ехать",
+                when_desc: "В Турции ярко выражены все четыре сезона. Вот чего стоит ожидать в зависимости от формата вашего отдыха:",
+                tab_spring: "Весна (Мар–Май)", tab_summer: "Лето (Июн–Авг)", tab_autumn: "Осень (Сен–Ноя)", tab_winter: "Зима (Дек–Фев)",
+                lbl_temp: "Средняя темп.", lbl_crowds: "Туристы", lbl_best: "Лучше всего для", lbl_riviera: "Темп. на Ривьере", lbl_sea: "Море", lbl_atm: "Атмосфера", lbl_ist: "Темп. в Стамбуле", lbl_cap: "Долины Каппадокии",
+                sp_t: "Тюльпаны и идеальные прогулки 🌷", sp_d: "Весной в парках Стамбула расцветают миллионы тюльпанов. Комфортная свежесть идеальна для экскурсий по Каппадокии и античным городам.", sp_crowds: "Умеренно", sp_best: "Стамбул и античные экскурсии",
+                su_t: "Солнечное блаженство Ривьеры ☀️", su_d: "Летом Эгейское и Средиземное побережья превращаются в рай: сапфировая вода, яхтинг и лучшие пляжные курорты на пике сезона.", su_sea: "Тёплое и спокойное", su_best: "Курорты Бодрума и прогулки на гулетах",
+                au_t: "Золотой бархатный сезон 🍂", au_d: "Сентябрь и октябрь дарят мягкое тепло: море ещё хранит летний жар, а суета стихает. Идеально для террас у воды и неспешных прогулок.", au_atm: "Спокойная и уютная", au_best: "Эфес и полёты на шарах в Каппадокии",
+                wi_t: "Уют каминов и снежная сказка ❄️", wi_d: "Зимой Каппадокия покрывается пушистым снегом, шары продолжают летать в ясные утра, а пещерные отели согревают гостей у каминов.", wi_cap: "Под снежным покровом", wi_best: "Бутик-СПА в Каппадокии и шопинг",
+                log_badge: "Логистика", log_title: "Передвижение по Турции",
+                tr1_t: "Встреча в мега-аэропортах", tr1_d: "Прибытие в ультрасовременный терминал Стамбула (IST). Наш частный водитель встречает вас сразу после получения багажа с именной табличкой.",
+                tr2_t: "VIP Mercedes Sprinter", tr2_d: "Все наземные переезды между памятниками, отелями и маринами проходят на люксовых Mercedes Sprinter с кожаным салоном и напитками.",
+                tr3_t: "Внутренние авиаперелёты", tr3_d: "Чтобы сэкономить ваше время, мы включаем быстрые внутренние рейсы из Стамбула прямо в Каппадокию (NAV) или на побережье Измира.",
+                faq_badge: "Перед поездкой", faq_title: "Советы и частые вопросы",
+                fq1_q: "Какие правила действуют при посещении мечетей?", fq1_a: "Скромная одежда, прикрывающая плечи и колени, обязательна для всех. Женщинам также нужно покрыть голову платком. Обувь снимают у входа.",
+                fq2_q: "Уместно ли торговаться на Гранд-Базаре?", fq2_a: "Торг — уважаемая часть местной культуры на исторических рынках. Спокойно предлагайте на 30–40% меньше стартовой цены и общайтесь с улыбкой.",
+                fq3_q: "Какие гастрономические впечатления нельзя пропустить?", fq3_a: "Не ограничивайтесь кебабами: обязательно попробуйте сеты свежих мезе, хрустящую фисташковую пахлаву, кофе по-турецки на песке и утренний симит с каймаком.",
+                cta_title: "Готовы к путешествию по античным горизонтам?", cta_desc: "Изучите наши премиальные маршруты или поручите нашей команде составить индивидуальную программу.", cta_btn1: "Смотреть все туры", cta_btn2: "Связаться с нами"
+            },
+            fr: {
+                page_title: "Guide de voyage Turquie | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "Là où les Continents se Rencontrent & les Légendes Vivent",
+                intro_text: "Plongez dans une terre où l'histoire millénaire rencontre le luxe contemporain. Des bazars parfumés et mosquées impériales d'Istanbul aux cheminées de fées de Cappadoce et aux criques turquoise de la mer Égée, la Turquie offre une richesse culturelle incomparable.",
+                facts_badge: "Bon à savoir", facts_title: "Infos pratiques",
+                qf1_t: "Devise", qf1_d: "Livre turque (TRY). Les cartes bancaires sont largement acceptées dans les boutiques, hôtels et restaurants.",
+                qf2_t: "Langue", qf2_d: "Turc (langue officielle). L'anglais est couramment parlé dans toutes les grandes zones touristiques et côtières.",
+                qf3_t: "Fuseau horaire", qf3_d: "TRT (UTC+3). Heure fixe toute l'année sans changement saisonnier.",
+                qf4_t: "Électricité", qf4_d: "220V, 50Hz. Prises européennes standard à deux broches rondes (types C et F).",
+                dest_badge: "Lieux incontournables", dest_title: "Destinations phares",
+                d1_t: "Istanbul — Carrefour Impérial",
+                d1_p: "Métropole fascinante reliant l'Europe et l'Asie de part et d'autre du Bosphore, Istanbul est un musée vivant des splendeurs byzantines et ottomanes.",
+                d1_li1: "<strong>Sainte-Sophie & Mosquée Bleue :</strong> deux chefs-d'œuvre architecturaux dessinant la silhouette mythique de la ville.",
+                d1_li2: "<strong>Palais de Topkapi :</strong> somptueux complexe palatial ayant abrité les sultans ottomans pendant des siècles.",
+                d1_li3: "<strong>Croisière sur le Bosphore :</strong> navigation privée au coucher du soleil entre deux continents.",
+                d2_t: "Cappadoce — La Vallée Surréaliste",
+                d2_p: "Merveille géologique aux allures d'une autre planète, célèbre pour ses formations rocheuses féeriques, ses cités souterraines et ses envols de montgolfières.",
+                d2_li1: "<strong>Vol en montgolfière :</strong> survolez à l'aube les vallées dorées pour un panorama inoubliable.",
+                d2_li2: "<strong>Musée en plein air de Göreme :</strong> églises rupestres creusées dans le tuf aux fresques remarquablement préservées.",
+                d2_li3: "<strong>Hôtels troglodytes de luxe :</strong> dormez dans des suites creusées dans la roche avec piscines chauffées privées.",
+                d3_t: "Côte Égéenne — Luxe Antique",
+                d3_p: "Où l'histoire gréco-romaine rejoint des plages baignées de soleil, des oliveraies et des stations balnéaires raffinées comme Bodrum et Izmir.",
+                d3_li1: "<strong>Éphèse antique :</strong> parcourez les avenues de marbre jusqu'à la façade grandiose de la bibliothèque de Celsus.",
+                d3_li2: "<strong>Pamukkale :</strong> marchez sur les terrasses thermales blanches et baignez-vous dans la piscine antique de Cléopâtre.",
+                d3_li3: "<strong>Riviera de Bodrum :</strong> détendez-vous dans des baies 5 étoiles préservées et des marinas prestigieuses.",
+                visa_badge: "Visa & Entrée", visa_title: "Formalités d'entrée ultra-simples",
+                visa_p1: "Voyager en Turquie est remarquablement simple. Les citoyens de l'Union européenne (France, Belgique), de Suisse, du Royaume-Uni et de nombreux pays d'Asie centrale entrent sans visa jusqu'à 90 jours.",
+                visa_p2: "Pour les nationalités soumises à autorisation, le portail officiel e-Visa délivre le document en ligne en quelques clics. Nos conseillers vérifient tout pour vous.",
+                visa_p3: "Partagez simplement vos dates de voyage : TGS Travel coordonne vos réservations et l'accueil prioritaire à l'aéroport.",
+                visa_btn: "Demander un circuit sur mesure",
+                vc1_t: "Entrée sans visa", vc1_d: "La plupart des citoyens européens, du Golfe et de la CEI entrent avec leur simple passeport.",
+                vc2_t: "E-Visa instantané", vc2_d: "Procédure 100 % en ligne sur evisa.gov.tr, sans attente en ambassade.",
+                vc3_t: "Confort absolu", vc3_d: "Accueil VIP privé à l'aéroport et transferts en vans Mercedes grand confort inclus.",
+                when_badge: "Guide climatique", when_title: "Quand partir",
+                when_desc: "La Turquie offre quatre saisons distinctes. Voici la période idéale selon vos envies :",
+                tab_spring: "Printemps (Mar–Mai)", tab_summer: "Été (Juin–Août)", tab_autumn: "Automne (Sep–Nov)", tab_winter: "Hiver (Déc–Fév)",
+                lbl_temp: "Temp. moy.", lbl_crowds: "Affluence", lbl_best: "Idéal pour", lbl_riviera: "Temp. Riviera", lbl_sea: "Mer", lbl_atm: "Atmosphère", lbl_ist: "Temp. Istanbul", lbl_cap: "Sommets Cappadoce",
+                sp_t: "Tulipes & Visites Idéales 🌷", sp_d: "Le printemps pare les parcs d'Istanbul de millions de tulipes. La météo douce est parfaite pour explorer la Cappadoce et les sites antiques.", sp_crowds: "Modérée", sp_best: "Istanbul & sites antiques",
+                su_t: "Riviera Ensoleillée ☀️", su_d: "L'été transforme les côtes égéenne et méditerranéenne en paradis : eaux saphir, clubs de plage et croisières en goélette.", su_sea: "Chaude & calme", su_best: "Resorts de Bodrum & croisières",
+                au_t: "Douceur Dorée d'Automne 🍂", au_d: "Septembre et octobre offrent une chaleur douce, une mer encore chaude et bien moins de foule pour savourer terrasses et sites antiques.", au_atm: "Paisible & chaleureuse", au_best: "Éphèse & montgolfières en Cappadoce",
+                wi_t: "Cheminées & Paysages Enneigés ❄️", wi_d: "L'hiver couvre la Cappadoce d'un manteau féerique : les montgolfières volent par temps clair et les suites troglodytes s'animent au coin du feu.", wi_cap: "Enneigés", wi_best: "Escapades Spa en Cappadoce & shopping",
+                log_badge: "Logistique", log_title: "Se déplacer en Turquie",
+                tr1_t: "Accueil aux grands aéroports", tr1_d: "À votre arrivée au grand terminal d'Istanbul (IST), nos chauffeurs privés vous accueillent dès la sortie des bagages.",
+                tr2_t: "Mercedes Sprinter VIP", tr2_d: "Tous les trajets terrestres s'effectuent en Mercedes Sprinter haut de gamme avec sièges en cuir et rafraîchissements à bord.",
+                tr3_t: "Vols intérieurs rapides", tr3_d: "Pour optimiser votre temps, nous organisons des vols intérieurs directs entre Istanbul, la Cappadoce (NAV) et la côte d'Izmir.",
+                faq_badge: "Avant de partir", faq_title: "Conseils & FAQ",
+                fq1_q: "Quelles règles respecter dans les mosquées turques ?", fq1_a: "Une tenue couvrant les épaules et les genoux est obligatoire pour tous. Les femmes doivent se couvrir les cheveux d'un foulard, et les chaussures se retirent à l'entrée.",
+                fq2_q: "Peut-on marchander au Grand Bazar ?", fq2_a: "Oui, le marchandage fait partie intégrante de la culture des bazars. Proposez poliment 30 à 40 % de moins avec le sourire pour trouver un accord convivial.",
+                fq3_q: "Quelles expériences culinaires ne pas manquer ?", fq3_a: "Au-delà des kebabs, savourez les assortiments de mezzés frais, le baklava aux pistaches, le café turc préparé sur le sable et le simit du matin accompagné de kaymak.",
+                cta_title: "Prêt à explorer des horizons antiques ?", cta_desc: "Découvrez nos itinéraires haut de gamme ou laissez nos spécialistes concevoir votre voyage sur mesure.", cta_btn1: "Voir tous les circuits", cta_btn2: "Nous contacter"
+            },
+            de: {
+                page_title: "Türkei Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Wo Kontinente aufeinandertreffen & Legenden leben",
+                intro_text: "Tauchen Sie ein in ein Land, in dem zeitlose Geschichte mühelos auf modernen Luxus trifft. Von den duftenden Basaren und prachtvollen Moscheen Istanbuls über die surrealen Feenkamine Kappadokiens bis zu den türkisblauen Buchten der Ägäis bietet die Türkei ein unvergleichliches Erlebnis.",
+                facts_badge: "Gut zu wissen", facts_title: "Kurzinfos",
+                qf1_t: "Währung", qf1_d: "Türkische Lira (TRY). Kreditkarten werden in Boutiquen, Hotels und Restaurants nahezu überall akzeptiert.",
+                qf2_t: "Sprache", qf2_d: "Türkisch (Amtssprache). Englisch und oft auch Deutsch sind in allen großen Touristenzentren und Küstenorten weit verbreitet.",
+                qf3_t: "Zeitzone", qf3_d: "TRT (UTC+3). Ganzjährig konstante Standardzeit ohne Zeitumstellung.",
+                qf4_t: "Strom", qf4_d: "220V, 50Hz. Europäische Standardsteckdosen der Typen C und F – kein Adapter nötig.",
+                dest_badge: "Sehenswürdigkeiten", dest_title: "Top-Reiseziele",
+                d1_t: "Istanbul – Die imperiale Metropole",
+                d1_p: "Die faszinierende Weltstadt zwischen Europa und Asien am historischen Bosporus ist ein lebendiges Archiv byzantinischer und osmanischer Pracht.",
+                d1_li1: "<strong>Hagia Sophia & Blaue Moschee:</strong> Zwei architektonische Meisterwerke, die die weltberühmte Skyline prägen.",
+                d1_li2: "<strong>Topkapi-Palast:</strong> Der prachtvolle, weitläufige Palastkomplex der legendären osmanischen Sultane.",
+                d1_li3: "<strong>Bosporus-Bootsfahrt:</strong> Private Yachtfahrt bei Sonnenuntergang genau zwischen zwei Kontinenten.",
+                d2_t: "Kappadokien – Das surreale Tal",
+                d2_p: "Ein geologisches Wunderland wie von einem anderen Planeten – berühmt für bizarre Felsformationen, unterirdische Städte und hunderte Heißluftballons.",
+                d2_li1: "<strong>Heißluftballonfahrten:</strong> Schweben Sie im Morgengrauen über goldene Mondlandschaften.",
+                d2_li2: "<strong>Freilichtmuseum Göreme:</strong> Von frühen Christen in den Fels gehauene Höhlenkirchen mit leuchtenden Fresken.",
+                d2_li3: "<strong>Luxuriöse Höhlenhotels:</strong> Übernachten Sie in stilvoll modernisierten Felssuiten mit privaten beheizten Pools.",
+                d3_t: "Die Ägäisküste – Antiker Luxus",
+                d3_p: "Wo griechisch-römische Geschichte direkt auf sonnenverwöhnte Strände, Olivenhaine und exklusive Resorts wie Bodrum und Izmir trifft.",
+                d3_li1: "<strong>Antikes Ephesos:</strong> Flanieren Sie über Marmorstraßen zur weltberühmten Fassade der Celsus-Bibliothek.",
+                d3_li2: "<strong>Pamukkale:</strong> Wandeln Sie über schneeweiße Thermal-Kalksinterterrassen und baden Sie im antiken Kleopatra-Pool.",
+                d3_li3: "<strong>Riviera von Bodrum:</strong> Entspannen Sie in ruhigen 5-Sterne-Buchten und erstklassigen Yachthäfen.",
+                visa_badge: "Visum & Einreise", visa_title: "Mühelose Einreise & E-Visum",
+                visa_p1: "Die Einreise in die Türkei ist besonders unkompliziert. Bürger Deutschlands, Österreichs, der Schweiz, der EU, Großbritanniens und mehrerer zentralasiatischer Staaten reisen bis zu 90 Tage visumfrei ein.",
+                visa_p2: "Für visumpflichtige Nationalitäten stellt das offizielle E-Visum-Portal die Genehmigung online in wenigen Minuten aus. Unser Team prüft alle Details für Sie.",
+                visa_p3: "Teilen Sie uns einfach Ihre Reisedaten mit – TGS Travel organisiert Hotels, Transfers und auf Wunsch Fast-Track-Services am Flughafen.",
+                visa_btn: "Individuelle Reise anfragen",
+                vc1_t: "Visumfreie Einreise", vc1_d: "Bürger aus der EU, der Schweiz, den Golfstaaten und der GUS reisen bequem nur mit Reisepass ein.",
+                vc2_t: "Sofortiges E-Visum", vc2_d: "Komplett online über evisa.gov.tr – ohne Wartezeiten bei Botschaften.",
+                vc3_t: "Höchster Reisekomfort", vc3_d: "Privater VIP-Flughafenempfang und Transfers in luxuriösen Mercedes-Sprinter-Vans inklusive.",
+                when_badge: "Klimaguide", when_title: "Beste Reisezeit",
+                when_desc: "Die Türkei bietet vier herrliche Jahreszeiten. Je nach Reiseziel und Wunsch erwartet Sie Folgendes:",
+                tab_spring: "Frühling (Mär–Mai)", tab_summer: "Sommer (Jun–Aug)", tab_autumn: "Herbst (Sep–Nov)", tab_winter: "Winter (Dez–Feb)",
+                lbl_temp: "Ø Temp.", lbl_crowds: "Besucheraufkommen", lbl_best: "Ideal für", lbl_riviera: "Ø Riviera-Temp.", lbl_sea: "Meer", lbl_atm: "Atmosphäre", lbl_ist: "Ø Istanbul-Temp.", lbl_cap: "Kappadokien",
+                sp_t: "Tulpenblüte & perfektes Sightseeing 🌷", sp_d: "Im Frühling erblühen Millionen Tulpen in Istanbuls Parks. Das angenehme, klare Wetter ist ideal für Kappadokien und antike Stätten.", sp_crowds: "Moderat", sp_best: "Istanbul & antike Ausflüge",
+                su_t: "Sonnenverwöhnte Riviera ☀️", su_d: "Der Sommer verwandelt Ägäis und Mittelmeer in ein Paradies mit saphirblauem Wasser, Beachclubs und exklusiven Gulet-Yachten.", su_sea: "Warm & ruhig", su_best: "Luxusresorts in Bodrum & Yachten",
+                au_t: "Goldene Herbstruhe 🍂", au_d: "September und Oktober locken mit milder Wärme, noch badetauglichem Meer und deutlich weniger Trubel für entspannte Entdeckungen.", au_atm: "Ruhig & gemütlich", au_best: "Ephesos & Ballonfahrten in Kappadokien",
+                wi_t: "Kaminfeuer & verschneite Felsen ❄️", wi_d: "Im Winter verwandelt Schnee Kappadokien in ein Wintermärchen – bei klarem Himmel starten die Ballons, abends wärmen Kamine in den Höhlensuiten.", wi_cap: "Schneebedeckt", wi_best: "Boutique-Spa-Auszeiten & Shopping",
+                log_badge: "Logistik", log_title: "Unterwegs in der Türkei",
+                tr1_t: "Empfang an Großflughäfen", tr1_d: "Landen Sie am modernen Flughafen Istanbul (IST). Unsere privaten Chauffeure erwarten Sie direkt nach der Gepäckausgabe mit Namensschild.",
+                tr2_t: "VIP Mercedes Sprinter", tr2_d: "Alle Überlandfahrten zwischen historischen Stätten, Hotels und Marinas erfolgen in luxuriösen Mercedes-Sprinter-Vans mit Ledersitzen und Erfrischungen.",
+                tr3_t: "Schnelle Inlandsflüge", tr3_d: "Für optimale Zeitnutzung binden wir kurze Inlandsflüge von Istanbul direkt nach Kappadokien (NAV) oder an die Küste bei Izmir ein.",
+                faq_badge: "Vor der Reise", faq_title: "Reisetipps & FAQ",
+                fq1_q: "Welche Regeln gelten beim Besuch türkischer Moscheen?", fq1_a: "Dezente Kleidung, die Schultern und Knie bedeckt, ist für Männer und Frauen Pflicht. Frauen bedecken zudem ihr Haar mit einem Tuch; Schuhe werden am Eingang ausgezogen.",
+                fq2_q: "Ist Handeln im Großen Basar üblich?", fq2_a: "Ja, Handeln ist eine geschätzte Tradition auf historischen Basaren. Bieten Sie höflich etwa 30–40 % weniger als den Erstpreis und verhandeln Sie mit einem freundlichen Lächeln.",
+                fq3_q: "Welche kulinarischen Highlights muss man probieren?", fq3_a: "Genießen Sie neben Kebabs unbedingt frische Meze-Platten, knuspriges Pistazien-Baklava, auf heißem Sand gekochten türkischen Mokka und morgendlichen Simit mit Kaymak.",
+                cta_title: "Bereit für antike Horizonte?", cta_desc: "Entdecken Sie unsere exklusiven Routen oder lassen Sie sich Ihre individuelle Türkeireise maßschneidern.", cta_btn1: "Alle Touren ansehen", cta_btn2: "Kontakt aufnehmen"
+            },
+            tr: {
+                page_title: "Türkiye Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "Kıtaların Buluştuğu, Efsanelerin Yaşadığı Topraklar",
+                intro_text: "Zamansız tarihin çağdaş lüksle kusursuzca buluştuğu bir coğrafyayı keşfedin. İstanbul'un canlı çarşıları ve tarihi camilerinden Kapadokya'nın masalsı peribacalarına ve Ege'nin turkuaz kıyılarına kadar Türkiye benzersiz bir kültür mozaiği sunar.",
+                facts_badge: "Bilmekte Fayda Var", facts_title: "Hızlı Bilgiler",
+                qf1_t: "Para Birimi", qf1_d: "Türk Lirası (TRY). Butik mağazalarda, otellerde ve restoranlarda kredi kartları her yerde geçerlidir.",
+                qf2_t: "Dil", qf2_d: "Türkçe (resmi dil). Başlıca turizm merkezlerinde ve kıyı bölgelerinde İngilizce yaygın olarak konuşulur.",
+                qf3_t: "Saat Dilimi", qf3_d: "TRT (UTC+3). Yıl boyunca sabit standart saat uygulanır.",
+                qf4_t: "Elektrik", qf4_d: "220V, 50Hz. Avrupa standardı iki pimli C ve F tipi prizler kullanılır.",
+                dest_badge: "Görülecek Yerler", dest_title: "Öne Çıkan Destinasyonlar",
+                d1_t: "İstanbul — İmparatorlukların Kesişimi",
+                d1_p: "Tarihi Boğaziçi üzerinden Avrupa ile Asya'yı birleştiren büyüleyici metropol. Bizans ve Osmanlı ihtişamının yaşayan dev arşivi.",
+                d1_li1: "<strong>Ayasofya ve Sultanahmet Camii:</strong> Görkemli kubbe ve minareleriyle şehir silüetini çizen iki mimari şaheser.",
+                d1_li2: "<strong>Topkapı Sarayı:</strong> Yüzyıllar boyunca Osmanlı padişahlarına ev sahipliği yapmış görkemli saray kompleksi.",
+                d1_li3: "<strong>Boğaz Turu:</strong> Gün batımında iki kıta arasında süzülen özel yat gezileri.",
+                d2_t: "Kapadokya — Masalsı Vadi",
+                d2_p: "Adeta başka bir gezegeni andıran jeolojik harika. Eşsiz kaya oluşumları, antik yeraltı şehirleri ve gökyüzünü renklendiren sıcak hava balonlarıyla ünlüdür.",
+                d2_li1: "<strong>Sıcak Hava Balonu Uçuşları:</strong> Unutulmaz bir panorama için gün doğumunda altın vadilerin üzerinde süzülün.",
+                d2_li2: "<strong>Göreme Açık Hava Müzesi:</strong> İyi korunmuş freskleriyle kayalara oyulmuş tarihi kiliseler.",
+                d2_li3: "<strong>Lüks Mağara Otelleri:</strong> Özel ısıtmalı havuzlara sahip, modernleştirilmiş tarihi taş süitlerde konaklayın.",
+                d3_t: "Ege Kıyıları — Antik Lüks",
+                d3_p: "Zengin Greko-Romen tarihinin güneşli kumsallara, zeytinliklere ve Bodrum ile İzmir gibi seçkin tatil merkezlerine kavuştuğu bölge.",
+                d3_li1: "<strong>Efes Antik Kenti:</strong> Mermer caddelerde yürüyerek görkemli Celsus Kütüphanesi'ne ulaşın.",
+                d3_li2: "<strong>Pamukkale:</strong> Bembeyaz termal traverten teraslarda yürüyün ve antik Kleopatra Havuzu'nu keşfedin.",
+                d3_li3: "<strong>Bodrum Rivierası:</strong> 5 yıldızlı sakin koylarda ve seçkin yat marinalarında dinlenin.",
+                visa_badge: "Vize ve Giriş", visa_title: "Zahmetsiz E-Vize Sistemi",
+                visa_p1: "Türkiye'ye seyahat son derece rahattır. Avrupa Birliği, Birleşik Krallık ve birçok Orta Asya ülkesinin vatandaşları 90 güne kadar tamamen vizesiz giriş yapabilir.",
+                visa_p2: "Vize gereken ülke vatandaşları için resmi e-Vize portalı birkaç tıkla hızlıca online onay verir. Rezervasyon ekibimiz tüm kontrolleri sizin yerinize yapar.",
+                visa_p3: "Seyahat tarihlerinizi paylaşmanız yeterli; TGS Travel otel rezervasyonlarınızı ve havalimanı VIP geçişlerinizi eksiksiz düzenler.",
+                visa_btn: "Özel Tur Hakkında Bilgi Alın",
+                vc1_t: "Vizesiz Giriş Kolaylığı", vc1_d: "Avrupa, Körfez ve BDT ülkelerinin büyük çoğunluğu yalnızca pasaportla kolayca giriş yapabilir.",
+                vc2_t: "Anında E-Vize", vc2_d: "evisa.gov.tr üzerinden tamamen online işlem — konsolosluk sırası beklemeden.",
+                vc3_t: "Tam Misafir Konforu", vc3_d: "Özel VIP havalimanı karşılama ve şehirler arası lüks Mercedes transferler pakete dahildir.",
+                when_badge: "İklim Rehberi", when_title: "Ne Zaman Gidilir",
+                when_desc: "Türkiye dört mevsimi de tüm güzelliğiyle yaşar. Tatil planınıza göre mevsim rehberi:",
+                tab_spring: "İlkbahar (Mar–May)", tab_summer: "Yaz (Haz–Ağu)", tab_autumn: "Sonbahar (Eyl–Kas)", tab_winter: "Kış (Ara–Şub)",
+                lbl_temp: "Ort. Sıcaklık", lbl_crowds: "Yoğunluk", lbl_best: "En İyisi", lbl_riviera: "Ort. Kıyı Sıcaklığı", lbl_sea: "Deniz", lbl_atm: "Atmosfer", lbl_ist: "Ort. İstanbul Sıcaklığı", lbl_cap: "Kapadokya",
+                sp_t: "Laleler ve Mükemmel Gezi Havası 🌷", sp_d: "İlkbahar İstanbul parklarını milyonlarca laleyle donatır. Ferah ve ılıman hava, Kapadokya ve antik kent gezileri için en ideal dönemdir.", sp_crowds: "Orta", sp_best: "İstanbul ve Antik Kent Turları",
+                su_t: "Güneşli Riviera Keyfi ☀️", su_d: "Yaz aylarında Ege ve Akdeniz kıyıları berrak suları, plaj kulüpleri ve lüks gulet yat turlarıyla zirveye ulaşır.", su_sea: "Sıcak ve Sakin", su_best: "Bodrum Lüks Otelleri ve Gulet Turları",
+                au_t: "Altın Sonbahar Huzuru 🍂", au_d: "Eylül ve Ekim aylarında deniz hâlâ sıcakken kalabalık azalır; deniz manzaralı teraslar ve keyifli antik kent yürüyüşleri için harikadır.", au_atm: "Dingin ve Huzurlu", au_best: "Efes Gezileri ve Kapadokya Balon Turu",
+                wi_t: "Şömine Sıcaklığı ve Karlı Vadiler ❄️", wi_d: "Kışın Kapadokya karla kaplı bir masala dönüşür. Açık havalarda balonlar uçmaya devam eder, mağara süitlerde şömineler yanar.", wi_cap: "Karlı", wi_best: "Butik Spa Mağara Otelleri ve Alışveriş",
+                log_badge: "Lojistik", log_title: "Türkiye İçi Ulaşım",
+                tr1_t: "Havalimanı VIP Karşılama", tr1_d: "İstanbul'un dev havalimanına (IST) inişinizde özel şoförümüz bagaj çıkışında isminizin yazılı olduğu tabela ile sizi karşılar.",
+                tr2_t: "VIP Mercedes Sprinter", tr2_d: "Tarihi alanlar, oteller ve marinalar arasındaki tüm kara yolculukları deri koltuklu ve ikramlı özel Mercedes Sprinter araçlarla yapılır.",
+                tr3_t: "Hızlı İç Hat Uçuşları", tr3_d: "Zamanınızı en verimli şekilde değerlendirmek için İstanbul'dan Kapadokya'ya (NAV) veya İzmir kıyılarına hızlı iç hat uçuşları planlıyoruz.",
+                faq_badge: "Yola Çıkmadan Önce", faq_title: "Gezgin İpuçları ve SSS",
+                fq1_q: "Camileri ziyaret ederken nelere dikkat etmeliyim?", fq1_a: "Hem erkekler hem kadınlar için omuzları ve dizleri örten mütevazı giyim gereklidir. Kadınların girişte başörtüsü takması ve herkesin girişte ayakkabılarını çıkarması gerekir.",
+                fq2_q: "Kapalıçarşı'da pazarlık yapmak uygun mu?", fq2_a: "Evet, tarihi çarşılarda pazarlık köklü bir gelenektir. İlk teklifin yaklaşık %30–40 altından başlayarak güler yüzle keyifli bir alışveriş yapabilirsiniz.",
+                fq3_q: "Hangi gastronomi deneyimleri mutlaka yaşanmalı?", fq3_a: "Sadece kebaplarla sınırlı kalmayın; taze mezeler, çıtır Antep fıstıklı baklava, kumda pişen Türk kahvesi ve sabahları kaymaklı taze simidi mutlaka deneyin.",
+                cta_title: "Antik Ufukları Keşfetmeye Hazır mısınız?", cta_desc: "Seçkin rotalarımıza göz atın veya seyahat ekibimizle size özel bir Türkiye programı tasarlayalım.", cta_btn1: "Tüm Turları Gör", cta_btn2: "Bize Ulaşın"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
@@ -560,29 +899,39 @@
             once: true,
         });
 
-        // Accordion logic
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Логика аккордеонов
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Tabs logic
+        // Логика табов (Сезоны)
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
                 document.querySelectorAll('.season-content').forEach(c => {
                     c.classList.toggle('active', c.dataset.season === season);
                 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,10 @@
             transform: translateY(0);
         }
 
+        /* Mobile Menu */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
         /* Season tabs */
         .season-tab.active {
             background-color: #16697A;
@@ -59,9 +63,7 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        .season-content.active {
-            display: block;
-        }
+        .season-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -75,7 +77,7 @@
             opacity: 0;
         }
         .accordion-item.active .accordion-content {
-            max-height: 600px;
+            max-height: 800px;
             opacity: 1;
         }
         .accordion-item.active .accordion-icon {
@@ -90,75 +92,154 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html">
-                    <img src="tgslogo.png" alt="TGS Logo" class="h-16 md:h-20 w-auto object-contain">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-12 text-sm font-medium tracking-wide">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
 
                 <div class="relative group py-4">
-                    <button class="flex items-center hover:text-gold transition">
-                        Destinations <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                   <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-    <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan</a>
-    <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kazakhstan</a>
-    <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Kyrgyzstan</a>
-    <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Tajikistan</a>
-    <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkmenistan</a>
-    <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Turkey</a>
-    <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Azerbaijan</a>
-    <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Georgia</a>
-    <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Armenia</a>
-</div>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        Tours <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
                     <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Uzbekistan tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Central Asia tours</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">Worldwide tours</a>
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
                     </div>
                 </div>
 
                 <div class="relative group py-4">
                     <button class="flex items-center hover:text-gold transition">
-                        About <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 mt-4 w-48 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
-                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Us</a>
-                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition">About Uzbekistan</a>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
                     </div>
                 </div>
 
-                <a href="index.html#contact" class="hover:text-gold transition">Contacts</a>
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <button class="text-lg hover:text-gold transition" title="English">🇺🇸</button>
-                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium hidden sm:inline-block">Get a Quote</a>
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- EPIC HERO SECTION (ПУСТЫНЯ КАРАКУМЫ И ЭКЗОТИКА) -->
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-gold font-bold text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-teal-900 text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
+    <!-- EPIC HERO SECTION -->
     <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-teal-900">
         <div class="absolute inset-0 z-0">
             <img src="https://www.goworldtravel.com/wp-content/uploads/2026/06/att3MzPUNONVhIUjF.jpg" alt="Karakum Desert Dunes, Turkmenistan" class="w-full h-full object-cover opacity-50">
             <div class="absolute inset-0 bg-gradient-to-b from-teal-900/50 via-teal-900/20 to-cream"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-4xl mt-20">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-down" data-i18n="hero_badge">
                 Destination Guide
             </div>
-            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="font-serif text-6xl md:text-8xl text-white font-bold leading-tight mb-6 drop-shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-i18n="country_turkmenistan">
                 Turkmenistan
             </h1>
-            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white/90 text-lg md:text-2xl font-light tracking-wide drop-shadow-md" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_subtitle">
                 The Marble Oasis & Mystical Gates of Karakum
             </p>
         </div>
@@ -167,36 +248,36 @@
     <!-- INTRO & QUICK FACTS -->
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
-            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+            <p class="text-teal-900/80 font-light max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="intro_text">
                 Step into Central Asia's most exclusive and enigmatic destination. Turkmenistan seamlessly weaves the ancient history of legendary Silk Road fortresses with futuristic grand white-marble avenues and the raw, unforgettable elemental power of the burning Darvaza crater deep within the desert.
             </p>
         </div>
 
         <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Good to Know</div>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Quick Facts</h2>
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="facts_badge">Good to Know</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="facts_title">Quick Facts</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
                 <i data-lucide="banknote" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Currency</div>
-                <p class="text-teal-900/70 font-light text-sm">Turkmen Manat (TMT). Credit cards are practically not accepted; carrying cash is strictly mandatory throughout the trip.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf1_t">Currency</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf1_d">Turkmen Manat (TMT). Credit cards are practically not accepted; carrying cash is strictly mandatory throughout the trip.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
                 <i data-lucide="languages" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Language</div>
-                <p class="text-teal-900/70 font-light text-sm">Turkmen (official) and Russian are universally spoken. Our specialized team guides speak fluent English.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf2_t">Language</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf2_d">Turkmen (official) and Russian are universally spoken. Our specialized team guides speak fluent English.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="300">
                 <i data-lucide="clock" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Time Zone</div>
-                <p class="text-teal-900/70 font-light text-sm">TMT (UTC+5). Perfectly mirrors neighboring countries, facilitating smooth multi-Stan planning.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf3_t">Time Zone</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf3_d">TMT (UTC+5). Perfectly mirrors neighboring countries, facilitating smooth multi-Stan planning.</p>
             </div>
             <div class="bg-white p-8 text-center rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="400">
                 <i data-lucide="plug" class="w-8 h-8 text-gold mx-auto mb-4"></i>
-                <div class="font-serif text-lg font-bold text-teal-900 mb-1">Electricity</div>
-                <p class="text-teal-900/70 font-light text-sm">220V, 50Hz. Standard European C and F sockets. Strongly recommend high-capacity power banks for desert campnights.</p>
+                <div class="font-serif text-lg font-bold text-teal-900 mb-1" data-i18n="qf4_t">Electricity</div>
+                <p class="text-teal-900/70 font-light text-sm" data-i18n="qf4_d">220V, 50Hz. Standard European C and F sockets. Strongly recommend high-capacity power banks for desert camp nights.</p>
             </div>
         </div>
     </section>
@@ -205,23 +286,23 @@
     <section class="py-24 px-6 bg-white border-t border-teal-900/10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Must-Visit Places</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Top Destinations</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="dest_badge">Must-Visit Places</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="dest_title">Top Destinations</h2>
             </div>
 
             <div class="space-y-4">
                 <div class="accordion-item border border-teal-900/20 bg-cream/30 active" data-aos="fade-up" data-aos-delay="100">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Ashgabat - The Marble Metropolis</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d1_t">Ashgabat - The Marble Metropolis</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Holding the Guinness World Record for the highest concentration of white marble architecture, Ashgabat is a surreal, futuristic city of golden domes, massive palaces, and perfectly manicured avenues.</p>
+                            <p class="mb-4" data-i18n="d1_p">Holding the Guinness World Record for the highest concentration of white marble architecture, Ashgabat is a surreal, futuristic city of golden domes, massive palaces, and perfectly manicured avenues.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Independence Monument:</strong> A towering, majestic column surrounded by grand statues of historic Turkmen rulers.</li>
-                                <li><strong>The Wedding Palace:</strong> A spectacular geometric structure framing a massive golden globe of Turkmenistan.</li>
-                                <li><strong>Gypjak Mosque:</strong> One of the largest and most magnificent single-dome mosques in all of Central Asia.</li>
+                                <li data-i18n-html="d1_li1"><strong>Independence Monument:</strong> A towering, majestic column surrounded by grand statues of historic Turkmen rulers.</li>
+                                <li data-i18n-html="d1_li2"><strong>The Wedding Palace:</strong> A spectacular geometric structure framing a massive golden globe of Turkmenistan.</li>
+                                <li data-i18n-html="d1_li3"><strong>Gypjak Mosque:</strong> One of the largest and most magnificent single-dome mosques in all of Central Asia.</li>
                             </ul>
                         </div>
                     </div>
@@ -229,16 +310,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="200">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Darvaza Gas Crater - The Gates of Hell</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d2_t">Darvaza Gas Crater - The Gates of Hell</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Deep inside the remote Karakum desert lies a mesmerizing, 70-meter wide burning gas crater that has been flaming continuously for over fifty years. Watching it glow under the desert stars is unforgettable.</p>
+                            <p class="mb-4" data-i18n="d2_p">Deep inside the remote Karakum desert lies a mesmerizing, 70-meter wide burning gas crater that has been flaming continuously for over fifty years. Watching it glow under the desert stars is unforgettable.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Desert Camping:</strong> Spend a cozy night in traditional yurt setups directly overlooking the glowing depths.</li>
-                                <li><strong>Sunset Transformation:</strong> Watch the desert sands slowly turn into dark profiles against the burning orange light.</li>
-                                <li><strong>Off-Road Expedition:</strong> Reach the area through adrenaline-filled rides across wild sand dunes in heavy SUVs.</li>
+                                <li data-i18n-html="d2_li1"><strong>Desert Camping:</strong> Spend a cozy night in traditional yurt setups directly overlooking the glowing depths.</li>
+                                <li data-i18n-html="d2_li2"><strong>Sunset Transformation:</strong> Watch the desert sands slowly turn into dark profiles against the burning orange light.</li>
+                                <li data-i18n-html="d2_li3"><strong>Off-Road Expedition:</strong> Reach the area through adrenaline-filled rides across wild sand dunes in heavy SUVs.</li>
                             </ul>
                         </div>
                     </div>
@@ -246,16 +327,16 @@
 
                 <div class="accordion-item border border-teal-900/20 bg-cream/30" data-aos="fade-up" data-aos-delay="300">
                     <button class="accordion-trigger w-full flex justify-between items-center p-6 text-left hover:bg-cream transition">
-                        <span class="font-serif text-2xl font-bold text-teal-900">Ancient Merv - The Silk Road Core</span>
-                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300"></i>
+                        <span class="font-serif text-2xl font-bold text-teal-900" data-i18n="d3_t">Ancient Merv - The Silk Road Core</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold transition-transform duration-300 flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="p-6 pt-0 text-teal-900/80 font-light leading-relaxed border-t border-teal-900/10 mt-4">
-                            <p class="mb-4">Once acclaimed as one of the largest and most populated cosmopolitan urban centers in the ancient world, this vast UNESCO World Heritage site displays millennia of history layered in mud-brick fortresses.</p>
+                            <p class="mb-4" data-i18n="d3_p">Once acclaimed as one of the largest and most populated cosmopolitan urban centers in the ancient world, this vast UNESCO World Heritage site displays millennia of history layered in mud-brick fortresses.</p>
                             <ul class="list-disc pl-5 space-y-2 text-sm">
-                                <li><strong>Sultan Sanjar Mausoleum:</strong> A magnificent 12th-century engineering masterpiece with an incredibly advanced double-dome structure.</li>
-                                <li><strong>Greater Kyz Kala:</strong> Unique, pleated clay walls of an ancient defensive castle fortress.</li>
-                                <li><strong>Historic Archaeological Nodes:</strong> Explore five distinct eras of city walls tracking Persian, Islamic, and Mongol paths.</li>
+                                <li data-i18n-html="d3_li1"><strong>Sultan Sanjar Mausoleum:</strong> A magnificent 12th-century engineering masterpiece with an incredibly advanced double-dome structure.</li>
+                                <li data-i18n-html="d3_li2"><strong>Greater Kyz Kala:</strong> Unique, pleated clay walls of an ancient defensive castle fortress.</li>
+                                <li data-i18n-html="d3_li3"><strong>Historic Archaeological Nodes:</strong> Explore five distinct eras of city walls tracking Persian, Islamic, and Mongol paths.</li>
                             </ul>
                         </div>
                     </div>
@@ -268,12 +349,12 @@
     <section class="py-24 px-6 bg-teal-900 text-cream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Visa & Entry</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">Navigating the Letter of Invitation</h2>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed">Turkmenistan maintains some of the most strict entry rules globally. All foreign citizens must obtain an official Letter of Invitation (LOI) approved directly by the State Migration Service before applying for a visa.</p>
-                <p class="text-cream/80 font-light mb-6 leading-relaxed"><strong>We handle the stress:</strong> TGS Travel completely manages your entire LOI application process. Once we secure your letter, you can easily receive your physical visa stamp directly upon arriving at Ashgabat Airport or land borders.</p>
-                <p class="text-cream/80 font-light mb-8 leading-relaxed">Please note that individual, non-escorted tourist travel is not permitted by state law — you must stay with an accredited guide from our company throughout your stay.</p>
-                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300">Secure Your Invitation</a>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="visa_badge">Visa & Entry</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight" data-i18n="visa_title">Navigating the Letter of Invitation</h2>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n="visa_p1">Turkmenistan maintains some of the most strict entry rules globally. All foreign citizens must obtain an official Letter of Invitation (LOI) approved directly by the State Migration Service before applying for a visa.</p>
+                <p class="text-cream/80 font-light mb-6 leading-relaxed" data-i18n-html="visa_p2"><strong>We handle the stress:</strong> TGS Travel completely manages your entire LOI application process. Once we secure your letter, you can easily receive your physical visa stamp directly upon arriving at Ashgabat Airport or land borders.</p>
+                <p class="text-cream/80 font-light mb-8 leading-relaxed" data-i18n="visa_p3">Please note that individual, non-escorted tourist travel is not permitted by state law — you must stay with an accredited guide from our company throughout your stay.</p>
+                <a href="index.html#contact" class="inline-block bg-gold text-teal-900 px-8 py-4 font-bold tracking-wide hover:bg-white transition duration-300" data-i18n="visa_btn">Secure Your Invitation</a>
             </div>
 
             <div class="grid grid-cols-1 gap-4" data-aos="fade-left" data-aos-delay="200">
@@ -282,8 +363,8 @@
                         <i data-lucide="file-check-2" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">LOI Processing (~3-4 weeks)</div>
-                        <p class="text-cream/70 font-light text-sm">Requires strict planning in advance. We handle all direct ministerial submissions for your peace of mind.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc1_t">LOI Processing (~3-4 weeks)</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc1_d">Requires strict planning in advance. We handle all direct ministerial submissions for your peace of mind.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -291,8 +372,8 @@
                         <i data-lucide="user-check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Mandatory Guided Escort</div>
-                        <p class="text-cream/70 font-light text-sm">An accredited expert driver and professional guide will accompany you across checkpoints smoothly.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc2_t">Mandatory Guided Escort</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc2_d">An accredited expert driver and professional guide will accompany you across checkpoints smoothly.</p>
                     </div>
                 </div>
                 <div class="flex items-start bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
@@ -300,8 +381,8 @@
                         <i data-lucide="shield-check" class="w-5 h-5 text-teal-900"></i>
                     </div>
                     <div>
-                        <div class="font-bold text-white mb-1">Absolute Security</div>
-                        <p class="text-cream/70 font-light text-sm">Due to highly structured monitoring networks, Turkmenistan is one of the safest countries globally.</p>
+                        <div class="font-bold text-white mb-1" data-i18n="vc3_t">Absolute Security</div>
+                        <p class="text-cream/70 font-light text-sm" data-i18n="vc3_d">Due to highly structured monitoring networks, Turkmenistan is one of the safest countries globally.</p>
                     </div>
                 </div>
             </div>
@@ -312,33 +393,31 @@
     <section class="py-24 px-6 bg-cream">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Climate Guide</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4">When to Go</h2>
-                <p class="text-teal-900/70 font-light max-w-xl mx-auto">The Karakum desert creates extreme temperature shifts. Avoid intense summer highs by choosing pleasant transition windows.</p>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="when_badge">Climate Guide</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-4" data-i18n="when_title">When to Go</h2>
+                <p class="text-teal-900/70 font-light max-w-xl mx-auto" data-i18n="when_desc">The Karakum desert creates extreme temperature shifts. Avoid intense summer highs by choosing pleasant transition windows.</p>
             </div>
 
             <!-- Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100" id="season-tabs">
-                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring">Spring (Mar–May)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer">Summer (Jun–Aug)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn">Autumn (Sep–Nov)</button>
-                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter">Winter (Dec–Feb)</button>
+                <button class="season-tab active px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="spring" data-i18n="tab_spring">Spring (Mar–May)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="summer" data-i18n="tab_summer">Summer (Jun–Aug)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="autumn" data-i18n="tab_autumn">Autumn (Sep–Nov)</button>
+                <button class="season-tab px-8 py-3 border border-teal-900 text-teal-900 rounded-full font-medium text-sm transition" data-season="winter" data-i18n="tab_winter">Winter (Dec–Feb)</button>
             </div>
 
             <!-- Content Blocks -->
             <div class="bg-white text-teal-900 shadow-2xl relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                
                 <!-- Spring -->
                 <div class="season-content active" data-season="spring">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Perfect Desert Windows 🌸</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">April and May offer beautiful desert conditions. Temperatures are pleasantly warm, spring steppe flowers briefly cover the sands, and city tours are highly comfortable.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="sp_t">Perfect Desert Windows 🌸</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="sp_d">April and May offer beautiful desert conditions. Temperatures are pleasantly warm, spring steppe flowers briefly cover the sands, and city tours are highly comfortable.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Daytime Temp</span><span class="font-bold text-teal-900">20–30°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Desert Evenings</span><span class="font-bold text-teal-900">Pleasant & Cool</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Ashgabat & Crater Stays</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_day">Avg. Daytime Temp</span><span class="font-bold text-teal-900">20–30°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_evenings">Desert Evenings</span><span class="font-bold text-teal-900" data-i18n="sp_evenings">Pleasant & Cool</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="sp_best">Ashgabat & Crater Stays</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -351,13 +430,12 @@
                 <div class="season-content" data-season="summer">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Extreme Desert Heat 🔥</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">July and August feature intense heat inside the desert, with temperatures regularly crossing 45°C. Tours are adjusted for early morning or late evening excursions with climate-controlled 4x4 cabins.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="su_t">Extreme Desert Heat 🔥</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="su_d">July and August feature intense heat inside the desert, with temperatures regularly crossing 45°C. Tours are adjusted for early morning or late evening excursions with climate-controlled 4x4 cabins.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Daytime Temp</span><span class="font-bold text-teal-900">40–46°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Sun Intensity</span><span class="font-bold text-teal-900">Very High</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Precipitation</span><span class="font-bold text-teal-900">Absolute zero</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_day">Avg. Daytime Temp</span><span class="font-bold text-teal-900">40–46°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_sun">Sun Intensity</span><span class="font-bold text-teal-900" data-i18n="su_sun">Very High</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_precip">Precipitation</span><span class="font-bold text-teal-900" data-i18n="su_precip">Almost zero</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -370,13 +448,12 @@
                 <div class="season-content" data-season="autumn">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Golden Travel Months 🍂</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">September and October represent another prime window alongside spring. The desert heat completely fades away, leaving perfectly crisp clear days and ideal camping nights at Darvaza.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="au_t">Golden Travel Months 🍂</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="au_d">September and October represent another prime window alongside spring. The desert heat completely fades away, leaving perfectly crisp clear days and ideal camping nights at Darvaza.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Daytime Temp</span><span class="font-bold text-teal-900">22–32°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Visibility</span><span class="font-bold text-teal-900">Excellent</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">All-Country Multi-Stan Tours</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_day">Avg. Daytime Temp</span><span class="font-bold text-teal-900">22–32°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_vis">Visibility</span><span class="font-bold text-teal-900" data-i18n="au_vis">Excellent</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="au_best">All-Country Multi-Stan Tours</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -389,13 +466,12 @@
                 <div class="season-content" data-season="winter">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="p-10 md:p-12 flex flex-col justify-center">
-                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4">Chilly Winds & Desert Frost ❄️</h3>
-                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8">Winters can get surprisingly cold and windy due to arctic winds hitting the open flat terrain. Desert camping is heavily restricted during this time, but urban monuments remain accessible.</p>
-                            
+                            <h3 class="font-serif text-3xl font-bold text-teal-900 mb-4" data-i18n="wi_t">Chilly Winds & Desert Frost ❄️</h3>
+                            <p class="text-teal-900/70 font-light leading-relaxed text-base mb-8" data-i18n="wi_d">Winters can get surprisingly cold and windy due to arctic winds hitting the open flat terrain. Desert camping is heavily restricted during this time, but urban monuments remain accessible.</p>
                             <div class="space-y-4">
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Avg. Daytime Temp</span><span class="font-bold text-teal-900">0–10°C</span></div>
-                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70">Desert Nights</span><span class="font-bold text-teal-900">Can drop below 0°C</span></div>
-                                <div class="flex justify-between"><span class="text-sm text-teal-900/70">Best For</span><span class="font-bold text-teal-900">Ashgabat Architecture Focus</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_day">Avg. Daytime Temp</span><span class="font-bold text-teal-900">0–10°C</span></div>
+                                <div class="flex justify-between border-b border-teal-900/10 pb-3"><span class="text-sm text-teal-900/70" data-i18n="lbl_nights">Desert Nights</span><span class="font-bold text-teal-900" data-i18n="wi_nights">Can drop below 0°C</span></div>
+                                <div class="flex justify-between"><span class="text-sm text-teal-900/70" data-i18n="lbl_best">Best For</span><span class="font-bold text-teal-900" data-i18n="wi_best">Ashgabat Architecture Focus</span></div>
                             </div>
                         </div>
                         <div class="h-80 md:h-auto overflow-hidden image-zoom">
@@ -411,8 +487,8 @@
     <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Logistics</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Getting Around Turkmenistan</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="log_badge">Logistics</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="log_title">Getting Around Turkmenistan</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -420,22 +496,22 @@
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="plane" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Airport Protocols</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Most international flights touch down at Ashgabat's modern falcon-shaped international terminal (ASB). Our direct guide meets you immediately right at migration control gates.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr1_t">Airport Protocols</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr1_d">Most international flights touch down at Ashgabat's modern falcon-shaped international terminal (ASB). Our direct guide meets you immediately right at migration control gates.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="truck" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Desert-Ready 4x4s</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">Crossing the vast Karakum sands to reach Darvaza safely requires premium transport nodes. We deploy heavy-duty, heavily maintained 4x4 SUVs with extra communication gear.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr2_t">Desert-Ready 4x4s</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr2_d">Crossing the vast Karakum sands to reach Darvaza safely requires premium transport nodes. We deploy heavy-duty, well-maintained 4x4 SUVs with extra communication gear.</p>
                 </div>
                 <div class="bg-cream border border-teal-900/5 p-10 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                     <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-6">
                         <i data-lucide="map-pin" class="w-8 h-8 text-gold"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900">Bukhara Land Borders</h3>
-                    <p class="text-teal-900/70 font-light text-sm leading-relaxed">For our popular Multi-Stan itineraries, we coordinate perfectly timed pickups at the Farap border control node, allowing a seamless connection directly from Bukhara.</p>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-teal-900" data-i18n="tr3_t">Bukhara Land Borders</h3>
+                    <p class="text-teal-900/70 font-light text-sm leading-relaxed" data-i18n="tr3_d">For our popular Multi-Stan itineraries, we coordinate perfectly timed pickups at the Farap border control node, allowing a seamless connection directly from Bukhara.</p>
                 </div>
             </div>
         </div>
@@ -445,40 +521,40 @@
     <section class="py-24 px-6 bg-cream border-t border-teal-900/5">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4">Before You Pack</div>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900">Traveler Tips & FAQ</h2>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="faq_badge">Before You Pack</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900" data-i18n="faq_title">Traveler Tips & FAQ</h2>
             </div>
 
             <div class="space-y-4" id="tips-accordion" data-aos="fade-up" data-aos-delay="100">
                 <div class="accordion-item active border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Is internet / Wi-Fi widely available in Turkmenistan?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq1_q">Is internet / Wi-Fi widely available in Turkmenistan?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq1_a">
                             Internet access is highly regulated and heavily restricted. Social media apps (Instagram, Facebook, WhatsApp) are entirely blocked by state firewalls. Wi-Fi works strictly in premium Ashgabat hotels, but expect limited speeds. Enjoy this unique opportunity to completely offline-detach.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">Are there strict photography rules within Ashgabat?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq2_q">Are there strict photography rules within Ashgabat?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq2_a">
                             Yes, photography rules are rigidly enforced. Taking pictures of presidential palaces, governmental buildings, military sites, checkpoints, or police staff is strictly forbidden by law. Your guide will explicitly remind you exactly where clicking photos is fully safe.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item border border-teal-900/20 bg-white">
                     <button class="accordion-trigger w-full flex justify-between items-center text-left p-6 hover:bg-cream/50 transition">
-                        <span class="font-serif text-xl font-bold text-teal-900">What specific financial rules should I follow?</span>
+                        <span class="font-serif text-xl font-bold text-teal-900" data-i18n="fq3_q">What specific financial rules should I follow?</span>
                         <i data-lucide="chevron-down" class="accordion-icon w-6 h-6 text-gold flex-shrink-0"></i>
                     </button>
                     <div class="accordion-content">
-                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed">
+                        <div class="p-6 pt-0 text-sm text-teal-900/70 font-light border-t border-teal-900/10 mt-4 leading-relaxed" data-i18n="fq3_a">
                             Turkmenistan functions entirely on cash. Bring crisp, brand-new US Dollar bills printed after 2013 (unfolded, without any marks or tears), as local state bank nodes refuse older or damaged notes. Money exchange will be managed safely under your guide's supervision.
                         </div>
                     </div>
@@ -491,12 +567,12 @@
     <section class="bg-gold py-16 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left" data-aos="zoom-in">
             <div>
-                <h3 class="font-serif text-3xl font-bold text-cream mb-2">Unlock Central Asia's Most Exclusive Secret</h3>
-                <p class="text-teal-900/80 text-lg font-medium">Get in touch now, and we'll immediately launch your custom ministerial LOI application process.</p>
+                <h3 class="font-serif text-3xl font-bold text-cream mb-2" data-i18n="cta_title">Unlock Central Asia's Most Exclusive Secret</h3>
+                <p class="text-teal-900/80 text-lg font-medium" data-i18n="cta_desc">Get in touch now, and we'll immediately launch your custom ministerial LOI application process.</p>
             </div>
             <div class="flex gap-4 flex-wrap justify-center">
-                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap">Explore Central Asia Tours</a>
-                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap">Contact Us</a>
+                <a href="uzbekistan-tours.html" class="inline-block bg-teal-900 text-cream px-10 py-4 font-bold tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 shadow-lg whitespace-nowrap" data-i18n="cta_btn1">Explore Central Asia Tours</a>
+                <a href="index.html#contact" class="inline-block border-2 border-teal-900 text-teal-900 px-10 py-4 font-bold tracking-wide hover:bg-teal-900 hover:text-cream transition duration-300 whitespace-nowrap" data-i18n="cta_btn2">Contact Us</a>
             </div>
         </div>
     </section>
@@ -506,48 +582,311 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
             <div class="md:col-span-1">
                 <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
-                <p class="text-cream/60 font-light text-sm mb-6">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
                 <div class="flex items-center space-x-4 text-cream/60">
-                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </a>
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
                 </div>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Navigation</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
-                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition">Uzbekistan Tours</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
-                    <li><a href="index.html#contact" class="hover:text-gold transition">Contacts</a></li>
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Popular Tours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light">
-                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition">Orient Journey</a></li>
-                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition">Echoes of the Silk Road</a></li>
-                    <li><a href="tour-3stan.html" class="hover:text-gold transition">3Stan Tour</a></li>
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-serif text-lg mb-6 text-cream">Working Hours</h4>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
                 <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
-                    <li>Monday - Friday: 10 AM - 6 PM</li>
-                    <li>Saturday: 10 AM - 3 PM</li>
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8">
-            &copy; 2026 TGS Travel. All rights reserved.
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
         </div>
     </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ ТУРКМЕНИСТАНА (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Turkmenistan Travel Guide | TGS Travel",
+                hero_badge: "Destination Guide",
+                hero_subtitle: "The Marble Oasis & Mystical Gates of Karakum",
+                intro_text: "Step into Central Asia's most exclusive and enigmatic destination. Turkmenistan seamlessly weaves the ancient history of legendary Silk Road fortresses with futuristic grand white-marble avenues and the raw, unforgettable elemental power of the burning Darvaza crater deep within the desert.",
+                facts_badge: "Good to Know", facts_title: "Quick Facts",
+                qf1_t: "Currency", qf1_d: "Turkmen Manat (TMT). Credit cards are practically not accepted; carrying cash is strictly mandatory throughout the trip.",
+                qf2_t: "Language", qf2_d: "Turkmen (official) and Russian are universally spoken. Our specialized team guides speak fluent English.",
+                qf3_t: "Time Zone", qf3_d: "TMT (UTC+5). Perfectly mirrors neighboring countries, facilitating smooth multi-Stan planning.",
+                qf4_t: "Electricity", qf4_d: "220V, 50Hz. Standard European C and F sockets. Strongly recommend high-capacity power banks for desert camp nights.",
+                dest_badge: "Must-Visit Places", dest_title: "Top Destinations",
+                d1_t: "Ashgabat - The Marble Metropolis",
+                d1_p: "Holding the Guinness World Record for the highest concentration of white marble architecture, Ashgabat is a surreal, futuristic city of golden domes, massive palaces, and perfectly manicured avenues.",
+                d1_li1: "<strong>Independence Monument:</strong> A towering, majestic column surrounded by grand statues of historic Turkmen rulers.",
+                d1_li2: "<strong>The Wedding Palace:</strong> A spectacular geometric structure framing a massive golden globe of Turkmenistan.",
+                d1_li3: "<strong>Gypjak Mosque:</strong> One of the largest and most magnificent single-dome mosques in all of Central Asia.",
+                d2_t: "Darvaza Gas Crater - The Gates of Hell",
+                d2_p: "Deep inside the remote Karakum desert lies a mesmerizing, 70-meter wide burning gas crater that has been flaming continuously for over fifty years. Watching it glow under the desert stars is unforgettable.",
+                d2_li1: "<strong>Desert Camping:</strong> Spend a cozy night in traditional yurt setups directly overlooking the glowing depths.",
+                d2_li2: "<strong>Sunset Transformation:</strong> Watch the desert sands slowly turn into dark profiles against the burning orange light.",
+                d2_li3: "<strong>Off-Road Expedition:</strong> Reach the area through adrenaline-filled rides across wild sand dunes in heavy SUVs.",
+                d3_t: "Ancient Merv - The Silk Road Core",
+                d3_p: "Once acclaimed as one of the largest and most populated cosmopolitan urban centers in the ancient world, this vast UNESCO World Heritage site displays millennia of history layered in mud-brick fortresses.",
+                d3_li1: "<strong>Sultan Sanjar Mausoleum:</strong> A magnificent 12th-century engineering masterpiece with an incredibly advanced double-dome structure.",
+                d3_li2: "<strong>Greater Kyz Kala:</strong> Unique, pleated clay walls of an ancient defensive castle fortress.",
+                d3_li3: "<strong>Historic Archaeological Nodes:</strong> Explore five distinct eras of city walls tracking Persian, Islamic, and Mongol paths.",
+                visa_badge: "Visa & Entry", visa_title: "Navigating the Letter of Invitation",
+                visa_p1: "Turkmenistan maintains some of the most strict entry rules globally. All foreign citizens must obtain an official Letter of Invitation (LOI) approved directly by the State Migration Service before applying for a visa.",
+                visa_p2: "<strong>We handle the stress:</strong> TGS Travel completely manages your entire LOI application process. Once we secure your letter, you can easily receive your physical visa stamp directly upon arriving at Ashgabat Airport or land borders.",
+                visa_p3: "Please note that individual, non-escorted tourist travel is not permitted by state law — you must stay with an accredited guide from our company throughout your stay.",
+                visa_btn: "Secure Your Invitation",
+                vc1_t: "LOI Processing (~3-4 weeks)", vc1_d: "Requires strict planning in advance. We handle all direct ministerial submissions for your peace of mind.",
+                vc2_t: "Mandatory Guided Escort", vc2_d: "An accredited expert driver and professional guide will accompany you across checkpoints smoothly.",
+                vc3_t: "Absolute Security", vc3_d: "Due to highly structured monitoring networks, Turkmenistan is one of the safest countries globally.",
+                when_badge: "Climate Guide", when_title: "When to Go",
+                when_desc: "The Karakum desert creates extreme temperature shifts. Avoid intense summer highs by choosing pleasant transition windows.",
+                tab_spring: "Spring (Mar–May)", tab_summer: "Summer (Jun–Aug)", tab_autumn: "Autumn (Sep–Nov)", tab_winter: "Winter (Dec–Feb)",
+                lbl_day: "Avg. Daytime Temp", lbl_evenings: "Desert Evenings", lbl_best: "Best For", lbl_sun: "Sun Intensity", lbl_precip: "Precipitation", lbl_vis: "Visibility", lbl_nights: "Desert Nights",
+                sp_t: "Perfect Desert Windows 🌸", sp_d: "April and May offer beautiful desert conditions. Temperatures are pleasantly warm, spring steppe flowers briefly cover the sands, and city tours are highly comfortable.", sp_evenings: "Pleasant & Cool", sp_best: "Ashgabat & Crater Stays",
+                su_t: "Extreme Desert Heat 🔥", su_d: "July and August feature intense heat inside the desert, with temperatures regularly crossing 45°C. Tours are adjusted for early morning or late evening excursions with climate-controlled 4x4 cabins.", su_sun: "Very High", su_precip: "Almost zero",
+                au_t: "Golden Travel Months 🍂", au_d: "September and October represent another prime window alongside spring. The desert heat completely fades away, leaving perfectly crisp clear days and ideal camping nights at Darvaza.", au_vis: "Excellent", au_best: "All-Country Multi-Stan Tours",
+                wi_t: "Chilly Winds & Desert Frost ❄️", wi_d: "Winters can get surprisingly cold and windy due to arctic winds hitting the open flat terrain. Desert camping is heavily restricted during this time, but urban monuments remain accessible.", wi_nights: "Can drop below 0°C", wi_best: "Ashgabat Architecture Focus",
+                log_badge: "Logistics", log_title: "Getting Around Turkmenistan",
+                tr1_t: "Airport Protocols", tr1_d: "Most international flights touch down at Ashgabat's modern falcon-shaped international terminal (ASB). Our direct guide meets you immediately right at migration control gates.",
+                tr2_t: "Desert-Ready 4x4s", tr2_d: "Crossing the vast Karakum sands to reach Darvaza safely requires premium transport nodes. We deploy heavy-duty, well-maintained 4x4 SUVs with extra communication gear.",
+                tr3_t: "Bukhara Land Borders", tr3_d: "For our popular Multi-Stan itineraries, we coordinate perfectly timed pickups at the Farap border control node, allowing a seamless connection directly from Bukhara.",
+                faq_badge: "Before You Pack", faq_title: "Traveler Tips & FAQ",
+                fq1_q: "Is internet / Wi-Fi widely available in Turkmenistan?", fq1_a: "Internet access is highly regulated and heavily restricted. Social media apps (Instagram, Facebook, WhatsApp) are entirely blocked by state firewalls. Wi-Fi works strictly in premium Ashgabat hotels, but expect limited speeds. Enjoy this unique opportunity to completely offline-detach.",
+                fq2_q: "Are there strict photography rules within Ashgabat?", fq2_a: "Yes, photography rules are rigidly enforced. Taking pictures of presidential palaces, governmental buildings, military sites, checkpoints, or police staff is strictly forbidden by law. Your guide will explicitly remind you exactly where clicking photos is fully safe.",
+                fq3_q: "What specific financial rules should I follow?", fq3_a: "Turkmenistan functions entirely on cash. Bring crisp, brand-new US Dollar bills printed after 2013 (unfolded, without any marks or tears), as local state bank nodes refuse older or damaged notes. Money exchange will be managed safely under your guide's supervision.",
+                cta_title: "Unlock Central Asia's Most Exclusive Secret", cta_desc: "Get in touch now, and we'll immediately launch your custom ministerial LOI application process.", cta_btn1: "Explore Central Asia Tours", cta_btn2: "Contact Us"
+            },
+            ru: {
+                page_title: "Путеводитель по Туркменистану | TGS Travel",
+                hero_badge: "Гид по направлению",
+                hero_subtitle: "Мраморный оазис и мистические врата Каракумов",
+                intro_text: "Откройте самое загадочное и эксклюзивное направление Центральной Азии. Туркменистан удивительным образом соединяет древние крепости Великого Шёлкового пути, футуристические беломраморные проспекты и завораживающую стихию горящего кратера Дарваза в глубине пустыни.",
+                facts_badge: "Полезно знать", facts_title: "Коротко о главном",
+                qf1_t: "Валюта", qf1_d: "Туркменский манат (TMT). Банковские карты практически не принимаются — наличные обязательны на протяжении всей поездки.",
+                qf2_t: "Язык", qf2_d: "Туркменский (государственный) и русский понимают повсеместно. Наши профильные гиды свободно говорят по-английски.",
+                qf3_t: "Часовой пояс", qf3_d: "TMT (UTC+5). Совпадает с Узбекистаном и Таджикистаном, что удобно для комбинированных туров.",
+                qf4_t: "Электричество", qf4_d: "220В, 50Гц. Стандартные европейские розетки C и F. Для ночёвок в пустыне рекомендуем мощный пауэрбанк.",
+                dest_badge: "Главные локации", dest_title: "Топ направлений",
+                d1_t: "Ашхабад — Беломраморный мегаполис",
+                d1_p: "Занесённый в Книгу рекордов Гиннесса за самую высокую концентрацию зданий из белого мрамора, Ашхабад впечатляет золотыми куполами, монументальными дворцами и безупречными проспектами.",
+                d1_li1: "<strong>Монумент Независимости:</strong> величественная башня в окружении статуй исторических правителей и поэтов.",
+                d1_li2: "<strong>Дворец бракосочетаний (Багт Кошги):</strong> эффектное геометрическое здание с гигантским золотым глобусом Туркменистана.",
+                d1_li3: "<strong>Мечеть в Кипчаке:</strong> одна из крупнейших и самых величественных однокупольных мечетей Центральной Азии.",
+                d2_t: "Газовый кратер Дарваза — Врата Ада",
+                d2_p: "В самом сердце пустыни Каракумы вот уже более пятидесяти лет непрерывно пылает 70-метровый газовый кратер. Зрелище огненной чаши под звёздным небом пустыни остаётся в памяти навсегда.",
+                d2_li1: "<strong>Ночёвка в пустыне:</strong> проведите уютную ночь в традиционных юртах прямо напротив сияющего кратера.",
+                d2_li2: "<strong>Магия заката:</strong> наблюдайте, как песчаные барханы погружаются в сумерки в отблесках живого огня.",
+                d2_li3: "<strong>Внедорожная экспедиция:</strong> захватывающий переезд по диким пескам Каракумов на подготовленных внедорожниках.",
+                d3_t: "Древний Мерв — Сердце Шёлкового пути",
+                d3_p: "Некогда один из крупнейших мегаполисов древнего мира, сегодня Мерв — грандиозный археологический парк ЮНЕСКО с крепостями из сырцового кирпича разных эпох.",
+                d3_li1: "<strong>Мавзолей султана Санджара:</strong> шедевр XII века с уникальной конструкцией двойного купола.",
+                d3_li2: "<strong>Большая Кыз-Кала:</strong> знаменитая крепость с гофрированными глиняными стенами.",
+                d3_li3: "<strong>Пять древних городищ:</strong> проследите смену персидской, исламской и монгольской эпох на одной территории.",
+                visa_badge: "Виза и въезд", visa_title: "Оформление приглашения (LOI)",
+                visa_p1: "В Туркменистане действуют одни из самых строгих правил въезда в мире. Всем иностранным гражданам необходимо заранее получить официальное письмо-приглашение (LOI), одобренное Государственной миграционной службой.",
+                visa_p2: "<strong>Мы берём всё на себя:</strong> TGS Travel полностью ведёт процесс оформления вашего LOI. С готовым приглашением вы легко получите визу прямо по прилёте в аэропорту Ашхабада или на наземной границе.",
+                visa_p3: "Обратите внимание: самостоятельный туризм без сопровождения запрещён законом — на всём маршруте вас сопровождает аккредитованный гид нашей компании.",
+                visa_btn: "Оформить приглашение",
+                vc1_t: "Оформление LOI (~3–4 недели)", vc1_d: "Требует заблаговременного планирования. Мы подаём документы напрямую в миграционную службу.",
+                vc2_t: "Обязательное сопровождение гида", vc2_d: "Аккредитованный водитель и профессиональный гид обеспечивают комфортный проезд через все пункты контроля.",
+                vc3_t: "Абсолютная безопасность", vc3_d: "Благодаря строгому порядку Туркменистан является одной из самых безопасных стран мира для туристов.",
+                when_badge: "Гид по климату", when_title: "Когда ехать",
+                when_desc: "Пустыня Каракумы создаёт резкие перепады температур. Избегайте пиковой летней жары, выбирая мягкие межсезонные месяцы.",
+                tab_spring: "Весна (Мар–Май)", tab_summer: "Лето (Июн–Авг)", tab_autumn: "Осень (Сен–Ноя)", tab_winter: "Зима (Дек–Фев)",
+                lbl_day: "Дневная темп.", lbl_evenings: "Вечера в пустыне", lbl_best: "Лучше всего для", lbl_sun: "Солнечная активность", lbl_precip: "Осадки", lbl_vis: "Видимость", lbl_nights: "Ночи в пустыне",
+                sp_t: "Идеальное окно для пустыни 🌸", sp_d: "Апрель и май дарят лучшую погоду: приятное тепло, кратковременное цветение степей и комфортные прогулки по городам и пустыне.", sp_evenings: "Приятно прохладные", sp_best: "Ашхабад и ночёвки у Дарвазы",
+                su_t: "Экстремальная жара пустыни 🔥", su_d: "В июле и августе температура в пустыне регулярно превышает 45°C. Экскурсии переносятся на раннее утро и вечер с переездами в кондиционированных внедорожниках.", su_sun: "Очень высокая", su_precip: "Практически ноль",
+                au_t: "Золотые месяцы путешествий 🍂", au_d: "Сентябрь и октябрь — второе идеальное время наравне с весной. Жара отступает, даря ясные дни и прекрасные ночи в юрточном лагере у Дарвазы.", au_vis: "Отличная", au_best: "Комбинированные туры по Центральной Азии",
+                wi_t: "Прохладные ветра и пустынный мороз ❄️", wi_d: "Зимы бывают неожиданно ветреными и холодными. Ночёвки в пустыне в это время ограничены, но архитектурные достопримечательности Ашхабада полностью доступны.", wi_nights: "Возможны заморозки ниже 0°C", wi_best: "Архитектурные туры по Ашхабаду",
+                log_badge: "Логистика", log_title: "Передвижение по Туркменистану",
+                tr1_t: "Встреча в аэропорту", tr1_d: "Международные рейсы прибывают в ультрасовременный терминал Ашхабада (ASB) в форме сокола. Наш гид встречает вас сразу у паспортного контроля.",
+                tr2_t: "Пустынные внедорожники 4x4", tr2_d: "Для безопасного пересечения песков Каракумов к кратеру Дарваза мы используем исключительно мощные, полностью подготовленные внедорожники 4x4.",
+                tr3_t: "Граница со стороны Бухары", tr3_d: "Для популярных туров по нескольким странам мы организуем точные стыковки на погранпереходе Фарап — с удобным переездом прямо из Бухары.",
+                faq_badge: "Перед поездкой", faq_title: "Советы и частые вопросы",
+                fq1_q: "Есть ли в Туркменистане интернет и Wi-Fi?", fq1_a: "Доступ в интернет строго регулируется: соцсети и мессенджеры (Instagram, Facebook, WhatsApp) заблокированы. Wi-Fi работает в отелях Ашхабада, но скорость ограничена. Воспринимайте это как редкий шанс на полный цифровой детокс.",
+                fq2_q: "Правда ли, что в Ашхабаде строгие правила фотосъёмки?", fq2_a: "Да, правила соблюдаются строго. Запрещено фотографировать президентские дворцы, правительственные и военные объекты, КПП и сотрудников полиции. Наш гид всегда подскажет, где можно снимать свободно и безопасно.",
+                fq3_q: "Какие финансовые правила важно знать заранее?", fq3_a: "Расчёты ведутся исключительно наличными. Возьмите с собой идеальные новые купюры долларов США выпуска после 2013 года — без заломов, печатей и надрывов, иначе их не примут. Обмен валюты безопасно организует ваш гид.",
+                cta_title: "Откройте главную загадку Центральной Азии", cta_desc: "Свяжитесь с нами сейчас, и мы сразу запустим оформление вашего официального приглашения (LOI).", cta_btn1: "Туры по Центральной Азии", cta_btn2: "Связаться с нами"
+            },
+            fr: {
+                page_title: "Guide de voyage Turkménistan | TGS Travel",
+                hero_badge: "Guide de destination",
+                hero_subtitle: "L'Oasis de Marbre & les Portes Mystiques du Karakoum",
+                intro_text: "Entrez dans la destination la plus exclusive et énigmatique d'Asie centrale. Le Turkménistan unit l'histoire millénaire des forteresses de la Route de la Soie, les avenues futuristes en marbre blanc et la puissance saisissante du cratère en feu de Darvaza au cœur du désert.",
+                facts_badge: "Bon à savoir", facts_title: "Infos pratiques",
+                qf1_t: "Devise", qf1_d: "Manat turkmène (TMT). Les cartes bancaires ne sont pratiquement pas acceptées ; prévoir des espèces est impératif.",
+                qf2_t: "Langue", qf2_d: "Turkmène (officiel) et russe parlés partout. Nos guides spécialisés parlent couramment anglais.",
+                qf3_t: "Fuseau horaire", qf3_d: "TMT (UTC+5). Identique à l'Ouzbékistan, facilitant les circuits combinés en Asie centrale.",
+                qf4_t: "Électricité", qf4_d: "220V, 50Hz. Prises européennes C et F. Une batterie externe de grande capacité est vivement conseillée pour le désert.",
+                dest_badge: "Lieux incontournables", dest_title: "Destinations phares",
+                d1_t: "Achgabat — La Métropole de Marbre",
+                d1_p: "Détentrice du record Guinness pour la plus forte concentration d'architecture en marbre blanc, Achgabat fascine par ses coupoles dorées, ses palais grandioses et ses avenues impeccables.",
+                d1_li1: "<strong>Monument de l'Indépendance :</strong> colonne majestueuse entourée de statues de figures historiques turkmènes.",
+                d1_li2: "<strong>Palais des Mariages :</strong> édifice géométrique spectaculaire encadrant un immense globe doré du Turkménistan.",
+                d1_li3: "<strong>Mosquée de Kipchak :</strong> l'une des plus grandes et somptueuses mosquées à coupole unique d'Asie centrale.",
+                d2_t: "Cratère de Darvaza — Les Portes de l'Enfer",
+                d2_p: "Au cœur du désert du Karakoum brûle sans interruption depuis plus de cinquante ans un cratère de gaz de 70 mètres de diamètre. Le contempler sous les étoiles est inoubliable.",
+                d2_li1: "<strong>Campement dans le désert :</strong> passez la nuit dans des yourtes traditionnelles face aux flammes rougeoyantes.",
+                d2_li2: "<strong>Magie du crépuscule :</strong> observez les dunes s'obscurcir tandis que la lueur orangée embrase le ciel.",
+                d2_li3: "<strong>Expédition 4x4 :</strong> rejoignez le site en traversant les dunes sauvages à bord de véhicules tout-terrain.",
+                d3_t: "Ancienne Merv — Cœur de la Route de la Soie",
+                d3_p: "Jadis l'une des plus vastes métropoles cosmopolites du monde antique, ce site classé à l'UNESCO dévoile des millénaires d'histoire à travers ses forteresses de terre crue.",
+                d3_li1: "<strong>Mausolée du Sultan Sanjar :</strong> chef-d'œuvre d'ingénierie du XIIe siècle doté d'une double coupole remarquable.",
+                d3_li2: "<strong>Grande Kyz Kala :</strong> forteresse unique aux façades d'argile plissées.",
+                d3_li3: "<strong>Cités archéologiques :</strong> explorez cinq époques distinctes de remparts perses, islamiques et mongols.",
+                visa_badge: "Visa & Entrée", visa_title: "Obtenir votre Lettre d'Invitation (LOI)",
+                visa_p1: "Le Turkménistan applique des règles d'entrée strictes. Tous les voyageurs étrangers doivent obtenir une Lettre d'Invitation officielle (LOI) approuvée par le Service national des migrations avant la délivrance du visa.",
+                visa_p2: "<strong>Nous gérons toutes les démarches :</strong> TGS Travel prend intégralement en charge votre demande de LOI. Une fois approuvée, le visa est apposé directement à votre arrivée à l'aéroport d'Achgabat ou à la frontière terrestre.",
+                visa_p3: "Veuillez noter que le tourisme individuel non accompagné n'est pas autorisé par la loi : un guide accrédité de notre équipe vous accompagne durant tout le séjour.",
+                visa_btn: "Demander votre invitation",
+                vc1_t: "Délai LOI (~3 à 4 semaines)", vc1_d: "Planification anticipée indispensable. Nous gérons directement l'ensemble des dépôts ministériels.",
+                vc2_t: "Accompagnement obligatoire", vc2_d: "Un chauffeur expérimenté et un guide accrédité assurent le passage fluide de chaque contrôle.",
+                vc3_t: "Sécurité absolue", vc3_d: "Grâce à une organisation rigoureuse, le Turkménistan compte parmi les pays les plus sûrs au monde.",
+                when_badge: "Guide climatique", when_title: "Quand partir",
+                when_desc: "Le désert du Karakoum engendre des écarts thermiques extrêmes. Privilégiez les saisons intermédiaires pour un confort optimal.",
+                tab_spring: "Printemps (Mar–Mai)", tab_summer: "Été (Juin–Août)", tab_autumn: "Automne (Sep–Nov)", tab_winter: "Hiver (Déc–Fév)",
+                lbl_day: "Temp. diurne moy.", lbl_evenings: "Soirées désertiques", lbl_best: "Idéal pour", lbl_sun: "Ensoleillement", lbl_precip: "Précipitations", lbl_vis: "Visibilité", lbl_nights: "Nuits dans le désert",
+                sp_t: "Fenêtre idéale pour le désert 🌸", sp_d: "Avril et mai offrent des conditions splendides : chaleur douce, floraison éphémère de la steppe et visites urbaines très agréables.", sp_evenings: "Agréables & fraîches", sp_best: "Achgabat & nuit à Darvaza",
+                su_t: "Chaleur désertique intense 🔥", su_d: "En juillet et août, les températures dépassent régulièrement 45°C dans le désert. Les visites sont organisées tôt le matin et en soirée en 4x4 climatisé.", su_sun: "Très élevé", su_precip: "Quasi nulles",
+                au_t: "Mois dorés de voyage 🍂", au_d: "Septembre et octobre constituent l'autre période phare avec le printemps : journées limpides et nuits parfaites au camp de Darvaza.", au_vis: "Excellente", au_best: "Circuits combinés Asie centrale",
+                wi_t: "Vents frais & gel du désert ❄️", wi_d: "Les hivers peuvent être étonnamment froids et venteux. Le camping désertique est limité, mais les monuments d'Achgabat restent pleinement accessibles.", wi_nights: "Peuvent passer sous 0°C", wi_best: "Architecture d'Achgabat",
+                log_badge: "Logistique", log_title: "Se déplacer au Turkménistan",
+                tr1_t: "Accueil à l'aéroport", tr1_d: "Les vols internationaux arrivent au terminal moderne d'Achgabat (ASB) en forme de faucon. Notre guide vous accueille dès le contrôle migratoire.",
+                tr2_t: "4x4 équipés pour le désert", tr2_d: "Traverser les dunes du Karakoum vers Darvaza requiert des véhicules robustes : nous déployons des 4x4 fiables parfaitement entretenus.",
+                tr3_t: "Frontière depuis Boukhara", tr3_d: "Pour nos circuits Multi-Stan, nous coordonnons des prises en charge précises au poste frontière de Farap pour une liaison fluide depuis Boukhara.",
+                faq_badge: "Avant de partir", faq_title: "Conseils & FAQ",
+                fq1_q: "Internet et le Wi-Fi sont-ils accessibles au Turkménistan ?", fq1_a: "L'accès à Internet est très encadré et les réseaux sociaux (Instagram, Facebook, WhatsApp) sont bloqués. Le Wi-Fi fonctionne dans les grands hôtels d'Achgabat à débit limité — profitez d'une vraie déconnexion.",
+                fq2_q: "Les règles de photographie sont-elles strictes à Achgabat ?", fq2_a: "Oui, elles sont strictement appliquées. Photographier les palais présidentiels, bâtiments officiels, sites militaires ou forces de l'ordre est interdit. Votre guide vous indiquera toujours les zones autorisées.",
+                fq3_q: "Quelles règles financières faut-il respecter ?", fq3_a: "Tout se règle en espèces. Apportez des billets de dollars américains neufs émis après 2013, sans pliure ni marque, car les banques refusent les billets abîmés. Votre guide supervisera le change en toute sécurité.",
+                cta_title: "Découvrez le secret le mieux gardé d'Asie centrale", cta_desc: "Contactez-nous dès maintenant pour lancer votre demande officielle de lettre d'invitation (LOI).", cta_btn1: "Circuits en Asie centrale", cta_btn2: "Nous contacter"
+            },
+            de: {
+                page_title: "Turkmenistan Reiseführer | TGS Travel",
+                hero_badge: "Reiseführer",
+                hero_subtitle: "Die Marmoroase & Mystische Tore der Karakum",
+                intro_text: "Entdecken Sie das exklusivste und geheimnisvollste Reiseziel Zentralasiens. Turkmenistan verbindet jahrtausendealte Seidenstraßen-Festungen mit futuristischen weißen Marmor-Boulevards und der unvergesslichen Urgewalt des brennenden Darvaza-Kraters mitten in der Wüste.",
+                facts_badge: "Gut zu wissen", facts_title: "Kurzinfos",
+                qf1_t: "Währung", qf1_d: "Turkmenischer Manat (TMT). Kreditkarten werden praktisch nicht akzeptiert; ausreichend Bargeld ist unbedingt erforderlich.",
+                qf2_t: "Sprache", qf2_d: "Turkmenisch (Amtssprache) und Russisch werden überall gesprochen. Unsere spezialisierten Guides sprechen fließend Englisch.",
+                qf3_t: "Zeitzone", qf3_d: "TMT (UTC+5). Identisch mit den Nachbarländern – ideal für kombinierte Zentralasien-Reisen.",
+                qf4_t: "Strom", qf4_d: "220V, 50Hz. Europäische Steckdosen C und F. Für Übernachtungen im Wüstencamp empfehlen wir eine starke Powerbank.",
+                dest_badge: "Sehenswürdigkeiten", dest_title: "Top-Reiseziele",
+                d1_t: "Aschgabat – Die Marmormetropole",
+                d1_p: "Mit dem Guinness-Weltrekord für die höchste Dichte an weißer Marmorarchitektur beeindruckt Aschgabat als surreale, futuristische Stadt voller goldener Kuppeln und prachtvoller Paläste.",
+                d1_li1: "<strong>Unabhängigkeitsdenkmal:</strong> Eine gewaltige Säule, umgeben von Statuen historischer turkmenischer Herrscher.",
+                d1_li2: "<strong>Hochzeitspalast:</strong> Ein spektakuläres geometrisches Bauwerk rund um einen riesigen goldenen Globus Turkmenistans.",
+                d1_li3: "<strong>Gypjak-Moschee:</strong> Eine der größten und prachtvollsten Einkuppel-Moscheen ganz Zentralasiens.",
+                d2_t: "Gaskrater von Darvaza – Das Tor zur Hölle",
+                d2_p: "Tief in der abgelegenen Wüste Karakum lodert seit über fünfzig Jahren ein 70 Meter breiter brennender Gaskrater. Sein Leuchten unter dem nächtlichen Sternenhimmel ist unvergesslich.",
+                d2_li1: "<strong>Wüstencamping:</strong> Übernachten Sie in traditionellen Jurten direkt mit Blick auf den glühenden Krater.",
+                d2_li2: "<strong>Magie bei Sonnenuntergang:</strong> Erleben Sie, wie die Dünen im feurigen Orange der Nacht verschwinden.",
+                d2_li3: "<strong>Offroad-Expedition:</strong> Abenteuerliche Fahrt im robusten 4x4-Geländewagen quer durch die wilden Sanddünen.",
+                d3_t: "Antikes Merw – Herz der Seidenstraße",
+                d3_p: "Einst eine der größten Metropolen der Antike, zeigt dieses riesige UNESCO-Welterbe Jahrtausende menschlicher Geschichte in gewaltigen Lehmziegelfestungen.",
+                d3_li1: "<strong>Mausoleum von Sultan Sandschar:</strong> Ein Meisterwerk des 12. Jahrhunderts mit beeindruckender Doppelkuppel.",
+                d3_li2: "<strong>Große Kyz Kala:</strong> Einzigartige gewellte Lehmmauern einer antiken Verteidigungsburg.",
+                d3_li3: "<strong>Fünf historische Städte:</strong> Erkunden Sie persische, islamische und mongolische Epochen an einem Ort.",
+                visa_badge: "Visum & Einreise", visa_title: "Einladungsschreiben (LOI) leicht gemacht",
+                visa_p1: "Turkmenistan hat weltweit eine der strengsten Einreiseregelungen. Alle ausländischen Besucher benötigen vorab ein offizielles Einladungsschreiben (LOI) der staatlichen Migrationsbehörde.",
+                visa_p2: "<strong>Wir nehmen Ihnen den Aufwand ab:</strong> TGS Travel übernimmt Ihren gesamten LOI-Antrag. Mit der Genehmigung erhalten Sie Ihr Visum ganz bequem direkt bei Ankunft am Flughafen Aschgabat oder an der Landgrenze.",
+                visa_p3: "Bitte beachten Sie: Individuelles Reisen ohne Begleitung ist gesetzlich nicht gestattet – ein akkreditierter Guide unseres Teams begleitet Sie während des gesamten Aufenthalts.",
+                visa_btn: "Einladung anfragen",
+                vc1_t: "LOI-Bearbeitung (~3–4 Wochen)", vc1_d: "Erfordert rechtzeitige Planung. Wir übernehmen alle ministeriellen Einreichungen direkt für Sie.",
+                vc2_t: "Begleitung durch Guides", vc2_d: "Ein akkreditierter Fahrer und ein professioneller Reiseleiter sorgen für reibungslose Kontrollen.",
+                vc3_t: "Höchste Sicherheit", vc3_d: "Dank klarer Strukturen gehört Turkmenistan zu den sichersten Reiseländern weltweit.",
+                when_badge: "Klimaguide", when_title: "Beste Reisezeit",
+                when_desc: "Die Wüste Karakum sorgt für starke Temperaturschwankungen. Vermeiden Sie die Sommerhitze und wählen Sie die angenehmen Übergangszeiten.",
+                tab_spring: "Frühling (Mär–Mai)", tab_summer: "Sommer (Jun–Aug)", tab_autumn: "Herbst (Sep–Nov)", tab_winter: "Winter (Dez–Feb)",
+                lbl_day: "Ø Tagestemp.", lbl_evenings: "Wüstenabende", lbl_best: "Ideal für", lbl_sun: "Sonnenintensität", lbl_precip: "Niederschlag", lbl_vis: "Sicht", lbl_nights: "Wüstennächte",
+                sp_t: "Perfektes Wüstenfenster 🌸", sp_d: "April und Mai bieten traumhafte Bedingungen: angenehme Wärme, blühende Steppen und entspannte Stadt- sowie Wüstentouren.", sp_evenings: "Angenehm & kühl", sp_best: "Aschgabat & Darvaza-Camp",
+                su_t: "Extreme Wüstenhitze 🔥", su_d: "Im Juli und August steigen die Temperaturen regelmäßig über 45°C. Ausflüge finden früh morgens und abends im klimatisierten 4x4 statt.", su_sun: "Sehr hoch", su_precip: "Nahezu null",
+                au_t: "Goldene Reisemonate 🍂", au_d: "September und Oktober sind neben dem Frühling die beste Reisezeit: klare, milde Tage und perfekte Campingnächte am Darvaza-Krater.", au_vis: "Hervorragend", au_best: "Kombinierte Zentralasien-Touren",
+                wi_t: "Kühle Winde & Wüstenfrost ❄️", wi_d: "Winter können überraschend kalt und windig sein. Wüstencamping ist eingeschränkt, doch Aschgabat bleibt hervorragend besuchbar.", wi_nights: "Teils unter 0°C", wi_best: "Architektur in Aschgabat",
+                log_badge: "Logistik", log_title: "Unterwegs in Turkmenistan",
+                tr1_t: "Flughafen-Service", tr1_d: "Internationale Flüge landen am modernen, falkenförmigen Flughafen Aschgabat (ASB). Unser Guide empfängt Sie direkt an der Passkontrolle.",
+                tr2_t: "Wüstentaugliche 4x4-Flotte", tr2_d: "Für die sichere Fahrt durch die Karakum nach Darvaza setzen wir ausschließlich erstklassig gewartete 4x4-Geländewagen ein.",
+                tr3_t: "Landgrenze ab Buchara", tr3_d: "Für unsere Multi-Stan-Reisen koordinieren wir nahtlose Abholungen am Grenzübergang Farap direkt von Buchara kommend.",
+                faq_badge: "Vor der Reise", faq_title: "Reisetipps & FAQ",
+                fq1_q: "Sind Internet und WLAN in Turkmenistan verfügbar?", fq1_a: "Der Internetzugang ist stark eingeschränkt und soziale Medien (Instagram, Facebook, WhatsApp) sind gesperrt. WLAN gibt es in erstklassigen Hotels in Aschgabat mit begrenzter Geschwindigkeit – eine perfekte Gelegenheit für Digital Detox.",
+                fq2_q: "Gibt es strenge Fotoregeln in Aschgabat?", fq2_a: "Ja, das Fotografieren von Präsidentenpalästen, Regierungsgebäuden, Militäreinrichtungen, Kontrollpunkten und Polizei ist gesetzlich streng verboten. Ihr Guide weist Sie immer klar auf erlaubte Motive hin.",
+                fq3_q: "Welche Finanzregeln sollte ich beachten?", fq3_a: "Turkmenistan ist eine reine Bargeldwirtschaft. Bringen Sie druckfrische US-Dollar-Scheine ab Baujahr 2013 ohne Knicke, Flecken oder Risse mit, da ältere Noten abgelehnt werden. Den Geldwechsel begleitet Ihr Guide sicher.",
+                cta_title: "Entdecken Sie das exklusivste Geheimnis Zentralasiens", cta_desc: "Kontaktieren Sie uns jetzt – wir starten umgehend Ihr offizielles LOI-Antragsverfahren.", cta_btn1: "Zentralasien-Touren ansehen", cta_btn2: "Kontakt aufnehmen"
+            },
+            tr: {
+                page_title: "Türkmenistan Seyahat Rehberi | TGS Travel",
+                hero_badge: "Destinasyon Rehberi",
+                hero_subtitle: "Mermer Vaha ve Karakum'un Mistik Kapıları",
+                intro_text: "Orta Asya'nın en özel ve gizemli destinasyonuna adım atın. Türkmenistan; efsanevi İpek Yolu kalelerinin kadim tarihini, fütüristik beyaz mermer bulvarları ve çölün kalbinde yanan Darvaza kraterinin unutulmaz gücünü bir araya getirir.",
+                facts_badge: "Bilmekte Fayda Var", facts_title: "Hızlı Bilgiler",
+                qf1_t: "Para Birimi", qf1_d: "Türkmenistan Manatı (TMT). Kredi kartları neredeyse hiç geçmez; seyahat boyunca nakit bulundurmak zorunludur.",
+                qf2_t: "Dil", qf2_d: "Türkmence (resmi) ve Rusça her yerde konuşulur. Uzman rehber ekibimiz akıcı İngilizce bilir.",
+                qf3_t: "Saat Dilimi", qf3_d: "TMT (UTC+5). Özbekistan ve Tacikistan ile aynıdır, çok ülkeli turlar için son derece uygundur.",
+                qf4_t: "Elektrik", qf4_d: "220V, 50Hz. Türkiye ile uyumlu Avrupa tipi C ve F prizler. Çöl kampı geceleri için yüksek kapasiteli powerbank önerilir.",
+                dest_badge: "Görülecek Yerler", dest_title: "Öne Çıkan Destinasyonlar",
+                d1_t: "Aşkabat — Mermer Metropol",
+                d1_p: "Dünyadaki en yüksek beyaz mermer yapı yoğunluğuyla Guinness Rekorlar Kitabı'na giren Aşkabat; altın kubbeleri, görkemli sarayları ve kusursuz bulvarlarıyla büyüleyici bir şehirdir.",
+                d1_li1: "<strong>Bağımsızlık Anıtı:</strong> Tarihi Türkmen liderlerin görkemli heykelleriyle çevrili anıtsal kule.",
+                d1_li2: "<strong>Nikah Sarayı (Bagt Köşgi):</strong> Dev altın Türkmenistan küresini çerçeveleyen çarpıcı geometrik yapı.",
+                d1_li3: "<strong>Kıpçak Camii:</strong> Orta Asya'nın en büyük ve en görkemli tek kubbeli camilerinden biri.",
+                d2_t: "Darvaza Gaz Krateri — Cehennem Kapısı",
+                d2_p: "Karakum Çölü'nün derinliklerinde elli yılı aşkın süredir kesintisiz yanan 70 metre genişliğindeki bu gaz kraterini çöl yıldızlarının altında izlemek unutulmazdır.",
+                d2_li1: "<strong>Çöl Kampı:</strong> Alevlerin ışığına bakan geleneksel yurt çadırlarında eşsiz bir gece geçirin.",
+                d2_li2: "<strong>Gün Batımı Dönüşümü:</strong> Çöl kumlarının karanlığa bürünürken turuncu ateş ışığıyla aydınlanmasını izleyin.",
+                d2_li3: "<strong>Off-Road Keşfi:</strong> Güçlü 4x4 araçlarla vahşi kum tepelerini aşarak bölgeye adrenalin dolu bir yolculukla ulaşın.",
+                d3_t: "Antik Merv — İpek Yolu'nun Kalbi",
+                d3_p: "Bir zamanlar antik dünyanın en büyük kozmopolit şehirlerinden biri olan bu devasa UNESCO Dünya Mirası alanı, kerpiç kaleler içinde binlerce yıllık tarihi sergiler.",
+                d3_li1: "<strong>Sultan Sencer Türbesi:</strong> Gelişmiş çift kubbeli mimarisiyle 12. yüzyıldan kalma muhteşem bir mühendislik şaheseri.",
+                d3_li2: "<strong>Büyük Kız Kale:</strong> Dalgalı kerpiç duvarlarıyla benzersiz antik savunma kalesi.",
+                d3_li3: "<strong>Arkeolojik Katmanlar:</strong> Pers, İslam ve Moğol dönemlerine uzanan beş farklı antik şehir surunu keşfedin.",
+                visa_badge: "Vize ve Giriş", visa_title: "Davet Mektubu (LOI) Süreci",
+                visa_p1: "Türkmenistan dünya genelinde en sıkı giriş kurallarından birini uygular. Tüm yabancı vatandaşların vize başvurusu öncesinde Devlet Göç İdaresi onaylı resmi Davet Mektubu (LOI) alması gerekir.",
+                visa_p2: "<strong>Tüm süreci biz yönetiyoruz:</strong> TGS Travel, LOI başvurunuzu baştan sona eksiksiz takip eder. Mektubunuz onaylandığında Aşkabat Havalimanı'nda veya kara sınır kapısında vizenizi kolayca alırsınız.",
+                visa_p3: "Yasa gereği rehbersiz bireysel turistik seyahate izin verilmemektedir; tüm seyahatiniz boyunca şirketimizin akredite rehberi size eşlik eder.",
+                visa_btn: "Davet Mektubunuzu Alın",
+                vc1_t: "LOI Süresi (~3–4 Hafta)", vc1_d: "Önceden planlama gerektirir; tüm resmi bakanlık başvurularını sizin adınıza biz yürütüyoruz.",
+                vc2_t: "Zorunlu Rehber Eşliği", vc2_d: "Akredite uzman şoför ve profesyonel rehberimiz tüm kontrol noktalarından sorunsuz geçiş sağlar.",
+                vc3_t: "Tam Güvenlik", vc3_d: "Düzenli yapısı sayesinde Türkmenistan dünyanın en güvenli ülkelerinden biridir.",
+                when_badge: "İklim Rehberi", when_title: "Ne Zaman Gidilir",
+                when_desc: "Karakum Çölü sert sıcaklık farkları yaratır. Yoğun yaz sıcağından kaçınmak için ılıman geçiş mevsimlerini tercih edin.",
+                tab_spring: "İlkbahar (Mar–May)", tab_summer: "Yaz (Haz–Ağu)", tab_autumn: "Sonbahar (Eyl–Kas)", tab_winter: "Kış (Ara–Şub)",
+                lbl_day: "Ort. Gündüz Sıcaklığı", lbl_evenings: "Çöl Akşamları", lbl_best: "En İyisi", lbl_sun: "Güneş Yoğunluğu", lbl_precip: "Yağış", lbl_vis: "Görüş", lbl_nights: "Çöl Geceleri",
+                sp_t: "Mükemmel Çöl Mevsimi 🌸", sp_d: "Nisan ve Mayıs ayları harika çöl koşulları sunar: ılıman sıcaklıklar, bozkır çiçekleri ve konforlu şehir gezileri.", sp_evenings: "Keyifli ve Serin", sp_best: "Aşkabat ve Darvaza Kampı",
+                su_t: "Aşırı Çöl Sıcağı 🔥", su_d: "Temmuz ve Ağustos'ta çölde sıcaklıklar sıklıkla 45°C'yi aşar. Turlar erken sabah ve akşam saatlerine göre klimalı 4x4 araçlarla planlanır.", su_sun: "Çok Yüksek", su_precip: "Neredeyse sıfır",
+                au_t: "Altın Seyahat Ayları 🍂", au_d: "Eylül ve Ekim ayları ilkbaharla birlikte en ideal dönemdir. Sıcaklık düşer, berrak günler ve Darvaza'da harika kamp geceleri yaşanır.", au_vis: "Mükemmel", au_best: "Çok Ülkeli Orta Asya Turları",
+                wi_t: "Serin Rüzgarlar ve Çöl Ayazı ❄️", wi_d: "Kışlar açık çöl arazisinde şaşırtıcı derecede soğuk ve rüzgarlı geçebilir. Çöl kampı kısıtlansa da Aşkabat'ın anıtları rahatça gezilebilir.", wi_nights: "0°C'nin altına düşebilir", wi_best: "Aşkabat Mimarisi Odaklı Geziler",
+                log_badge: "Lojistik", log_title: "Türkmenistan İçi Ulaşım",
+                tr1_t: "Havalimanı Karşılama", tr1_d: "Uluslararası uçuşlar Aşkabat'ın şahin şeklindeki modern havalimanına (ASB) iner. Rehberimiz sizi doğrudan pasaport kontrolü çıkışında karşılar.",
+                tr2_t: "Çöle Hazır 4x4 Araçlar", tr2_d: "Karakum kumlarını aşarak Darvaza'ya güvenle ulaşmak için ekstra donanımlı, bakımlı ve güçlü 4x4 SUV araçlar kullanıyoruz.",
+                tr3_t: "Buhara Kara Sınır Geçişi", tr3_d: "Popüler çok ülkeli rotalarımızda Farap sınır kapısında tam zamanlı karşılamalarla Buhara'dan kesintisiz geçiş sağlıyoruz.",
+                faq_badge: "Yola Çıkmadan Önce", faq_title: "Gezgin İpuçları ve SSS",
+                fq1_q: "Türkmenistan'da internet ve Wi-Fi yaygın mı?", fq1_a: "İnternet erişimi sıkı şekilde düzenlenmektedir ve sosyal medya uygulamaları (Instagram, Facebook, WhatsApp) engellidir. Wi-Fi yalnızca Aşkabat'taki üst düzey otellerde sınırlı hızla çalışır — gerçek bir dijital detoks fırsatı!",
+                fq2_q: "Aşkabat'ta fotoğraf çekme kuralları sıkı mı?", fq2_a: "Evet, kurallar titizlikle uygulanır. Cumhurbaşkanlığı sarayları, resmi binalar, askeri alanlar, kontrol noktaları ve polislerin fotoğrafını çekmek yasaktır. Rehberiniz nerelerde rahatça çekim yapabileceğinizi her zaman hatırlatacaktır.",
+                fq3_q: "Hangi finansal kurallara dikkat etmeliyim?", fq3_a: "Türkmenistan tamamen nakit ekonomisine dayanır. 2013 sonrası basılmış, katlanmamış, lekesiz ve yırtıksız yeni ABD Doları banknotları getirin; yerel bankalar eski veya yıpranmış paraları kabul etmez. Döviz bozdurma işlemlerinde rehberiniz güvenle yardımcı olur.",
+                cta_title: "Orta Asya'nın En Özel Sırrını Keşfedin", cta_desc: "Hemen iletişime geçin, resmi Davet Mektubu (LOI) başvuru sürecinizi hemen başlatalım.", cta_btn1: "Orta Asya Turlarını Keşfet", cta_btn2: "Bize Ulaşın"
+            }
+        };
+    </script>
+    <script src="lang.js"></script>
 
     <script>
         lucide.createIcons();
@@ -560,29 +899,39 @@
             once: true,
         });
 
-        // Accordion logic
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Логика аккордеонов
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.accordion-item');
                 const wasActive = item.classList.contains('active');
-                
                 const group = item.parentElement;
                 group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
+                if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Tabs logic
+        // Логика табов (Сезоны)
         document.querySelectorAll('.season-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const season = tab.dataset.season;
-
                 document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
                 document.querySelectorAll('.season-content').forEach(c => {
                     c.classList.toggle('active', c.dataset.season === season);
                 });
