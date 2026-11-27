@@ -1,4 +1,4 @@
-// lang.js — Языковой модуль (EN, RU, FR, DE, TR) + Тревел-консьерж + Отправка заявок на info@tgstraveluz.com
+// lang.js — Языковой модуль (EN, RU, FR, DE, TR) + Тревел-консьерж + Отправка заявок + Favicon
 
 window.TGS_COMMON_TRANSLATIONS = {
     en: {
@@ -276,6 +276,17 @@ window.TGS_COMMON_TRANSLATIONS = {
 (function () {
     const SUPPORTED = ["en", "ru", "fr", "de", "tr"];
     const TARGET_EMAIL = "info@tgstraveluz.com";
+
+    // ── FAVICON (ЛОГОТИП ВО ВКЛАДКЕ БРАУЗЕРА) ──
+    function mountFavicon() {
+        if (document.querySelector('link[rel*="icon"]')) return;
+        const link = document.createElement("link");
+        link.rel = "icon";
+        link.type = "image/png";
+        link.href = "tgslogo.png";
+        document.head.appendChild(link);
+    }
+    mountFavicon();
 
     function getSavedLang() {
         const urlParam = new URLSearchParams(window.location.search).get("lang");
