@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majestic Minarets Tour (10 Days) | TGS Travel</title>
+    <link rel="icon" type="image/png" href="tgslogo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        input, textarea { outline: none; }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Мобильное меню */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Карта маршрута */
+        .leaflet-tile-pane { filter: saturate(0.25) brightness(1.08) contrast(0.9) sepia(0.12); }
+        .route-tooltip {
+            background: #16697A !important;
+            color: #EDE7E3 !important;
+            border: none !important;
+            border-radius: 6px !important;
+            padding: 6px 10px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+        }
+        .leaflet-tooltip-top.route-tooltip::before {
+            border-top-color: #16697A !important;
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
+            </div>
+
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-gold font-bold text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative pt-40 pb-24 flex items-center justify-center overflow-hidden bg-teal-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1728565721620-fefb198160be?w=1600&auto=format&fit=crop&q=80" alt="Majestic Minarets of Uzbekistan" class="w-full h-full object-cover opacity-35">
+            <div class="absolute inset-0 bg-teal-900/60"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-up">
+                <a href="index.html" class="hover:text-cream transition" data-i18n="nav_home">Home</a> > <span data-i18n="tour_short">Majestic Minarets Tour</span>
+            </div>
+            <h1 class="font-serif text-4xl md:text-6xl text-cream font-bold leading-tight mb-4" data-aos="fade-up" data-aos-delay="100" data-i18n="tour_name">Uzbekistan Majestic Minarets Tour</h1>
+            <p class="text-cream/85 text-sm md:text-lg font-light" data-aos="fade-up" data-aos-delay="200" data-i18n="tour_meta">10 Days · 5 Legendary Cities · Starts in Tashkent, Ends in Samarkand</p>
+        </div>
+    </section>
+
+    <!-- MAIN IMAGE -->
+    <section class="max-w-5xl mx-auto px-6 -mt-12 relative z-10" data-aos="fade-up">
+        <div class="overflow-hidden h-80 md:h-[28rem] shadow-xl rounded-lg">
+            <img src="https://ychef.files.bbci.co.uk/1280x720/p0h8l984.jpg" alt="Registan Square and Minarets, Uzbekistan" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- WHERE / WHO / HIGHLIGHTS -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w1_t">Where?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w1_p">Step into the heart of Central Asia on an unforgettable 10-day journey through Uzbekistan's five most iconic Silk Road cities — from bustling Tashkent across the Kyzyl-Kum Desert to Khiva, Bukhara, Samarkand, and Shakhrisabz.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l1">Old & Modern Tashkent + Oriental Bazaar</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l2">Khiva's Ichan-Kala & Bukhara's Kalyan Minaret</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l3">Samarkand's Registan & Timur's Birthplace Shakhrisabz</span></li>
+                </ul>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w2_t">Who?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w2_p">An easy-paced, fully guided cultural tour ideal for travelers (ages 19–80), solo explorers, couples, and history or photography lovers.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l1">Easy physical level & comfortable pacing</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l2">Small groups (max 10 travelers)</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l3">Fully guided with private A/C transport & HST train</span></li>
+                </ul>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w3_t">Highlights</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w3_p">Follow the skyline of minarets, turquoise domes, and living craft traditions from ancient Shash to the Green City of Shakhrisabz.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l1">Crossing the Kyzyl-Kum Desert from Khiva to Bukhara</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l2">Konigil ancient silk paper mill & El Merosi theatre show</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l3">Sitorai Mokhi-Khosa Summer Palace & Naqshbandi Complex</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOIN US + INFO CARDS -->
+    <section class="py-20 px-6 max-w-7xl mx-auto bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="join_badge">Complete Uzbekistan Classic</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6 leading-tight" data-i18n="join_title">Follow the Skyline of Ancient Minarets</h2>
+                <p class="text-teal-900/70 font-light mb-6 leading-relaxed" data-i18n="join_p1">This in-depth 10-day itinerary connects every jewel of Uzbekistan without rushing. Fly from Tashkent to Khiva's walled Ichan-Kala, cross the golden sands of the Kyzyl-Kum Desert to Bukhara's trading domes, and ride the high-speed train to Samarkand.</p>
+                <p class="text-teal-900/70 font-light mb-10 leading-relaxed" data-i18n="join_p2">Beyond the grand monuments, experience Samarkand's traditional mulberry-paper craft in Konigil village, the historical costume spectacle at El Merosi Theatre, and a scenic excursion to Amir Timur's birthplace in Shakhrisabz.</p>
+
+                <div class="flex items-center">
+                    <div class="bg-cream rounded-full p-4 mr-4 flex-shrink-0">
+                        <i data-lucide="mail" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-teal-900" data-i18n="email_us">Email Us</div>
+                        <a href="mailto:info@tgstraveluz.com" class="text-teal-500 font-medium hover:text-gold transition">info@tgstraveluz.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="bg-cream p-8">
+                    <i data-lucide="hourglass" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic1_t"><span class="text-gold">10 Days</span> Duration</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic1_d">9 nights across 5 iconic destinations at a relaxed, easy pace.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="circle-dollar-sign" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic2_t">from <span class="text-gold">$1,500</span> Per Person</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic2_d">Ask for exact seasonal pricing & custom private options.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="users" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic3_t">Max <span class="text-gold">10</span> Travelers</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic3_d">Fully guided departures on request for ages 19–80.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="train-front" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic4_t"><span class="text-gold">Seamless</span> Transit</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic4_d">Domestic flight to Urgench, high-speed train & private A/C vehicles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARY + ИНТЕРАКТИВНАЯ КАРТА МАРШРУТА -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-10" data-aos="fade-up">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-3" data-i18n="it_badge">Interactive 5-City Route</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-3" data-i18n="it_title">10-Day Itinerary</h2>
+            <p class="text-teal-900/60 text-sm font-light" data-i18n="it_hint">Click any day below to fly across the map and follow the Silk Road route.</p>
+        </div>
+
+        <div class="mb-10 rounded-2xl overflow-hidden border border-teal-900/15 shadow-lg relative z-0 h-[320px] md:h-[380px]">
+            <div id="tourRouteMap" style="width:100%;height:100%;background:#f8f9fa;"></div>
+        </div>
+
+        <div class="space-y-0 border-t border-teal-900/10" id="itinerary-accordion">
+            <div class="accordion-item active border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d1_t">DAY 1: Arrival in Tashkent</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d1_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d2_t">DAY 2: Tashkent Introduction — Old & Modern City</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d2_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d3_t">DAY 3: Tashkent – Urgench – Khiva (Ichan-Kala)</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d3_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d4_t">DAY 4: Khiva – Kyzyl-Kum Desert – Bukhara</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d4_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d5_t">DAY 5: Bukhara — Ancient Minarets & Trading Domes</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d5_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d6_t">DAY 6: Bukhara Outskirts & High-Speed Train to Samarkand</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d6_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d7_t">DAY 7: Samarkand — Registan Square & Siyab Bazaar</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d7_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d8_t">DAY 8: Shah-i-Zinda, Konigil Paper Mill & El Merosi Show</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d8_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d9_t">DAY 9: Shakhrisabz Excursion — Birthplace of Amir Timur</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d9_b"></div></div>
+            </div>
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d10_t">DAY 10: Departure from Samarkand</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d10_b"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INCLUDED / EXCLUDED -->
+    <section class="py-16 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-teal-900 text-center mb-12" data-aos="fade-up" data-i18n="inc_title">What's Included</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cream p-8 rounded-xl border-t-4 border-teal-900" data-aos="fade-right">
+                    <h3 class="font-serif text-2xl font-bold text-teal-900 mb-5" data-i18n="inc_yes">Included</h3>
+                    <ul class="space-y-3 text-sm text-teal-900/80">
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_1">9 nights accommodation in centrally located hotels with daily breakfast</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_2">Licensed local expert guide throughout all excursions</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_3">Private A/C transport, airport transfers & high-speed train Bukhara–Samarkand</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_4">Domestic flight Tashkent–Urgench & El Merosi evening show tickets</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_5">Free audio guide & 24/7 local TGS Travel support</span></li>
+                    </ul>
+                </div>
+                <div class="bg-cream p-8 rounded-xl border-t-4 border-gold" data-aos="fade-left">
+                    <h3 class="font-serif text-2xl font-bold text-teal-900 mb-5" data-i18n="inc_no">Not Included</h3>
+                    <ul class="space-y-3 text-sm text-teal-900/80">
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_1">International flights (arrival Tashkent TAS / departure Samarkand SKD)</span></li>
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_2">Lunches and dinners (except where specified in custom packages)</span></li>
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_3">Personal travel & medical insurance and personal expenses</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL HIGHLIGHTS & FAQ -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div data-aos="fade-right" class="flex flex-col gap-6">
+                <div class="overflow-hidden h-64 image-zoom rounded-lg shadow-sm">
+                    <img src="https://media.cntravellerme.com/photos/648c30bcd49d9911e8a60bdb/master/w_1600%2Cc_limit/Uzbekistan_Jeremy%2520Woodhouse-GettyImages-1338083812.jpg" alt="Poi Kalyan Minaret Bukhara" class="w-full h-full object-cover">
+                </div>
+                <p class="text-teal-900/75 font-light leading-relaxed text-sm" data-i18n="desc_1">From the sunlit mud-brick walls of Khiva's Ichan-Kala to the towering Kalyan Minaret and vaulted trading domes of Bukhara, every horizon tells a story of Silk Road caravans.</p>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="100" class="flex flex-col gap-6">
+                <div class="overflow-hidden h-64 image-zoom rounded-lg shadow-sm">
+                    <img src="https://images.squarespace-cdn.com/content/v1/63bd68c0216f6912b6e9a038/d5370d56-b558-4548-bfa1-087b2400aa2c/photo_2024-11-23_18-36-07.jpg" alt="Samarkand Registan" class="w-full h-full object-cover">
+                </div>
+                <p class="text-teal-900/75 font-light leading-relaxed text-sm" data-i18n="desc_2">Conclude your journey in Samarkand and the green mountain-ringed valley of Shakhrisabz, experiencing handmade silk paper in Konigil and royal Timurid architecture up close.</p>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h3 class="font-serif text-3xl font-bold text-teal-900 text-center mb-8" data-i18n="faq_title">Frequently Asked Questions</h3>
+            <div class="border border-teal-900/10" id="faq-accordion">
+                <div class="accordion-item active border-b border-teal-900/10 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq1_q">Can I fly home directly from Samarkand or return to Tashkent?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq1_a">Samarkand International Airport (SKD) serves direct international flights. If your flight departs from Tashkent (TAS), we can easily add the 2-hour high-speed train transfer back to Tashkent.</div>
+                    </div>
+                </div>
+                <div class="accordion-item border-b border-teal-900/10 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq2_q">How do we cross the Kyzyl-Kum Desert from Khiva to Bukhara?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq2_a">Depending on train schedules and your preference, the 7–8 hour desert crossing is arranged either by comfortable air-conditioned vehicle (with photo stops along the Amu Darya River) or by train.</div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq3_q">Is the tour pace suitable for senior travelers?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq3_a">Yes! The tour is rated easy (ages 19–80), with flat walking routes, comfortable breaks, and private vehicles always nearby.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="bg-gold py-10 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-cream mb-1" data-i18n="ag_t">Ready to Walk Among Majestic Minarets?</h3>
+                <p class="text-cream/90 text-sm font-light" data-i18n="ag_d">Ask for exact seasonal pricing, custom dates, or full-board meal upgrades.</p>
+            </div>
+            <a href="index.html#contact" class="inline-block bg-teal-900 text-cream px-8 py-4 font-medium tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition" data-i18n="footer_tour_minarets">Majestic Minarets Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ MAJESTIC MINARETS TOUR (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "Majestic Minarets Tour (10 Days) | TGS Travel",
+                tour_short: "Majestic Minarets Tour",
+                tour_name: "Uzbekistan Majestic Minarets Tour",
+                tour_meta: "10 Days · 5 Legendary Cities · Starts in Tashkent, Ends in Samarkand",
+                w1_t: "Where?", w1_p: "Step into the heart of Central Asia on an unforgettable 10-day journey through Uzbekistan's five most iconic Silk Road cities — from bustling Tashkent across the Kyzyl-Kum Desert to Khiva, Bukhara, Samarkand, and Shakhrisabz.",
+                w1_l1: "Old & Modern Tashkent + Oriental Bazaar", w1_l2: "Khiva's Ichan-Kala & Bukhara's Kalyan Minaret", w1_l3: "Samarkand's Registan & Timur's Birthplace Shakhrisabz",
+                w2_t: "Who?", w2_p: "An easy-paced, fully guided cultural tour ideal for travelers (ages 19–80), solo explorers, couples, and history or photography lovers.",
+                w2_l1: "Easy physical level & comfortable pacing", w2_l2: "Small groups (max 10 travelers)", w2_l3: "Fully guided with private A/C transport & HST train",
+                w3_t: "Highlights", w3_p: "Follow the skyline of minarets, turquoise domes, and living craft traditions from ancient Shash to the Green City of Shakhrisabz.",
+                w3_l1: "Crossing the Kyzyl-Kum Desert from Khiva to Bukhara", w3_l2: "Konigil ancient silk paper mill & El Merosi theatre show", w3_l3: "Sitorai Mokhi-Khosa Summer Palace & Naqshbandi Complex",
+                join_badge: "Complete Uzbekistan Classic", join_title: "Follow the Skyline of Ancient Minarets",
+                join_p1: "This in-depth 10-day itinerary connects every jewel of Uzbekistan without rushing. Fly from Tashkent to Khiva's walled Ichan-Kala, cross the golden sands of the Kyzyl-Kum Desert to Bukhara's trading domes, and ride the high-speed train to Samarkand.",
+                join_p2: "Beyond the grand monuments, experience Samarkand's traditional mulberry-paper craft in Konigil village, the historical costume spectacle at El Merosi Theatre, and a scenic excursion to Amir Timur's birthplace in Shakhrisabz.",
+                email_us: "Email Us",
+                ic1_t: "<span class=\"text-gold\">10 Days</span> Duration", ic1_d: "9 nights across 5 iconic destinations at a relaxed, easy pace.",
+                ic2_t: "from <span class=\"text-gold\">$1,500</span> Per Person", ic2_d: "Ask for exact seasonal pricing & custom private options.",
+                ic3_t: "Max <span class=\"text-gold\">10</span> Travelers", ic3_d: "Fully guided departures on request for ages 19–80.",
+                ic4_t: "<span class=\"text-gold\">Seamless</span> Transit", ic4_d: "Domestic flight to Urgench, high-speed train & private A/C vehicles.",
+                it_badge: "Interactive 5-City Route", it_title: "10-Day Itinerary", it_hint: "Click any day below to fly across the map and follow the Silk Road route.",
+                d1_t: "DAY 1: Arrival in Tashkent",
+                d1_b: "<p>• Arrival at Tashkent International Airport — the largest city in Central Asia.</p><p>• Greeting by our representative, private transfer to hotel & check-in.</p><p>• Overnight in Tashkent.</p>",
+                d2_t: "DAY 2: Tashkent Introduction — Old & Modern City",
+                d2_b: "<p>• Guided sightseeing through 2,500 years of history — from ancient Shash to Russian Empire, Soviet, and modern Tashkent.</p><p>• Lunch of traditional Uzbek cuisine, followed by vibrant Oriental Bazaar shopping.</p><p>• Evening local dinner and overnight in Tashkent.</p>",
+                d3_t: "DAY 3: Tashkent – Urgench – Khiva (Ichan-Kala)",
+                d3_b: "<p>• Early check-out and morning domestic flight from Tashkent to Urgench, then 40-minute drive to Khiva.</p><p>• Check-in, lunch, and afternoon walking tour of the UNESCO-listed open-air museum of Ichan-Kala.</p><p>• Overnight in Khiva.</p>",
+                d4_t: "DAY 4: Khiva – Kyzyl-Kum Desert – Bukhara",
+                d4_b: "<p>• Breakfast, check-out, and scenic 7–8 hour journey from Khiva to Bukhara by train or A/C car across the Kyzyl-Kum Desert.</p><p>• Arrival in Bukhara, hotel check-in, and overnight.</p>",
+                d5_t: "DAY 5: Bukhara — Ancient Minarets & Trading Domes",
+                d5_b: "<p>• Full-day walking tour of Old Bukhara: Lyab-i Hauz Complex, Nadir Divan-Begi Madrasah, Kalyan Minaret, Trading Domes (Taki Zargaron & Taki Telpak Furushon), Ark Fortress, Bolo-Khauz Mosque, and Ismail Samani Mausoleum.</p><p>• Overnight in Bukhara.</p>",
+                d6_t: "DAY 6: Bukhara Outskirts & High-Speed Train to Samarkand",
+                d6_b: "<p>• Visit the Memorial Complex of Khoja Bakhouddin Naqshbandi and the last Emir's summer residence Sitorai Mokhi-Khosa.</p><p>• After lunch, transfer to the railway station for the 1.5-hour high-speed train (HST) to Samarkand.</p><p>• Arrival and overnight in Samarkand.</p>",
+                d7_t: "DAY 7: Samarkand — Registan Square & Siyab Bazaar",
+                d7_b: "<p>• Guided city tour of Samarkand's greatest icons: Gur-e-Amir Mausoleum, majestic Registan Square, Bibi-Khanym Mosque, and colorful Siyab Oriental Bazaar.</p><p>• Overnight in Samarkand.</p>",
+                d8_t: "DAY 8: Shah-i-Zinda, Konigil Paper Mill & El Merosi Show",
+                d8_b: "<p>• Visit the Mausoleum of St. Daniel and the dazzling tiled avenue of Shah-i-Zinda.</p><p>• After lunch, excursion to Konigil village to see traditional ancient mulberry paper making.</p><p>• Evening historical costume theatre performance at El Merosi. Overnight in Samarkand.</p>",
+                d9_t: "DAY 9: Shakhrisabz Excursion — Birthplace of Amir Timur",
+                d9_b: "<p>• Scenic 140 km drive south to Shakhrisabz (the \"Green City\"), famed birthplace of 14th-century conqueror Amir Timur.</p><p>• Guided historical excursion, return drive to Samarkand (140 km), dinner at a local restaurant, and overnight.</p>",
+                d10_t: "DAY 10: Departure from Samarkand",
+                d10_b: "<p>• Breakfast at the hotel, check-out, and private transfer to Samarkand International Airport for your flight home.</p>",
+                inc_title: "What's Included", inc_yes: "Included", inc_no: "Not Included",
+                inc_1: "9 nights accommodation in centrally located hotels with daily breakfast",
+                inc_2: "Licensed local expert guide throughout all excursions",
+                inc_3: "Private A/C transport, airport transfers & high-speed train Bukhara–Samarkand",
+                inc_4: "Domestic flight Tashkent–Urgench & El Merosi evening show tickets",
+                inc_5: "Free audio guide & 24/7 local TGS Travel support",
+                exc_1: "International flights (arrival Tashkent TAS / departure Samarkand SKD)",
+                exc_2: "Lunches and dinners (available as an upgrade)",
+                exc_3: "Personal travel & medical insurance and personal expenses",
+                desc_1: "From the sunlit mud-brick walls of Khiva's Ichan-Kala to the towering Kalyan Minaret and vaulted trading domes of Bukhara, every horizon tells a story of Silk Road caravans.",
+                desc_2: "Conclude your journey in Samarkand and the green mountain-ringed valley of Shakhrisabz, experiencing handmade silk paper in Konigil and royal Timurid architecture up close.",
+                faq_title: "Frequently Asked Questions",
+                fq1_q: "Can I fly home directly from Samarkand or return to Tashkent?", fq1_a: "Samarkand International Airport (SKD) serves direct international flights. If your flight departs from Tashkent (TAS), we can easily add the 2-hour high-speed train transfer back to Tashkent.",
+                fq2_q: "How do we cross the Kyzyl-Kum Desert from Khiva to Bukhara?", fq2_a: "Depending on train schedules and your preference, the 7–8 hour desert crossing is arranged either by comfortable air-conditioned vehicle (with photo stops along the Amu Darya River) or by train.",
+                fq3_q: "Is the tour pace suitable for senior travelers?", fq3_a: "Yes! The tour is rated easy (ages 19–80), with flat walking routes, comfortable breaks, and private vehicles always nearby.",
+                ag_t: "Ready to Walk Among Majestic Minarets?", ag_d: "Ask for exact seasonal pricing, custom dates, or full-board meal upgrades."
+            },
+            ru: {
+                page_title: "Тур «Величественные минареты» (10 дней) | TGS Travel",
+                tour_short: "Величественные минареты",
+                tour_name: "Узбекистан: Величественные минареты",
+                tour_meta: "10 дней · 5 легендарных городов · Старт в Ташкенте, финиш в Самарканде",
+                w1_t: "Куда?", w1_p: "Незабываемое 10-дневное путешествие через пять главных городов Великого Шёлкового пути — от солнечного Ташкента через пустыню Кызылкум к Хиве, Бухаре, Самарканду и Шахрисабзу.",
+                w1_l1: "Старый и современный Ташкент + восточный базар", w1_l2: "Ичан-Кала в Хиве и минарет Калян в Бухаре", w1_l3: "Регистан в Самарканде и родина Тамерлана — Шахрисабз",
+                w2_t: "Для кого?", w2_p: "Комфортный культурный тур лёгкого уровня с полным сопровождением — идеален для путешественников 19–80 лет, пар, соло-туристов и любителей фотографии.",
+                w2_l1: "Лёгкий уровень нагрузки и спокойный ритм", w2_l2: "Малые группы (до 10 человек)", w2_l3: "Личный транспорт, гиды и скоростной поезд «Афросиаб»",
+                w3_t: "Главное в туре", w3_p: "Проследуйте за силуэтами древних минаретов, бирюзовых куполов и живых ремёсел от древнего Шаша до «зелёного города» Шахрисабза.",
+                w3_l1: "Переезд через пустыню Кызылкум из Хивы в Бухару", w3_l2: "Старинная бумажная фабрика в Конигиле и шоу театра «Эль Мероси»", w3_l3: "Летний дворец Ситораи Мохи-Хоса и комплекс Накшбанди",
+                join_badge: "Полная классика Узбекистана", join_title: "Вслед за силуэтами древних минаретов",
+                join_p1: "Продуманный 10-дневный маршрут без спешки соединяет все жемчужины Узбекистана: перелёт в Хиву, путешествие через пески Кызылкума к торговым куполам Бухары и скоростной поезд в Самарканд.",
+                join_p2: "Помимо великих памятников вы увидите ручное производство шёлковой бумаги в селении Конигиль, историческое костюмированное шоу «Эль Мероси» и отправитесь на родину Амира Тимура в Шахрисабз.",
+                email_us: "Напишите нам",
+                ic1_t: "<span class=\"text-gold\">10 дней</span> длительность", ic1_d: "9 ночей в 5 знаковых городах в комфортном, неспешном ритме.",
+                ic2_t: "от <span class=\"text-gold\">$1,500</span> за человека", ic2_d: "Уточните точную сезонную цену и индивидуальные опции.",
+                ic3_t: "До <span class=\"text-gold\">10</span> человек", ic3_d: "Гарантированное сопровождение по запросу для гостей 19–80 лет.",
+                ic4_t: "<span class=\"text-gold\">Комфортный</span> транзит", ic4_d: "Перелёт в Ургенч, скоростной поезд и частный транспорт с кондиционером.",
+                it_badge: "Интерактивный маршрут по 5 городам", it_title: "Программа на 10 дней", it_hint: "Нажимайте на любой день, чтобы следить за маршрутом на карте.",
+                d1_t: "ДЕНЬ 1: Прибытие в Ташкент",
+                d1_b: "<p>• Прилёт в Международный аэропорт Ташкента — крупнейшего города Центральной Азии.</p><p>• Встреча с представителем, трансфер в отель и заселение.</p><p>• Ночь в Ташкенте.</p>",
+                d2_t: "ДЕНЬ 2: Знакомство с Ташкентом — Старый и Новый город",
+                d2_b: "<p>• Обзорная экскурсия сквозь 2500 лет истории — от древнего Шаша до современного мегаполиса.</p><p>• Обед с национальной узбекской кухней и прогулка по восточному базару с возможностью шопинга.</p><p>• Вечерний ужин и ночь в Ташкенте.</p>",
+                d3_t: "ДЕНЬ 3: Ташкент – Ургенч – Хива (Ичан-Кала)",
+                d3_b: "<p>• Ранний выезд в аэропорт, перелёт в Ургенч и трансфер в Хиву (40 мин).</p><p>• Заселение, обед и пешеходная экскурсия по музею под открытым небом Ичан-Кала.</p><p>• Ночь в Хиве.</p>",
+                d4_t: "ДЕНЬ 4: Хива – пустыня Кызылкум – Бухара",
+                d4_b: "<p>• Завтрак, выселение и живописный переезд (7–8 часов) из Хивы в Бухару поездом или автомобилем через пустыню Кызылкум.</p><p>• Прибытие в Бухару, заселение и отдых.</p>",
+                d5_t: "ДЕНЬ 5: Бухара — Минарет Калян и торговые купола",
+                d5_b: "<p>• Пешеходная экскурсия по древней Бухаре: Ляби-Хауз, медресе Надир Диван-Беги, минарет Калян, торговые купола Токи Заргарон и Токи Тельпак Фурушон, крепость Арк, мечеть Боло-Хауз и мавзолей Исмаила Самани.</p><p>• Ночь в Бухаре.</p>",
+                d6_t: "ДЕНЬ 6: Загородная Бухара и скоростной поезд в Самарканд",
+                d6_b: "<p>• Мемориальный комплекс Ходжи Бахоуддина Накшбанди и летний дворец последнего эмира Ситораи Мохи-Хоса.</p><p>• После обеда — трансфер на вокзал и переезд на скоростном поезде в Самарканд (1,5 часа).</p><p>• Прибытие и ночь в Самарканде.</p>",
+                d7_t: "ДЕНЬ 7: Самарканд — Площадь Регистан и базар Сиаб",
+                d7_b: "<p>• Экскурсия по главным шедеврам Самарканда: мавзолей Гур-Эмир, площадь Регистан, мечеть Биби-Ханум и колоритный восточный базар Сиаб.</p><p>• Ночь в Самарканде.</p>",
+                d8_t: "ДЕНЬ 8: Шахи-Зинда, бумажная фабрика Конигиль и шоу «Эль Мероси»",
+                d8_b: "<p>• Мавзолей Святого Даниила и сияющая аллея мавзолеев Шахи-Зинда.</p><p>• После обеда — поездка в деревню Конигиль, где до сих пор вручную делают древнюю самаркандскую бумагу.</p><p>• Вечером — красочное театрализованное шоу «Эль Мероси». Ночь в Самарканде.</p>",
+                d9_t: "ДЕНЬ 9: Поездка в Шахрисабз — на родину Амира Тимура",
+                d9_b: "<p>• Живописный переезд 140 км на юг в Шахрисабз («Зелёный город») — родину великого полководца XIV века Амира Тимура.</p><p>• Экскурсия, возвращение в Самарканд (140 км), ужин в местном ресторане и ночь в отеле.</p>",
+                d10_t: "ДЕНЬ 10: Вылет из Самарканда",
+                d10_b: "<p>• Завтрак, выселение и частный трансфер в Международный аэропорт Самарканда к вашему рейсу.</p>",
+                inc_title: "Что включено", inc_yes: "Включено", inc_no: "Не включено",
+                inc_1: "9 ночей в отелях в центре городов с ежедневными завтраками",
+                inc_2: "Профессиональный лицензированный гид на всех экскурсиях",
+                inc_3: "Частный транспорт с кондиционером, трансферы и скоростной поезд Бухара–Самарканд",
+                inc_4: "Внутренний перелёт Ташкент–Ургенч и билеты на шоу «Эль Мероси»",
+                inc_5: "Бесплатный аудиогид и круглосуточная поддержка TGS Travel",
+                exc_1: "Международные авиабилеты (прилёт Ташкент TAS / вылет Самарканд SKD)",
+                exc_2: "Обеды и ужины (можно добавить по запросу)",
+                exc_3: "Личная медицинская страховка и личные расходы",
+                desc_1: "От залитых солнцем стен Ичан-Калы до возвышающегося минарета Калян и сводчатых торговых куполов Бухары — каждый горизонт хранит дыхание караванов.",
+                desc_2: "Завершите путешествие в Самарканде и зелёной долине Шахрисабза, увидев старинную самаркандскую бумагу в Конигиле и шедевры эпохи Тимуридов.",
+                faq_title: "Частые вопросы",
+                fq1_q: "Можно вылететь домой прямо из Самарканда или вернуться в Ташкент?", fq1_a: "Аэропорт Самарканда (SKD) принимает прямые международные рейсы. Если ваш вылет из Ташкента (TAS), мы легко добавим 2-часовой скоростной поезд обратно в столицу.",
+                fq2_q: "Как проходит переезд через пустыню Кызылкум из Хивы в Бухару?", fq2_a: "В зависимости от расписания и ваших предпочтений 7–8-часовой переезд организуется на комфортном авто с кондиционером (с фото-остановками у Амударьи) либо на поезде.",
+                fq3_q: "Подходит ли темп тура для путешественников старшего возраста?", fq3_a: "Да! Уровень активности лёгкий (19–80 лет): ровные прогулочные маршруты, комфортные паузы и транспорт всегда рядом.",
+                ag_t: "Готовы увидеть величественные минареты?", ag_d: "Запросите точную стоимость на ваши даты или добавление полного пансиона."
+            },
+            fr: {
+                page_title: "Circuit Minarets Majestueux (10 Jours) | TGS Travel",
+                tour_short: "Minarets Majestueux",
+                tour_name: "Ouzbékistan : Minarets Majestueux",
+                tour_meta: "10 Jours · 5 Cités Légendaires · Départ Tachkent, Fin Samarcande",
+                w1_t: "Où ?", w1_p: "Plongez au cœur de l'Asie centrale lors d'un voyage inoubliable de 10 jours à travers les cinq cités phares de la Route de la Soie : Tachkent, Khiva, Boukhara, Samarcande et Chakhrisabz.",
+                w1_l1: "Tachkent ancien & moderne + Bazar Oriental", w1_l2: "Itchan Kala à Khiva & Minaret Kalon à Boukhara", w1_l3: "Régistan de Samarcande & Chakhrisabz",
+                w2_t: "Pour qui ?", w2_p: "Circuit culturel au rythme facile et entièrement guidé, idéal pour les voyageurs de 19 à 80 ans, couples, solos et passionnés de photo.",
+                w2_l1: "Niveau physique facile et rythme détendu", w2_l2: "Petits groupes (max 10 voyageurs)", w2_l3: "Transport privé climatisé & train rapide inclus",
+                w3_t: "Points forts", w3_p: "Suivez la silhouette des minarets, coupoles turquoise et métiers d'art vivants jusqu'à la « Ville Verte » de Chakhrisabz.",
+                w3_l1: "Traversée du désert du Kyzylkoum de Khiva à Boukhara", w3_l2: "Moulin à papier de Konigil & spectacle El Merosi", w3_l3: "Palais d'été Sitorai Mokhi-Khosa & complexe Naqshbandi",
+                join_badge: "Grand Classique d'Ouzbékistan", join_title: "Suivez la Silhouette des Minarets Anciens",
+                join_p1: "Cet itinéraire complet de 10 jours relie sans précipitation tous les joyaux du pays : vol vers Khiva, traversée du désert vers Boukhara et train à grande vitesse jusqu'à Samarcande.",
+                join_p2: "Découvrez aussi la fabrication ancestrale du papier de mûrier à Konigil, le spectacle historique El Merosi et la ville natale de Tamerlan à Chakhrisabz.",
+                email_us: "Écrivez-nous",
+                ic1_t: "<span class=\"text-gold\">10 Jours</span> Durée", ic1_d: "9 nuits dans 5 villes mythiques à un rythme confortable.",
+                ic2_t: "dès <span class=\"text-gold\">1 500 $</span> par personne", ic2_d: "Demandez le tarif exact selon vos dates et options privées.",
+                ic3_t: "Max <span class=\"text-gold\">10</span> Voyageurs", ic3_d: "Départs accompagnés sur demande pour les 19–80 ans.",
+                ic4_t: "Transit <span class=\"text-gold\">Fluide</span>", ic4_d: "Vol intérieur Ourguentch, train rapide & véhicules climatisés.",
+                it_badge: "Carte interactive 5 villes", it_title: "Itinéraire sur 10 jours", it_hint: "Cliquez sur un jour pour suivre l'étape sur la carte.",
+                d1_t: "JOUR 1 : Arrivée à Tachkent", d1_b: "<p>• Accueil à l'aéroport international de Tachkent, transfert et installation à l'hôtel. Nuit à Tachkent.</p>",
+                d2_t: "JOUR 2 : Découverte de Tachkent — Vieille & Nouvelle Ville", d2_b: "<p>• Visite guidée à travers 2 500 ans d'histoire, de l'antique Chach au Tachkent moderne, déjeuner ouzbek et shopping au Bazar Oriental. Nuit à Tachkent.</p>",
+                d3_t: "JOUR 3 : Tachkent – Ourguentch – Khiva (Itchan Kala)", d3_b: "<p>• Vol matinal vers Ourguentch puis 40 min de route vers Khiva. Déjeuner et visite à pied du musée à ciel ouvert d'Itchan Kala. Nuit à Khiva.</p>",
+                d4_t: "JOUR 4 : Khiva – Désert du Kyzylkoum – Boukhara", d4_b: "<p>• Trajet panoramique de 7–8h en train ou voiture climatisée à travers le désert du Kyzylkoum jusqu'à Boukhara. Nuit à Boukhara.</p>",
+                d5_t: "JOUR 5 : Boukhara — Minarets & Coupoles Marchandes", d5_b: "<p>• Visite à pied : Liab-i Haouz, médersa Nadir Divan-Begi, minaret Kalon, coupoles Taki Zargaron & Taki Telpak Furushon, forteresse Ark, mosquée Bolo-Haouz et mausolée d'Ismaïl Samani. Nuit à Boukhara.</p>",
+                d6_t: "JOUR 6 : Environs de Boukhara & Train rapide vers Samarcande", d6_b: "<p>• Complexe mémorial Bakhouddin Naqshbandi et palais d'été Sitorai Mokhi-Khosa. L'après-midi, train rapide (1h30) vers Samarcande. Nuit à Samarcande.</p>",
+                d7_t: "JOUR 7 : Samarcande — Place du Régistan & Bazar Siyab", d7_b: "<p>• Visite guidée : mausolée Gour-Emir, place du Régistan, mosquée Bibi-Khanym et bazar coloré de Siyab. Nuit à Samarcande.</p>",
+                d8_t: "JOUR 8 : Chah-i-Zinda, Papier de Konigil & Spectacle El Merosi", d8_b: "<p>• Mausolée de Saint-Daniel, nécropole Chah-i-Zinda, atelier artisanal de papier à Konigil et spectacle historique El Merosi le soir. Nuit à Samarcande.</p>",
+                d9_t: "JOUR 9 : Excursion à Chakhrisabz — Ville natale de Tamerlan", d9_b: "<p>• Excursion vers la « Ville Verte » de Chakhrisabz (140 km), visite historique, retour à Samarcande et dîner local. Nuit à Samarcande.</p>",
+                d10_t: "JOUR 10 : Départ de Samarcande", d10_b: "<p>• Petit-déjeuner et transfert privé à l'aéroport international de Samarcande pour votre vol retour.</p>",
+                inc_title: "Inclus & Non inclus", inc_yes: "Inclus", inc_no: "Non inclus",
+                inc_1: "9 nuits en hôtels centraux avec petits-déjeuners",
+                inc_2: "Guide local expert pour toutes les excursions",
+                inc_3: "Transport privé climatisé & train rapide Boukhara–Samarcande",
+                inc_4: "Vol intérieur Tachkent–Ourguentch & billets spectacle El Merosi",
+                inc_5: "Audioguide gratuit & assistance TGS Travel 24/7",
+                exc_1: "Vols internationaux (arrivée TAS / départ SKD)",
+                exc_2: "Déjeuners et dîners (option demi/pension complète disponible)",
+                exc_3: "Assurance voyage personnelle et dépenses personnelles",
+                desc_1: "Des remparts ocres d'Itchan Kala au majestueux minaret Kalon et aux coupoles marchandes de Boukhara, chaque panorama raconte la Route de la Soie.",
+                desc_2: "Terminez en beauté entre Samarcande, les artisans de Konigil et la vallée verdoyante de Chakhrisabz.",
+                faq_title: "Questions fréquentes",
+                fq1_q: "Puis-je repartir directement de Samarcande ou revenir à Tachkent ?", fq1_a: "L'aéroport de Samarcande (SKD) propose des vols internationaux ; si votre vol part de Tachkent (TAS), nous ajoutons simplement le train rapide de 2h.",
+                fq2_q: "Comment se déroule la traversée du désert du Kyzylkoum ?", fq2_a: "Selon les horaires et votre choix, le trajet de 7–8h se fait en véhicule climatisé (avec pauses photo) ou en train.",
+                fq3_q: "Le rythme convient-il aux voyageurs seniors ?", fq3_a: "Oui ! Le niveau est facile (19–80 ans), avec des visites à plat et un véhicule privé toujours disponible.",
+                ag_t: "Prêt à admirer les minarets majestueux ?", ag_d: "Demandez votre devis personnalisé selon vos dates et préférences."
+            },
+            de: {
+                page_title: "Majestätische Minarette Tour (10 Tage) | TGS Travel",
+                tour_short: "Majestätische Minarette",
+                tour_name: "Usbekistan: Majestätische Minarette",
+                tour_meta: "10 Tage · 5 Legendäre Städte · Start Taschkent, Ende Samarkand",
+                w1_t: "Wohin?", w1_p: "Erleben Sie auf dieser 10-tägigen Kulturreise alle fünf großen Seidenstraßen-Städte Usbekistans: Taschkent, Chiwa, Buchara, Samarkand und Schachrisabs.",
+                w1_l1: "Altes & modernes Taschkent + Orientalischer Basar", w1_l2: "Itschan-Kala in Chiwa & Kalon-Minarett in Buchara", w1_l3: "Registan in Samarkand & Timurs Geburtsstadt Schachrisabs",
+                w2_t: "Für wen?", w2_p: "Eine entspannte, komplett geführte Kulturreise (einfaches Niveau) – ideal für Gäste von 19–80 Jahren, Paare, Alleinreisende und Fotofreunde.",
+                w2_l1: "Einfaches Niveau & angenehmes Reisetempo", w2_l2: "Kleine Gruppen (max. 10 Personen)", w2_l3: "Privater klimatisierter Transport & Schnellzug inklusive",
+                w3_t: "Highlights", w3_p: "Folgen Sie der Skyline antiker Minarette, türkisfarbener Kuppeln und lebendiger Handwerkskunst bis in die „Grüne Stadt“ Schachrisabs.",
+                w3_l1: "Durchquerung der Kysylkum-Wüste von Chiwa nach Buchara", w3_l2: "Papiermühle Konigil & historische Show im El-Merosi-Theater", w3_l3: "Sommerpalast Sitorai Mochi-Chosa & Naqschbandi-Komplex",
+                join_badge: "Usbekistan komplett", join_title: "Folgen Sie der Skyline antiker Minarette",
+                join_p1: "Diese 10-tägige Route verbindet ohne Hektik alle Höhepunkte Usbekistans: Flug nach Chiwa, Fahrt durch die Kysylkum-Wüste nach Buchara und Schnellzug nach Samarkand.",
+                join_p2: "Erleben Sie zudem traditionelle Maulbeerpapier-Herstellung im Dorf Konigil, die historische Kostümshow im El-Merosi-Theater und einen Ausflug nach Schachrisabs.",
+                email_us: "Schreiben Sie uns",
+                ic1_t: "<span class=\"text-gold\">10 Tage</span> Dauer", ic1_d: "9 Nächte in 5 historischen Städten in entspanntem Tempo.",
+                ic2_t: "ab <span class=\"text-gold\">1.500 $</span> pro Person", ic2_d: "Fragen Sie nach saisonalen Preisen & Privatreise-Optionen.",
+                ic3_t: "Max. <span class=\"text-gold\">10</span> Gäste", ic3_d: "Komplett geführt auf Anfrage für Altersgruppen 19–80 Jahre.",
+                ic4_t: "<span class=\"text-gold\">Bequemer</span> Transit", ic4_d: "Inlandsflug Urgentsch, Schnellzug & private A/C-Fahrzeuge.",
+                it_badge: "Interaktive 5-Städte-Route", it_title: "10-Tage-Reiseverlauf", it_hint: "Klicken Sie auf einen Tag, um die Station auf der Karte anzuzeigen.",
+                d1_t: "TAG 1: Ankunft in Taschkent", d1_b: "<p>– Empfang am internationalen Flughafen Taschkent, privater Hoteltransfer & Check-in. Übernachtung in Taschkent.</p>",
+                d2_t: "TAG 2: Taschkent – Altstadt & Moderne", d2_b: "<p>– Stadtrundfahrt durch 2.500 Jahre Geschichte (vom antiken Schasch bis heute), Mittagessen und Shopping auf dem orientalischen Basar. Übernachtung in Taschkent.</p>",
+                d3_t: "TAG 3: Taschkent – Urgentsch – Chiwa (Itschan-Kala)", d3_b: "<p>– Früher Inlandsflug nach Urgentsch, 40 Min. Transfer nach Chiwa, Mittagessen und Rundgang durch das Freilichtmuseum Itschan-Kala. Übernachtung in Chiwa.</p>",
+                d4_t: "TAG 4: Chiwa – Wüste Kysylkum – Buchara", d4_b: "<p>– 7–8-stündige Panoramafahrt per Zug oder klimatisiertem Fahrzeug durch die Kysylkum-Wüste nach Buchara. Übernachtung in Buchara.</p>",
+                d5_t: "TAG 5: Buchara – Kalon-Minarett & Handelskuppeln", d5_b: "<p>– Stadtrundgang: Ljab-i Hauz, Nadir-Diwan-Begi-Medrese, Kalon-Minarett, Handelskuppeln Taki Zargaron & Taki Telpak Furuschon, Festung Ark, Bolo-Chaus-Moschee & Ismail-Samani-Mausoleum.</p>",
+                d6_t: "TAG 6: Bucharas Umgebung & Schnellzug nach Samarkand", d6_b: "<p>– Gedenkstätte Bahauddin Naqschbandi & Sommerpalast Sitorai Mochi-Chosa. Nachmittags 1,5 Std. Schnellzug nach Samarkand. Übernachtung in Samarkand.</p>",
+                d7_t: "TAG 7: Samarkand – Registan-Platz & Siyab-Basar", d7_b: "<p>– Höhepunkte Samarkands: Gur-Emir-Mausoleum, Registan-Platz, Bibi-Chanim-Moschee und lebendiger Siyab-Basar. Übernachtung in Samarkand.</p>",
+                d8_t: "TAG 8: Schah-i-Sinda, Papiermühle Konigil & El-Merosi-Show", d8_b: "<p>– Mausoleum des Hl. Daniel, Schah-i-Sinda-Komplex, traditionelle Papierherstellung in Konigil und abends die historische Show im El-Merosi-Theater.</p>",
+                d9_t: "TAG 9: Ausflug nach Schachrisabs – Geburtsstadt Tamerlans", d9_b: "<p>– 140 km Fahrt in die „Grüne Stadt“ Schachrisabs, Besichtigung der Monumente, Rückfahrt nach Samarkand und Abendessen im lokalen Restaurant.</p>",
+                d10_t: "TAG 10: Abreise ab Samarkand", d10_b: "<p>– Frühstück, Check-out und privater Transfer zum Flughafen Samarkand für Ihren Rückflug.</p>",
+                inc_title: "Leistungen", inc_yes: "Inklusive", inc_no: "Nicht inklusive",
+                inc_1: "9 Übernachtungen in zentralen Hotels inkl. Frühstück",
+                inc_2: "Lizenzierte lokale Reiseleiter auf allen Ausflügen",
+                inc_3: "Private A/C-Transfers & Schnellzug Buchara–Samarkand",
+                inc_4: "Inlandsflug Taschkent–Urgentsch & Tickets El-Merosi-Show",
+                inc_5: "Kostenloser Audioguide & 24/7-Betreuung durch TGS Travel",
+                exc_1: "Internationale Flüge (Ankunft TAS / Abflug SKD)",
+                exc_2: "Mittag- und Abendessen (auf Wunsch zubuchbar)",
+                exc_3: "Persönliche Reiseversicherung & persönliche Ausgaben",
+                desc_1: "Von den Lehmmauern Chiwas bis zum Kalon-Minarett und den Kuppelbasaren Bucharas erzählt jeder Horizont von der Seidenstraße.",
+                desc_2: "Genießen Sie zum Abschluss Samarkand, handgeschöpftes Seidenpapier in Konigil und das grüne Tal von Schachrisabs.",
+                faq_title: "Häufige Fragen",
+                fq1_q: "Kann ich direkt ab Samarkand heimfliegen oder nach Taschkent zurückkehren?", fq1_a: "Der Flughafen Samarkand (SKD) bietet internationale Direktflüge. Bei Rückflug ab Taschkent (TAS) buchen wir gerne den 2-stündigen Schnellzug zurück.",
+                fq2_q: "Wie verläuft die Fahrt durch die Kysylkum-Wüste?", fq2_a: "Je nach Zugfahrplan und Wunsch erfolgt die 7–8-stündige Fahrt bequem im klimatisierten Privatfahrzeug (mit Fotostopps) oder im Zug.",
+                fq3_q: "Ist das Tempo für ältere Reisende geeignet?", fq3_a: "Ja! Die Tour ist als einfach eingestuft (19–80 Jahre) mit ebenen Wegen, Pausen und privatem Fahrzeug in der Nähe.",
+                ag_t: "Bereit für die Majestätischen Minarette?", ag_d: "Fragen Sie nach genauen Saisonpreisen, Wunschdaten oder Verpflegungspaketen."
+            },
+            tr: {
+                page_title: "Görkemli Minareler Turu (10 Gün) | TGS Travel",
+                tour_short: "Görkemli Minareler Turu",
+                tour_name: "Özbekistan Görkemli Minareler Turu",
+                tour_meta: "10 Gün · 5 Efsanevi Şehir · Taşkent Başlangıç, Semerkant Bitiş",
+                w1_t: "Nereye?", w1_p: "Taşkent'ten Kızılkum Çölü'nü aşarak Hive, Buhara, Semerkant ve Şehrisebz'e uzanan 10 günlük unutulmaz bir İpek Yolu kültür yolculuğuna çıkın.",
+                w1_l1: "Eski & Modern Taşkent + Doğu Pazarı", w1_l2: "Hive İçan Kale ve Buhara Kalyan Minaresi", w1_l3: "Semerkant Registan ve Timur'un doğduğu Şehrisebz",
+                w2_t: "Kimler İçin?", w2_p: "Kolay fiziksel seviyesi ve tam rehberli yapısıyla 19–80 yaş arası tüm gezginler, çiftler, bireysel yolcular ve tarih tutkunları için idealdir.",
+                w2_l1: "Kolay tempo ve konforlu gezi akışı", w2_l2: "Küçük gruplar (en fazla 10 kişi)", w2_l3: "Klimalı özel ulaşım ve yüksek hızlı tren dahil",
+                w3_t: "Öne Çıkanlar", w3_p: "Kadim Şaş'tan «Yeşil Şehir» Şehrisebz'e uzanan minareler, turkuaz kubbeler ve yaşayan el sanatları rotası.",
+                w3_l1: "Hive'den Buhara'ya Kızılkum Çölü geçişi", w3_l2: "Konigil antik ipek kağıt atölyesi ve El Merosi tiyatro gösterisi", w3_l3: "Sitorai Mohi-Hosa Yazlık Sarayı ve Nakşibendi Külliyesi",
+                join_badge: "Eksiksiz Özbekistan Klasiği", join_title: "Kadim Minarelerin Silüetini Takip Edin",
+                join_p1: "Bu 10 günlük kapsamlı rota acele etmeden Özbekistan'ın her mücevherini birleştirir: Taşkent'ten Hive'ye uçuş, Kızılkum Çölü üzerinden Buhara'ya geçiş ve Semerkant'a hızlı tren yolculuğu.",
+                join_p2: "Görkemli anıtların yanı sıra Konigil köyünde geleneksel kağıt yapımını, El Merosi Tiyatrosu'nun tarihi kostüm gösterisini ve Emir Timur'un doğduğu Şehrisebz'i keşfedin.",
+                email_us: "Bize E-posta Gönderin",
+                ic1_t: "<span class=\"text-gold\">10 Gün</span> Süre", ic1_d: "5 ikonik şehirde 9 gece, rahat ve keyifli tempo.",
+                ic2_t: "Kişi başı <span class=\"text-gold\">$1.500</span>'dan", ic2_d: "Güncel sezon fiyatları ve özel tur seçenekleri için bize yazın.",
+                ic3_t: "En fazla <span class=\"text-gold\">10</span> Gezgin", ic3_d: "19–80 yaş aralığı için talebe göre tam rehberli turlar.",
+                ic4_t: "<span class=\"text-gold\">Konforlu</span> Ulaşım", ic4_d: "Ürgenç iç hat uçuşu, hızlı tren ve klimalı özel araçlar.",
+                it_badge: "5 Şehirli İnteraktif Rota", it_title: "10 Günlük Tur Programı", it_hint: "Haritada rotayı takip etmek için aşağıdaki herhangi bir güne tıklayın.",
+                d1_t: "1. GÜN: Taşkent'e Varış", d1_b: "<p>• Orta Asya'nın en büyük şehri Taşkent Havalimanı'nda karşılama, otele transfer ve giriş. Taşkent'te konaklama.</p>",
+                d2_t: "2. GÜN: Taşkent Keşfi — Eski ve Modern Şehir", d2_b: "<p>• 2.500 yıllık tarihiyle eski ve modern Taşkent şehir turu, Özbek mutfağı öğle yemeği ve Doğu Pazarı'nda alışveriş. Taşkent'te konaklama.</p>",
+                d3_t: "3. GÜN: Taşkent – Ürgenç – Hive (İçan Kale)", d3_b: "<p>• Erken saatte Ürgenç'e uçuş ve Hive'ye 40 dakikalık transfer. Öğle yemeği sonrası açık hava müzesi İçan Kale yürüyüş turu. Hive'de konaklama.</p>",
+                d4_t: "4. GÜN: Hive – Kızılkum Çölü – Buhara", d4_b: "<p>• Kızılkum Çölü üzerinden tren veya klimalı araçla 7–8 saatlik manzaralı Buhara yolculuğu. Otele yerleşme ve Buhara'da konaklama.</p>",
+                d5_t: "5. GÜN: Buhara — Kalyan Minaresi ve Tarihi Çarşılar", d5_b: "<p>• Yürüyüş turu: Leb-i Havuz, Nadir Divan-Begi Medresesi, Kalyan Minaresi, Taki Zargaron & Taki Telpak Furuşon çarşıları, Ark Kalesi, Bolo-Havuz Camii ve İsmail Samani Türbesi.</p>",
+                d6_t: "6. GÜN: Buhara Çevresi ve Semerkant'a Hızlı Tren", d6_b: "<p>• Bahaeddin Nakşibendi Külliyesi ve son Buhara Emiri'nin yazlık sarayı Sitorai Mohi-Hosa. Öğleden sonra 1,5 saatlik hızlı trenle Semerkant'a varış.</p>",
+                d7_t: "7. GÜN: Semerkant — Registan Meydanı ve Siyab Pazarı", d7_b: "<p>• Semerkant turu: Gur-i Emir Türbesi, Registan Meydanı, Bibi Hanım Camii ve renkli Siyab Pazarı. Semerkant'ta konaklama.</p>",
+                d8_t: "8. GÜN: Şah-ı Zinde, Konigil Kağıt Atölyesi ve El Merosi Gösterisi", d8_b: "<p>• Hz. Danyal Türbesi, Şah-ı Zinde külliyesi, Konigil köyünde geleneksel kağıt yapımı ve akşam El Merosi tiyatro gösterisi.</p>",
+                d9_t: "9. GÜN: Şehrisebz Gezisi — Emir Timur'un Doğum Yeri", d9_b: "<p>• Güneye 140 km uzaklıktaki «Yeşil Şehir» Şehrisebz'e günübirlik gezi, Semerkant'a dönüş ve yöresel restoranda akşam yemeği.</p>",
+                d10_t: "10. GÜN: Semerkant'tan Dönüş", d10_b: "<p>• Kahvaltı, otelden çıkış ve dönüş uçuşunuz için Semerkant Uluslararası Havalimanı'na özel transfer.</p>",
+                inc_title: "Tura Dahil Olanlar", inc_yes: "Dahil", inc_no: "Dahil Değil",
+                inc_1: "Merkezi otellerde kahvaltı dahil 9 gece konaklama",
+                inc_2: "Tüm gezilerde lisanslı yerel uzman rehberlik",
+                inc_3: "Klimalı özel ulaşım, havalimanı transferleri ve Buhara–Semerkant hızlı treni",
+                inc_4: "Taşkent–Ürgenç iç hat uçuşu ve El Merosi gösteri biletleri",
+                inc_5: "Ücretsiz sesli rehber ve 7/24 TGS Travel yerel desteği",
+                exc_1: "Uluslararası uçak biletleri (Taşkent TAS varış / Semerkant SKD dönüş)",
+                exc_2: "Öğle ve akşam yemekleri (talebe göre eklenebilir)",
+                exc_3: "Kişisel seyahat sağlık sigortası ve kişisel harcamalar",
+                desc_1: "Hive'nin güneşli kerpiç surlarından Buhara'nın görkemli Kalyan Minaresi'ne her manzara İpek Yolu kervanlarının hikayesini fısıldar.",
+                desc_2: "Yolculuğunuzu Semerkant, Konigil'in el yapımı ipek kağıtları ve Şehrisebz'in yeşil vadisiyle taçlandırın.",
+                faq_title: "Sıkça Sorulan Sorular",
+                fq1_q: "Doğrudan Semerkant'tan mı dönebilirim yoksa Taşkent'e mi geçmeliyim?", fq1_a: "Semerkant Havalimanı'ndan (SKD) direkt uluslararası uçuşlar mevcuttur. Dönüşünüz Taşkent'ten (TAS) ise 2 saatlik hızlı tren transferini kolayca ekleyebiliriz.",
+                fq2_q: "Hive'den Buhara'ya Kızılkum Çölü geçişi nasıl yapılıyor?", fq2_a: "Tren saatleri ve tercihinize göre 7–8 saatlik bu yolculuk klimalı özel araçla (Amuderya fotoğraf molalarıyla) veya trenle sağlanır.",
+                fq3_q: "Tur temposu ileri yaş gezginler için uygun mu?", fq3_a: "Evet! Kolay seviye (19–80 yaş) olarak planlanmıştır; düz yürüyüş rotaları, dinlenme molaları ve her an hazır özel araç bulunur.",
+                ag_t: "Görkemli Minareler Arasında Yürümeye Hazır mısınız?", ag_d: "Güncel fiyatlar, özel tarihler veya yemek paketi seçenekleri için bizimle iletişime geçin."
+            }
+        };
+    </script>
+    <script src="lang.js?v=2"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Аккордеоны
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                const group = item.parentElement;
+                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- АНИМИРОВАННАЯ КАРТА МАРШРУТА (Ташкент → Хива → Бухара → Самарканд → Шахрисабз → Самарканд) -->
+    <script>
+    (function () {
+        const stops = [
+            { coords: [41.2995, 69.2401], names: { en: "1. Tashkent",    ru: "1. Ташкент",    fr: "1. Tachkent",    de: "1. Taschkent",   tr: "1. Taşkent" } },
+            { coords: [41.3775, 60.3639], names: { en: "2. Khiva",       ru: "2. Хива",       fr: "2. Khiva",       de: "2. Chiwa",       tr: "2. Hive" } },
+            { coords: [39.7747, 64.4286], names: { en: "3. Bukhara",     ru: "3. Бухара",     fr: "3. Boukhara",    de: "3. Buchara",     tr: "3. Buhara" } },
+            { coords: [39.6542, 66.9597], names: { en: "4. Samarkand",   ru: "4. Самарканд",  fr: "4. Samarcande",  de: "4. Samarkand",   tr: "4. Semerkant" } },
+            { coords: [39.0578, 66.8342], names: { en: "5. Shakhrisabz", ru: "5. Шахрисабз",  fr: "5. Chakhrisabz", de: "5. Schachrisabs",tr: "5. Şehrisebz" } }
+        ];
+
+        // Привязка каждого из 10 дней (0..9) к городу на карте
+        const dayToStop = [0, 0, 1, 2, 2, 3, 3, 3, 4, 3];
+        let map, markers = [];
+
+        function makeIcon(active) {
+            const size = active ? 22 : 14;
+            const ring = active ? '<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>' : '';
+            const bg = active ? 'bg-gold border-white' : 'bg-teal-900 border-gold';
+            return L.divIcon({
+                html: `<div class="relative flex items-center justify-center" style="width:${size}px;height:${size}px;">${ring}<span class="relative inline-flex rounded-full ${bg} border-2 shadow-md" style="width:${size - 4}px;height:${size - 4}px;"></span></div>`,
+                className: '',
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+            });
+        }
+
+        function highlightStop(stopIndex, shouldFly) {
+            const lang = window.tgsLang || "en";
+            markers.forEach((m, i) => {
+                const isActive = i === stopIndex;
+                m.setIcon(makeIcon(isActive));
+                m.setTooltipContent(stops[i].names[lang] || stops[i].names.en);
+                if (isActive) m.openTooltip(); else m.closeTooltip();
+            });
+            if (shouldFly && map) {
+                map.flyTo(stops[stopIndex].coords, 7, { duration: 1.2 });
+            }
+        }
+
+        function initRouteMap() {
+            const el = document.getElementById("tourRouteMap");
+            if (!el || typeof L === "undefined" || map) return;
+
+            map = L.map("tourRouteMap", { center: [40.4, 64.9], zoom: 6, scrollWheelZoom: false });
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "© OpenStreetMap",
+                subdomains: ["a", "b", "c"]
+            }).addTo(map);
+
+            L.polyline([stops[0].coords, stops[1].coords, stops[2].coords, stops[3].coords, stops[4].coords, stops[3].coords], {
+                color: "#FFA62B", weight: 3, dashArray: "8, 8", opacity: 0.9
+            }).addTo(map);
+
+            const lang = window.tgsLang || "en";
+            stops.forEach((s, idx) => {
+                const m = L.marker(s.coords, { icon: makeIcon(idx === 0) }).addTo(map);
+                m.bindTooltip(s.names[lang] || s.names.en, { className: "route-tooltip", direction: "top", offset: [0, -10] });
+                m.on("click", () => highlightStop(idx, true));
+                markers.push(m);
+            });
+
+            highlightStop(0, false);
+            setTimeout(() => map.invalidateSize(), 400);
+
+            document.querySelectorAll("#itinerary-accordion .accordion-item").forEach((item, idx) => {
+                const btn = item.querySelector(".accordion-trigger");
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        const stopIdx = dayToStop[idx] !== undefined ? dayToStop[idx] : 0;
+                        highlightStop(stopIdx, true);
+                    });
+                }
+            });
+        }
+
+        window.addEventListener("load", initRouteMap);
+        window.addEventListener("languageChanged", () => {
+            const activeIdx = Array.from(document.querySelectorAll("#itinerary-accordion .accordion-item"))
+                .findIndex(i => i.classList.contains("active"));
+            if (markers.length) highlightStop(dayToStop[activeIdx >= 0 ? activeIdx : 0] || 0, false);
+        });
+    })();
+    </script>
+</body>
+</html>

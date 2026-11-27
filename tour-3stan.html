@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3Stan Tour: Uzbekistan, Turkmenistan & Tajikistan | TGS Travel</title>
+    <link rel="icon" type="image/png" href="tgslogo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#EDE7E3',
+                        teal: {
+                            900: '#16697A',
+                            500: '#489FB5',
+                            300: '#82C0CC',
+                        },
+                        gold: '#FFA62B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .image-zoom:hover img { transform: scale(1.05); transition: transform 0.7s ease; }
+        input, textarea { outline: none; }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Мобильное меню */
+        #mobile-menu { transition: transform 0.4s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Карта маршрута */
+        .leaflet-tile-pane { filter: saturate(0.25) brightness(1.08) contrast(0.9) sepia(0.12); }
+        .route-tooltip {
+            background: #16697A !important;
+            color: #EDE7E3 !important;
+            border: none !important;
+            border-radius: 6px !important;
+            padding: 6px 10px !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+        }
+        .leaflet-tooltip-top.route-tooltip::before {
+            border-top-color: #16697A !important;
+        }
+    </style>
+</head>
+<body class="bg-cream text-teal-900 font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- НАВИГАЦИЯ -->
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-md border-b border-teal-900/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html">
+                    <img src="tgslogo.png" alt="TGS Logo" class="h-12 md:h-20 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-medium tracking-wide">
+                <a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        <span data-i18n="nav_destinations">Destinations</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_uzbekistan">Uzbekistan</a>
+                        <a href="kazakhstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kazakhstan">Kazakhstan</a>
+                        <a href="kyrgyzstan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                        <a href="tajikistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_tajikistan">Tajikistan</a>
+                        <a href="turkmenistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkmenistan">Turkmenistan</a>
+                        <a href="turkey.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_turkey">Turkey</a>
+                        <a href="azerbaijan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_azerbaijan">Azerbaijan</a>
+                        <a href="georgia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_georgia">Georgia</a>
+                        <a href="armenia.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="country_armenia">Armenia</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition text-gold font-bold">
+                        <span data-i18n="nav_tours">Tours</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-56 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="uzbekistan-tours.html" class="block px-4 py-2 text-sm text-gold font-bold hover:bg-cream transition" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_central_asia">Central Asia tours</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="tours_worldwide">Worldwide tours</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-4">
+                    <button class="flex items-center hover:text-gold transition">
+                        <span data-i18n="nav_about">About</span> <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-4 w-52 bg-white shadow-xl border-t-2 border-gold py-2 z-50">
+                        <a href="about.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_us">About Us</a>
+                        <a href="uzbekistan.html" class="block px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition" data-i18n="about_uzbekistan">About Uzbekistan</a>
+                    </div>
+                </div>
+
+                <a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a>
+            </div>
+
+            <!-- Правый блок (ПК) -->
+            <div class="hidden lg:flex items-center space-x-5">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-teal-900 hover:text-gold border border-teal-900/20 rounded transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-40 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>English</span><span class="text-xs opacity-60">EN</span></button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Русский</span><span class="text-xs opacity-60">RU</span></button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Français</span><span class="text-xs opacity-60">FR</span></button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Deutsch</span><span class="text-xs opacity-60">DE</span></button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-4 py-2 text-sm text-teal-900 hover:bg-cream hover:text-gold transition flex justify-between items-center"><span>Türkçe</span><span class="text-xs opacity-60">TR</span></button>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="px-6 py-3 border border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-cream transition duration-300 text-sm font-medium whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+            </div>
+
+            <!-- Язык + Бургер-меню (Мобилки) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="relative lang-switcher">
+                    <button type="button" class="lang-toggle-btn flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-teal-900 border border-teal-900/20 rounded">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-gold"></i>
+                        <span class="current-lang-label">EN</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <div class="lang-dropdown-list hidden absolute right-0 mt-2 w-36 bg-white shadow-xl border-t-2 border-gold py-1.5 z-50">
+                        <button type="button" data-lang-option="en" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">English</button>
+                        <button type="button" data-lang-option="ru" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Русский</button>
+                        <button type="button" data-lang-option="fr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Français</button>
+                        <button type="button" data-lang-option="de" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Deutsch</button>
+                        <button type="button" data-lang-option="tr" class="w-full text-left px-3.5 py-2 text-sm text-teal-900 hover:bg-cream transition">Türkçe</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="text-teal-900 focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ВЫЕЗЖАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream z-[60] transform translate-x-full flex flex-col pt-20 px-6 pb-6 overflow-y-auto">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-teal-900 focus:outline-none">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <a href="index.html" class="font-serif text-3xl font-bold text-teal-900 mb-6 border-b border-teal-900/10 pb-4" data-i18n="nav_home">Home</a>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_destinations">Destinations</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="country_uzbekistan">Uzbekistan</a>
+                <a href="kazakhstan.html" class="text-teal-900 text-lg" data-i18n="country_kazakhstan">Kazakhstan</a>
+                <a href="kyrgyzstan.html" class="text-teal-900 text-lg" data-i18n="country_kyrgyzstan">Kyrgyzstan</a>
+                <a href="tajikistan.html" class="text-teal-900 text-lg" data-i18n="country_tajikistan">Tajikistan</a>
+                <a href="turkmenistan.html" class="text-teal-900 text-lg" data-i18n="country_turkmenistan">Turkmenistan</a>
+                <a href="turkey.html" class="text-teal-900 text-lg" data-i18n="country_turkey">Turkey</a>
+                <a href="azerbaijan.html" class="text-teal-900 text-lg" data-i18n="country_azerbaijan">Azerbaijan</a>
+                <a href="georgia.html" class="text-teal-900 text-lg" data-i18n="country_georgia">Georgia</a>
+                <a href="armenia.html" class="text-teal-900 text-lg" data-i18n="country_armenia">Armenia</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_tours">Tours</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="uzbekistan-tours.html" class="text-gold font-bold text-lg" data-i18n="tours_uzbekistan">Uzbekistan tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_central_asia">Central Asia tours</a>
+                <a href="#" class="text-teal-900 text-lg" data-i18n="tours_worldwide">Worldwide tours</a>
+            </div>
+        </div>
+
+        <div class="mb-6 border-b border-teal-900/10 pb-4">
+            <span class="font-serif text-2xl font-bold text-teal-900 block mb-4" data-i18n="nav_about">About</span>
+            <div class="flex flex-col space-y-3 pl-4 border-l-2 border-gold/40">
+                <a href="about.html" class="text-teal-900 text-lg" data-i18n="about_us">About Us</a>
+                <a href="uzbekistan.html" class="text-teal-900 text-lg" data-i18n="about_uzbekistan">About Uzbekistan</a>
+            </div>
+        </div>
+
+        <a href="index.html#contact" class="font-serif text-2xl font-bold text-teal-900 mb-8" id="mobile-contact-link" data-i18n="nav_contacts">Contacts</a>
+        <a href="index.html#contact" class="bg-teal-900 text-cream text-center py-4 rounded font-medium text-lg shadow-lg" data-i18n="nav_quote">Get a Quote</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative pt-40 pb-24 flex items-center justify-center overflow-hidden bg-teal-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1585734524189-30daa0b32a19?w=1600&auto=format&fit=crop&q=80" alt="3Stan Central Asia Odyssey" class="w-full h-full object-cover opacity-35">
+            <div class="absolute inset-0 bg-teal-900/60"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-aos="fade-up">
+                <a href="index.html" class="hover:text-cream transition" data-i18n="nav_home">Home</a> > <span data-i18n="tour_short">3Stan Tour</span>
+            </div>
+            <h1 class="font-serif text-4xl md:text-6xl text-cream font-bold leading-tight mb-4" data-aos="fade-up" data-aos-delay="100" data-i18n="tour_name">3Stan Odyssey: Uzbekistan, Turkmenistan & Tajikistan</h1>
+            <p class="text-cream/85 text-sm md:text-lg font-light" data-aos="fade-up" data-aos-delay="200" data-i18n="tour_meta">15 Days · 13 Destinations · Starts & Ends in Tashkent</p>
+        </div>
+    </section>
+
+    <!-- MAIN IMAGE -->
+    <section class="max-w-5xl mx-auto px-6 -mt-12 relative z-10" data-aos="fade-up">
+        <div class="overflow-hidden h-80 md:h-[28rem] shadow-xl rounded-lg">
+            <img src="https://rootsabroadtravel.com/wp-content/uploads/2024/07/sunset-view-over-itchan-kala-with-the-kalta-minor-in-khiva-uzbekistans-most-magical-city.jpg" alt="Itchan Kala Khiva, Silk Road" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- WHERE / WHO / WHY -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w1_t">Where?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w1_p">Embark on an extraordinary 15-day, 14-night Silk Road odyssey across Uzbekistan, Turkmenistan, and Tajikistan — covering 13 legendary stops from turquoise domes to desert flames and soaring mountain passes.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l1">Uzbekistan: Tashkent, Khiva, Bukhara & Samarkand</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l2">Turkmenistan: Dashoguz, Darvaza Crater, Ashgabat & Merv</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w1_l3">Tajikistan: Penjikent, Dushanbe, Istaravshan & Khujand</span></li>
+                </ul>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w2_t">Who?</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w2_p">Designed for curious travelers (ages 14–60) with a moderate physical level who want a deep, fully guided cultural and adventure journey across three nations.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l1">Small intimate groups (max 8 travelers)</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l2">Operated in English & Russian</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w2_l3">Fully guided with seamless border assistance</span></li>
+                </ul>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="font-serif text-2xl font-bold text-teal-900 mb-4" data-i18n="w3_t">Highlights</h3>
+                <p class="text-teal-900/70 font-light text-sm mb-6 leading-relaxed" data-i18n="w3_p">A rare combination of UNESCO World Heritage treasures, nomadic desert nights, and dramatic mountain roads in one seamless route.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l1">Yurt night beside the burning Darvaza gas crater</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l2">UNESCO gems: Ichan-Kala, Old Nisa, Merv, Bukhara & Registan</span></li>
+                    <li class="flex items-start text-sm text-teal-900"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-gold flex-shrink-0 mt-0.5"></i><span data-i18n="w3_l3">High-altitude Istiklal & Shahristan mountain tunnels</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOIN US + INFO CARDS -->
+    <section class="py-20 px-6 max-w-7xl mx-auto bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div data-aos="fade-right">
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-4" data-i18n="join_badge">Three Countries · One Epic Route</div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-6 leading-tight" data-i18n="join_title">The Ultimate Central Asia Odyssey</h2>
+                <p class="text-teal-900/70 font-light mb-6 leading-relaxed" data-i18n="join_p1">Unravel the secrets of ancient Silk Road capitals — Tashkent, Khiva, Bukhara, and Samarkand — before crossing into the surreal Karakum Desert to sleep in yurts beside the glowing Darvaza crater and explore white-marble Ashgabat and ancient Merv.</p>
+                <p class="text-teal-900/70 font-light mb-10 leading-relaxed" data-i18n="join_p2">Your journey culminates in mountainous Tajikistan, tracing Sogdian ruins in Penjikent, cultural landmarks in Dushanbe, ancient artisan quarters in Istaravshan, and Alexander the Great's historic Khujand before returning to Tashkent.</p>
+
+                <div class="flex items-center">
+                    <div class="bg-cream rounded-full p-4 mr-4 flex-shrink-0">
+                        <i data-lucide="mail" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-teal-900" data-i18n="email_us">Email Us</div>
+                        <a href="mailto:info@tgstraveluz.com" class="text-teal-500 font-medium hover:text-gold transition">info@tgstraveluz.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="bg-cream p-8">
+                    <i data-lucide="hourglass" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic1_t"><span class="text-gold">15 Days</span> Duration</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic1_d">14 nights across 13 iconic destinations in 3 countries.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="circle-dollar-sign" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic2_t">from <span class="text-gold">€2,300</span> Per Person</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic2_d">Hotels, yurts, guides, meals, transport & domestic flights included.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="users" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic3_t">Max <span class="text-gold">8</span> Travelers</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic3_d">Small-group comfort with personal attention and flexible departures on request.</p>
+                </div>
+                <div class="bg-cream p-8">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-gold mb-4"></i>
+                    <div class="font-serif text-xl font-bold text-teal-900 mb-2" data-i18n-html="ic4_t"><span class="text-gold">Free</span> Cancellation</div>
+                    <p class="text-teal-900/70 font-light text-sm" data-i18n="ic4_d">Full refund up to 30 days before departure. Early booking with 25% deposit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARY + ИНТЕРАКТИВНАЯ КАРТА МАРШРУТА (13 ОСТАНОВОК) -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-10" data-aos="fade-up">
+            <div class="text-xs font-bold tracking-widest text-gold uppercase mb-3" data-i18n="it_badge">Interactive 3-Country Route</div>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-teal-900 mb-3" data-i18n="it_title">15-Day Itinerary</h2>
+            <p class="text-teal-900/60 text-sm font-light" data-i18n="it_hint">Click any day below to fly across the map and follow the Silk Road route.</p>
+        </div>
+
+        <div class="mb-10 rounded-2xl overflow-hidden border border-teal-900/15 shadow-lg relative z-0 h-[340px] md:h-[420px]">
+            <div id="tourRouteMap" style="width:100%;height:100%;background:#f8f9fa;"></div>
+        </div>
+
+        <div class="space-y-0 border-t border-teal-900/10" id="itinerary-accordion">
+            <!-- Day 1 -->
+            <div class="accordion-item active border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d1_t">DAY 1: Arrival in Tashkent & Plov Masterclass</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d1_b"></div></div>
+            </div>
+            <!-- Day 2 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d2_t">DAY 2: Tashkent Cultural Gems & Bazaar</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d2_b"></div></div>
+            </div>
+            <!-- Day 3 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d3_t">DAY 3: Flight to Urgench & Walled City of Khiva</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d3_b"></div></div>
+            </div>
+            <!-- Day 4 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d4_t">DAY 4: Khiva – Shavat Border – Dashoguz</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d4_b"></div></div>
+            </div>
+            <!-- Day 5 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d5_t">DAY 5: Karakum Desert & Darvaza Gas Crater Yurts</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d5_b"></div></div>
+            </div>
+            <!-- Day 6 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d6_t">DAY 6: White-Marble Ashgabat, Old Nisa & Flight to Mary</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d6_b"></div></div>
+            </div>
+            <!-- Day 7 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d7_t">DAY 7: Ancient Merv (UNESCO) & Mary</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d7_b"></div></div>
+            </div>
+            <!-- Day 8 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d8_t">DAY 8: Mary – Farab Border – Bukhara</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d8_b"></div></div>
+            </div>
+            <!-- Day 9 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d9_t">DAY 9: Bukhara & Train to Samarkand</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d9_b"></div></div>
+            </div>
+            <!-- Day 10 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d10_t">DAY 10: Treasures of Ancient Samarkand</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d10_b"></div></div>
+            </div>
+            <!-- Day 11 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d11_t">DAY 11: Samarkand – Jartepa Border – Penjikent – Dushanbe</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d11_b"></div></div>
+            </div>
+            <!-- Day 12 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d12_t">DAY 12: Gissar Fortress & Dushanbe Sightseeing</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d12_b"></div></div>
+            </div>
+            <!-- Day 13 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d13_t">DAY 13: Mountain Tunnels, Istaravshan & Khujand</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d13_b"></div></div>
+            </div>
+            <!-- Day 14 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d14_t">DAY 14: Ancient Khujand – Oybek Border – Tashkent</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d14_b"></div></div>
+            </div>
+            <!-- Day 15 -->
+            <div class="accordion-item border-b border-teal-900/10">
+                <button class="accordion-trigger w-full flex justify-between items-center text-left py-5">
+                    <span class="font-serif text-lg font-bold text-teal-900" data-i18n="d15_t">DAY 15: Farewell & Departure from Tashkent</span>
+                    <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                </button>
+                <div class="accordion-content"><div class="pb-6 text-sm text-teal-900/75 font-light space-y-2 leading-relaxed" data-i18n-html="d15_b"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INCLUDED / EXCLUDED -->
+    <section class="py-16 px-6 bg-white border-t border-teal-900/10">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-teal-900 text-center mb-12" data-aos="fade-up" data-i18n="inc_title">What's Included</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cream p-8 rounded-xl border-t-4 border-teal-900" data-aos="fade-right">
+                    <h3 class="font-serif text-2xl font-bold text-teal-900 mb-5" data-i18n="inc_yes">Included</h3>
+                    <ul class="space-y-3 text-sm text-teal-900/80">
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_1">14 nights accommodation (4★/boutique hotels + Karakum desert yurts)</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_2">Professional English / Russian-speaking guides in all 3 countries</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_3">Daily breakfasts, lunches, dinners & Tashkent plov masterclass</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_4">All private A/C transfers, 4x4 desert vehicles, train & domestic flights</span></li>
+                        <li class="flex items-start"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-emerald-600 flex-shrink-0 mt-0.5"></i><span data-i18n="inc_5">Entrance fees to listed monuments & Turkmenistan LOI visa support</span></li>
+                    </ul>
+                </div>
+                <div class="bg-cream p-8 rounded-xl border-t-4 border-gold" data-aos="fade-left">
+                    <h3 class="font-serif text-2xl font-bold text-teal-900 mb-5" data-i18n="inc_no">Not Included</h3>
+                    <ul class="space-y-3 text-sm text-teal-900/80">
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_1">International flights to and from Tashkent (TAS)</span></li>
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_2">Personal travel & medical insurance</span></li>
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500 flex-shrink-0 mt-0.5"></i><span data-i18n="exc_3">Border visa stamp fees (paid at Turkmenistan border) & personal expenses</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL HIGHLIGHTS & FAQ -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div data-aos="fade-right" class="flex flex-col gap-6">
+                <div class="overflow-hidden h-64 image-zoom rounded-lg shadow-sm">
+                    <img src="https://uzbek-travel.com/images/uz/Tours/Door_to_hell/turkmen-airticket.jpg" alt="Darvaza Gas Crater, Turkmenistan" class="w-full h-full object-cover">
+                </div>
+                <p class="text-teal-900/75 font-light leading-relaxed text-sm" data-i18n="desc_1">From the medieval mud-brick citadels of Khiva and Merv to the surreal glowing depths of the Darvaza gas crater in the Karakum Desert, every day brings an extraordinary change of scenery and culture.</p>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="100" class="flex flex-col gap-6">
+                <div class="overflow-hidden h-64 image-zoom rounded-lg shadow-sm">
+                    <img src="https://www.journalofnomads.com/wp-content/uploads/2024/12/Traveling-the-Pamir-Highway-Tajikistan.jpg" alt="Tajikistan Mountains" class="w-full h-full object-cover">
+                </div>
+                <p class="text-teal-900/75 font-light leading-relaxed text-sm" data-i18n="desc_2">After admiring the turquoise domes of Bukhara and Samarkand, cross into Tajikistan to journey through high-altitude mountain tunnels, 2,500-year-old Khujand, and lively eastern bazaars.</p>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h3 class="font-serif text-3xl font-bold text-teal-900 text-center mb-8" data-i18n="faq_title">Frequently Asked Questions</h3>
+            <div class="border border-teal-900/10" id="faq-accordion">
+                <div class="accordion-item active border-b border-teal-900/10 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq1_q">How far in advance should I book for the Turkmenistan visa (LOI)?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq1_a">We recommend booking at least 5–6 weeks before departure so we can secure your official Turkmenistan Letter of Invitation (LOI) smoothly without rush.</div>
+                    </div>
+                </div>
+                <div class="accordion-item border-b border-teal-900/10 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq2_q">How do land border crossings between the three countries work?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq2_a">Our local teams accompany you right up to each checkpoint and greet you immediately on the other side, guiding you step-by-step through customs and passport formalities.</div>
+                    </div>
+                </div>
+                <div class="accordion-item border-b border-teal-900/10 bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq3_q">What is the overnight yurt camp at Darvaza Crater like?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq3_a">You stay in clean, cozy traditional yurts equipped with beds and warm blankets just a short walk from the glowing crater, with a freshly prepared desert dinner under the stars.</div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <button class="accordion-trigger w-full flex justify-between items-center text-left px-6 py-5">
+                        <span class="font-medium text-teal-900" data-i18n="fq4_q">When is the best season for the 3Stan Tour?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-teal-900 flex-shrink-0"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-sm text-teal-900/70 font-light" data-i18n="fq4_a">Spring (April–May) and Autumn (September–October) are ideal, offering pleasant temperatures in both the Karakum Desert and the mountains of Tajikistan.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIO GUIDE / CTA BANNER -->
+    <section class="bg-gold py-10 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-cream mb-1" data-i18n="ag_t">Ready for the 3Stan Odyssey?</h3>
+                <p class="text-cream/90 text-sm font-light" data-i18n="ag_d">Request dates or a custom private departure — we handle visas, borders, and every detail.</p>
+            </div>
+            <a href="index.html#contact" class="inline-block bg-teal-900 text-cream px-8 py-4 font-medium tracking-wide hover:bg-white hover:text-teal-900 transition duration-300 whitespace-nowrap" data-i18n="nav_quote">Get a Quote</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-900 text-cream pt-20 pb-10 px-6 border-t border-cream/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-cream/10 pb-12">
+            <div class="md:col-span-1">
+                <div class="font-serif text-3xl font-bold tracking-tight mb-6 text-gold">TGS</div>
+                <p class="text-cream/60 font-light text-sm mb-6" data-i18n="footer_desc">TGS Travel is a travel expert providing 5-star group & private tours in Europe and Asia. We sell not tours but emotions.</p>
+                <div class="flex items-center space-x-4 text-cream/60">
+                    <a href="https://instagram.com/tgs.travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://t.me/tgs_travel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="send" class="w-5 h-5"></i></a>
+                    <a href="https://facebook.com/tgstravel" target="_blank" class="hover:text-gold transition transform hover:scale-110"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_nav">Navigation</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="index.html" class="hover:text-gold transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="uzbekistan-tours.html" class="hover:text-gold transition" data-i18n="footer_uzbekistan_tours">Uzbekistan Tours</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition" data-i18n="about_us">About Us</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gold transition" data-i18n="nav_contacts">Contacts</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_popular">Popular Tours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light">
+                    <li><a href="tour-orient-journey.html" class="hover:text-gold transition" data-i18n="footer_tour_orient">Orient Journey</a></li>
+                    <li><a href="tour-echoes-silk-road.html" class="hover:text-gold transition" data-i18n="footer_tour_silk">Echoes of the Silk Road</a></li>
+                    <li><a href="tour-3stan.html" class="hover:text-gold transition" data-i18n="footer_tour_3stan">3Stan Tour</a></li>
+                    <li><a href="tour-majestic-minarets.html" class="hover:text-gold transition" data-i18n="footer_tour_minarets">Majestic Minarets Tour</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg mb-6 text-cream" data-i18n="footer_hours">Working Hours</h4>
+                <ul class="space-y-3 text-sm text-cream/60 font-light mb-6">
+                    <li data-i18n="footer_mon_fri">Monday - Friday: 10 AM - 6 PM</li>
+                    <li data-i18n="footer_sat">Saturday: 10 AM - 3 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center text-cream/40 text-xs mt-8" data-i18n="footer_rights">
+            © 2026 TGS Travel. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ПЕРЕВОДЫ ДЛЯ 3STAN TOUR (5 ЯЗЫКОВ) -->
+    <script>
+        window.PAGE_TRANSLATIONS = {
+            en: {
+                page_title: "3Stan Tour (15 Days) | TGS Travel",
+                tour_short: "3Stan Tour",
+                tour_name: "3Stan Odyssey: Uzbekistan, Turkmenistan & Tajikistan",
+                tour_meta: "15 Days · 13 Destinations · Starts & Ends in Tashkent",
+                w1_t: "Where?", w1_p: "Embark on an extraordinary 15-day, 14-night Silk Road odyssey across Uzbekistan, Turkmenistan, and Tajikistan — covering 13 legendary stops from turquoise domes to desert flames and soaring mountain passes.",
+                w1_l1: "Uzbekistan: Tashkent, Khiva, Bukhara & Samarkand", w1_l2: "Turkmenistan: Dashoguz, Darvaza Crater, Ashgabat & Merv", w1_l3: "Tajikistan: Penjikent, Dushanbe, Istaravshan & Khujand",
+                w2_t: "Who?", w2_p: "Designed for curious travelers (ages 14–60) with a moderate physical level who want a deep, fully guided cultural and adventure journey across three nations.",
+                w2_l1: "Small intimate groups (max 8 travelers)", w2_l2: "Operated in English & Russian", w2_l3: "Fully guided with seamless border assistance",
+                w3_t: "Highlights", w3_p: "A rare combination of UNESCO World Heritage treasures, nomadic desert nights, and dramatic mountain roads in one seamless route.",
+                w3_l1: "Yurt night beside the burning Darvaza gas crater", w3_l2: "UNESCO gems: Ichan-Kala, Old Nisa, Merv, Bukhara & Registan", w3_l3: "High-altitude Istiklal & Shahristan mountain tunnels",
+                join_badge: "Three Countries · One Epic Route", join_title: "The Ultimate Central Asia Odyssey",
+                join_p1: "Unravel the secrets of ancient Silk Road capitals — Tashkent, Khiva, Bukhara, and Samarkand — before crossing into the surreal Karakum Desert to sleep in yurts beside the glowing Darvaza crater and explore white-marble Ashgabat and ancient Merv.",
+                join_p2: "Your journey culminates in mountainous Tajikistan, tracing Sogdian ruins in Penjikent, cultural landmarks in Dushanbe, ancient artisan quarters in Istaravshan, and Alexander the Great's historic Khujand before returning to Tashkent.",
+                email_us: "Email Us",
+                ic1_t: "<span class=\"text-gold\">15 Days</span> Duration", ic1_d: "14 nights across 13 iconic destinations in 3 countries.",
+                ic2_t: "from <span class=\"text-gold\">€2,300</span> Per Person", ic2_d: "Hotels, yurts, guides, meals, transport & domestic flights included.",
+                ic3_t: "Max <span class=\"text-gold\">8</span> Travelers", ic3_d: "Small-group comfort with personal attention and departures on request.",
+                ic4_t: "<span class=\"text-gold\">Free</span> Cancellation", ic4_d: "Full refund up to 30 days before departure. Early booking with 25% deposit.",
+                it_badge: "Interactive 3-Country Route", it_title: "15-Day Itinerary", it_hint: "Click any day below to fly across the map and follow the Silk Road route.",
+                d1_t: "DAY 1: Arrival in Tashkent & Plov Masterclass",
+                d1_b: "<p>• Warm airport greeting at Tashkent International Airport with a name sign and transfer to hotel.</p><p>• Time to rest and refresh after your flight.</p><p>• Evening welcome dinner featuring a traditional Uzbek plov cooking masterclass and live folk dance program.</p><p>• Overnight in Tashkent.</p>",
+                d2_t: "DAY 2: Tashkent Cultural Gems & Oriental Bazaar",
+                d2_b: "<p>• Full-day city tour contrasting Old and Modern Tashkent, visiting 14th–15th century monuments and the vibrant oriental bazaar.</p><p>• Lunch in the historic Old City and dinner at a local restaurant.</p><p>• Overnight in Tashkent.</p>",
+                d3_t: "DAY 3: Flight to Urgench & Walled City of Khiva",
+                d3_b: "<p>• Morning domestic flight from Tashkent to Urgench on Uzbekistan Airways, followed by a 40 km transfer to Khiva.</p><p>• Check-in inside UNESCO-listed Ichan-Kala and local lunch.</p><p>• Guided tour through Khiva's 12th–14th century fortresses, minarets, and palaces. Overnight in Khiva.</p>",
+                d4_t: "DAY 4: Khiva – Shavat Border – Dashoguz",
+                d4_b: "<p>• Transfer to the Shavat border (35.5 km), smooth crossing into Turkmenistan, and drive to Dashoguz (36 km).</p><p>• Lunch, then visit the ancient Izmukshir Fortress and the sacred Isman Ota pilgrimage site.</p><p>• Overnight in Dashoguz.</p>",
+                d5_t: "DAY 5: Karakum Desert & Darvaza Gas Crater Yurts",
+                d5_b: "<p>• Scenic 265 km drive into the Karakum Desert with a cultural stop in the desert village of Erbent.</p><p>• Picnic near the burning Darvaza gas crater and unforgettable sunset & night views of the flames under the stars.</p><p>• Overnight in cozy traditional desert yurts.</p>",
+                d6_t: "DAY 6: White-Marble Ashgabat, Old Nisa & Flight to Mary",
+                d6_b: "<p>• Drive to Ashgabat — famed in the Guinness Book of Records for its white marble architecture.</p><p>• Tour Turkmenbashi Mosque-Mausoleum, National Historic Museum, Neutrality Monument, Ertugrul Gazi Mosque, Independence Park, and UNESCO-listed Old Nisa (3rd c. BC – 3rd c. AD).</p><p>• Evening flight to Mary and transfer to hotel. Overnight in Mary.</p>",
+                d7_t: "DAY 7: Ancient Merv (UNESCO) & Mary",
+                d7_b: "<p>• Excursion to the UNESCO World Heritage site of Ancient Merv, once a premier Silk Road capital of trade and scholarship.</p><p>• Return to Mary to visit the Local History Museum and its rich regional artifacts.</p><p>• Overnight in Mary.</p>",
+                d8_t: "DAY 8: Mary – Farab Border – Bukhara",
+                d8_b: "<p>• Scenic 4-hour drive to the Farab checkpoint, border crossing into Uzbekistan, and transfer from Alat to Bukhara.</p><p>• Walking tour of Old Bukhara: Lyabi-Hauz ensemble, historic trading domes, Poi-Kalyan complex (12th–16th c.), and Abdulaziz-Khan Madrasah.</p><p>• Overnight in Bukhara.</p>",
+                d9_t: "DAY 9: Bukhara & Train to Samarkand",
+                d9_b: "<p>• Morning continuation of Bukhara's historic monuments and lunch.</p><p>• Afternoon train to Samarkand with station transfer to your hotel.</p><p>• Enchanting evening walk through illuminated Samarkand. Overnight in Samarkand.</p>",
+                d10_t: "DAY 10: Treasures of Ancient Samarkand",
+                d10_b: "<p>• Guided tour of Amir Temur Mausoleum (Gur-e-Amir) and iconic Registan Square (Ulugbek, Sherdor & Tilla-Kari Madrasahs).</p><p>• Visit colossal Bibi-Khanum Mosque and the medieval Ulugbek Observatory.</p><p>• Traditional dinner and overnight in Samarkand.</p>",
+                d11_t: "DAY 11: Samarkand – Jartepa Border – Penjikent – Dushanbe",
+                d11_b: "<p>• Early 8:00 AM departure to Jartepa border and welcome by our Tajik team.</p><p>• Explore 5th-century Sogdian ruins of Ancient Penjikent, Rudaki Museum, local bazaar, and mosque.</p><p>• Lunch and scenic transfer to Dushanbe. Dinner and overnight in Dushanbe.</p>",
+                d12_t: "DAY 12: Gissar Fortress & Dushanbe Sightseeing",
+                d12_b: "<p>• Morning excursion to historic Gissar Fortress (30 km west of Dushanbe).</p><p>• Return for lunch and city tour: Ismoili Somoni & Rudaki Monuments, and the famed Buddha in Nirvana Museum.</p><p>• Tajik dinner and overnight in Dushanbe.</p>",
+                d13_t: "DAY 13: Mountain Tunnels, Istaravshan & Khujand",
+                d13_b: "<p>• Scenic 280 km mountain drive through the high-altitude Istiklal (2,700 m) and Shahristan (2,620 m) tunnels, with lunch at a local chaykhana.</p><p>• Explore 18th-century old-town lanes, blacksmith & woodcarver workshops, and the Hazrat Shah complex in ancient Istaravshan.</p><p>• Short 30 km drive to Khujand. Dinner and overnight in Khujand.</p>",
+                d14_t: "DAY 14: Ancient Khujand – Oybek Border – Tashkent",
+                d14_b: "<p>• Explore 2,500-year-old Khujand: Sheikh Muslihiddin Mosque & Mausoleum, Arbob Palace, and bustling Panjshanbe Bazaar.</p><p>• After lunch, cross the Oybek border back into Uzbekistan and transfer to Tashkent.</p><p>• Overnight in Tashkent.</p>",
+                d15_t: "DAY 15: Farewell & Departure from Tashkent",
+                d15_b: "<p>• Breakfast, hotel check-out, and final farewell lunch.</p><p>• Private transfer to Tashkent International Airport for your flight home.</p>",
+                inc_title: "What's Included", inc_yes: "Included", inc_no: "Not Included",
+                inc_1: "14 nights accommodation (hotels + Karakum desert yurts)",
+                inc_2: "Professional English / Russian-speaking guides in all 3 countries",
+                inc_3: "Daily breakfasts, lunches, dinners & Tashkent plov masterclass",
+                inc_4: "All private A/C transfers, 4x4 desert vehicles, train & domestic flights",
+                inc_5: "Monument entrance fees & Turkmenistan LOI visa support",
+                exc_1: "International flights to and from Tashkent (TAS)",
+                exc_2: "Personal travel & medical insurance",
+                exc_3: "Border visa stamp fees & personal expenses",
+                desc_1: "From the medieval mud-brick citadels of Khiva and Merv to the surreal glowing depths of the Darvaza gas crater in the Karakum Desert, every day brings an extraordinary change of scenery and culture.",
+                desc_2: "After admiring the turquoise domes of Bukhara and Samarkand, cross into Tajikistan to journey through high-altitude mountain tunnels, 2,500-year-old Khujand, and lively eastern bazaars.",
+                faq_title: "Frequently Asked Questions",
+                fq1_q: "How far in advance should I book for the Turkmenistan visa (LOI)?", fq1_a: "We recommend booking at least 5–6 weeks before departure so we can secure your official Turkmenistan Letter of Invitation (LOI) smoothly without rush.",
+                fq2_q: "How do land border crossings between the three countries work?", fq2_a: "Our local teams accompany you right up to each checkpoint and greet you immediately on the other side, guiding you step-by-step through customs and passport formalities.",
+                fq3_q: "What is the overnight yurt camp at Darvaza Crater like?", fq3_a: "You stay in clean, cozy traditional yurts equipped with beds and warm blankets just a short walk from the glowing crater, with a freshly prepared desert dinner under the stars.",
+                fq4_q: "When is the best season for the 3Stan Tour?", fq4_a: "Spring (April–May) and Autumn (September–October) are ideal, offering pleasant temperatures in both the Karakum Desert and the mountains of Tajikistan.",
+                ag_t: "Ready for the 3Stan Odyssey?", ag_d: "Request dates or a custom private departure — we handle visas, borders, and every detail."
+            },
+            ru: {
+                page_title: "Тур «3 Стана» (15 дней) | TGS Travel",
+                tour_short: "Тур «3 Стана»",
+                tour_name: "Одиссея «3 Стана»: Узбекистан, Туркменистан и Таджикистан",
+                tour_meta: "15 дней · 13 городов · Старт и финиш в Ташкенте",
+                w1_t: "Куда?", w1_p: "Грандиозная 15-дневная одиссея по Великому Шёлковому пути через Узбекистан, Туркменистан и Таджикистан — 13 легендарных локаций от бирюзовых куполов до огней пустыни и горных перевалов.",
+                w1_l1: "Узбекистан: Ташкент, Хива, Бухара и Самарканд", w1_l2: "Туркменистан: Дашогуз, кратер Дарваза, Ашхабад и Мерв", w1_l3: "Таджикистан: Пенджикент, Душанбе, Истаравшан и Худжанд",
+                w2_t: "Для кого?", w2_p: "Создан для любознательных путешественников (14–60 лет) со средним уровнем активности, желающих глубоко познакомиться сразу с тремя странами в сопровождении гидов.",
+                w2_l1: "Малые группы (максимум 8 человек)", w2_l2: "Проводится на русском и английском", w2_l3: "Полное сопровождение на всех границах",
+                w3_t: "Главное в туре", w3_p: "Редкое сочетание памятников ЮНЕСКО, ночи в пустынных юртах и головокружительных горных дорог в одном маршруте.",
+                w3_l1: "Ночёвка в юртах у пылающего кратера Дарваза", w3_l2: "Объекты ЮНЕСКО: Ичан-Кала, Старая Ниса, Мерв, Бухара и Регистан", w3_l3: "Высокогорные тоннели Истиклол и Шахристан",
+                join_badge: "Три страны · Один легендарный маршрут", join_title: "Большая одиссея по Центральной Азии",
+                join_p1: "Раскройте тайны древних столиц Шёлкового пути — Ташкента, Хивы, Бухары и Самарканда, отправьтесь в пустыню Каракумы на ночёвку у горящего кратера Дарваза и увидьте беломраморный Ашхабад и древний Мерв.",
+                join_p2: "Завершится путешествие в горном Таджикистане: согдийский Пенджикент, зелёный Душанбе, ремесленный Истаравшан и 2500-летний Худжанд перед возвращением в Ташкент.",
+                email_us: "Напишите нам",
+                ic1_t: "<span class=\"text-gold\">15 дней</span> длительность", ic1_d: "14 ночей и 13 знаковых локаций в 3 странах.",
+                ic2_t: "от <span class=\"text-gold\">€2,300</span> за человека", ic2_d: "Отели, юрты, гиды, питание, транспорт и внутренние перелёты включены.",
+                ic3_t: "До <span class=\"text-gold\">8</span> человек", ic3_d: "Комфорт малой группы, персональное внимание и выезды по запросу.",
+                ic4_t: "<span class=\"text-gold\">Бесплатная</span> отмена", ic4_d: "Полный возврат за 30 дней до старта. Предоплата при раннем бронировании 25%.",
+                it_badge: "Интерактивный маршрут по 3 странам", it_title: "Программа на 15 дней", it_hint: "Нажимайте на любой день, чтобы следить за перелётами и переездами на карте.",
+                d1_t: "ДЕНЬ 1: Прибытие в Ташкент и мастер-класс по плову",
+                d1_b: "<p>• Встреча в аэропорту Ташкента с именной табличкой и трансфер в отель.</p><p>• Отдых после перелёта.</p><p>• Вечером — приветственный ужин с мастер-классом по приготовлению настоящего узбекского плова и фольклорным шоу.</p><p>• Ночь в Ташкенте.</p>",
+                d2_t: "ДЕНЬ 2: Культурные жемчужины Ташкента и восточный базар",
+                d2_b: "<p>• Обзорная экскурсия по Старому и современному Ташкенту: памятники XIV–XV веков и колоритный восточный базар.</p><p>• Обед в Старом городе и ужин в местном ресторане.</p><p>• Ночь в Ташкенте.</p>",
+                d3_t: "ДЕНЬ 3: Перелёт в Ургенч и древняя Хива",
+                d3_b: "<p>• Утренний рейс Uzbekistan Airways в Ургенч и трансфер в Хиву (40 км).</p><p>• Заселение в отель внутри крепости Ичан-Кала (ЮНЕСКО) и обед.</p><p>• Экскурсия по крепостям, минаретам и дворцам XII–XIV веков. Ночь в Хиве.</p>",
+                d4_t: "ДЕНЬ 4: Хива – граница Шават – Дашогуз",
+                d4_b: "<p>• Переезд к границе Шават (35,5 км), переход в Туркменистан и трансфер в Дашогуз (36 км).</p><p>• Обед, посещение древней крепости Измукшир и святыни Исман-ота.</p><p>• Ночь в Дашогузе.</p>",
+                d5_t: "ДЕНЬ 5: Пустыня Каракумы и юрты у кратера Дарваза",
+                d5_b: "<p>• Переезд 265 км в сердце Каракумов с остановкой в пустынном селении Эрбент.</p><p>• Пикник у горящего кратера Дарваза и завораживающее огненное сияние на закате и ночью под звёздами.</p><p>• Ночь в уютных традиционных юртах.</p>",
+                d6_t: "ДЕНЬ 6: Беломраморный Ашхабад, Старая Ниса и перелёт в Мары",
+                d6_b: "<p>• Переезд в Ашхабад, занесённый в Книгу рекордов Гиннесса за беломраморную архитектуру.</p><p>• Мечеть-мавзолей Туркменбаши, Национальный музей истории, Арка Нейтралитета, мечеть Эртогрулгазы, парк Независимости и античная Старая Ниса (ЮНЕСКО).</p><p>• Вечерний перелёт в Мары, трансфер в отель. Ночь в Мары.</p>",
+                d7_t: "ДЕНЬ 7: Древний Мерв (ЮНЕСКО) и Мары",
+                d7_b: "<p>• Экскурсия в археологический комплекс Древний Мерв (ЮНЕСКО) — некогда величайший центр Шёлкового пути.</p><p>• Возвращение в Мары и посещение Историко-краеведческого музея.</p><p>• Ночь в Мары.</p>",
+                d8_t: "ДЕНЬ 8: Мары – граница Фарап – Бухара",
+                d8_b: "<p>• Живописный переезд (~4 ч) к КПП Фарап, переход границы в Узбекистан и трансфер из Алата в Бухару.</p><p>• Пешеходная прогулка по Бухаре: Ляби-Хауз, торговые купола, ансамбль Пои-Калян (XII–XVI вв.) и медресе Абдулазиз-хана.</p><p>• Ночь в Бухаре.</p>",
+                d9_t: "ДЕНЬ 9: Бухара и поезд в Самарканд",
+                d9_b: "<p>• Продолжение экскурсии по историческим памятникам Бухары и обед.</p><p>• Дневной поезд в Самарканд, встреча на вокзале и заселение в отель.</p><p>• Вечерняя прогулка по сияющему Самарканду. Ночь в Самарканде.</p>",
+                d10_t: "ДЕНЬ 10: Сокровища древнего Самарканда",
+                d10_b: "<p>• Мавзолей Амира Тимура (Гур-Эмир) и легендарная площадь Регистан (медресе Улугбека, Шердор и Тилля-Кари).</p><p>• Грандиозная мечеть Биби-Ханум и средневековая обсерватория Улугбека.</p><p>• Ужин с национальной кухней и ночь в Самарканде.</p>",
+                d11_t: "ДЕНЬ 11: Самарканд – граница Джартепа – Пенджикент – Душанбе",
+                d11_b: "<p>• Выезд в 8:00 к границе Джартепа, переход в Таджикистан и встреча с нашей таджикской командой.</p><p>• Древний согдийский Пенджикент (V в.), музей Рудаки, местный базар и мечеть.</p><p>• Обед и переезд в Душанбе. Ужин и ночь в Душанбе.</p>",
+                d12_t: "ДЕНЬ 12: Гиссарская крепость и обзорная по Душанбе",
+                d12_b: "<p>• Утренняя поездка в историческую Гиссарскую крепость (30 км от Душанбе).</p><p>• Возвращение на обед и сити-тур: памятники Исмоили Сомони и Рудаки, музей «Будда в нирване».</p><p>• Ужин и ночь в Душанбе.</p>",
+                d13_t: "ДЕНЬ 13: Горные тоннели, Истаравшан и Худжанд",
+                d13_b: "<p>• Живописный переезд 280 км через высокогорные тоннели Истиклол (2 700 м) и Шахристан (2 620 м), обед в чайхане.</p><p>• Старый Истаравшан: дома XVIII века с резным деревом, мастерские ножовщиков и резчиков, комплекс Хазрати Шох.</p><p>• Переезд в Худжанд (30 км), ужин и ночь в Худжанде.</p>",
+                d14_t: "ДЕНЬ 14: Древний Худжанд – граница Ойбек – Ташкент",
+                d14_b: "<p>• 2500-летний Худжанд: мечеть и мавзолей шейха Муслихиддина, дворец Арбоб и грандиозный базар Панджшанбе.</p><p>• После обеда — переход границы Ойбек обратно в Узбекистан и трансфер в Ташкент.</p><p>• Ночь в Ташкенте.</p>",
+                d15_t: "ДЕНЬ 15: Прощание и вылет из Ташкента",
+                d15_b: "<p>• Завтрак, выселение из отеля и прощальный обед.</p><p>• Трансфер в Международный аэропорт Ташкента к вашему рейсу домой.</p>",
+                inc_title: "Что включено", inc_yes: "Включено", inc_no: "Не включено",
+                inc_1: "14 ночей проживания (отели + юрты в пустыне Каракумы)",
+                inc_2: "Профессиональные гиды (RU/EN) во всех 3 странах",
+                inc_3: "Ежедневные завтраки, обеды, ужины и мастер-класс по плову",
+                inc_4: "Все частные трансферы, внедорожники 4x4, поезд и внутренние перелёты",
+                inc_5: "Входные билеты на памятники и визовая поддержка LOI в Туркменистан",
+                exc_1: "Международные авиабилеты в/из Ташкента (TAS)",
+                exc_2: "Медицинская туристическая страховка",
+                exc_3: "Пограничные сборы за визовый штамп и личные расходы",
+                desc_1: "От глинобитных цитаделей Хивы и Мерва до пылающего кратера Дарваза в пустыне Каракумы — каждый день дарит совершенно новый пейзаж и культуру.",
+                desc_2: "После бирюзовых куполов Бухары и Самарканда вас ждут высокогорные тоннели Таджикистана, 2500-летний Худжанд и колоритные восточные базары.",
+                faq_title: "Частые вопросы",
+                fq1_q: "За сколько бронировать тур ради визы (LOI) в Туркменистан?", fq1_a: "Рекомендуем бронировать минимум за 5–6 недель до вылета, чтобы мы спокойно оформили официальное приглашение (LOI) в миграционной службе Туркменистана.",
+                fq2_q: "Как проходят наземные переходы границ между тремя странами?", fq2_a: "Наши команды провожают вас прямо до КПП и сразу встречают по другую сторону, помогая на каждом этапе паспортного и таможенного контроля.",
+                fq3_q: "Какие условия в юрточном лагере у кратера Дарваза?", fq3_a: "Чистые уютные традиционные юрты с кроватями и тёплыми одеялами в паре минут ходьбы от кратера, плюс свежеприготовленный ужин под звёздным небом.",
+                fq4_q: "Когда лучше всего ехать в тур «3 Стана»?", fq4_a: "Идеальны весна (апрель–май) и осень (сентябрь–октябрь) — комфортная температура и в пустыне Каракумы, и в горах Таджикистана.",
+                ag_t: "Готовы к одиссее «3 Стана»?", ag_d: "Запросите даты или индивидуальный выезд — мы возьмём на себя визы, границы и каждую деталь."
+            },
+            fr: {
+                page_title: "Circuit 3Stan (15 Jours) | TGS Travel",
+                tour_short: "Circuit 3Stan",
+                tour_name: "Odyssée 3Stan : Ouzbékistan, Turkménistan & Tadjikistan",
+                tour_meta: "15 Jours · 13 Étapes · Départ & Retour à Tachkent",
+                w1_t: "Où ?", w1_p: "Vivez une odyssée exceptionnelle de 15 jours (14 nuits) sur la Route de la Soie à travers 3 pays et 13 étapes légendaires, des coupoles turquoise aux flammes du désert et cols alpins.",
+                w1_l1: "Ouzbékistan : Tachkent, Khiva, Boukhara & Samarcande", w1_l2: "Turkménistan : Dachogouz, Darvaza, Achgabat & Merv", w1_l3: "Tadjikistan : Penjikent, Douchanbé, Istaravchan & Khodjent",
+                w2_t: "Pour qui ?", w2_p: "Conçu pour les voyageurs curieux (14–60 ans, niveau modéré) souhaitant un grand voyage culturel et d'aventure entièrement accompagné.",
+                w2_l1: "Petits groupes (max 8 participants)", w2_l2: "Opéré en anglais & russe (français sur demande)", w2_l3: "Accompagnement complet à chaque frontière",
+                w3_t: "Points forts", w3_p: "Un mélange rare de sites UNESCO, de nuits en yourte dans le désert et de spectaculaires routes de montagne.",
+                w3_l1: "Nuit en yourte près du cratère en feu de Darvaza", w3_l2: "Trésors UNESCO : Itchan Kala, Nisa, Merv, Boukhara & Régistan", w3_l3: "Tunnels d'altitude d'Istiklal & Chahristan",
+                join_badge: "Trois Pays · Une Route Mythique", join_title: "La Grande Odyssée d'Asie Centrale",
+                join_p1: "Explorez Tachkent, Khiva, Boukhara et Samarcande avant de traverser le désert du Karakoum pour dormir en yourte près du cratère de Darvaza et découvrir Achgabat en marbre blanc et l'ancienne Merv.",
+                join_p2: "Votre périple s'achève dans les montagnes du Tadjikistan : ruines sogdiennes de Penjikent, Douchanbé, ateliers anciens d'Istaravchan et Khodjent fondée au temps d'Alexandre le Grand.",
+                email_us: "Écrivez-nous",
+                ic1_t: "<span class=\"text-gold\">15 Jours</span> Durée", ic1_d: "14 nuits et 13 étapes incontournables dans 3 pays.",
+                ic2_t: "dès <span class=\"text-gold\">2 300 €</span> par personne", ic2_d: "Hôtels, yourtes, guides, repas, transports & vols intérieurs inclus.",
+                ic3_t: "Max <span class=\"text-gold\">8</span> Voyageurs", ic3_d: "Confort en petit groupe et départs privés sur demande.",
+                ic4_t: "Annulation <span class=\"text-gold\">gratuite</span>", ic4_d: "Remboursement intégral jusqu'à 30 jours avant le départ. Acompte 25 %.",
+                it_badge: "Carte interactive 3 pays", it_title: "Itinéraire sur 15 jours", it_hint: "Cliquez sur un jour pour suivre le trajet sur la carte.",
+                d1_t: "JOUR 1 : Arrivée à Tachkent & Atelier Plov", d1_b: "<p>• Accueil à l'aéroport de Tachkent, transfert à l'hôtel et temps libre.</p><p>• Dîner de bienvenue avec atelier cuisine de plov ouzbek et danses folkloriques. Nuit à Tachkent.</p>",
+                d2_t: "JOUR 2 : Trésors de Tachkent & Bazar Oriental", d2_b: "<p>• Visite complète entre vieille ville (XIVe–XVe s.), ville moderne et bazar artisanal.</p><p>• Déjeuner en vieille ville et dîner local. Nuit à Tachkent.</p>",
+                d3_t: "JOUR 3 : Vol vers Ourguentch & Khiva (Itchan Kala)", d3_b: "<p>• Vol intérieur vers Ourguentch et transfert à Khiva (40 km).</p><p>• Installation dans la cité fortifiée d'Itchan Kala (UNESCO) et visite guidée (XIIe–XIVe s.). Nuit à Khiva.</p>",
+                d4_t: "JOUR 4 : Khiva – Frontière Chavat – Dachogouz", d4_b: "<p>• Passage de la frontière vers le Turkménistan et route vers Dachogouz.</p><p>• Déjeuner, visite de la forteresse d'Izmukshir et du sanctuaire d'Isman Ota. Nuit à Dachogouz.</p>",
+                d5_t: "JOUR 5 : Désert du Karakoum & Cratère de Darvaza", d5_b: "<p>• Trajet de 265 km dans le Karakoum avec halte au village désertique d'Erbent.</p><p>• Pique-nique et spectacle nocturne fascinant du cratère en feu sous les étoiles. Nuit en yourte.</p>",
+                d6_t: "JOUR 6 : Achgabat, Ancienne Nisa & Vol vers Mary", d6_b: "<p>• Visite d'Achgabat en marbre blanc : mosquée Turkmenbashi, Musée national, Monument de la Neutralité, mosquée Ertugrul Gazi, parc de l'Indépendance et site UNESCO d'Ancienne Nisa.</p><p>• Vol en soirée vers Mary. Nuit à Mary.</p>",
+                d7_t: "JOUR 7 : Ancienne Merv (UNESCO) & Mary", d7_b: "<p>• Excursion à l'ancienne cité de Merv (UNESCO), grand carrefour antique de la Route de la Soie.</p><p>• Retour à Mary et visite du Musée d'histoire locale. Nuit à Mary.</p>",
+                d8_t: "JOUR 8 : Mary – Frontière Farab – Boukhara", d8_b: "<p>• Route vers Farab (~4h), passage de la frontière et transfert vers Boukhara.</p><p>• Visite à pied : Liab-i Haouz, coupoles marchandes, ensemble Po-i-Kalyan et médersa Abdulaziz-Khan. Nuit à Boukhara.</p>",
+                d9_t: "JOUR 9 : Boukhara & Train vers Samarcande", d9_b: "<p>• Poursuite des visites historiques de Boukhara et déjeuner.</p><p>• Train vers Samarcande et promenade magique en soirée. Nuit à Samarcande.</p>",
+                d10_t: "JOUR 10 : Merveilles de Samarcande", d10_b: "<p>• Visite du mausolée Gour-Emir, de la place du Régistan, de la mosquée Bibi-Khanym et de l'observatoire d'Oulough Beg.</p><p>• Dîner traditionnel et nuit à Samarcande.</p>",
+                d11_t: "JOUR 11 : Samarcande – Penjikent – Douchanbé", d11_b: "<p>• Passage de la frontière Jartepa vers le Tadjikistan à 8h00.</p><p>• Ruines sogdiennes de Penjikent (Ve s.), musée Rudaki, bazar et route vers Douchanbé. Dîner et nuit.</p>",
+                d12_t: "JOUR 12 : Forteresse de Hissar & Douchanbé", d12_b: "<p>• Excursion matinale à la forteresse de Hissar (30 km).</p><p>• Visite de Douchanbé : monuments Ismoili Somoni & Rudaki, et musée du Bouddha en Nirvana. Nuit à Douchanbé.</p>",
+                d13_t: "JOUR 13 : Tunnels alpins, Istaravchan & Khodjent", d13_b: "<p>• Route alpine (280 km) via les tunnels d'Istiklal (2 700 m) et Chahristan (2 620 m), déjeuner en tchaïkhana.</p><p>• Vieille ville d'Istaravchan, forgerons, sculpteurs sur bois et complexe Hazrat Shah. Route vers Khodjent (30 km). Nuit à Khodjent.</p>",
+                d14_t: "JOUR 14 : Khodjent – Frontière Oybek – Tachkent", d14_b: "<p>• Découverte de Khodjent (2 500 ans) : mausolée Cheikh Muslihiddin, palais Arbob et grand bazar Panjshanbe.</p><p>• Passage de la frontière Oybek retour vers Tachkent. Nuit à Tachkent.</p>",
+                d15_t: "JOUR 15 : Départ de Tachkent", d15_b: "<p>• Petit-déjeuner, déjeuner d'adieu et transfert privé à l'aéroport de Tachkent.</p>",
+                inc_title: "Inclus & Non inclus", inc_yes: "Inclus", inc_no: "Non inclus",
+                inc_1: "14 nuits (hôtels + yourtes dans le désert du Karakoum)",
+                inc_2: "Guides professionnels dans les 3 pays",
+                inc_3: "Petits-déjeuners, déjeuners, dîners & atelier plov",
+                inc_4: "Transferts privés, 4x4 désert, train & vols intérieurs",
+                inc_5: "Entrées des sites & lettre d'invitation (LOI) Turkménistan",
+                exc_1: "Vols internationaux vers/depuis Tachkent (TAS)",
+                exc_2: "Assurance voyage et médicale personnelle",
+                exc_3: "Frais de timbre visa à la frontière & dépenses personnelles",
+                desc_1: "Des citadelles de Khiva et Merv aux flammes hypnotiques de Darvaza dans le Karakoum, chaque journée offre un dépaysement total.",
+                desc_2: "Après les coupoles bleues de Boukhara et Samarcande, franchissez les montagnes du Tadjikistan jusqu'à la cité millénaire de Khodjent.",
+                faq_title: "Questions fréquentes",
+                fq1_q: "Combien de temps à l'avance réserver pour le visa (LOI) turkmène ?", fq1_a: "Nous recommandons de réserver 5 à 6 semaines avant le départ afin d'obtenir votre lettre d'invitation officielle sans stress.",
+                fq2_q: "Comment se déroulent les passages de frontières terrestres ?", fq2_a: "Nos équipes locales vous accompagnent jusqu'à chaque poste et vous accueillent immédiatement de l'autre côté.",
+                fq3_q: "Quel est le confort des yourtes à Darvaza ?", fq3_a: "Yourtes traditionnelles propres et confortables avec lits, couvertures chaudes et dîner préparé sur place sous les étoiles.",
+                fq4_q: "Quelle est la meilleure saison pour le circuit 3Stan ?", fq4_a: "Le printemps (avril–mai) et l'automne (septembre–octobre) offrent un climat idéal dans le désert comme en montagne.",
+                ag_t: "Prêt pour l'odyssée 3Stan ?", ag_d: "Demandez vos dates ou un départ privé — nous gérons visas, frontières et chaque détail."
+            },
+            de: {
+                page_title: "3Stan-Tour (15 Tage) | TGS Travel",
+                tour_short: "3Stan-Tour",
+                tour_name: "3Stan-Odyssee: Usbekistan, Turkmenistan & Tadschikistan",
+                tour_meta: "15 Tage · 13 Stationen · Start & Ende in Taschkent",
+                w1_t: "Wohin?", w1_p: "Eine außergewöhnliche 15-tägige Seidenstraßen-Reise durch Usbekistan, Turkmenistan und Tadschikistan – 13 legendäre Stationen von blauen Kuppeln bis zum Wüstenkrater und Hochgebirgspässen.",
+                w1_l1: "Usbekistan: Taschkent, Chiwa, Buchara & Samarkand", w1_l2: "Turkmenistan: Daschogus, Darvaza-Krater, Aschgabat & Merw", w1_l3: "Tadschikistan: Pandschakent, Duschanbe, Istarawschan & Chudschand",
+                w2_t: "Für wen?", w2_p: "Für neugierige Reisende (14–60 Jahre, moderates Aktivitätsniveau), die drei Länder intensiv und komplett geführt entdecken möchten.",
+                w2_l1: "Kleine Gruppen (max. 8 Teilnehmer)", w2_l2: "Auf Englisch & Russisch (Deutsch auf Anfrage)", w2_l3: "Volle Begleitung an allen Landesgrenzen",
+                w3_t: "Highlights", w3_p: "Eine seltene Kombination aus UNESCO-Welterbestätten, Jurtennächten in der Wüste und spektakulären Bergstraßen.",
+                w3_l1: "Jurtennacht direkt am brennenden Darvaza-Gaskrater", w3_l2: "UNESCO-Schätze: Itschan-Kala, Alt-Nisa, Merw, Buchara & Registan", w3_l3: "Hochgebirgstunnel Istiklal & Schachristan",
+                join_badge: "Drei Länder · Eine epische Route", join_title: "Die ultimative Zentralasien-Odyssee",
+                join_p1: "Entdecken Sie Taschkent, Chiwa, Buchara und Samarkand, übernachten Sie in Jurten am glühenden Darvaza-Krater in der Karakum und bestaunen Sie das weiße Marmor-Aschgabat sowie das antike Merw.",
+                join_p2: "Den Abschluss bildet das gebirgige Tadschikistan mit den sogdischen Ruinen von Pandschakent, Duschanbe, den alten Handwerkervierteln Istarawschans und dem 2.500 Jahre alten Chudschand.",
+                email_us: "Schreiben Sie uns",
+                ic1_t: "<span class=\"text-gold\">15 Tage</span> Dauer", ic1_d: "14 Nächte an 13 legendären Stationen in 3 Ländern.",
+                ic2_t: "ab <span class=\"text-gold\">2.300 €</span> pro Person", ic2_d: "Hotels, Jurten, Guides, Mahlzeiten, Transfers & Inlandsflüge inklusive.",
+                ic3_t: "Max. <span class=\"text-gold\">8</span> Gäste", ic3_d: "Kleingruppen-Komfort und flexible Termine auf Anfrage.",
+                ic4_t: "<span class=\"text-gold\">Kostenlose</span> Stornierung", ic4_d: "Volle Rückerstattung bis 30 Tage vor Abreise. 25 % Anzahlung.",
+                it_badge: "Interaktive 3-Länder-Route", it_title: "15-Tage-Reiseverlauf", it_hint: "Klicken Sie auf einen Tag, um die Route auf der Karte zu verfolgen.",
+                d1_t: "TAG 1: Ankunft in Taschkent & Plow-Kochkurs", d1_b: "<p>• Empfang am Flughafen Taschkent, Hoteltransfer und Erholung.</p><p>• Abends: Willkommensdinner mit usbekischem Plow-Kochkurs und Folklore-Show. Übernachtung in Taschkent.</p>",
+                d2_t: "TAG 2: Taschkents Kulturschätze & Basar", d2_b: "<p>• Stadtrundfahrt durch Alt- und Neustadt, Monumente des 14.–15. Jh. und orientalischer Basar.</p><p>• Mittagessen in der Altstadt, Abendessen lokal. Übernachtung in Taschkent.</p>",
+                d3_t: "TAG 3: Flug nach Urgentsch & Festungsstadt Chiwa", d3_b: "<p>• Inlandsflug nach Urgentsch und Transfer nach Chiwa (40 km).</p><p>• Check-in in Itschan-Kala (UNESCO) und Rundgang durch die Architektur des 12.–14. Jh. Übernachtung in Chiwa.</p>",
+                d4_t: "TAG 4: Chiwa – Grenze Schawat – Daschogus", d4_b: "<p>• Grenzübertritt nach Turkmenistan bei Schawat und Fahrt nach Daschogus.</p><p>• Mittagessen, Besuch der Festung Izmukshir und der heiligen Stätte Isman Ota. Übernachtung in Daschogus.</p>",
+                d5_t: "TAG 5: Wüste Karakum & Darvaza-Gaskrater", d5_b: "<p>• 265 km Fahrt in die Karakum mit Stopp im Wüstendorf Erbent.</p><p>• Picknick und unvergesslicher Abendblick auf den brennenden Gaskrater unter Sternen. Jurtenübernachtung.</p>",
+                d6_t: "TAG 6: Aschgabat, Alt-Nisa & Flug nach Mary", d6_b: "<p>• Stadtrundfahrt im weißen Marmor-Aschgabat: Turkmenbaschi-Moschee, Nationalmuseum, Neutralitätsbogen, Ertugrul-Gazi-Moschee, Unabhängigkeitspark und Alt-Nisa (UNESCO).</p><p>• Abendflug nach Mary. Übernachtung in Mary.</p>",
+                d7_t: "TAG 7: Antikes Merw (UNESCO) & Mary", d7_b: "<p>• Ausflug in die UNESCO-Welterbestätte Antikes Merw, einst Metropole der Seidenstraße.</p><p>• Rückkehr nach Mary und Besuch des Regionalmuseums. Übernachtung in Mary.</p>",
+                d8_t: "TAG 8: Mary – Grenze Farab – Buchara", d8_b: "<p>• Ca. 4-stündige Fahrt nach Farab, Grenzübertritt nach Usbekistan und Transfer nach Buchara.</p><p>• Stadtrundgang: Ljab-i Hauz, Handelskuppeln, Poi-Kalon-Ensemble und Abdulaziz-Khan-Medrese. Übernachtung in Buchara.</p>",
+                d9_t: "TAG 9: Buchara & Zug nach Samarkand", d9_b: "<p>• Weitere Entdeckungen in Buchara und Mittagessen.</p><p>• Zugfahrt nach Samarkand und stimmungsvoller Abendspaziergang. Übernachtung in Samarkand.</p>",
+                d10_t: "TAG 10: Schätze des antiken Samarkand", d10_b: "<p>• Gur-Emir-Mausoleum, Registan-Platz, Bibi-Chanim-Moschee und Ulugbek-Observatorium.</p><p>• Traditionelles Abendessen und Übernachtung in Samarkand.</p>",
+                d11_t: "TAG 11: Samarkand – Pandschakent – Duschanbe", d11_b: "<p>• Abfahrt um 8:00 Uhr zur Grenze Dschartepa und Übergang nach Tadschikistan.</p><p>• Antikes Pandschakent (5. Jh.), Rudaki-Museum, Basar und Weiterfahrt nach Duschanbe. Übernachtung in Duschanbe.</p>",
+                d12_t: "TAG 12: Festung Hissar & Duschanbe", d12_b: "<p>• Vormittags zur historischen Festung Hissar (30 km).</p><p>• Stadtrundfahrt in Duschanbe: Ismoili-Somoni- & Rudaki-Denkmal, Museum „Buddha im Nirwana“. Übernachtung in Duschanbe.</p>",
+                d13_t: "TAG 13: Bergtunnel, Istarawschan & Chudschand", d13_b: "<p>• 280 km Panoramafahrt durch die Tunnel Istiklal (2.700 m) und Schachristan (2.620 m), Mittagessen in einer Tschajchana.</p><p>• Altstadt Istarawschan, Schmiede- & Holzschnitzerwerkstätten, Hazrat-Shah-Komplex. Weiterfahrt nach Chudschand (30 km).</p>",
+                d14_t: "TAG 14: Chudschand – Grenze Ojbek – Taschkent", d14_b: "<p>• 2.500 Jahre altes Chudschand: Scheich-Muslihiddin-Komplex, Arbob-Palast und Pandschschanbe-Basar.</p><p>• Grenzübertritt bei Ojbek zurück nach Usbekistan und Transfer nach Taschkent.</p>",
+                d15_t: "TAG 15: Abschied & Rückflug ab Taschkent", d15_b: "<p>• Frühstück, Abschiedsmittagessen und privater Flughafentransfer.</p>",
+                inc_title: "Leistungen", inc_yes: "Inklusive", inc_no: "Nicht inklusive",
+                inc_1: "14 Übernachtungen (Hotels + Jurten in der Karakum-Wüste)",
+                inc_2: "Professionelle Reiseleiter in allen 3 Ländern",
+                inc_3: "Vollpension (Frühstück, Mittag- & Abendessen) + Plow-Kochkurs",
+                inc_4: "Alle Privattransfers, 4x4-Wüstenfahrzeuge, Zug & Inlandsflüge",
+                inc_5: "Eintrittsgelder & Einladungsschreiben (LOI) für Turkmenistan",
+                exc_1: "Internationale Flüge nach/ab Taschkent (TAS)",
+                exc_2: "Persönliche Reise- & Krankenversicherung",
+                exc_3: "Visagebühren an der Grenze & persönliche Ausgaben",
+                desc_1: "Von den Lehmzitadellen Chiwas und Merws bis zum glühenden Darvaza-Krater in der Karakum bietet jeder Tag faszinierende Kontraste.",
+                desc_2: "Nach Buchara und Samarkand erleben Sie die Bergtunnel Tadschikistans, das 2.500 Jahre alte Chudschand und bunte Basare.",
+                faq_title: "Häufige Fragen",
+                fq1_q: "Wie früh sollte ich wegen des Turkmenistan-Visums (LOI) buchen?", fq1_a: "Mindestens 5–6 Wochen vor Abreise, damit wir Ihr offizielles Einladungsschreiben (LOI) rechtzeitig einholen können.",
+                fq2_q: "Wie laufen die Grenzübertritte zwischen den drei Ländern ab?", fq2_a: "Unsere Teams begleiten Sie bis zum Kontrollpunkt und empfangen Sie direkt auf der anderen Seite.",
+                fq3_q: "Wie ist die Übernachtung im Jurtencamp am Darvaza-Krater?", fq3_a: "Saubere, gemütliche Jurten mit Betten und warmen Decken nahe dem Krater, inklusive frisch zubereitetem Abendessen unter Sternen.",
+                fq4_q: "Wann ist die beste Reisezeit für die 3Stan-Tour?", fq4_a: "Frühling (April–Mai) und Herbst (September–Oktober) mit angenehmen Temperaturen in Wüste und Gebirge.",
+                ag_t: "Bereit für die 3Stan-Odyssee?", ag_d: "Fragen Sie Termine oder eine Privatreise an – wir regeln Visa, Grenzen und jedes Detail."
+            },
+            tr: {
+                page_title: "3Stan Turu (15 Gün) | TGS Travel",
+                tour_short: "3Stan Turu",
+                tour_name: "3Stan Destanı: Özbekistan, Türkmenistan ve Tacikistan",
+                tour_meta: "15 Gün · 13 Destinasyon · Taşkent Başlangıç & Bitiş",
+                w1_t: "Nereye?", w1_p: "Özbekistan, Türkmenistan ve Tacikistan boyunca 15 gün 14 gecelik olağanüstü bir İpek Yolu yolculuğu — turkuaz kubbelerden çöl alevlerine ve yüksek dağ geçitlerine 13 efsanevi durak.",
+                w1_l1: "Özbekistan: Taşkent, Hive, Buhara ve Semerkant", w1_l2: "Türkmenistan: Daşoğuz, Darvaza Krateri, Aşkabat ve Merv", w1_l3: "Tacikistan: Pencikent, Duşanbe, İstaravşan ve Hocent",
+                w2_t: "Kimler İçin?", w2_p: "Üç ülkeyi rehber eşliğinde derinlemesine keşfetmek isteyen, orta düzeyde aktif gezginler (14–60 yaş) için tasarlanmıştır.",
+                w2_l1: "Küçük samimi gruplar (en fazla 8 kişi)", w2_l2: "İngilizce ve Rusça (talebe göre Türkçe)", w2_l3: "Tüm sınır geçişlerinde tam rehber desteği",
+                w3_t: "Öne Çıkanlar", w3_p: "UNESCO Dünya Mirası hazineleri, çölde yurt gecesi ve görkemli dağ yollarının tek bir kusursuz rotada birleşimi.",
+                w3_l1: "Yanan Darvaza gaz krateri yanında yurt konaklaması", w3_l2: "UNESCO hazineleri: İçan Kale, Eski Nisa, Merv, Buhara ve Registan", w3_l3: "Yüksek rakımlı İstiklal ve Şehristan dağ tünelleri",
+                join_badge: "Üç Ülke · Tek Efsanevi Rota", join_title: "Büyük Orta Asya Yolculuğu",
+                join_p1: "Taşkent, Hive, Buhara ve Semerkant'ın kadim sırlarını keşfedin; Karakum Çölü'ne geçerek yanan Darvaza kraterinin yanında yurtlarda uyuyun, beyaz mermer Aşkabat ve antik Merv'i görün.",
+                join_p2: "Yolculuğunuz dağlık Tacikistan'da Pencikent harabeleri, Duşanbe, zanaatkar şehri İstaravşan ve Büyük İskender'in 2.500 yıllık Hocent'i ile taçlanarak Taşkent'te son bulur.",
+                email_us: "Bize E-posta Gönderin",
+                ic1_t: "<span class=\"text-gold\">15 Gün</span> Süre", ic1_d: "3 ülkede 13 ikonik durak ve 14 gece konaklama.",
+                ic2_t: "Kişi başı <span class=\"text-gold\">€2.300</span>'dan", ic2_d: "Oteller, yurtlar, rehberler, yemekler, ulaşım ve iç hat uçuşları dahil.",
+                ic3_t: "En fazla <span class=\"text-gold\">8</span> Gezgin", ic3_d: "Küçük grup konforu ve talebe göre özel hareket tarihleri.",
+                ic4_t: "<span class=\"text-gold\">Ücretsiz</span> İptal", ic4_d: "Hareketten 30 gün öncesine kadar tam iade. Erken rezervasyonda %25 ön ödeme.",
+                it_badge: "3 Ülkeli İnteraktif Rota", it_title: "15 Günlük Tur Programı", it_hint: "Haritada rotayı takip etmek için aşağıdaki herhangi bir güne tıklayın.",
+                d1_t: "1. GÜN: Taşkent'e Varış ve Pilav Atölyesi", d1_b: "<p>• Taşkent Havalimanı'nda karşılama, otele transfer ve dinlenme.</p><p>• Akşam geleneksel Özbek pilavı yapım atölyesi ve halk dansları eşliğinde hoş geldin yemeği. Taşkent'te konaklama.</p>",
+                d2_t: "2. GÜN: Taşkent Kültür Hazineleri ve Doğu Pazarı", d2_b: "<p>• Eski ve modern Taşkent şehir turu, 14–15. yüzyıl anıtları ve el sanatları pazarı.</p><p>• Eski şehirde öğle yemeği, yerel restoranda akşam yemeği. Taşkent'te konaklama.</p>",
+                d3_t: "3. GÜN: Ürgenç Uçuşu ve Surlarla Çevrili Hive", d3_b: "<p>• Uzbekistan Airways ile Ürgenç'e uçuş ve Hive'ye transfer (40 km).</p><p>• UNESCO listesindeki İçan Kale içinde konaklama ve 12–14. yüzyıl eserleri turu. Hive'de konaklama.</p>",
+                d4_t: "4. GÜN: Hive – Şavat Sınırı – Daşoğuz", d4_b: "<p>• Şavat sınırından Türkmenistan'a geçiş ve Daşoğuz'a transfer.</p><p>• Öğle yemeği sonrası İzmukşir Kalesi ve kutsal İsman Ata ziyareti. Daşoğuz'da konaklama.</p>",
+                d5_t: "5. GÜN: Karakum Çölü ve Darvaza Gaz Krateri", d5_b: "<p>• Erbent çöl köyü molasıyla Karakum Çölü'ne 265 km yolculuk.</p><p>• Krater yanında piknik, gün batımı ve yıldızlar altında alevlerin büyüleyici manzarası. Geleneksel yurtlarda konaklama.</p>",
+                d6_t: "6. GÜN: Aşkabat, Eski Nisa ve Merv'e (Mary) Uçuş", d6_b: "<p>• Beyaz mermer başkent Aşkabat turu: Türkmenbaşı Camii, Ulusal Müze, Tarafsızlık Anıtı, Ertuğrul Gazi Camii, Bağımsızlık Parkı ve Eski Nisa (UNESCO).</p><p>• Akşam Mary'ye uçuş ve otel transferi. Mary'de konaklama.</p>",
+                d7_t: "7. GÜN: Antik Merv (UNESCO) ve Mary", d7_b: "<p>• İpek Yolu'nun efsanevi merkezi Antik Merv (UNESCO) gezisi.</p><p>• Mary'ye dönüş ve Yerel Tarih Müzesi ziyareti. Mary'de konaklama.</p>",
+                d8_t: "8. GÜN: Mary – Farap Sınırı – Buhara", d8_b: "<p>• Farap sınır kapısına (~4 saat) yolculuk, Özbekistan'a geçiş ve Buhara'ya transfer.</p><p>• Buhara yürüyüş turu: Leb-i Havuz, tarihi çarşılar, Poi Kalyan Külliyesi ve Abdülaziz Han Medresesi. Buhara'da konaklama.</p>",
+                d9_t: "9. GÜN: Buhara ve Semerkant'a Tren Yolculuğu", d9_b: "<p>• Buhara'nın tarihi eserlerini keşfe devam ve öğle yemeği.</p><p>• Semerkant'a tren yolculuğu ve akşam ışıklandırılmış şehirde yürüyüş. Semerkant'ta konaklama.</p>",
+                d10_t: "10. GÜN: Antik Semerkant'ın Hazineleri", d10_b: "<p>• Gur-i Emir Türbesi, Registan Meydanı, Bibi Hanım Camii ve Uluğ Bey Rasathanesi.</p><p>• Yöresel akşam yemeği ve Semerkant'ta konaklama.</p>",
+                d11_t: "11. GÜN: Semerkant – Pencikent – Duşanbe", d11_b: "<p>• Saat 08:00'de Cartepa sınırından Tacikistan'a geçiş.</p><p>• 5. yüzyıl Soğd kenti Pencikent, Rudaki Müzesi, pazar ziyareti ve Duşanbe'ye transfer. Duşanbe'de konaklama.</p>",
+                d12_t: "12. GÜN: Hisar Kalesi ve Duşanbe Şehir Turu", d12_b: "<p>• Sabah tarihi Hisar Kalesi gezisi (30 km).</p><p>• Duşanbe şehir turu: İsmail Samani ve Rudaki anıtları, Nirvana'daki Buda Müzesi. Duşanbe'de konaklama.</p>",
+                d13_t: "13. GÜN: Dağ Tünelleri, İstaravşan ve Hocent", d13_b: "<p>• İstiklal (2.700 m) ve Şehristan (2.620 m) tünellerinden 280 km manzaralı dağ yolculuğu ve çayhanede öğle yemeği.</p><p>• İstaravşan eski şehri, bıçakçı ve ahşap ustaları, Hazreti Şah Külliyesi. Hocent'e transfer (30 km).</p>",
+                d14_t: "14. GÜN: Antik Hocent – Oybek Sınırı – Taşkent", d14_b: "<p>• 2.500 yıllık Hocent turu: Şeyh Muslihiddin Külliyesi, Arbob Sarayı ve Panjshanbe Pazarı.</p><p>• Öğle yemeği sonrası Oybek sınırından Özbekistan'a dönüş ve Taşkent'e transfer.</p>",
+                d15_t: "15. GÜN: Veda ve Taşkent'ten Dönüş", d15_b: "<p>• Kahvaltı, veda öğle yemeği ve Taşkent Havalimanı'na özel transfer.</p>",
+                inc_title: "Tura Dahil Olanlar", inc_yes: "Dahil", inc_no: "Dahil Değil",
+                inc_1: "14 gece konaklama (oteller + Karakum Çölü yurtları)",
+                inc_2: "3 ülkede profesyonel rehberlik hizmeti",
+                inc_3: "Günlük kahvaltı, öğle ve akşam yemekleri + pilav atölyesi",
+                inc_4: "Tüm özel transferler, 4x4 çöl araçları, tren ve iç hat uçuşları",
+                inc_5: "Müze/ören yeri girişleri ve Türkmenistan LOI vize desteği",
+                exc_1: "Taşkent (TAS) uluslararası gidiş-dönüş uçak biletleri",
+                exc_2: "Kişisel seyahat ve sağlık sigortası",
+                exc_3: "Sınırda ödenen vize harçları ve kişisel harcamalar",
+                desc_1: "Hive ve Merv'in kerpiç kalelerinden Karakum Çölü'ndeki yanan Darvaza kraterine kadar her gün bambaşka bir coğrafya sunar.",
+                desc_2: "Buhara ve Semerkant'ın turkuaz kubbelerinin ardından Tacikistan'ın dağ tünellerini, 2.500 yıllık Hocent'i ve renkli doğu pazarlarını keşfedin.",
+                faq_title: "Sıkça Sorulan Sorular",
+                fq1_q: "Türkmenistan vizesi (LOI) için ne kadar önceden rezervasyon yapmalıyım?", fq1_a: "Resmi Türkmenistan Davet Mektubu'nun (LOI) sorunsuz çıkması için hareketten en az 5–6 hafta önce rezervasyon öneriyoruz.",
+                fq2_q: "Üç ülke arasındaki kara sınır geçişleri nasıl yapılıyor?", fq2_a: "Yerel ekiplerimiz sizi sınır kapısına kadar uğurlar ve diğer tarafta hemen karşılayarak tüm pasaport işlemlerinde yanınızda olur.",
+                fq3_q: "Darvaza Krateri'ndeki yurt kampı koşulları nasıldır?", fq3_a: "Kraterin hemen yakınında yataklı, sıcak battaniyeli temiz geleneksel yurtlarda kalır, yıldızların altında taze hazırlanmış akşam yemeği yersiniz.",
+                fq4_q: "3Stan Turu için en iyi mevsim hangisidir?", fq4_a: "Hem Karakum Çölü'nde hem Tacikistan dağlarında ideal hava koşulları sunan İlkbahar (Nisan–Mayıs) ve Sonbahar (Eylül–Ekim) en uygun dönemlerdir.",
+                ag_t: "3Stan Destanına Hazır mısınız?", ag_d: "Tarih veya özel tur talebi için bize yazın — vize, sınır geçişi ve her detayı biz hallediyoruz."
+            }
+        };
+    </script>
+    <script src="lang.js?v=2"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-quad',
+            once: true,
+        });
+
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileContactLink = document.getElementById('mobile-contact-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('mobile-menu-open');
+                document.body.classList.toggle('overflow-hidden');
+            }
+        }
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileContactLink) mobileContactLink.addEventListener('click', toggleMobileMenu);
+
+        // Аккордеоны
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const wasActive = item.classList.contains('active');
+                const group = item.parentElement;
+                group.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- АНИМИРОВАННАЯ КАРТА МАРШРУТА 3STAN (13 ОСТАНОВОК В 3 СТРАНАХ) -->
+    <script>
+    (function () {
+        const stops = [
+            { coords: [41.2995, 69.2401], names: { en: "1. Tashkent (UZ)",    ru: "1. Ташкент (УЗ)",    fr: "1. Tachkent",    de: "1. Taschkent",   tr: "1. Taşkent" } },
+            { coords: [41.5500, 60.6333], names: { en: "2. Urgench (UZ)",     ru: "2. Ургенч (УЗ)",     fr: "2. Ourguentch",  de: "2. Urgentsch",   tr: "2. Ürgenç" } },
+            { coords: [41.3775, 60.3639], names: { en: "3. Khiva (UZ)",       ru: "3. Хива (УЗ)",       fr: "3. Khiva",       de: "3. Chiwa",       tr: "3. Hive" } },
+            { coords: [41.8363, 59.9666], names: { en: "4. Dashoguz (TM)",    ru: "4. Дашогуз (ТМ)",    fr: "4. Dachogouz",   de: "4. Daschogus",   tr: "4. Daşoğuz" } },
+            { coords: [40.2526, 58.4397], names: { en: "5. Darvaza Crater (TM)", ru: "5. Дарваза (ТМ)", fr: "5. Darvaza",     de: "5. Darvaza",     tr: "5. Darvaza" } },
+            { coords: [37.9601, 58.3261], names: { en: "6. Ashgabat (TM)",    ru: "6. Ашхабад (ТМ)",    fr: "6. Achgabat",    de: "6. Aschgabat",   tr: "6. Aşkabat" } },
+            { coords: [37.5938, 61.8303], names: { en: "7. Mary / Merv (TM)", ru: "7. Мары / Мерв (ТМ)",fr: "7. Mary / Merv", de: "7. Mary / Merw", tr: "7. Mary / Merv" } },
+            { coords: [39.7747, 64.4286], names: { en: "8. Bukhara (UZ)",     ru: "8. Бухара (УЗ)",     fr: "8. Boukhara",    de: "8. Buchara",     tr: "8. Buhara" } },
+            { coords: [39.6542, 66.9597], names: { en: "9. Samarkand (UZ)",   ru: "9. Самарканд (УЗ)",  fr: "9. Samarcande",  de: "9. Samarkand",   tr: "9. Semerkant" } },
+            { coords: [39.4952, 67.6093], names: { en: "10. Penjikent (TJ)",  ru: "10. Пенджикент (ТД)",fr: "10. Penjikent",  de: "10. Pandschakent", tr: "10. Pencikent" } },
+            { coords: [38.5598, 68.7870], names: { en: "11. Dushanbe (TJ)",   ru: "11. Душанбе (ТД)",   fr: "11. Douchanbé",  de: "11. Duschanbe",  tr: "11. Duşanbe" } },
+            { coords: [39.9142, 69.0033], names: { en: "12. Istaravshan (TJ)",ru: "12. Истаравшан (ТД)",fr: "12. Istaravchan",de: "12. Istarawschan", tr: "12. İstaravşan" } },
+            { coords: [40.2826, 69.6222], names: { en: "13. Khujand (TJ)",    ru: "13. Худжанд (ТД)",   fr: "13. Khodjent",   de: "13. Chudschand", tr: "13. Hocent" } }
+        ];
+
+        // Привязка каждого из 15 дней (индексы 0..14) к точке на карте
+        const dayToStop = [0, 0, 2, 3, 4, 5, 6, 7, 8, 8, 9, 10, 11, 12, 0];
+        let map, markers = [];
+
+        function makeIcon(active) {
+            const size = active ? 22 : 12;
+            const ring = active ? '<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>' : '';
+            const bg = active ? 'bg-gold border-white' : 'bg-teal-900 border-gold';
+            return L.divIcon({
+                html: `<div class="relative flex items-center justify-center" style="width:${size}px;height:${size}px;">${ring}<span class="relative inline-flex rounded-full ${bg} border-2 shadow-md" style="width:${size - 4}px;height:${size - 4}px;"></span></div>`,
+                className: '',
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+            });
+        }
+
+        function highlightStop(stopIndex, shouldFly) {
+            const lang = window.tgsLang || "en";
+            markers.forEach((m, i) => {
+                const isActive = i === stopIndex;
+                m.setIcon(makeIcon(isActive));
+                m.setTooltipContent(stops[i].names[lang] || stops[i].names.en);
+                if (isActive) m.openTooltip(); else m.closeTooltip();
+            });
+            if (shouldFly && map) {
+                map.flyTo(stops[stopIndex].coords, 7, { duration: 1.2 });
+            }
+        }
+
+        function initRouteMap() {
+            const el = document.getElementById("tourRouteMap");
+            if (!el || typeof L === "undefined" || map) return;
+
+            map = L.map("tourRouteMap", { center: [39.9, 64.0], zoom: 5, scrollWheelZoom: false });
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "© OpenStreetMap",
+                subdomains: ["a", "b", "c"]
+            }).addTo(map);
+
+            const pathCoords = stops.map(s => s.coords).concat([stops[0].coords]);
+            L.polyline(pathCoords, {
+                color: "#FFA62B", weight: 3, dashArray: "8, 8", opacity: 0.9
+            }).addTo(map);
+
+            const lang = window.tgsLang || "en";
+            stops.forEach((s, idx) => {
+                const m = L.marker(s.coords, { icon: makeIcon(idx === 0) }).addTo(map);
+                m.bindTooltip(s.names[lang] || s.names.en, { className: "route-tooltip", direction: "top", offset: [0, -10] });
+                m.on("click", () => highlightStop(idx, true));
+                markers.push(m);
+            });
+
+            highlightStop(0, false);
+            setTimeout(() => map.invalidateSize(), 400);
+
+            document.querySelectorAll("#itinerary-accordion .accordion-item").forEach((item, idx) => {
+                const btn = item.querySelector(".accordion-trigger");
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        const stopIdx = dayToStop[idx] !== undefined ? dayToStop[idx] : 0;
+                        highlightStop(stopIdx, true);
+                    });
+                }
+            });
+        }
+
+        window.addEventListener("load", initRouteMap);
+        window.addEventListener("languageChanged", () => {
+            const activeIdx = Array.from(document.querySelectorAll("#itinerary-accordion .accordion-item"))
+                .findIndex(i => i.classList.contains("active"));
+            if (markers.length) highlightStop(dayToStop[activeIdx >= 0 ? activeIdx : 0] || 0, false);
+        });
+    })();
+    </script>
+</body>
+</html>
